@@ -52,16 +52,28 @@
       line-height: 1.6;
     }
 
-    ::selection {
-      background: rgba(108, 142, 255, 0.3);
+    html,
+    body {
+      scrollbar-color: rgba(255, 255, 255, 0.18) #09090b;
     }
 
     ::-webkit-scrollbar {
-      width: 4px;
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #09090b;
     }
 
     ::-webkit-scrollbar-thumb {
-      background: var(--surface2);
+      background: #272732;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3f3f50;
     }
 
     /* ─── NAV ─────────────────────────────── */
@@ -393,31 +405,98 @@
       background: var(--surface2);
       border: 1px solid var(--border2);
       border-radius: 8px;
-      padding: 8px 14px;
+      padding: 6px 12px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
+      font-size: 10px;
       color: var(--muted2);
       white-space: nowrap;
-      animation: float 4s ease-in-out infinite;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      z-index: 3;
+      pointer-events: none;
     }
 
     .hero-chip.c1 {
-      top: -20px;
-      right: -10px;
-      animation-delay: 0s;
+      top: -24px;
+      right: 24px;
+      animation: float1 4.2s ease-in-out infinite;
     }
 
     .hero-chip.c2 {
-      bottom: 40px;
-      left: -40px;
-      animation-delay: 1.5s;
+      bottom: -20px;
+      right: 18px;
+      animation: float2 3.8s ease-in-out infinite 0.5s;
     }
 
     .hero-chip.c3 {
-      top: 60px;
+      bottom: -16px;
+      left: -20px;
+      animation: float3 4.5s ease-in-out infinite 1.2s;
+    }
+
+    .hero-chip.c4 {
+      top: 52px;
+      right: -42px;
+      animation: float4 4.0s ease-in-out infinite 0.8s;
+    }
+
+    .hero-chip.c5 {
+      bottom: 58px;
+      right: -36px;
+      animation: float1 4.8s ease-in-out infinite 1.6s;
+    }
+
+    .hero-chip.c6 {
+      top: -20px;
       left: -30px;
-      animation-delay: 0.8s;
-      font-size: 10px;
+      animation: float2 4.1s ease-in-out infinite 0.3s;
+    }
+
+    @keyframes float1 {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(-2deg);
+      }
+
+      50% {
+        transform: translateY(-8px) rotate(-0.5deg);
+      }
+    }
+
+    @keyframes float2 {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(2deg);
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(3.5deg);
+      }
+    }
+
+    @keyframes float3 {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(-3deg);
+      }
+
+      50% {
+        transform: translateY(-7px) rotate(-1.5deg);
+      }
+    }
+
+    @keyframes float4 {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(2.5deg);
+      }
+
+      50% {
+        transform: translateY(-9px) rotate(1deg);
+      }
     }
 
     /* ─── SECTION SHARED ──────────────────── */
@@ -706,12 +785,22 @@
 
     .robotics-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.25fr 0.75fr;
       gap: 40px;
-      align-items: start;
+      align-items: stretch;
     }
 
-    .rob-left {}
+    .rob-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .rob-right {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
 
     .skills-cloud {
       display: flex;
@@ -750,9 +839,11 @@
     .rob-canvas-wrap {
       border-radius: 16px;
       overflow: hidden;
-      border: 1px solid rgba(74, 222, 128, .15);
+      border: 1px solid rgba(74, 222, 128, .18);
       box-shadow: 0 0 60px rgba(74, 222, 128, .06);
-      aspect-ratio: 1;
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
       background: var(--bg1);
       position: relative;
     }
@@ -760,6 +851,8 @@
     .rob-canvas-wrap canvas {
       width: 100% !important;
       height: 100% !important;
+      display: block;
+      cursor: crosshair;
     }
 
     .rob-canvas-label {
@@ -773,16 +866,79 @@
       background: rgba(0, 0, 0, .6);
       padding: 4px 8px;
       border-radius: 4px;
+      z-index: 10;
     }
 
     .rob-canvas-stats {
       position: absolute;
-      bottom: 14px;
+      top: 14px;
       right: 14px;
       text-align: right;
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
       color: var(--muted);
+      background: rgba(0, 0, 0, .6);
+      padding: 4px 8px;
+      border-radius: 4px;
+      z-index: 10;
+    }
+
+    .swarm-ctrl-overlay {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      z-index: 15;
+    }
+
+    .swarm-ctrl-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+      background: rgba(10, 10, 16, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(74, 222, 128, 0.18);
+    }
+
+    .swarm-ctrl-lbl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: var(--muted);
+    }
+
+    .swarm-btn-group {
+      display: flex;
+      gap: 4px;
+    }
+
+    .swarm-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .swarm-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .swarm-btn.active {
+      background: rgba(74, 222, 128, 0.2);
+      color: var(--rob);
+      font-weight: 700;
     }
 
     .timeline {
@@ -843,9 +999,37 @@
     }
 
     .projects-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex !important;
+      flex-direction: row !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      flex-wrap: nowrap !important;
       gap: 24px;
+      scroll-snap-type: x mandatory;
+      padding: 12px 6px 32px;
+      scrollbar-width: thin;
+      scrollbar-color: #272732 #09090b;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+    }
+
+    .projects-grid::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .projects-grid::-webkit-scrollbar-track {
+      background: #09090b;
+      border-radius: 999px;
+    }
+
+    .projects-grid::-webkit-scrollbar-thumb {
+      background: #272732;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .projects-grid::-webkit-scrollbar-thumb:hover {
+      background: #3f3f50;
     }
 
     .project-card {
@@ -856,6 +1040,12 @@
       transition: all .3s;
       cursor: pointer;
       position: relative;
+      flex: 0 0 380px !important;
+      min-width: 380px !important;
+      max-width: 380px !important;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card:hover {
@@ -907,6 +1097,9 @@
 
     .project-body {
       padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .project-desc {
@@ -914,13 +1107,15 @@
       color: var(--muted2);
       line-height: 1.75;
       margin-bottom: 20px;
+      flex: 1;
     }
 
     .project-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-bottom: 20px;
+      margin-top: auto;
+      margin-bottom: 18px;
     }
 
     .project-tag {
@@ -1098,6 +1293,8 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .fun-card::before {
@@ -1133,13 +1330,15 @@
       font-size: 13px;
       color: var(--muted2);
       line-height: 1.7;
+      flex: 1;
     }
 
     .fun-card-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 5px;
-      margin-top: 14px;
+      margin-top: auto;
+      padding-top: 18px;
     }
 
     .fun-tag {
@@ -2027,6 +2226,8 @@
       overflow: hidden;
       transition: all .3s;
       position: relative;
+      display: flex;
+      flex-direction: column;
     }
 
     .vol-card:hover {
@@ -2042,6 +2243,9 @@
 
     .vol-card-body {
       padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .vol-org {
@@ -2072,6 +2276,7 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
+      flex: 1;
     }
 
     .vol-bullets li {
@@ -2095,7 +2300,8 @@
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-top: 14px;
+      margin-top: auto;
+      padding-top: 18px;
     }
 
     .vol-tag {
@@ -2709,6 +2915,68 @@
     .lightbox-close-top:hover {
       background: rgba(255, 255, 255, 0.2);
     }
+
+    /* ─── ROBOT SELECTOR CSS ─────────────────── */
+    .robot-model-switcher {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      max-width: calc(100% - 32px);
+      gap: 6px;
+      background: rgba(13, 13, 20, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 5px;
+      border-radius: 10px;
+      border: 1px solid var(--border2);
+    }
+
+    .robot-select-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 12px;
+      border-radius: 7px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      cursor: pointer;
+      transition: all .2s ease;
+      white-space: nowrap;
+    }
+
+    .robot-select-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .robot-select-btn.active {
+      background: var(--surface2);
+      color: #34d399;
+      font-weight: 700;
+      border-color: rgba(52, 211, 153, 0.35);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    .robot-btn-badge {
+      font-size: 9px;
+      padding: 2px 5px;
+      border-radius: 4px;
+      background: rgba(52, 211, 153, 0.15);
+      color: #34d399;
+    }
+
+    .project-links-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 4px;
+    }
   </style>
 </head>
 
@@ -2726,7 +2994,7 @@
       <li><a href="#fun">about</a></li>
     </ul>
     <div class="nav-socials">
-      <a href="https://linkedin.com/in/bryanzhao" target="_blank" class="social-box" id="linkedin-btn">
+      <a href="https://www.linkedin.com/in/bryan-zhao-372b98208/" target="_blank" class="social-box" id="linkedin-btn">
         <svg viewBox="0 0 24 24">
           <path
             d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -2740,7 +3008,7 @@
         </svg>
         github
       </a>
-      <a href="https://instagram.com/bryanzhao__" target="_blank" class="social-box" id="instagram-btn">
+      <a href="https://instagram.com/bryanzhao08" target="_blank" class="social-box" id="instagram-btn">
         <svg viewBox="0 0 24 24">
           <path
             d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
@@ -2760,12 +3028,12 @@
             onerror="this.style.background='var(--surface2)';this.removeAttribute('src')">
           <div>
             <div style="font-size:14px;font-weight:700;">bryan zhao</div>
-            <div class="profile-label">usc · cs + physics · research prev @ ucsc</div>
+            <div class="profile-label">usc · cs + physics · prev research @ ucsc</div>
           </div>
         </div>
         <div class="hero-tag"><span class="dot"></span>open to opportunities</div>
         <h1 class="hero-name">bryan zhao.</h1>
-        <p class="hero-school"><span>usc</span> · cs + physics · research prev @ <span>ucsc</span></p>
+        <p class="hero-school"><span>usc</span> · cs + physics · prev research @ <span>ucsc</span></p>
         <p class="hero-bio">
           freshman at the <strong>university of southern california</strong>,
           building at the intersection of <strong>robotics</strong>,
@@ -2780,25 +3048,21 @@
             </svg>
             view resume
           </a>
-          <a href="#photography" class="btn btn-outline">see my work →</a>
+          <a href="#projects" class="btn btn-outline">see my projects →</a>
+          <a href="#photography" class="btn btn-outline" style="border-color:rgba(167,139,250,0.35);color:#c4b5fd;">📷
+            photography & hobbies →</a>
         </div>
       </div>
       <div class="hero-right">
         <div class="photo-carousel" id="heroCarousel">
           <div class="photo-slide active" id="slide-0">
-            <div class="photo-placeholder"><span class="placeholder-icon">📷</span>
-              <p>assets/photos/hero-1.jpg</p>
-            </div>
+            <img src="assets/hero-1.jpg" alt="bryan zhao photography" onerror="this.style.display='none'">
           </div>
           <div class="photo-slide" id="slide-1">
-            <div class="photo-placeholder"><span class="placeholder-icon">🤖</span>
-              <p>assets/photos/hero-2.jpg</p>
-            </div>
+            <img src="assets/hero-2.jpg" alt="bryan zhao robotics" onerror="this.style.display='none'">
           </div>
           <div class="photo-slide" id="slide-2">
-            <div class="photo-placeholder"><span class="placeholder-icon">🌄</span>
-              <p>assets/photos/hero-3.jpg</p>
-            </div>
+            <img src="assets/hero-3.jpg" alt="bryan zhao outdoors" onerror="this.style.display='none'">
           </div>
           <button class="carousel-prev" onclick="carouselPrev()">‹</button>
           <button class="carousel-next" onclick="carouselNext()">›</button>
@@ -2808,9 +3072,12 @@
             <span class="carousel-dot" onclick="goSlide(2)"></span>
           </div>
         </div>
-        <div class="hero-chip c1">📐 usc viterbi</div>
+        <div class="hero-chip c1">📷 photographer</div>
         <div class="hero-chip c2">🔭 cs + physics</div>
-        <div class="hero-chip c3">📍 los angeles</div>
+        <div class="hero-chip c3">🍕 foodie</div>
+        <div class="hero-chip c4">📍 shanghai</div>
+        <div class="hero-chip c5">📍 los angeles</div>
+        <div class="hero-chip c6">📍 saratoga</div>
       </div>
     </div>
   </section>
@@ -2818,53 +3085,121 @@
   <!-- ─── ROBOTICS ─────────────────────────── -->
   <div class="divider"></div>
   <div class="section" id="robotics">
-    <p class="section-tag reveal" style="color:var(--rob)">🤖 &nbsp;robotics + cv</p>
+    <p class="section-tag reveal" style="color:var(--rob)">🤖 &nbsp;experience + research</p>
     <h2 class="section-title reveal">building machines<br>that see and act.</h2>
     <p class="section-desc reveal">i work at the intersection of mechanical systems, embedded software, and neural
-      perception — robots that understand their environment.</p>
+      perception — robots and ai that understand their environment.</p>
 
     <div class="robotics-grid">
       <div class="rob-left">
         <div class="timeline reveal">
+          <!-- Saratoga High School VEX Robotics -->
           <div class="timeline-item">
-            <div class="timeline-date">2025 — present</div>
-            <div class="timeline-title">robotics team · usc</div>
-            <div class="timeline-desc">contributing to autonomous navigation systems. working on sensor fusion with
-              lidar + camera depth estimation for indoor mapping.</div>
+            <div class="timeline-date">aug. 2022 — jun. 2026</div>
+            <div class="timeline-title">saratoga high school vex robotics · co-founder, co-president & team captain
+            </div>
+            <div style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-bottom:6px;">
+              saratoga, ca</div>
+            <div class="timeline-desc">
+              expanded program to 40+ active students with 100+ yearly applicants; raised $225,000+ through sponsorships
+              and hosted state-wide tournaments & scrimmages.
+              <div
+                style="margin-top:6px;display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--muted2);">
+                <div>🏆 <strong>2022 & 2025 world semifinalists</strong> + division champions</div>
+                <div>🥇 <strong>2024 national champions</strong> (excellence & tournament champions)</div>
+                <div>🏅 mentored teams winning 2 state championships & worlds design award</div>
+              </div>
+              <div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--rob);">
+                skills: c++ · cad (onshape) · rapid manufacturing · outreach
+              </div>
+            </div>
           </div>
+
+          <!-- UC Santa Cruz Research Intern -->
           <div class="timeline-item">
-            <div class="timeline-date">2024</div>
-            <div class="timeline-title">computer vision research · self-directed</div>
-            <div class="timeline-desc">implemented real-time object detection pipelines using yolov8. explored pose
-              estimation for activity recognition in surveillance contexts.</div>
+            <div class="timeline-date">jun. 2024 — feb. 2026</div>
+            <div class="timeline-title">university of california, santa cruz (ucsc) · research intern</div>
+            <div style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-bottom:6px;">
+              santa cruz, ca · ai + human-computer interaction (hci)</div>
+            <div class="timeline-desc">
+              collaborated with professors and phd researchers on machine learning & vision systems:
+              <div
+                style="margin-top:6px;display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted2);">
+                <div>• <strong>senior healthcare (fall detection & care planning):</strong> vision-language & llm
+                  pipeline for real-time safety <em>(adv. phd orlando ding, prof. yi zhang)</em></div>
+                <div>• <strong>dual-model distillation (dmd):</strong> hybrid edge–cloud action classification —
+                  <strong>neurips 2024 vlm workshop</strong> <em>(adv. phd candidates orlando ding, diji yang, prof. yi
+                    zhang)</em>
+                </div>
+                <div>• <strong>ucsc sip (9% acceptance rate):</strong> teen wellbeing journaling & advanced moss
+                  plagiarism integrity tools <em>(adv. phd ariel wang, prof. christina chung, ms surya valavala)</em>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <!-- Stanford HAI -->
           <div class="timeline-item">
-            <div class="timeline-date">2023</div>
-            <div class="timeline-title">vex robotics · captain</div>
-            <div class="timeline-desc">led a team of 6 to design, build, and program competition robots. developed
-              autonomous routines using odometry + pid control.</div>
+            <div class="timeline-date">jun. 2023 — jul. 2023</div>
+            <div class="timeline-title">stanford institute for human-centered ai (hai) · intern @ ai4all</div>
+            <div style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-bottom:6px;">
+              stanford, ca / remote</div>
+            <div class="timeline-desc">
+              selected for competitive ai program (4–6% acceptance rate) featuring lectures by prof. fei-fei li and
+              stanford faculty.
+              <div style="margin-top:6px;font-size:12px;color:var(--muted2);">
+                • collaborated with stanford phd candidates to model and optimize aircraft taxiing systems using machine
+                learning.
+              </div>
+            </div>
           </div>
         </div>
+
         <div class="skills-cloud reveal">
           <span class="skill-tag" style="color:var(--rob)"><span class="dot"
               style="background:var(--rob)"></span>python</span>
           <span class="skill-tag"><span class="dot" style="background:#ee4c2c"></span>pytorch</span>
           <span class="skill-tag"><span class="dot" style="background:#00a3e0"></span>opencv</span>
-          <span class="skill-tag"><span class="dot" style="background:#3776ab"></span>ros2</span>
-          <span class="skill-tag"><span class="dot" style="background:#f7931a"></span>yolo</span>
           <span class="skill-tag"><span class="dot" style="background:#1db954"></span>c++</span>
+          <span class="skill-tag"><span class="dot" style="background:#00b4d8"></span>onshape</span>
+          <span class="skill-tag"><span class="dot" style="background:#f97316"></span>autodesk inventor</span>
+          <span class="skill-tag"><span class="dot" style="background:#f7c132"></span>fusion 360</span>
+          <span class="skill-tag"><span class="dot" style="background:#e11d48"></span>lasercutting</span>
+          <span class="skill-tag"><span class="dot" style="background:#a78bfa"></span>manufacturing</span>
           <span class="skill-tag"><span class="dot" style="background:#764abc"></span>raspberry pi</span>
           <span class="skill-tag"><span class="dot" style="background:#0076a8"></span>matlab</span>
-          <span class="skill-tag"><span class="dot" style="background:#f7c132"></span>fusion 360</span>
-          <span class="skill-tag"><span class="dot" style="background:#ff6b35"></span>solidworks</span>
-          <span class="skill-tag"><span class="dot" style="background:#00b4d8"></span>x-plane sdk</span>
           <span class="skill-tag"><span class="dot" style="background:#6c8eff"></span>numpy</span>
         </div>
       </div>
-      <div>
+      <div class="rob-right">
         <div class="rob-canvas-wrap reveal" id="robot-canvas-wrap">
-          <div class="rob-canvas-label">swarm_sim · boids · n=150</div>
-          <div class="rob-canvas-stats" id="rob-stats">fps: — · agents: 150</div>
+          <div class="rob-canvas-stats" id="rob-stats">fps: — · agents: 140</div>
+          <div class="swarm-ctrl-overlay">
+            <div class="swarm-ctrl-row">
+              <span class="swarm-ctrl-lbl">agents</span>
+              <div class="swarm-btn-group">
+                <button class="swarm-btn" id="sbtn-n60" onclick="setBoidCount(60)">60</button>
+                <button class="swarm-btn active" id="sbtn-n140" onclick="setBoidCount(140)">140</button>
+                <button class="swarm-btn" id="sbtn-n240" onclick="setBoidCount(240)">240</button>
+              </div>
+            </div>
+            <div class="swarm-ctrl-row">
+              <span class="swarm-ctrl-lbl">speed</span>
+              <div class="swarm-btn-group">
+                <button class="swarm-btn" id="sbtn-spd05" onclick="setBoidSpeed(1.6)">0.5x</button>
+                <button class="swarm-btn active" id="sbtn-spd1" onclick="setBoidSpeed(3.0)">1x</button>
+                <button class="swarm-btn" id="sbtn-spd2" onclick="setBoidSpeed(5.2)">2x</button>
+              </div>
+            </div>
+            <div class="swarm-ctrl-row">
+              <span class="swarm-ctrl-lbl">mode</span>
+              <div class="swarm-btn-group">
+                <button class="swarm-btn active" id="sbtn-flock" onclick="setBoidMode('flock')">flock</button>
+                <button class="swarm-btn" id="sbtn-scatter" onclick="setBoidMode('scatter')">scatter</button>
+                <button class="swarm-btn" id="sbtn-attract" onclick="setBoidMode('attract')">attract</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2881,6 +3216,24 @@
         style="color:var(--accent3);font-family:'JetBrains Mono',monospace;">assets/models/</span>.</p>
 
     <div class="viewer-wrap reveal">
+      <div class="robot-model-switcher">
+        <button class="robot-select-btn" id="btn-robot-2024" onclick="switchRobotModel('2024')">
+          <span class="robot-btn-badge" style="background:rgba(251,146,60,0.15);color:#fb923c;">2024</span> 95071X (Over
+          Under)
+        </button>
+        <button class="robot-select-btn active" id="btn-robot-2025-worlds" onclick="switchRobotModel('2025-worlds')">
+          <span class="robot-btn-badge" style="background:rgba(52,211,153,0.15);color:#34d399;">2025</span> 95071X
+          (Worlds Robot)
+        </button>
+        <button class="robot-select-btn" id="btn-robot-2025-early" onclick="switchRobotModel('2025-early')">
+          <span class="robot-btn-badge" style="background:rgba(167,139,250,0.15);color:#a78bfa;">2025</span> 95071X
+          (Early Tipper)
+        </button>
+        <button class="robot-select-btn" id="btn-robot-2026" onclick="switchRobotModel('2026')">
+          <span class="robot-btn-badge" style="background:rgba(56,189,248,0.15);color:#38bdf8;">2026</span> 95071X
+          (Latest Build)
+        </button>
+      </div>
       <canvas id="threejs-canvas"></canvas>
       <div class="viewer-hint">drag to orbit · scroll to zoom · right-click to pan</div>
       <div class="viewer-model-info">
@@ -2916,17 +3269,49 @@
       to airfields.</p>
 
     <div class="projects-grid">
-      <!-- Project 1: Fall Detection -->
+      <!-- Project 1: Dual-Model Distillation (arXiv:2410.12165) -->
       <div class="project-card reveal">
         <div class="project-card-header">
           <div class="project-canvas-bg" id="proj-canvas-1"></div>
           <div class="project-card-content">
-            <div class="project-num">01 / 02</div>
+            <div class="project-num">01 / 05 · RESEARCH</div>
+            <div class="project-title">dual-model distillation (dmd)<br>edge-cloud action classification</div>
+          </div>
+          <div style="position:relative;z-index:1;display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="project-tag tag-a">arxiv:2410.12165</span>
+            <span class="project-tag tag-b">video-language</span>
+            <span class="project-tag tag-c">edge-cloud</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">authored research on optimizing large video-language models (vlms) for
+            resource-constrained edge hardware. proposed dual-model distillation (dmd), an unsupervised data generation
+            framework to train a lightweight switcher model that dynamically predicts edge model uncertainty and
+            selectively offloads action classification to cloud models — cutting latency and compute while improving
+            accuracy.</p>
+          <div class="project-tags">
+            <span class="project-tag tag-a">model distillation</span>
+            <span class="project-tag tag-b">pytorch</span>
+            <span class="project-tag tag-c">hybrid edge-cloud</span>
+            <span class="project-tag tag-d">action classification</span>
+            <span class="project-tag tag-a">zero-shot vlm</span>
+          </div>
+          <a href="https://arxiv.org/pdf/2410.12165" target="_blank" class="project-link">read research paper [arxiv]
+            →</a>
+        </div>
+      </div>
+
+      <!-- Project 2: AI Fall Detection for Senior Care -->
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-card-header">
+          <div class="project-canvas-bg" id="proj-canvas-2"></div>
+          <div class="project-card-content">
+            <div class="project-num">02 / 05 · COMPUTER VISION</div>
             <div class="project-title">ai fall detection<br>for senior care</div>
           </div>
           <div style="position:relative;z-index:1;display:flex;gap:6px;flex-wrap:wrap;">
             <span class="project-tag tag-a">computer vision</span>
-            <span class="project-tag tag-b">yolov8</span>
+            <span class="project-tag tag-b">yolov8 pose</span>
             <span class="project-tag tag-c">real-time</span>
           </div>
         </div>
@@ -2941,16 +3326,88 @@
             <span class="project-tag tag-c">edge inference</span>
             <span class="project-tag tag-d">rtsp stream</span>
           </div>
-          <a href="#" class="project-link">view project →</a>
+          <a href="assets/paper1.pdf" target="_blank" class="project-link">read research paper [pdf] →</a>
         </div>
       </div>
 
-      <!-- Project 2: X-Plane AI -->
+      <!-- Project 3: 95071X 2025 World Championship Robot -->
+      <div class="project-card reveal">
+        <div class="project-card-header">
+          <div class="project-canvas-bg" id="proj-canvas-3"></div>
+          <div class="project-card-content">
+            <div class="project-num">03 / 05 · ROBOTICS</div>
+            <div class="project-title">95071X · 2025 worlds robot<br>tipper latch & mobile goal mechanics</div>
+          </div>
+          <div style="position:relative;z-index:1;display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="project-tag tag-c">worlds semifinalist</span>
+            <span class="project-tag tag-d">onshape cad</span>
+            <span class="project-tag tag-a">manufacturing</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">developed the first robot in the world to introduce the "tipper latch" — hooking onto
+            mobile goals to snap them out of opponents' pneumatic clamps and tight corners. led cad engineering, custom
+            cnc polycarbonate/aluminum parts manufacturing, and autonomous routines. advanced to world championship
+            semifinals (lost in double-dq replay by 2 points).</p>
+          <div class="project-tags">
+            <span class="project-tag tag-c">tipper latch</span>
+            <span class="project-tag tag-d">pneumatics</span>
+            <span class="project-tag tag-a">parts manufacturing</span>
+            <span class="project-tag tag-b">onshape cad</span>
+            <span class="project-tag tag-c">auton odometry</span>
+          </div>
+          <div class="project-links-wrap">
+            <a href="https://www.youtube.com/watch?v=8l5D7alsf00" target="_blank" class="project-link">worlds recap
+              ↗</a>
+            <a href="https://www.youtube.com/watch?v=tCvhVx1r8lI&t=2s" target="_blank" class="project-link">season recap
+              ↗</a>
+            <a href="https://www.youtube.com/watch?v=mA26x0UDPGo" target="_blank" class="project-link">design reveal
+              ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: 95071X 2024 World Championship Robot -->
       <div class="project-card reveal reveal-delay-1">
         <div class="project-card-header">
-          <div class="project-canvas-bg" id="proj-canvas-2"></div>
+          <div class="project-canvas-bg" id="proj-canvas-4"></div>
           <div class="project-card-content">
-            <div class="project-num">02 / 02</div>
+            <div class="project-num">04 / 05 · ROBOTICS</div>
+            <div class="project-title">95071X · 2024 worlds robot<br>transmission winch & world record climb</div>
+          </div>
+          <div style="position:relative;z-index:1;display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="project-tag tag-d">world record skills</span>
+            <span class="project-tag tag-b">transmission pto</span>
+            <span class="project-tag tag-c">hybrid climb</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">engineered the only robot in the world featuring a transmission-powered winch that
+            hung to the highest tier (h-tier) alongside a cross-bar c-tier hybrid climb. designed power-takeoff (pto)
+            gearboxes, custom intake geometry, and sub-second elevation triggers. achieved the season world record in
+            driver skills.</p>
+          <div class="project-tags">
+            <span class="project-tag tag-d">pto transmission</span>
+            <span class="project-tag tag-b">winch climb</span>
+            <span class="project-tag tag-a">fusion 360</span>
+            <span class="project-tag tag-c">c++ / pid</span>
+            <span class="project-tag tag-d">driver skills wr</span>
+          </div>
+          <div class="project-links-wrap">
+            <a href="https://www.youtube.com/watch?v=1wJq2C0SPeM" target="_blank" class="project-link">world record
+              skills ↗</a>
+            <a href="https://www.youtube.com/watch?v=Jg8W1QeCJ8s" target="_blank" class="project-link">worlds teaser
+              ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5: X-Plane AI Flight -->
+      <div class="project-card reveal">
+        <div class="project-card-header">
+          <div class="project-canvas-bg" id="proj-canvas-5"></div>
+          <div class="project-card-content">
+            <div class="project-num">05 / 05 · REINFORCEMENT LEARNING</div>
             <div class="project-title">ai aircraft taxiing,<br>takeoff + landing</div>
           </div>
           <div style="position:relative;z-index:1;display:flex;gap:6px;flex-wrap:wrap;">
@@ -2969,7 +3426,7 @@
             <span class="project-tag tag-c">steady-state nn</span>
             <span class="project-tag tag-d">flight dynamics</span>
           </div>
-          <a href="#" class="project-link">view project →</a>
+          <a href="#robotics" class="project-link">view simulation →</a>
         </div>
       </div>
     </div>
@@ -2984,7 +3441,7 @@
       trails.</p>
 
     <div class="vol-grid">
-      <!-- ASB -->
+      <!-- 1. ASB & Student Leadership -->
       <div class="vol-card reveal">
         <div class="vol-card-accent"></div>
         <div class="vol-card-body">
@@ -3001,12 +3458,11 @@
             <span class="vol-tag">student gov</span>
             <span class="vol-tag">event planning</span>
             <span class="vol-tag">leadership</span>
-            <span class="vol-tag">$80k budget</span>
           </div>
         </div>
       </div>
 
-      <!-- City of Saratoga -->
+      <!-- 2. City of Saratoga Youth Commission -->
       <div class="vol-card reveal reveal-delay-1">
         <div class="vol-card-accent" style="background:linear-gradient(90deg,#60a5fa,#34d399)"></div>
         <div class="vol-card-body">
@@ -3025,42 +3481,60 @@
               style="background:rgba(96,165,250,.1);color:#60a5fa;border-color:rgba(96,165,250,.2)">civic
               engagement</span>
             <span class="vol-tag"
-              style="background:rgba(96,165,250,.1);color:#60a5fa;border-color:rgba(96,165,250,.2)">$150k project</span>
+              style="background:rgba(96,165,250,.1);color:#60a5fa;border-color:rgba(96,165,250,.2)">youth
+              involvement</span>
             <span class="vol-tag"
               style="background:rgba(96,165,250,.1);color:#60a5fa;border-color:rgba(96,165,250,.2)">environment</span>
           </div>
         </div>
       </div>
 
-      <!-- Boy Scouts -->
-      <div class="vol-card reveal" style="grid-column:span 2;">
+      <!-- 3. Boy Scout Troop 581 -->
+      <div class="vol-card reveal">
         <div class="vol-card-accent" style="background:linear-gradient(90deg,#34d399,#60a5fa)"></div>
         <div class="vol-card-body">
           <div class="vol-org" style="color:#34d399">boy scout troop 581</div>
-          <div class="vol-role">senior patrol leader &amp; eagle scout candidate</div>
-          <div class="vol-date">mar 2019 — present</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px;">
-            <ul class="vol-bullets">
-              <li>elected senior patrol leader, doubling troop membership from 20 → 40+ scouts</li>
-              <li>organized large-scale outings — sierra nevada expeditions, florida keys sailing adventures</li>
-            </ul>
-            <ul class="vol-bullets">
-              <li>designing eagle scout project to expand robotics education access to underrepresented communities</li>
-              <li>6+ years of continuous leadership, outdoor education, and service</li>
-            </ul>
+          <div class="vol-role">senior patrol leader</div>
+          <div class="vol-date">mar 2019 — aug 2026</div>
+          <ul class="vol-bullets">
+            <li>elected senior patrol leader, doubling troop membership from 20 → 40+ scouts</li>
+            <li>organized large-scale outings — sierra nevada expeditions and florida keys sailing adventures</li>
+            <li>6+ years of continuous youth leadership, wilderness education, and community service projects</li>
+          </ul>
+          <div class="vol-tags">
+            <span class="vol-tag"
+              style="background:rgba(52,211,153,.1);color:#34d399;border-color:rgba(52,211,153,.2)">troop
+              leadership</span>
+            <span class="vol-tag"
+              style="background:rgba(52,211,153,.1);color:#34d399;border-color:rgba(52,211,153,.2)">wilderness
+              survival</span>
+            <span class="vol-tag"
+              style="background:rgba(52,211,153,.1);color:#34d399;border-color:rgba(52,211,153,.2)">service</span>
           </div>
-          <div class="vol-tags" style="margin-top:16px;">
+        </div>
+      </div>
+
+      <!-- 4. Speech & Debate Captain -->
+      <div class="vol-card reveal reveal-delay-1">
+        <div class="vol-card-accent" style="background:linear-gradient(90deg,#f59e0b,#ef4444)"></div>
+        <div class="vol-card-body">
+          <div class="vol-org" style="color:#f59e0b">saratoga high school speech &amp; debate</div>
+          <div class="vol-role">debate captain</div>
+          <div class="vol-date">aug 2022 — jun 2025</div>
+          <ul class="vol-bullets">
+            <li>mentored novices &amp; led 25-person competitive debate squad</li>
+            <li>coached 3 teams to tournament of champions (toc) and 2 to nsda national championships</li>
+            <li>developed curriculum, lecture slides, weekly lessons, and tournament practice plans</li>
+          </ul>
+          <div class="vol-tags">
             <span class="vol-tag"
-              style="background:rgba(52,211,153,.1);color:#34d399;border-color:rgba(52,211,153,.2)">eagle scout</span>
+              style="background:rgba(245,158,11,.1);color:#f59e0b;border-color:rgba(245,158,11,.2)">debate
+              coaching</span>
             <span class="vol-tag"
-              style="background:rgba(52,211,153,.1);color:#34d399;border-color:rgba(52,211,153,.2)">troop lead</span>
+              style="background:rgba(245,158,11,.1);color:#f59e0b;border-color:rgba(245,158,11,.2)">public
+              speaking</span>
             <span class="vol-tag"
-              style="background:rgba(52,211,153,.1);color:#34d399;border-color:rgba(52,211,153,.2)">robotics
-              education</span>
-            <span class="vol-tag"
-              style="background:rgba(52,211,153,.1);color:#34d399;border-color:rgba(52,211,153,.2)">wilderness</span>
-            <span class="vol-tag"
-              style="background:rgba(52,211,153,.1);color:#34d399;border-color:rgba(52,211,153,.2)">community</span>
+              style="background:rgba(245,158,11,.1);color:#f59e0b;border-color:rgba(245,158,11,.2)">curriculum</span>
           </div>
         </div>
       </div>
@@ -3379,7 +3853,7 @@
 
   <footer>
     <div class="foot-name">bryan zhao</div>
-    <p>cs + physics · usc '28 · built with 💻 + ☕</p>
+    <p>built with html, css, and js</p>
   </footer>
 
   <!-- ─── BELI POPUP ───────────────────────── -->
@@ -3421,39 +3895,39 @@
         <div class="outdoors-trail-info">
           <div class="outdoors-trail-label">longest trail</div>
           <div class="outdoors-trail-name">john nicholas trail trail</div>
-          <div class="outdoors-trail-detail">sanborn, ca</div>
+          <div class="outdoors-trail-detail">sanborn, ca · 10.2 mi</div>
         </div>
       </div>
       <div class="outdoors-trail">
         <div class="outdoors-trail-icon">❤️</div>
         <div class="outdoors-trail-info">
           <div class="outdoors-trail-label">favorite hike</div>
-          <div class="outdoors-trail-name">your favorite hiking trail</div>
-          <div class="outdoors-trail-detail">add location + notes</div>
+          <div class="outdoors-trail-name">kuilau ridge trail</div>
+          <div class="outdoors-trail-detail">kauai, hi · 3.1 mi</div>
         </div>
       </div>
       <div class="outdoors-trail">
         <div class="outdoors-trail-icon">⛷️</div>
         <div class="outdoors-trail-info">
           <div class="outdoors-trail-label">first ski trail</div>
-          <div class="outdoors-trail-name">your first ski trail ever</div>
-          <div class="outdoors-trail-detail">add resort + year</div>
+          <div class="outdoors-trail-name">schoolyard</div>
+          <div class="outdoors-trail-detail">diamond peak · 2012</div>
         </div>
       </div>
       <div class="outdoors-trail">
-        <div class="outdoors-trail-icon">⬛</div>
+        <div class="outdoors-trail-icon">♦♦</div>
         <div class="outdoors-trail-info">
           <div class="outdoors-trail-label">first double black</div>
-          <div class="outdoors-trail-name">your first double black</div>
-          <div class="outdoors-trail-detail">add resort + story</div>
+          <div class="outdoors-trail-name">hell's delight via the cirque</div>
+          <div class="outdoors-trail-detail">kirkwood · 2026</div>
         </div>
       </div>
       <div class="outdoors-trail">
         <div class="outdoors-trail-icon">🎿</div>
         <div class="outdoors-trail-info">
           <div class="outdoors-trail-label">favorite ski trail</div>
-          <div class="outdoors-trail-name">your favorite ski trail</div>
-          <div class="outdoors-trail-detail">add resort + run name</div>
+          <div class="outdoors-trail-name">high five via ridge run</div>
+          <div class="outdoors-trail-detail">heavenly · 2023-now</div>
         </div>
       </div>
     </div>
@@ -3506,197 +3980,211 @@
 
   <script>
     // ══════════════════════════════════════════════════
+    //  GLOBAL POPUP CONTROLLERS (BELI, OUTDOORS, SPOTIFY)
+    // ══════════════════════════════════════════════════
+    function toggleBeli() {
+      const popup = document.getElementById('beliPopup');
+      const spotify = document.getElementById('spotifyPopup');
+      const outdoors = document.getElementById('outdoorsPopup');
+      if (spotify) spotify.classList.remove('open');
+      if (outdoors) outdoors.classList.remove('open');
+      if (popup) popup.classList.toggle('open');
+    }
+
+    function toggleOutdoors() {
+      const popup = document.getElementById('outdoorsPopup');
+      const spotify = document.getElementById('spotifyPopup');
+      const beli = document.getElementById('beliPopup');
+      if (spotify) spotify.classList.remove('open');
+      if (beli) beli.classList.remove('open');
+      if (popup) popup.classList.toggle('open');
+    }
+
+    function toggleSpotify() {
+      const popup = document.getElementById('spotifyPopup');
+      const beli = document.getElementById('beliPopup');
+      const outdoors = document.getElementById('outdoorsPopup');
+      if (beli) beli.classList.remove('open');
+      if (outdoors) outdoors.classList.remove('open');
+      if (popup) popup.classList.toggle('open');
+    }
+
+    // Close popups on Escape key
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        ['beliPopup', 'outdoorsPopup', 'spotifyPopup'].forEach(id => {
+          document.getElementById(id)?.classList.remove('open');
+        });
+      }
+    });
+
+    // ══════════════════════════════════════════════════
     //  HERO CAROUSEL
     // ══════════════════════════════════════════════════
-    let currentSlide = 0;
+    let curSlide = 0;
     const totalSlides = 3;
-    let autoSlideTimer;
+    let autoTimer = null;
 
-    function goSlide(idx) {
-      document.getElementById('slide-' + currentSlide).classList.remove('active');
-      document.querySelectorAll('.carousel-dot')[currentSlide].classList.remove('active');
-      currentSlide = (idx + totalSlides) % totalSlides;
-      document.getElementById('slide-' + currentSlide).classList.add('active');
-      document.querySelectorAll('.carousel-dot')[currentSlide].classList.add('active');
-    }
-    function carouselPrev() { clearTimeout(autoSlideTimer); goSlide(currentSlide - 1); startAutoSlide(); }
-    function carouselNext() { clearTimeout(autoSlideTimer); goSlide(currentSlide + 1); startAutoSlide(); }
-    function startAutoSlide() { autoSlideTimer = setTimeout(() => { carouselNext(); }, 4000); }
-    startAutoSlide();
-
-    // ══════════════════════════════════════════════════
-    //  PHOTOGRAPHY FILTER + LIGHTBOX
-    // ══════════════════════════════════════════════════
-    const photoData = [
-      { title: 'shanghai nights', desc: 'the pulse of pudong district after dark — neon reflections on wet pavement, crowds flowing like rivers between towers of glass.', meta: 'street · canon 5d rs · 70-200mm f/2.8 · shanghai', src: 'assets/photos/shanghai.jpg', cat: 'street' },
-      { title: 'shinjuku crossing', desc: "tokyo's organized chaos — thousands of people navigating the world's busiest pedestrian intersection, each on their own journey.", meta: 'street · iphone 14 · shinjuku, tokyo', src: 'assets/photos/shinjuku.jpg', cat: 'street' },
-      { title: 'untitled · 01', desc: 'add a description for this photo.', meta: 'landscape', src: 'assets/photos/photo1.jpg', cat: 'landscape' },
-      { title: 'untitled · 02', desc: 'add a description for this photo.', meta: 'landscape', src: 'assets/photos/photo2.jpg', cat: 'landscape' },
-      { title: 'untitled · 03', desc: 'add a description for this photo.', meta: 'landscape', src: 'assets/photos/photo3.jpg', cat: 'landscape' },
-      { title: 'untitled · 04', desc: 'add a description for this photo.', meta: 'architecture', src: 'assets/photos/photo4.jpg', cat: 'architecture' },
-      { title: 'untitled · 05', desc: 'add a description for this photo.', meta: 'architecture', src: 'assets/photos/photo5.jpg', cat: 'architecture' },
-      { title: 'untitled · 06', desc: 'add a description for this photo.', meta: 'film', src: 'assets/photos/photo6.jpg', cat: 'film' },
-      { title: 'untitled · 07', desc: 'add a description for this photo.', meta: 'film', src: 'assets/photos/photo7.jpg', cat: 'film' },
-      { title: 'untitled · 08', desc: 'add a description for this photo.', meta: 'street', src: 'assets/photos/photo8.jpg', cat: 'street' },
-    ];
-
-    let currentView = 'grid';
-    let currentLbIdx = 0;
-
-    function filterPhotos(cat, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('.photo-item').forEach(item => {
-        const show = cat === 'all' || item.dataset.cat === cat;
-        item.style.display = show ? '' : 'none';
+    function showSlide(idx) {
+      curSlide = (idx + totalSlides) % totalSlides;
+      document.querySelectorAll('.photo-slide').forEach((s, i) => {
+        s.classList.toggle('active', i === curSlide);
+      });
+      document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === curSlide);
       });
     }
 
-    function setView(v) {
-      currentView = v;
-      const grid = document.getElementById('photoGrid');
-      const viewIds = ['gridView', 'theaterView', 'contactView'];
-      viewIds.forEach(id => document.getElementById(id)?.classList.remove('active'));
+    function carouselNext() { showSlide(curSlide + 1); resetTimer(); }
+    function carouselPrev() { showSlide(curSlide - 1); resetTimer(); }
+    function goSlide(i) { showSlide(i); resetTimer(); }
 
-      // Reset base classes
-      grid.className = 'photo-grid reveal visible';
-      document.querySelectorAll('.photo-item').forEach(i => {
-        i.style.aspectRatio = '';
-        i.style.gridColumn = '';
-        i.style.gridRow = '';
-        i.style.height = '';
-      });
-
-      if (v === 'grid') {
-        document.getElementById('gridView').classList.add('active');
-        if (window.__theaterFxStop) window.__theaterFxStop();
-      } else if (v === 'theater') {
-        document.getElementById('theaterView').classList.add('active');
-        grid.classList.add('theater-mode');
-        if (window.__theaterFxStart) window.__theaterFxStart();
-      } else if (v === 'contact') {
-        document.getElementById('contactView').classList.add('active');
-        grid.classList.add('contact-mode');
-        if (window.__theaterFxStop) window.__theaterFxStop();
-      }
+    function resetTimer() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => { showSlide(curSlide + 1); }, 4500);
     }
-
-    function openLightbox(idx) {
-      currentLbIdx = idx;
-      const data = photoData[idx];
-      if (!data) return;
-      const lb = document.getElementById('lightbox');
-      lb.classList.add('open');
-      document.getElementById('lightbox-title').textContent = data.title || '';
-      document.getElementById('lightbox-title-top').textContent = data.title || '';
-      document.getElementById('lightbox-counter').textContent = (idx + 1) + ' / ' + photoData.length;
-      document.getElementById('lightbox-desc').textContent = data.desc || '';
-      document.getElementById('lightbox-meta').textContent = data.meta || '';
-      // Try to load image
-      const img = document.getElementById('lightbox-img');
-      const placeholder = document.getElementById('lightbox-placeholder');
-      if (data.src) {
-        img.onload = () => { img.style.display = 'block'; placeholder.style.display = 'none'; };
-        img.onerror = () => { img.style.display = 'none'; placeholder.style.display = 'flex'; };
-        img.src = data.src;
-        img.alt = data.title;
-      } else {
-        img.style.display = 'none'; placeholder.style.display = 'flex';
-      }
-      // prevent bg scroll
-      document.body.style.overflow = 'hidden';
-    }
-
-    function lightboxNav(dir) {
-      const visible = photoData.filter((_, i) => {
-        const el = document.querySelectorAll('.photo-item')[i];
-        return el && el.style.display !== 'none';
-      });
-      const curr = visible.findIndex((_, i) => visible[i] === photoData[currentLbIdx]);
-      const idx = photoData.indexOf(visible[Math.max(0, Math.min(visible.length - 1, (curr + dir + visible.length) % visible.length))]);
-      openLightbox(idx === -1 ? currentLbIdx : idx);
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-    // Close on background click
-    document.getElementById('lightbox')?.addEventListener('click', function (e) {
-      if (e.target === this) closeLightbox();
-    });
-    // Keyboard nav
-    document.addEventListener('keydown', e => {
-      if (!document.getElementById('lightbox').classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') lightboxNav(1);
-      if (e.key === 'ArrowLeft') lightboxNav(-1);
-    });
+    resetTimer();
 
     // ══════════════════════════════════════════════════
-    //  BOIDS SWARM (robotics section)
+    //  BOIDS SWARM (INTERACTIVE WITH AGENTS, SPEED & MODES)
     // ══════════════════════════════════════════════════
+    let setBoidCount = null;
+    let setBoidSpeed = null;
+    let setBoidMode = null;
+
     new p5(function (p) {
       let boids = [], t = 0, lastTime = 0, fps = 0;
-      const N = 150;
+      let curCount = 140;
+      let curSpeed = 3.0;
+      let curMode = 'flock'; // 'flock', 'scatter', 'attract'
+
+      setBoidCount = function (n) {
+        curCount = n;
+        document.querySelectorAll('[id^="sbtn-n"]').forEach(b => b.classList.remove('active'));
+        document.getElementById('sbtn-n' + n)?.classList.add('active');
+        while (boids.length < curCount) boids.push(new Boid());
+        while (boids.length > curCount) boids.pop();
+      };
+
+      setBoidSpeed = function (spd) {
+        curSpeed = spd;
+        document.querySelectorAll('[id^="sbtn-spd"]').forEach(b => b.classList.remove('active'));
+        if (spd < 2) document.getElementById('sbtn-spd05')?.classList.add('active');
+        else if (spd < 4) document.getElementById('sbtn-spd1')?.classList.add('active');
+        else document.getElementById('sbtn-spd2')?.classList.add('active');
+      };
+
+      setBoidMode = function (m) {
+        curMode = m;
+        ['flock', 'scatter', 'attract'].forEach(id => {
+          document.getElementById('sbtn-' + id)?.classList.toggle('active', id === m);
+        });
+      };
+
       p.setup = function () {
         let el = document.getElementById('robot-canvas-wrap');
-        let sz = el.offsetWidth || 500;
-        let c = p.createCanvas(sz, sz);
+        let w = el ? el.offsetWidth : 400;
+        let h = el ? el.offsetHeight : 520;
+        let c = p.createCanvas(w, h);
         c.parent('robot-canvas-wrap');
         p.colorMode(p.RGB, 255, 255, 255, 255);
-        for (let i = 0; i < N; i++) boids.push(new Boid());
+        for (let i = 0; i < curCount; i++) boids.push(new Boid());
+
+        if (window.ResizeObserver && el) {
+          const ro = new ResizeObserver(() => {
+            if (el.offsetWidth && el.offsetHeight) {
+              p.resizeCanvas(el.offsetWidth, el.offsetHeight);
+            }
+          });
+          ro.observe(el);
+        }
       };
+
       p.windowResized = function () {
         let el = document.getElementById('robot-canvas-wrap');
-        let sz = el.offsetWidth || 500;
-        p.resizeCanvas(sz, sz);
+        if (el) p.resizeCanvas(el.offsetWidth, el.offsetHeight);
       };
-      p.draw = function () {
-        // fps
-        let now = Date.now();
-        fps = Math.round(1000 / (now - lastTime));
-        lastTime = now;
-        document.getElementById('rob-stats').textContent = `fps: ${fps} · agents: ${N}`;
 
-        p.fill(15, 15, 18, 35);
+      p.draw = function () {
+        let now = Date.now();
+        fps = Math.round(1000 / (now - lastTime || 16));
+        lastTime = now;
+        const statEl = document.getElementById('rob-stats');
+        if (statEl) statEl.textContent = `fps: ${fps} · agents: ${boids.length}`;
+
+        p.fill(12, 12, 18, 40);
         p.noStroke();
         p.rect(0, 0, p.width, p.height);
-        boids.forEach(b => { b.flock(boids); b.update(); b.show(); });
 
-        // grid
-        p.stroke(74, 222, 128, 10);
+        // Grid lines
+        p.stroke(74, 222, 128, 8);
         p.strokeWeight(0.5);
-        let gs = 48;
+        let gs = 40;
         for (let x = 0; x < p.width; x += gs) p.line(x, 0, x, p.height);
         for (let y = 0; y < p.height; y += gs) p.line(0, y, p.width, y);
+
+        // Mouse hover interaction indicator
+        const mouseIn = (p.mouseX >= 0 && p.mouseX <= p.width && p.mouseY >= 0 && p.mouseY <= p.height);
+        if (mouseIn) {
+          p.noFill();
+          if (curMode === 'scatter') {
+            p.stroke(251, 146, 60, 60);
+            p.ellipse(p.mouseX, p.mouseY, 70, 70);
+          } else if (curMode === 'attract') {
+            p.stroke(52, 211, 153, 70);
+            p.ellipse(p.mouseX, p.mouseY, 50, 50);
+          }
+        }
+
+        boids.forEach(b => {
+          b.maxS = curSpeed;
+          b.flock(boids, mouseIn);
+          b.update();
+          b.show();
+        });
         t += 0.01;
       };
 
       class Boid {
         constructor() {
           this.pos = p.createVector(p.random(p.width), p.random(p.height));
-          this.vel = p5.Vector.random2D().mult(p.random(1.2, 2.8));
+          this.vel = p5.Vector.random2D().mult(p.random(1.2, 2.5));
           this.acc = p.createVector();
-          this.maxF = 0.055; this.maxS = 3.0;
-          this.sz = p.random(3, 5.5);
+          this.maxF = 0.07;
+          this.maxS = curSpeed;
+          this.sz = p.random(3, 5);
         }
-        flock(others) {
+        flock(others, mouseIn) {
           let sep = p.createVector(), ali = p.createVector(), coh = p.createVector();
           let ns = 0, na = 0, nc = 0;
           for (let o of others) {
             if (o === this) continue;
             let d = p5.Vector.dist(this.pos, o.pos);
-            if (d < 26) { let r = p5.Vector.sub(this.pos, o.pos).div(d); sep.add(r); ns++; }
-            if (d < 55) { ali.add(o.vel); na++; }
-            if (d < 65) { coh.add(o.pos); nc++; }
+            if (d < 24) { let r = p5.Vector.sub(this.pos, o.pos).div(d); sep.add(r); ns++; }
+            if (d < 50) { ali.add(o.vel); na++; }
+            if (d < 60) { coh.add(o.pos); nc++; }
           }
-          if (ns) { sep.div(ns).setMag(this.maxS).sub(this.vel).limit(this.maxF * 1.5); this.acc.add(sep); }
+          if (ns) { sep.div(ns).setMag(this.maxS).sub(this.vel).limit(this.maxF * 1.6); this.acc.add(sep); }
           if (na) { ali.div(na).setMag(this.maxS).sub(this.vel).limit(this.maxF); this.acc.add(ali); }
           if (nc) { coh.div(nc).sub(this.pos).setMag(this.maxS).sub(this.vel).limit(this.maxF * 0.8); this.acc.add(coh); }
+
+          // Mouse influence
+          if (mouseIn) {
+            let m = p.createVector(p.mouseX, p.mouseY);
+            let d = p5.Vector.dist(this.pos, m);
+            if (curMode === 'scatter' && d < 120) {
+              let repel = p5.Vector.sub(this.pos, m).setMag(this.maxS * 1.5).sub(this.vel).limit(this.maxF * 2.5);
+              this.acc.add(repel);
+            } else if (curMode === 'attract' && d < 220) {
+              let pull = p5.Vector.sub(m, this.pos).setMag(this.maxS).sub(this.vel).limit(this.maxF * 1.8);
+              this.acc.add(pull);
+            }
+          }
         }
         update() {
-          this.vel.add(this.acc).limit(this.maxS); this.pos.add(this.vel); this.acc.set(0, 0);
+          this.vel.add(this.acc).limit(this.maxS);
+          this.pos.add(this.vel);
+          this.acc.set(0, 0);
           if (this.pos.x < 0) this.pos.x = p.width;
           if (this.pos.x > p.width) this.pos.x = 0;
           if (this.pos.y < 0) this.pos.y = p.height;
@@ -3706,11 +4194,13 @@
           p.push();
           p.translate(this.pos.x, this.pos.y);
           p.rotate(this.vel.heading());
-          let spd = this.vel.mag(), alpha = p.map(spd, 0, this.maxS, 70, 210);
-          p.fill(74, 222, 128, alpha); p.noStroke();
+          let spd = this.vel.mag(), alpha = p.map(spd, 0, this.maxS, 80, 230);
+          p.fill(74, 222, 128, alpha);
+          p.noStroke();
           p.triangle(this.sz * 1.6, 0, -this.sz, -this.sz * 0.6, -this.sz, this.sz * 0.6);
-          p.stroke(74, 222, 128, alpha * 0.25); p.strokeWeight(0.7);
-          p.line(0, 0, -this.sz * 3.5, 0);
+          p.stroke(74, 222, 128, alpha * 0.25);
+          p.strokeWeight(0.6);
+          p.line(0, 0, -this.sz * 3, 0);
           p.pop();
         }
       }
@@ -3724,31 +4214,63 @@
         let t = 0;
         p.setup = function () {
           let el = document.getElementById(parentId);
+          if (!el) return;
           let c = p.createCanvas(el.offsetWidth || 500, el.offsetHeight || 180);
           c.parent(parentId);
           p.colorMode(p.RGB, 255, 255, 255, 255);
         };
         p.windowResized = function () {
           let el = document.getElementById(parentId);
-          p.resizeCanvas(el.offsetWidth, el.offsetHeight);
+          if (el) p.resizeCanvas(el.offsetWidth, el.offsetHeight);
         };
         p.draw = function () {
           t += 0.015;
-          p.background(20, 20, 28, 20);
+          p.background(14, 14, 22, 30);
           let col = p.color(color);
-          if (style === 'pose') {
+          let cr = p.red(col), cg = p.green(col), cb = p.blue(col);
+
+          if (style === 'distill') {
+            // Edge <-> Cloud data distillation flow
+            p.stroke(cr, cg, cb, 35);
+            p.strokeWeight(1);
+            for (let i = 0; i < 4; i++) {
+              let y = p.height * (0.25 + i * 0.18);
+              p.line(p.width * 0.1, y, p.width * 0.9, y);
+            }
+            // Switcher router node
+            let sx = p.width * 0.48, sy = p.height * 0.5;
+            p.fill(cr, cg, cb, 180);
+            p.noStroke();
+            p.ellipse(sx, sy, 14, 14);
+            p.stroke(cr, cg, cb, 90);
+            p.noFill();
+            p.ellipse(sx, sy, 24 + p.sin(t * 3) * 6, 24 + p.sin(t * 3) * 6);
+            // Particle pulses
+            for (let k = 0; k < 6; k++) {
+              let px = (t * 120 + k * 80) % (p.width * 0.8) + p.width * 0.1;
+              let py = p.height * 0.5 + p.sin(px * 0.03 + t) * 20;
+              p.fill(cr, cg, cb, 140);
+              p.noStroke();
+              p.ellipse(px, py, 5, 5);
+            }
+            p.fill(cr, cg, cb, 180);
+            p.textSize(9);
+            p.textFont('monospace');
+            p.text('DMD SWITCHER ROUTING', p.width * 0.1, p.height * 0.88);
+
+          } else if (style === 'pose') {
             // skeleton pose dots
             p.noStroke();
             const joints = [[0.3, 0.2], [0.3, 0.35], [0.2, 0.5], [0.4, 0.5], [0.25, 0.7], [0.35, 0.7], [0.3, 0.12]];
             joints.forEach((j, i) => {
               let px = j[0] * p.width + p.sin(t + i) * 8;
               let py = j[1] * p.height + p.cos(t * 0.7 + i) * 6;
-              p.fill(p.red(col), p.green(col), p.blue(col), 150);
+              p.fill(cr, cg, cb, 150);
               p.ellipse(px, py, 8, 8);
             });
             // connections
             const conns = [[0, 1], [1, 2], [1, 3], [2, 4], [3, 5], [0, 6]];
-            p.stroke(p.red(col), p.green(col), p.blue(col), 60);
+            p.stroke(cr, cg, cb, 60);
             p.strokeWeight(1.5);
             conns.forEach(([a, b]) => {
               let ax = joints[a][0] * p.width + p.sin(t + a) * 8, ay = joints[a][1] * p.height + p.cos(t * 0.7 + a) * 6;
@@ -3757,60 +4279,106 @@
             });
             // detection box
             p.noFill();
-            p.stroke(p.red(col), p.green(col), p.blue(col), 100);
+            p.stroke(cr, cg, cb, 100);
             p.strokeWeight(1.5);
             p.rect(0.12 * p.width, 0.08 * p.height, 0.36 * p.width, 0.7 * p.height, 4);
-            // FALL text pulse
             let pulse = 0.5 + 0.5 * p.sin(t * 4);
-            p.fill(p.red(col), p.green(col), p.blue(col), 180 * pulse);
+            p.fill(cr, cg, cb, 180 * pulse);
             p.noStroke();
             p.textSize(9);
             p.textFont('monospace');
             p.text('FALL DETECTED', 0.12 * p.width + 4, 0.08 * p.height + 14);
 
-            // camera feed grid overlay
-            for (let r = 0; r < 5; r++) {
-              p.stroke(p.red(col), p.green(col), p.blue(col), 15);
-              p.strokeWeight(0.5);
-              p.line(0.55 * p.width + r * 0.1 * p.width, 0, 0.55 * p.width + r * 0.1 * p.width, p.height);
+          } else if (style === 'tipper') {
+            // Mechanical latch kinematic linkage
+            let ox = p.width * 0.4, oy = p.height * 0.7;
+            let ang = p.sin(t * 2) * 0.4 - 0.4;
+            let armLen = 70;
+            let jx = ox + p.cos(ang) * armLen;
+            let jy = oy + p.sin(ang) * armLen;
+            let hookX = jx + p.cos(ang + 0.8) * 35;
+            let hookY = jy + p.sin(ang + 0.8) * 35;
+
+            p.stroke(cr, cg, cb, 120);
+            p.strokeWeight(3);
+            p.line(ox, oy, jx, jy);
+            p.line(jx, jy, hookX, hookY);
+
+            p.fill(cr, cg, cb, 200);
+            p.noStroke();
+            p.ellipse(ox, oy, 8, 8);
+            p.ellipse(jx, jy, 6, 6);
+            p.ellipse(hookX, hookY, 6, 6);
+
+            // Goal clamp silhouette
+            p.stroke(cr, cg, cb, 45);
+            p.noFill();
+            p.rect(ox - 30, oy - 20, 60, 40, 6);
+            p.fill(cr, cg, cb, 160);
+            p.textSize(9);
+            p.textFont('monospace');
+            p.text('TIPPER LATCH LINKAGE', p.width * 0.1, p.height * 0.88);
+
+          } else if (style === 'winch') {
+            // High-Tier Winch Elevation Spool + Cable
+            let cx = p.width * 0.5, cy = p.height * 0.45;
+            p.stroke(cr, cg, cb, 80);
+            p.noFill();
+            p.ellipse(cx, cy, 36, 36);
+            p.ellipse(cx, cy, 18, 18);
+            // Spool spokes rotating
+            for (let a = 0; a < 4; a++) {
+              let rot = t * 3 + a * (p.PI / 2);
+              p.line(cx, cy, cx + p.cos(rot) * 18, cy + p.sin(rot) * 18);
             }
+            // Winch cable
+            let cableY = cy + 18 + (p.sin(t * 2) * 15);
+            p.stroke(cr, cg, cb, 140);
+            p.strokeWeight(2);
+            p.line(cx + 18, cy, cx + 18, cableY);
+            p.fill(cr, cg, cb, 180);
+            p.noStroke();
+            p.triangle(cx + 14, cableY, cx + 22, cableY, cx + 18, cableY + 10);
+            p.textSize(9);
+            p.textFont('monospace');
+            p.text('H-TIER WINCH SPOOL', p.width * 0.1, p.height * 0.88);
 
           } else if (style === 'plane') {
             // runway lines
-            p.stroke(p.red(col), p.green(col), p.blue(col), 40);
+            p.stroke(cr, cg, cb, 40);
             p.strokeWeight(1);
             for (let y = 0; y < p.height; y += 20) {
               let offset = (t * 60) % 40;
               p.line(p.width * 0.3, y - offset, p.width * 0.3, y - offset + 12);
               p.line(p.width * 0.7, y - offset, p.width * 0.7, y - offset + 12);
             }
-            // plane silhouette (simplified)
+            // plane silhouette
             let planX = p.width * 0.5 + p.sin(t) * 40;
             let planY = p.height * (0.5 - t * 0.02 % 0.5);
             p.push();
             p.translate(planX, planY);
             p.rotate(-0.3);
-            p.fill(p.red(col), p.green(col), p.blue(col), 120);
+            p.fill(cr, cg, cb, 120);
             p.noStroke();
             p.ellipse(0, 0, 40, 10);
             p.triangle(14, 0, 24, -8, 24, 8);
             p.rect(-20, -2, 8, 4);
             p.pop();
-            // neural net nodes (right side)
+            // neural net nodes
             let layers = [3, 4, 4, 2];
             let x0 = p.width * 0.55;
             layers.forEach((nodes, li) => {
               let lx = x0 + li * (p.width * 0.11);
               for (let n = 0; n < nodes; n++) {
                 let ly = p.height * (0.2 + n * (0.6 / (nodes - 1 || 1)));
-                p.fill(p.red(col), p.green(col), p.blue(col), 100);
+                p.fill(cr, cg, cb, 100);
                 p.noStroke();
                 p.ellipse(lx, ly, 7, 7);
                 if (li < layers.length - 1) {
                   for (let n2 = 0; n2 < layers[li + 1]; n2++) {
                     let lx2 = x0 + (li + 1) * (p.width * 0.11);
                     let ly2 = p.height * (0.2 + n2 * (0.6 / (layers[li + 1] - 1 || 1)));
-                    p.stroke(p.red(col), p.green(col), p.blue(col), 20);
+                    p.stroke(cr, cg, cb, 20);
                     p.strokeWeight(0.6);
                     p.line(lx, ly, lx2, ly2);
                   }
@@ -3823,15 +4391,25 @@
     }
     // Init after DOM is ready
     setTimeout(() => {
-      makeProjectBg('proj-canvas-1', '#a78bfa', 'pose');
-      makeProjectBg('proj-canvas-2', '#fb923c', 'plane');
+      makeProjectBg('proj-canvas-1', '#a78bfa', 'distill');
+      makeProjectBg('proj-canvas-2', '#60a5fa', 'pose');
+      makeProjectBg('proj-canvas-3', '#34d399', 'tipper');
+      makeProjectBg('proj-canvas-4', '#fb923c', 'winch');
+      makeProjectBg('proj-canvas-5', '#38bdf8', 'plane');
     }, 200);
 
     // ══════════════════════════════════════════════════
-    //  THREE.JS CAD VIEWER
+    //  THREE.JS CAD VIEWER (WITH 2-ROBOT SWITCHER)
     // ══════════════════════════════════════════════════
+    let switchRobotModel = null;
+    let resetCamera = null;
+    let toggleWireframe = null;
+    let toggleAutoRotate = null;
+    let loadUserModel = null;
+
     (function initThreeJS() {
       const canvas = document.getElementById('threejs-canvas');
+      if (!canvas) return;
       const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.setSize(canvas.parentElement.offsetWidth, canvas.parentElement.offsetHeight);
@@ -3840,59 +4418,332 @@
 
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(45, canvas.parentElement.offsetWidth / canvas.parentElement.offsetHeight, 0.1, 1000);
-      camera.position.set(3, 2.5, 4);
+      camera.position.set(3.5, 2.8, 4.5);
 
       // Lighting
-      scene.add(new THREE.AmbientLight(0x334466, 0.6));
-      const dirLight = new THREE.DirectionalLight(0x6c8eff, 1.2);
+      scene.add(new THREE.AmbientLight(0x334466, 0.7));
+      const dirLight = new THREE.DirectionalLight(0x6c8eff, 1.3);
       dirLight.position.set(5, 8, 5);
       dirLight.castShadow = true;
       scene.add(dirLight);
-      const accent = new THREE.PointLight(0x34d399, 0.8, 30);
+      const accent = new THREE.PointLight(0x34d399, 0.9, 30);
       accent.position.set(-4, 2, -2);
       scene.add(accent);
+      const rimLight = new THREE.DirectionalLight(0xfb923c, 0.6);
+      rimLight.position.set(-4, 6, -5);
+      scene.add(rimLight);
 
       // Grid
-      scene.add(new THREE.GridHelper(10, 20, 0x1a1a30, 0x1a1a30));
+      const grid = new THREE.GridHelper(10, 20, 0x223344, 0x141426);
+      grid.position.y = -0.01;
+      scene.add(grid);
 
-      // Active model reference
       let activeModel = null;
-      let arm1Ref = null;
+      let currentRobotKey = '2025-worlds';
+      let isWireframe = false;
 
-      // Fallback procedural robot
-      function buildFallbackRobot() {
+      // ─── ROBOT 1: 95071X (2024 OVER UNDER - TRANSMISSION WINCH) ───
+      function build2024Robot() {
         const g = new THREE.Group();
-        const mat = new THREE.MeshStandardMaterial({ color: 0x2a3a5a, metalness: 0.7, roughness: 0.3 });
-        const aMat = new THREE.MeshStandardMaterial({ color: 0x34d399, metalness: 0.5, roughness: 0.4, emissive: 0x0a3322 });
-        const base = new THREE.Mesh(new THREE.CylinderGeometry(0.7, 0.9, 0.3, 32), mat);
-        base.position.y = 0.15; g.add(base);
-        const torso = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.35, 1.2, 20), mat);
-        torso.position.y = 0.9; g.add(torso);
-        const arm1 = new THREE.Mesh(new THREE.BoxGeometry(0.2, 1.4, 0.2), mat);
-        arm1.position.set(0, 1.8, 0); arm1.rotation.z = 0.4; g.add(arm1); arm1Ref = arm1;
-        const joint = new THREE.Mesh(new THREE.SphereGeometry(0.22, 16, 16), aMat);
-        joint.position.set(0.52, 2.4, 0); g.add(joint);
-        const arm2 = new THREE.Mesh(new THREE.BoxGeometry(0.15, 1.2, 0.15), mat);
-        arm2.position.set(1.0, 2.8, 0); arm2.rotation.z = -0.6; g.add(arm2);
-        const eff = new THREE.Mesh(new THREE.ConeGeometry(0.15, 0.4, 8), aMat);
-        eff.position.set(1.5, 3.3, 0); eff.rotation.z = -1.2; g.add(eff);
-        let v = 0, f = 0;
-        g.traverse(o => { if (o.isMesh) { v += o.geometry.attributes.position.count; f += (o.geometry.index ? o.geometry.index.count / 3 : o.geometry.attributes.position.count / 3); } });
-        document.getElementById('model-verts').textContent = v.toLocaleString();
-        document.getElementById('model-faces').textContent = Math.round(f).toLocaleString();
-        document.getElementById('model-name').textContent = 'fallback_robot (drop .glb to replace)';
+        const metalMat = new THREE.MeshStandardMaterial({ color: 0x242436, metalness: 0.85, roughness: 0.2, wireframe: isWireframe });
+        const orangeMat = new THREE.MeshStandardMaterial({ color: 0xfb923c, metalness: 0.6, roughness: 0.3, emissive: 0x431407, wireframe: isWireframe });
+        const purpleMat = new THREE.MeshStandardMaterial({ color: 0xa78bfa, metalness: 0.7, roughness: 0.25, wireframe: isWireframe });
+
+        // Compact High-Speed Drive Base
+        const chassis = new THREE.Mesh(new THREE.BoxGeometry(1.7, 0.22, 1.8), metalMat);
+        chassis.position.y = 0.28; g.add(chassis);
+
+        // Wheels
+        [[-0.9, 0.6], [-0.9, -0.6], [0.9, 0.6], [0.9, -0.6]].forEach(([x, z]) => {
+          const w = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.16, 24), metalMat);
+          w.rotation.z = Math.PI / 2;
+          w.position.set(x, 0.32, z);
+          g.add(w);
+        });
+
+        // Dual Transmission PTO Gearbox Housing
+        const ptoBox = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.6, 0.8), purpleMat);
+        ptoBox.position.set(0, 0.65, 0); g.add(ptoBox);
+
+        // High-Elevation Winch Spool
+        const spool = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.22, 0.5, 20), orangeMat);
+        spool.rotation.z = Math.PI / 2;
+        spool.position.set(0, 0.8, 0); g.add(spool);
+
+        // H-Tier Winch Telescoping Mast
+        const mast = new THREE.Mesh(new THREE.BoxGeometry(0.18, 2.1, 0.18), orangeMat);
+        mast.position.set(0, 1.6, -0.2);
+        g.add(mast);
+
+        // C-Tier Cross-bar Hybrid Climb Arm
+        const climbHook = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.12, 0.5), purpleMat);
+        climbHook.position.set(0, 2.65, -0.1);
+        g.add(climbHook);
+
+        // Polycarbonate Wings (Left & Right)
+        const wingL = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.7, 0.9), orangeMat);
+        wingL.position.set(-0.95, 0.65, -0.2);
+        wingL.rotation.y = 0.3;
+        g.add(wingL);
+
+        const wingR = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.7, 0.9), orangeMat);
+        wingR.position.set(0.95, 0.65, -0.2);
+        wingR.rotation.y = -0.3;
+        g.add(wingR);
+
+        updateStats(g, '95071X · 2024 Over Under (Transmission Winch Robot)');
         return g;
       }
 
-      // Load a GLTF model from URL
+      // ─── ROBOT 2: 95071X (2025 HIGH STAKES - WORLDS TIPPER LATCH) ───
+      function build2025WorldsRobot() {
+        const g = new THREE.Group();
+        const frameMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.8, roughness: 0.25, wireframe: isWireframe });
+        const cyanMat = new THREE.MeshStandardMaterial({ color: 0x34d399, metalness: 0.6, roughness: 0.3, emissive: 0x052e16, wireframe: isWireframe });
+        const pneuMat = new THREE.MeshStandardMaterial({ color: 0x60a5fa, metalness: 0.7, roughness: 0.2, wireframe: isWireframe });
+        const goldMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, metalness: 0.9, roughness: 0.2, wireframe: isWireframe });
+
+        // Chassis Drivetrain Base (6 omni wheels)
+        const base = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.25, 2.0), frameMat);
+        base.position.y = 0.3; g.add(base);
+
+        // 6 Omni Wheels
+        [[-0.95, 0.7], [-0.95, 0], [-0.95, -0.7], [0.95, 0.7], [0.95, 0], [0.95, -0.7]].forEach(([x, z]) => {
+          const wheel = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.15, 24), frameMat);
+          wheel.rotation.z = Math.PI / 2;
+          wheel.position.set(x, 0.3, z);
+          g.add(wheel);
+        });
+
+        // Mobile Goal Clamp Towers
+        const clampL = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.9, 0.18), frameMat);
+        clampL.position.set(-0.6, 0.8, 0.75); g.add(clampL);
+        const clampR = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.9, 0.18), frameMat);
+        clampR.position.set(0.6, 0.8, 0.75); g.add(clampR);
+
+        // Breakthrough "Tipper Latch" Mechanism
+        const latchArm = new THREE.Mesh(new THREE.BoxGeometry(0.12, 1.4, 0.12), cyanMat);
+        latchArm.position.set(0, 1.1, 0.95);
+        latchArm.rotation.x = -0.45;
+        g.add(latchArm);
+
+        const hook = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.1, 0.4), goldMat);
+        hook.position.set(0, 1.7, 1.25);
+        hook.rotation.x = 0.2;
+        g.add(hook);
+
+        // Pneumatic Double Cylinders
+        const cyl1 = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.6, 16), pneuMat);
+        cyl1.position.set(-0.3, 0.9, 0.85); cyl1.rotation.x = -0.3; g.add(cyl1);
+        const cyl2 = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.6, 16), pneuMat);
+        cyl2.position.set(0.3, 0.9, 0.85); cyl2.rotation.x = -0.3; g.add(cyl2);
+
+        // Ring Intake Hopper & Rollers
+        const intakeRamp = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.08, 1.4), cyanMat);
+        intakeRamp.position.set(0, 0.9, -0.2);
+        intakeRamp.rotation.x = 0.35;
+        g.add(intakeRamp);
+
+        // Anodized Standoffs
+        for (let i = -0.5; i <= 0.5; i += 0.5) {
+          const post = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.2, 8), goldMat);
+          post.position.set(i, 0.9, -0.8);
+          g.add(post);
+        }
+
+        updateStats(g, '95071X · 2025 High Stakes (Worlds Semifinalist Tipper Latch)');
+        return g;
+      }
+
+      // ─── ROBOT 3: 95071X (2025 EARLY ORIGINAL TIPPER ITERATION) ───
+      function build2025EarlyTipperRobot() {
+        const g = new THREE.Group();
+        const rawAlumMat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, metalness: 0.9, roughness: 0.3, wireframe: isWireframe });
+        const purpleMat = new THREE.MeshStandardMaterial({ color: 0xa78bfa, metalness: 0.65, roughness: 0.25, emissive: 0x2e1065, wireframe: isWireframe });
+        const redMat = new THREE.MeshStandardMaterial({ color: 0xf43f5e, metalness: 0.75, roughness: 0.2, wireframe: isWireframe });
+        const brassMat = new THREE.MeshStandardMaterial({ color: 0xd97706, metalness: 0.85, roughness: 0.3, wireframe: isWireframe });
+
+        // Raw Prototype Channel Chassis
+        const frame = new THREE.Mesh(new THREE.BoxGeometry(1.75, 0.2, 1.9), rawAlumMat);
+        frame.position.y = 0.28; g.add(frame);
+
+        // Prototype Wheels
+        [[-0.92, 0.65], [-0.92, -0.65], [0.92, 0.65], [0.92, -0.65]].forEach(([x, z]) => {
+          const w = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.16, 24), rawAlumMat);
+          w.rotation.z = Math.PI / 2;
+          w.position.set(x, 0.3, z);
+          g.add(w);
+        });
+
+        // Early Single Pivot High Tipper Tower
+        const pivotTower = new THREE.Mesh(new THREE.BoxGeometry(0.2, 1.3, 0.2), rawAlumMat);
+        pivotTower.position.set(0, 0.95, 0.6); g.add(pivotTower);
+
+        // First-Gen Long Pivot Tipper Arm
+        const earlyArm = new THREE.Mesh(new THREE.BoxGeometry(0.14, 1.6, 0.14), redMat);
+        earlyArm.position.set(0, 1.25, 0.85);
+        earlyArm.rotation.x = -0.55;
+        g.add(earlyArm);
+
+        // Prototype Tipper Latch Hook
+        const protoHook = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.12, 0.35), brassMat);
+        protoHook.position.set(0, 1.95, 1.3);
+        protoHook.rotation.x = 0.35;
+        g.add(protoHook);
+
+        // Single Long Stroke Cylinder
+        const singleCyl = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.85, 16), purpleMat);
+        singleCyl.position.set(0, 0.85, 0.7);
+        singleCyl.rotation.x = -0.4;
+        g.add(singleCyl);
+
+        // Exposed Prototype Spur Gears
+        const gear1 = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.08, 18), brassMat);
+        gear1.rotation.z = Math.PI / 2;
+        gear1.position.set(-0.4, 0.65, -0.2);
+        g.add(gear1);
+
+        const gear2 = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 0.08, 14), purpleMat);
+        gear2.rotation.z = Math.PI / 2;
+        gear2.position.set(-0.4, 0.95, -0.2);
+        g.add(gear2);
+
+        // Early Top Ring Scoop
+        const topScoop = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.06, 1.1), purpleMat);
+        topScoop.position.set(0, 0.95, -0.35);
+        topScoop.rotation.x = 0.45;
+        g.add(topScoop);
+
+        updateStats(g, '95071X · 2025 High Stakes (Early Original Tipper Iteration)');
+        return g;
+      }
+
+      // ─── ROBOT 4: 95071X (2026 COMPETITION BUILD - LATEST DIRECT DRIVE) ───
+      function build2026Robot() {
+        const g = new THREE.Group();
+        const onyxMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.9, roughness: 0.15, wireframe: isWireframe });
+        const cyanMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, metalness: 0.7, roughness: 0.25, emissive: 0x082f49, wireframe: isWireframe });
+        const emeraldMat = new THREE.MeshStandardMaterial({ color: 0x10b981, metalness: 0.8, roughness: 0.2, emissive: 0x022c22, wireframe: isWireframe });
+        const goldMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, metalness: 0.95, roughness: 0.15, wireframe: isWireframe });
+
+        // Ultra-low CG CNC Carbon-Onyx Chassis
+        const lowChassis = new THREE.Mesh(new THREE.BoxGeometry(1.85, 0.18, 2.05), onyxMat);
+        lowChassis.position.y = 0.24; g.add(lowChassis);
+
+        // 8 Direct Drive High-Traction Wheels
+        [[-0.96, 0.75], [-0.96, 0.25], [-0.96, -0.25], [-0.96, -0.75],
+        [0.96, 0.75], [0.96, 0.25], [0.96, -0.25], [0.96, -0.75]].forEach(([x, z]) => {
+          const w = new THREE.Mesh(new THREE.CylinderGeometry(0.26, 0.26, 0.14, 24), onyxMat);
+          w.rotation.z = Math.PI / 2;
+          w.position.set(x, 0.26, z);
+          g.add(w);
+        });
+
+        // Floating Dual-Roller Polycord Intake System
+        const roller1 = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.09, 1.4, 20), cyanMat);
+        roller1.rotation.z = Math.PI / 2;
+        roller1.position.set(0, 0.5, 0.95);
+        g.add(roller1);
+
+        const roller2 = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.09, 1.4, 20), emeraldMat);
+        roller2.rotation.z = Math.PI / 2;
+        roller2.position.set(0, 0.95, 0.35);
+        g.add(roller2);
+
+        // High-Speed Polycord Belts
+        for (let x = -0.5; x <= 0.5; x += 0.25) {
+          const belt = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.02, 0.75), cyanMat);
+          belt.position.set(x, 0.72, 0.65);
+          belt.rotation.x = -0.65;
+          g.add(belt);
+        }
+
+        // Low-Profile Linear Pneumatic Clamp Assembly
+        const linearClampL = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.55, 0.14), emeraldMat);
+        linearClampL.position.set(-0.55, 0.55, -0.85); g.add(linearClampL);
+        const linearClampR = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.55, 0.14), emeraldMat);
+        linearClampR.position.set(0.55, 0.55, -0.85); g.add(linearClampR);
+
+        // Dual Precision Odometry Tracking Pods
+        const podL = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.08, 16), goldMat);
+        podL.rotation.z = Math.PI / 2;
+        podL.position.set(-0.35, 0.18, 0); g.add(podL);
+        const podR = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.08, 16), goldMat);
+        podR.rotation.z = Math.PI / 2;
+        podR.position.set(0.35, 0.18, 0); g.add(podR);
+
+        // Sensor Mount Mast
+        const mast = new THREE.Mesh(new THREE.BoxGeometry(0.08, 1.2, 0.08), goldMat);
+        mast.position.set(0, 0.85, -0.4); g.add(mast);
+
+        updateStats(g, '95071X · 2026 Competition Robot (Latest Build)');
+        return g;
+      }
+
+      function updateStats(group, name) {
+        let v = 0, f = 0;
+        group.traverse(o => {
+          if (o.isMesh) {
+            v += o.geometry.attributes.position.count;
+            f += (o.geometry.index ? o.geometry.index.count / 3 : o.geometry.attributes.position.count / 3);
+          }
+        });
+        document.getElementById('model-verts').textContent = v.toLocaleString();
+        document.getElementById('model-faces').textContent = Math.round(f).toLocaleString();
+        document.getElementById('model-name').textContent = name;
+      }
+
+      // Model Switcher Function
+      switchRobotModel = function (key) {
+        currentRobotKey = key;
+        document.querySelectorAll('.robot-select-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('btn-robot-' + key)?.classList.add('active');
+
+        if (activeModel) scene.remove(activeModel);
+
+        const glbMap = {
+          '2024': { path: 'assets/models/robot_2024.glb', name: '95071X 2024 (Over Under).glb', builder: build2024Robot },
+          '2025-worlds': { path: 'assets/models/robot_2025_worlds.glb', fallback: 'assets/models/robot_2025.glb', name: '95071X 2025 (Worlds Robot).glb', builder: build2025WorldsRobot },
+          '2025-early': { path: 'assets/models/robot_2025_early.glb', name: '95071X 2025 (Early Tipper).glb', builder: build2025EarlyTipperRobot },
+          '2026': { path: 'assets/models/robot_2026.glb', name: '95071X 2026 (Latest Build).glb', builder: build2026Robot }
+        };
+
+        const target = glbMap[key] || glbMap['2025-worlds'];
+
+        fetch(target.path, { method: 'HEAD' })
+          .then(r => {
+            if (r.ok) {
+              loadGLTF(target.path, target.name);
+            } else if (target.fallback) {
+              return fetch(target.fallback, { method: 'HEAD' }).then(rf => {
+                if (rf.ok) loadGLTF(target.fallback, target.name);
+                else {
+                  activeModel = target.builder();
+                  scene.add(activeModel);
+                }
+              });
+            } else {
+              activeModel = target.builder();
+              scene.add(activeModel);
+            }
+          })
+          .catch(() => {
+            activeModel = target.builder();
+            scene.add(activeModel);
+          });
+      };
+
+      // Start with 2025 Worlds Robot (2nd option as default)
+      activeModel = build2025WorldsRobot();
+      scene.add(activeModel);
+
+      // Load a custom user GLTF
       function loadGLTF(url, name) {
         function doLoad() {
           const loader = new THREE.GLTFLoader();
           loader.load(url, gltf => {
-            if (activeModel) { scene.remove(activeModel); }
-            arm1Ref = null;
+            if (activeModel) scene.remove(activeModel);
             activeModel = gltf.scene;
-            // Auto-center and scale to fit
             const box = new THREE.Box3().setFromObject(activeModel);
             const size = box.getSize(new THREE.Vector3());
             const center = box.getCenter(new THREE.Vector3());
@@ -3900,7 +4751,6 @@
             activeModel.scale.setScalar(scale);
             activeModel.position.sub(center.multiplyScalar(scale));
             activeModel.position.y += (size.y * scale) / 2;
-            // Apply material if needed
             activeModel.traverse(obj => {
               if (obj.isMesh) {
                 if (!obj.material) obj.material = new THREE.MeshStandardMaterial({ color: 0x3a5a8a, metalness: 0.6, roughness: 0.3 });
@@ -3908,19 +4758,12 @@
               }
             });
             scene.add(activeModel);
-            let v = 0, f = 0;
-            activeModel.traverse(o => { if (o.isMesh) { v += o.geometry.attributes.position.count; f += (o.geometry.index ? o.geometry.index.count / 3 : o.geometry.attributes.position.count / 3); } });
-            document.getElementById('model-verts').textContent = v.toLocaleString();
-            document.getElementById('model-faces').textContent = Math.round(f).toLocaleString();
-            document.getElementById('model-name').textContent = name;
-            const newBox = new THREE.Box3().setFromObject(activeModel);
-            const newSize = newBox.getSize(new THREE.Vector3());
-            spherical.r = Math.max(newSize.length() * 1.6, 4);
-            target.copy(newBox.getCenter(new THREE.Vector3()));
+            updateStats(activeModel, name);
+            spherical.r = 6.5;
             updateCamera();
           }, xhr => {
             if (xhr.total) document.getElementById('model-name').textContent = 'loading… ' + Math.round(xhr.loaded / xhr.total * 100) + '%';
-          }, err => { console.warn('GLTF load error:', err.message); });
+          }, err => { console.warn('GLTF load error:', err); });
         }
         if (typeof THREE.GLTFLoader === 'undefined') {
           const s = document.createElement('script');
@@ -3929,20 +4772,18 @@
         } else { doLoad(); }
       }
 
-      // Start with fallback robot
-      activeModel = buildFallbackRobot();
-      scene.add(activeModel);
-
-      // Auto-load my_robot.glb if it exists
-      fetch('assets/models/my_robot.glb', { method: 'HEAD' })
-        .then(r => { if (r.ok) loadGLTF('assets/models/my_robot.glb', 'my_robot.glb'); })
-        .catch(() => { });
+      loadUserModel = function (input) {
+        const file = input.files[0];
+        if (!file) return;
+        const url = URL.createObjectURL(file);
+        loadGLTF(url, file.name);
+      };
 
       // Orbit controls state
       let isDragging = false, isRightDrag = false;
       let prevMouse = { x: 0, y: 0 };
-      let spherical = { theta: 0.6, phi: 0.9, r: 6 };
-      let target = new THREE.Vector3(0, 1.5, 0);
+      let spherical = { theta: 0.7, phi: 0.95, r: 6 };
+      let target = new THREE.Vector3(0, 1.2, 0);
       let autoRotate = false;
 
       function updateCamera() {
@@ -3953,278 +4794,70 @@
       }
       updateCamera();
 
-      canvas.addEventListener('mousedown', e => { isDragging = true; isRightDrag = e.button === 2; prevMouse = { x: e.clientX, y: e.clientY }; });
-      window.addEventListener('mouseup', () => { isDragging = false; });
-      canvas.addEventListener('contextmenu', e => e.preventDefault());
+      resetCamera = function () {
+        spherical = { theta: 0.7, phi: 0.95, r: 6 };
+        target.set(0, 1.2, 0);
+        updateCamera();
+      };
+
+      toggleWireframe = function () {
+        isWireframe = !isWireframe;
+        if (activeModel) {
+          activeModel.traverse(obj => {
+            if (obj.isMesh && obj.material) obj.material.wireframe = isWireframe;
+          });
+        }
+      };
+
+      toggleAutoRotate = function () {
+        autoRotate = !autoRotate;
+      };
+
+      canvas.addEventListener('mousedown', e => {
+        isDragging = true;
+        isRightDrag = e.button === 2;
+        prevMouse = { x: e.clientX, y: e.clientY };
+      });
       window.addEventListener('mousemove', e => {
         if (!isDragging) return;
-        const dx = e.clientX - prevMouse.x, dy = e.clientY - prevMouse.y;
-        if (isRightDrag) { target.x -= dx * 0.01; target.y += dy * 0.01; }
-        else {
+        const dx = e.clientX - prevMouse.x;
+        const dy = e.clientY - prevMouse.y;
+        if (isRightDrag) {
+          target.x -= dx * 0.006; target.y += dy * 0.006;
+        } else {
           spherical.theta -= dx * 0.008;
-          spherical.phi = Math.max(0.05, Math.min(Math.PI - 0.05, spherical.phi - dy * 0.008));
+          spherical.phi = Math.max(0.1, Math.min(Math.PI - 0.1, spherical.phi - dy * 0.008));
         }
+        updateCamera();
         prevMouse = { x: e.clientX, y: e.clientY };
-        updateCamera();
       });
+      window.addEventListener('mouseup', () => { isDragging = false; });
+      canvas.addEventListener('contextmenu', e => e.preventDefault());
       canvas.addEventListener('wheel', e => {
-        spherical.r = Math.max(1.5, Math.min(20, spherical.r + e.deltaY * 0.01));
-        updateCamera();
-      });
-
-      // Touch
-      let lastTouch = null;
-      canvas.addEventListener('touchstart', e => { lastTouch = e.touches[0]; });
-      canvas.addEventListener('touchmove', e => {
         e.preventDefault();
-        if (!lastTouch) return;
-        const dx = e.touches[0].clientX - lastTouch.clientX, dy = e.touches[0].clientY - lastTouch.clientY;
-        spherical.theta -= dx * 0.008;
-        spherical.phi = Math.max(0.05, Math.min(Math.PI - 0.05, spherical.phi - dy * 0.008));
-        lastTouch = e.touches[0]; updateCamera();
+        spherical.r = Math.max(2, Math.min(18, spherical.r + e.deltaY * 0.008));
+        updateCamera();
       }, { passive: false });
 
-      // Drag-and-drop GLB onto viewer
-      canvas.parentElement.addEventListener('dragover', e => { e.preventDefault(); canvas.parentElement.style.borderColor = '#34d399'; });
-      canvas.parentElement.addEventListener('dragleave', () => { canvas.parentElement.style.borderColor = ''; });
-      canvas.parentElement.addEventListener('drop', e => {
-        e.preventDefault(); canvas.parentElement.style.borderColor = '';
-        const file = e.dataTransfer.files[0];
-        if (file && (file.name.endsWith('.glb') || file.name.endsWith('.gltf')))
-          loadGLTF(URL.createObjectURL(file), file.name);
-        else if (file) alert('please drop a .glb file. export your STEP from Fusion 360:\nFile → Export → Format: GLB');
-      });
-
-      window.resetCamera = function () {
-        spherical = { theta: 0.6, phi: 0.9, r: 6 };
-        target = new THREE.Vector3(0, 1.5, 0);
-        updateCamera();
-      };
-
-      let wireframe = false;
-      window.toggleWireframe = function () {
-        wireframe = !wireframe;
-        if (activeModel) activeModel.traverse(obj => { if (obj.isMesh) obj.material.wireframe = wireframe; });
-      };
-
-      window.toggleAutoRotate = function () { autoRotate = !autoRotate; };
-
-      window.loadUserModel = function (input) {
-        const file = input.files[0];
-        if (!file) return;
-        if (!file.name.endsWith('.glb') && !file.name.endsWith('.gltf')) {
-          alert('please export your STEP file from Fusion 360 first:\nFile → Export → Format: GLB (glTF Binary)\nthen upload the .glb here.');
-          return;
-        }
-        loadGLTF(URL.createObjectURL(file), file.name);
-      };
-
-      window.addEventListener('resize', () => {
-        const w = canvas.parentElement.offsetWidth, h = canvas.parentElement.offsetHeight;
-        renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix();
-      });
-
+      // Animate
       function animate() {
         requestAnimationFrame(animate);
-        if (autoRotate) { spherical.theta += 0.005; updateCamera(); }
-        if (arm1Ref) arm1Ref.rotation.z = 0.4 + Math.sin(Date.now() * 0.001) * 0.1;
+        if (autoRotate && !isDragging) {
+          spherical.theta += 0.008;
+          updateCamera();
+        }
         renderer.render(scene, camera);
       }
       animate();
-    })();
 
-    // ══════════════════════════════════════════════════
-    //  SPOTIFY POPUP
-    // ══════════════════════════════════════════════════
-    let spotifyOpen = false;
-    function toggleSpotify() {
-      spotifyOpen = !spotifyOpen;
-      document.getElementById('spotifyPopup').classList.toggle('open', spotifyOpen);
-    }
-
-    // ══════════════════════════════════════════════════
-
-    // ══════════════════════════════════════════════════
-    //  EMAIL HANDLER & TOAST
-    // ══════════════════════════════════════════════════
-    function showToast(msg) {
-      const t = document.getElementById('toast');
-      if (!t) return;
-      document.getElementById('toast-msg').textContent = msg;
-      t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 3500);
-    }
-
-    function handleEmailClick(e, email) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(email).then(() => {
-          showToast('copied ' + email + ' to clipboard!');
-        }).catch(() => {
-          showToast('opening mail to ' + email);
-        });
-      } else {
-        showToast('opening email to ' + email);
-      }
-    }
-
-    // ══════════════════════════════════════════════════
-    //  THEATER MODE OBSERVER & SCROLL
-    // ══════════════════════════════════════════════════
-    function scrollTheater(dir) {
-      const grid = document.getElementById('photoGrid');
-      if (!grid) return;
-      const step = grid.clientWidth * 0.75;
-      grid.scrollBy({ left: dir * step, behavior: 'smooth' });
-    }
-
-    // IntersectionObserver to only run theater background fx when photography section is on screen
-    setTimeout(() => {
-      const photoSectionEl = document.getElementById('photography');
-      if (photoSectionEl && window.IntersectionObserver) {
-        const photoObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting && currentView === 'theater') {
-              if (window.__theaterFxStart) window.__theaterFxStart();
-            } else {
-              if (window.__theaterFxStop) window.__theaterFxStop();
-            }
-          });
-        }, { threshold: 0.1 });
-        photoObserver.observe(photoSectionEl);
-      }
-    }, 500);
-
-    //  BELI POPUP
-    // ══════════════════════════════════════════════════
-    let beliOpen = false;
-    function toggleBeli() {
-      beliOpen = !beliOpen;
-      document.getElementById('beliPopup').classList.toggle('open', beliOpen);
-      if (beliOpen) { outdoorsOpen = false; document.getElementById('outdoorsPopup').classList.remove('open'); }
-    }
-
-    // ══════════════════════════════════════════════════
-    //  OUTDOORS POPUP
-    // ══════════════════════════════════════════════════
-    let outdoorsOpen = false;
-    function toggleOutdoors() {
-      outdoorsOpen = !outdoorsOpen;
-      document.getElementById('outdoorsPopup').classList.toggle('open', outdoorsOpen);
-      if (outdoorsOpen) { beliOpen = false; document.getElementById('beliPopup').classList.remove('open'); }
-    }
-
-    // ══════════════════════════════════════════════════
-    //  THEATER BACKGROUND FX (canvas squiggles + bokeh)
-    // ══════════════════════════════════════════════════
-    (function setupTheaterFx() {
-      const canvas = document.getElementById('theaterBgCanvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let active = false;
-      let particles = [];
-      let squiggles = [];
-      let raf = null;
-
-      function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-      window.addEventListener('resize', resize);
-      resize();
-
-      function mkParticle() {
-        return {
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: 1 + Math.random() * 3,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: -0.3 - Math.random() * 0.5,
-          life: 0, maxLife: 120 + Math.random() * 120,
-          hue: [210, 260, 160, 40][Math.floor(Math.random() * 4)],
-        };
-      }
-
-      function mkSquiggle() {
-        const startX = Math.random() * canvas.width;
-        const startY = canvas.height + 20;
-        const pts = [];
-        let x = startX, y = startY;
-        for (let i = 0; i < 12; i++) {
-          x += (Math.random() - 0.5) * 60;
-          y -= 30 + Math.random() * 30;
-          pts.push([x, y]);
-        }
-        return {
-          pts, life: 0, maxLife: 200 + Math.random() * 100,
-          hue: [210, 260, 160, 320][Math.floor(Math.random() * 4)],
-          width: 0.5 + Math.random() * 1.5,
-        };
-      }
-
-      for (let i = 0; i < 40; i++) particles.push(mkParticle());
-      for (let i = 0; i < 8; i++) squiggles.push(mkSquiggle());
-
-      function drawFrame() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // bokeh particles
-        particles.forEach((p, i) => {
-          p.life++;
-          if (p.life > p.maxLife) particles[i] = mkParticle();
-          p.x += p.vx; p.y += p.vy;
-          if (p.y < -10) particles[i] = mkParticle();
-          const alpha = Math.sin(p.life / p.maxLife * Math.PI) * 0.6;
-          const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
-          grd.addColorStop(0, `hsla(${p.hue},80%,70%,${alpha})`);
-          grd.addColorStop(1, `hsla(${p.hue},80%,70%,0)`);
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
-          ctx.fillStyle = grd;
-          ctx.fill();
-        });
-
-        // light squiggles
-        squiggles.forEach((sq, i) => {
-          sq.life++;
-          if (sq.life > sq.maxLife) squiggles[i] = mkSquiggle();
-          const prog = sq.life / sq.maxLife;
-          const alpha = Math.sin(prog * Math.PI) * 0.35;
-          const drawPts = Math.floor(sq.pts.length * Math.min(prog * 2, 1));
-          if (drawPts < 2) return;
-          ctx.beginPath();
-          ctx.moveTo(sq.pts[0][0], sq.pts[0][1]);
-          for (let j = 1; j < drawPts; j++) {
-            ctx.lineTo(sq.pts[j][0], sq.pts[j][1]);
-          }
-          ctx.strokeStyle = `hsla(${sq.hue},70%,70%,${alpha})`;
-          ctx.lineWidth = sq.width;
-          ctx.lineCap = 'round';
-          ctx.stroke();
-
-          // glow
-          ctx.shadowBlur = 8;
-          ctx.shadowColor = `hsla(${sq.hue},80%,60%,${alpha * 0.5})`;
-          ctx.stroke();
-          ctx.shadowBlur = 0;
-        });
-
-        if (active) raf = requestAnimationFrame(drawFrame);
-        else ctx.clearRect(0, 0, canvas.width, canvas.height);
-      }
-
-      // Watch for theater mode activation
-      window.__theaterFxStart = function () {
-        if (active) return;
-        active = true;
-        canvas.classList.add('active');
-        drawFrame();
-      };
-      window.__theaterFxStop = function () {
-        active = false;
-        canvas.classList.remove('active');
-        if (raf) cancelAnimationFrame(raf);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-      };
+      window.addEventListener('resize', () => {
+        const wrap = canvas.parentElement;
+        if (!wrap) return;
+        renderer.setSize(wrap.offsetWidth, wrap.offsetHeight);
+        camera.aspect = wrap.offsetWidth / wrap.offsetHeight;
+        camera.updateProjectionMatrix();
+        updateCamera();
+      });
     })();
 
     // ══════════════════════════════════════════════════
@@ -4384,6 +5017,209 @@
       makeCamViewer('camCanvas1', 'rebel');
       makeCamViewer('camCanvas2', 'iphone');
     }, 300);
+
+    // ══════════════════════════════════════════════════
+    //  TOAST & EMAIL CLIPBOARD
+    // ══════════════════════════════════════════════════
+    function showToast(msg, icon = '✓') {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      const toastIcon = document.getElementById('toast-icon');
+      if (toastMsg) toastMsg.textContent = msg;
+      if (toastIcon) toastIcon.textContent = icon;
+      if (toast) {
+        toast.classList.add('show');
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3200);
+      }
+    }
+
+    function handleEmailClick(e, email) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email).then(() => {
+          showToast(`copied ${email} to clipboard!`);
+        }).catch(() => {
+          showToast(`copied ${email}!`);
+        });
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = email;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          showToast(`copied ${email} to clipboard!`);
+        } catch (err) {
+          showToast(`email: ${email}`);
+        }
+        document.body.removeChild(ta);
+      }
+    }
+
+    // ══════════════════════════════════════════════════
+    //  PHOTOGRAPHY VIEWS (GRID, THEATER, CONTACT) & FILTERS
+    // ══════════════════════════════════════════════════
+    let currentPhotoView = 'grid';
+    function setView(mode) {
+      currentPhotoView = mode;
+      const grid = document.getElementById('photoGrid');
+      const bgCanvas = document.getElementById('theaterBgCanvas');
+      document.querySelectorAll('.cam-icon').forEach(el => el.classList.remove('active'));
+
+      if (mode === 'grid') {
+        document.getElementById('gridView')?.classList.add('active');
+        if (grid) {
+          grid.classList.remove('theater-mode', 'contact-mode');
+        }
+        if (bgCanvas) bgCanvas.classList.remove('active');
+      } else if (mode === 'theater') {
+        document.getElementById('theaterView')?.classList.add('active');
+        if (grid) {
+          grid.classList.remove('contact-mode');
+          grid.classList.add('theater-mode');
+        }
+        if (bgCanvas) bgCanvas.classList.add('active');
+      } else if (mode === 'contact') {
+        document.getElementById('contactView')?.classList.add('active');
+        if (grid) {
+          grid.classList.remove('theater-mode');
+          grid.classList.add('contact-mode');
+        }
+        if (bgCanvas) bgCanvas.classList.remove('active');
+      }
+    }
+
+    function filterPhotos(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const items = document.querySelectorAll('.photo-item');
+      items.forEach(item => {
+        const cat = item.getAttribute('data-cat');
+        if (category === 'all' || cat === category) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // ══════════════════════════════════════════════════
+    //  LIGHTBOX MODAL
+    // ══════════════════════════════════════════════════
+    let activeLightboxIdx = 0;
+    const photoData = [
+      { title: 'shanghai nights', cat: 'street · canon 5d', desc: 'neon reflections on wet asphalt along the bund.', src: 'assets/photos/shanghai.jpg', placeholder: '🌆 shanghai.jpg' },
+      { title: 'shinjuku crossing', cat: 'street · iphone 14', desc: 'organized chaos in the heart of tokyo at twilight.', src: 'assets/photos/shinjuku.jpg', placeholder: '🏙️ shinjuku.jpg' },
+      { title: 'sanborn redwoods', cat: 'landscape · canon 5d', desc: 'fog rolling through coastal redwood canopy at dawn.', src: 'assets/photos/photo1.jpg', placeholder: '🌄 photo1.jpg' },
+      { title: 'geometric concrete', cat: 'architecture · rebel t7', desc: 'brutalist angles and cast shadows under harsh midday sun.', src: 'assets/photos/photo2.jpg', placeholder: '🏛️ photo2.jpg' },
+      { title: 'alpine ridgeline', cat: 'landscape · canon 5d', desc: 'first light hitting granite peaks of eastern sierra.', src: 'assets/photos/photo3.jpg', placeholder: '🏔️ photo3.jpg' },
+      { title: 'night market glow', cat: 'film / 35mm · rebel t7', desc: 'steam rising from street food stalls in taipei.', src: 'assets/photos/photo4.jpg', placeholder: '🍜 photo4.jpg' },
+      { title: 'ocean horizon', cat: 'landscape · iphone 14', desc: 'pacific swell breaking against big sur cliffs.', src: 'assets/photos/photo5.jpg', placeholder: '🌊 photo5.jpg' },
+      { title: 'metro transit', cat: 'street · canon 5d', desc: 'motion blur of a passing train slicing through the dark.', src: 'assets/photos/photo6.jpg', placeholder: '🚇 photo6.jpg' },
+      { title: 'desert monolith', cat: 'landscape · rebel t7', desc: 'sandstone towers standing tall against vast twilight sky.', src: 'assets/photos/photo7.jpg', placeholder: '🏜️ photo7.jpg' }
+    ];
+
+    function openLightbox(idx) {
+      activeLightboxIdx = idx;
+      updateLightboxContent();
+      document.getElementById('lightboxModal')?.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal')?.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function nextLightbox() {
+      activeLightboxIdx = (activeLightboxIdx + 1) % photoData.length;
+      updateLightboxContent();
+    }
+
+    function prevLightbox() {
+      activeLightboxIdx = (activeLightboxIdx - 1 + photoData.length) % photoData.length;
+      updateLightboxContent();
+    }
+
+    function updateLightboxContent() {
+      const data = photoData[activeLightboxIdx];
+      if (!data) return;
+      const img = document.getElementById('lightboxImg');
+      const ph = document.getElementById('lightboxPlaceholder');
+      const title = document.getElementById('lightboxTitle');
+      const meta = document.getElementById('lightboxMeta');
+      const desc = document.getElementById('lightboxDesc');
+      if (title) title.textContent = data.title;
+      if (meta) meta.textContent = data.cat;
+      if (desc) desc.textContent = data.desc;
+      if (img) {
+        img.src = data.src;
+        img.alt = data.title;
+        img.style.display = 'block';
+        if (ph) ph.style.display = 'none';
+        img.onerror = () => {
+          img.style.display = 'none';
+          if (ph) {
+            ph.style.display = 'flex';
+            ph.textContent = data.placeholder;
+          }
+        };
+      }
+    }
+
+    // Lightbox keyboard navigation
+    window.addEventListener('keydown', e => {
+      const modal = document.getElementById('lightboxModal');
+      if (modal && modal.classList.contains('open')) {
+        if (e.key === 'ArrowRight') nextLightbox();
+        else if (e.key === 'ArrowLeft') prevLightbox();
+        else if (e.key === 'Escape') closeLightbox();
+      }
+    });
+
+    // ══════════════════════════════════════════════════
+    //  THEATER MODE SQUIGGLE BACKGROUND FX
+    // ══════════════════════════════════════════════════
+    (function initTheaterBg() {
+      const canvas = document.getElementById('theaterBgCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w, h, t = 0;
+      function resize() {
+        w = canvas.width = canvas.parentElement.offsetWidth;
+        h = canvas.height = canvas.parentElement.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      function draw() {
+        if (!canvas.classList.contains('active')) {
+          requestAnimationFrame(draw);
+          return;
+        }
+        ctx.clearRect(0, 0, w, h);
+        t += 0.015;
+        // Subtle ambient glowing ribbons & squiggles behind cards
+        for (let i = 0; i < 4; i++) {
+          ctx.beginPath();
+          ctx.strokeStyle = i % 2 === 0 ? 'rgba(167, 139, 250, 0.12)' : 'rgba(52, 211, 153, 0.1)';
+          ctx.lineWidth = 2.5;
+          let yBase = h * (0.3 + i * 0.18);
+          for (let x = 0; x < w; x += 15) {
+            let y = yBase + Math.sin(x * 0.006 + t + i) * 35 + Math.cos(x * 0.012 - t) * 20;
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
 
     // ══════════════════════════════════════════════════
     //  SCROLL REVEAL
