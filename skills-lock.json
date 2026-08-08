@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "skills": {
+    "algorithmic-art": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/algorithmic-art/SKILL.md",
+      "computedHash": "b2ca295de7f9c86c444f1fa21239e22e0eb7013ced1c652169b9402cc96ff744"
+    },
+    "animejs": {
+      "source": "freshtechbro/claudedesignskills",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/animejs/SKILL.md",
+      "computedHash": "1ccd0229d51e46aaa5e0d7033f1160c9f21440af470fbaab25fb68d9190c3edb"
+    },
+    "canvas-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/canvas-design/SKILL.md",
+      "computedHash": "3fa7ea60170023ad8268bf9fd734ea75dd404279a2ef8ddf5abaa1102ad8e5f4"
+    },
+    "expo-native-ui": {
+      "source": "expo/skills",
+      "sourceType": "github",
+      "skillPath": "plugins/expo/skills/expo-native-ui/SKILL.md",
+      "computedHash": "938f33e77410dd410b7baa25f2380b5fa104e7b7d67b0f0ca64f7a53ddedcc61"
+    },
+    "scroll-world": {
+      "source": "oso95/scroll-world",
+      "sourceType": "github",
+      "skillPath": "skills/scroll-world/SKILL.md",
+      "computedHash": "e7ea15d223b6a687840306ab4e3e48ce507df3094c8e78742f6f8b84ae7face0"
+    },
+    "threejs-fundamentals": {
+      "source": "cloudai-x/threejs-skills",
+      "sourceType": "github",
+      "skillPath": "skills/threejs-fundamentals/SKILL.md",
+      "computedHash": "e08d49571071f0f54ef2a76fdfcb96c16673e4fda478067727def4659feb80ca"
+    },
+    "vercel-react-native-skills": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/react-native-skills/SKILL.md",
+      "computedHash": "41d24eafa7c3d82e270439808f7cfbc4d51aeb2d14f2809a2267c16275784d06"
+    }
+  }
+}
