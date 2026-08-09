@@ -9,9 +9,9 @@
     content="bryan zhao — freshman at usc studying cs and physics. passionate about robotics, computer vision, and photography.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300&display=swap"
-    rel="stylesheet">
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,300&display=swap"
+  rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <style>
     :root {
       --bg: #09090b;
@@ -1212,9 +1212,15 @@
       border-color: var(--accent3);
     }
 
+    .viewer-btn.active {
+      background: rgba(52, 211, 153, 0.15);
+      border-color: var(--accent3);
+      color: var(--accent3);
+    }
+
     .viewer-hint {
       position: absolute;
-      top: 20px;
+      bottom: 60px;
       left: 50%;
       transform: translateX(-50%);
       font-family: 'JetBrains Mono', monospace;
@@ -1224,6 +1230,7 @@
       padding: 6px 12px;
       border-radius: 6px;
       white-space: nowrap;
+      pointer-events: none;
     }
 
     .viewer-model-info {
@@ -1934,16 +1941,20 @@
       box-shadow: 0 0 40px rgba(96, 165, 250, .07);
     }
 
-    .cam-viewer-canvas {
+    .cam-viewer-icon-wrap {
       width: 100%;
       aspect-ratio: 4/3;
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: var(--bg1);
-      cursor: grab;
+      color: var(--muted);
     }
 
-    .cam-viewer-canvas:active {
-      cursor: grabbing;
+    .cam-viewer-icon-wrap svg {
+      width: 40px;
+      height: 40px;
+      opacity: 0.6;
     }
 
     .cam-viewer-info {
@@ -2977,6 +2988,26 @@
       gap: 12px;
       margin-top: 4px;
     }
+
+    .glow-canon5d {
+      box-shadow: 0 0 30px rgba(255, 68, 68, 0.3) !important;
+      border: 1px solid rgba(255, 68, 68, 0.6) !important;
+    }
+
+    .glow-rebel {
+      box-shadow: 0 0 30px rgba(68, 255, 68, 0.3) !important;
+      border: 1px solid rgba(68, 255, 68, 0.6) !important;
+    }
+
+    .glow-iphone {
+      box-shadow: 0 0 30px rgba(68, 170, 255, 0.3) !important;
+      border: 1px solid rgba(68, 170, 255, 0.6) !important;
+    }
+
+    .cam-viewer-card,
+    .photo-item {
+      transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    }
   </style>
 </head>
 
@@ -3064,12 +3095,20 @@
           <div class="photo-slide" id="slide-2">
             <img src="assets/hero-3.jpg" alt="bryan zhao outdoors" onerror="this.style.display='none'">
           </div>
+          <div class="photo-slide" id="slide-3">
+            <img src="assets/hero-4.jpg" alt="bryan zhao tinkering" onerror="this.style.display='none'">
+          </div>
+          <div class="photo-slide" id="slide-4">
+            <img src="assets/hero-5.jpg" alt="bryan zhao coding" onerror="this.style.display='none'">
+          </div>
           <button class="carousel-prev" onclick="carouselPrev()">‹</button>
           <button class="carousel-next" onclick="carouselNext()">›</button>
           <div class="carousel-dots">
             <span class="carousel-dot active" onclick="goSlide(0)"></span>
             <span class="carousel-dot" onclick="goSlide(1)"></span>
             <span class="carousel-dot" onclick="goSlide(2)"></span>
+            <span class="carousel-dot" onclick="goSlide(3)"></span>
+            <span class="carousel-dot" onclick="goSlide(4)"></span>
           </div>
         </div>
         <div class="hero-chip c1">📷 photographer</div>
@@ -3086,6 +3125,7 @@
   <div class="divider"></div>
   <div class="section" id="robotics">
     <p class="section-tag reveal" style="color:var(--rob)">🤖 &nbsp;experience + research</p>
+
     <h2 class="section-title reveal">building machines<br>that see and act.</h2>
     <p class="section-desc reveal">i work at the intersection of mechanical systems, embedded software, and neural
       perception — robots and ai that understand their environment.</p>
@@ -3178,8 +3218,8 @@
             <div class="swarm-ctrl-row">
               <span class="swarm-ctrl-lbl">agents</span>
               <div class="swarm-btn-group">
-                <button class="swarm-btn" id="sbtn-n60" onclick="setBoidCount(60)">60</button>
-                <button class="swarm-btn active" id="sbtn-n140" onclick="setBoidCount(140)">140</button>
+                <button class="swarm-btn active" id="sbtn-n60" onclick="setBoidCount(60)">60</button>
+                <button class="swarm-btn" id="sbtn-n140" onclick="setBoidCount(140)">140</button>
                 <button class="swarm-btn" id="sbtn-n240" onclick="setBoidCount(240)">240</button>
               </div>
             </div>
@@ -3217,45 +3257,49 @@
 
     <div class="viewer-wrap reveal">
       <div class="robot-model-switcher">
-        <button class="robot-select-btn" id="btn-robot-2024" onclick="switchRobotModel('2024')">
-          <span class="robot-btn-badge" style="background:rgba(251,146,60,0.15);color:#fb923c;">2024</span> 95071X (Over
-          Under)
-        </button>
-        <button class="robot-select-btn active" id="btn-robot-2025-worlds" onclick="switchRobotModel('2025-worlds')">
+        <button class="robot-select-btn" id="btn-robot-2025-worlds" onclick="switchRobotModel('2025-worlds')">
           <span class="robot-btn-badge" style="background:rgba(52,211,153,0.15);color:#34d399;">2025</span> 95071X
           (Worlds Robot)
         </button>
         <button class="robot-select-btn" id="btn-robot-2025-early" onclick="switchRobotModel('2025-early')">
           <span class="robot-btn-badge" style="background:rgba(167,139,250,0.15);color:#a78bfa;">2025</span> 95071X
-          (Early Tipper)
+          (Original Tipper)
         </button>
         <button class="robot-select-btn" id="btn-robot-2026" onclick="switchRobotModel('2026')">
           <span class="robot-btn-badge" style="background:rgba(56,189,248,0.15);color:#38bdf8;">2026</span> 95071X
           (Latest Build)
         </button>
       </div>
+      <div id="viewer-placeholder-overlay"
+        style="position:absolute;inset:0;background:rgba(10,10,15,0.6);z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:12px;pointer-events:none;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);">
+        <span
+          style="font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,0.8);letter-spacing:0.02em;background:rgba(0,0,0,0.5);padding:8px 16px;border-radius:20px;border:1px solid rgba(255,255,255,0.1);">Select
+          a model above to view</span>
+      </div>
+      <div id="viewer-loading-overlay"
+        style="display:none;position:absolute;inset:0;background:rgba(10,10,15,0.75);z-index:10;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-radius:12px;pointer-events:none;">
+        <div
+          style="width:48px;height:48px;border:3px solid rgba(255,255,255,0.1);border-top-color:var(--accent3);border-radius:50%;animation:spin 0.9s linear infinite;">
+        </div>
+        <span id="viewer-loading-label"
+          style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.7);letter-spacing:0.05em;">loading…</span>
+      </div>
       <canvas id="threejs-canvas"></canvas>
       <div class="viewer-hint">drag to orbit · scroll to zoom · right-click to pan</div>
       <div class="viewer-model-info">
         model: <span id="model-name">my_robot.glb</span><br>
         verts: <span id="model-verts">—</span><br>
-        faces: <span id="model-faces">—</span>
+        faces: <span id="model-faces">—</span><br>
+        <button onclick="if(activeModel) activeModel.rotation.y -= Math.PI/2"
+          style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:var(--text);padding:3px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:9px;cursor:pointer;margin-top:6px;transition:0.2s;"
+          onmouseover="this.style.background='rgba(255,255,255,0.2)'"
+          onmouseout="this.style.background='rgba(255,255,255,0.1)'">↻ rotate 90°</button>
       </div>
-      <div class="upload-model-area">
-        <label class="upload-model-btn" for="model-file-input">
-          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-            <polyline points="17 8 12 3 7 8" />
-            <line x1="12" y1="3" x2="12" y2="15" />
-          </svg>
-          upload robot .glb
-        </label>
-        <input type="file" id="model-file-input" accept=".glb,.gltf" onchange="loadUserModel(this)">
-      </div>
+
       <div class="viewer-controls">
         <button class="viewer-btn" onclick="resetCamera()">reset camera</button>
         <button class="viewer-btn" onclick="toggleWireframe()">wireframe</button>
-        <button class="viewer-btn" onclick="toggleAutoRotate()">auto-rotate</button>
+        <button class="viewer-btn active" id="btn-autorotate" onclick="toggleAutoRotate()">⟳ auto-rotate</button>
       </div>
     </div>
   </div>
@@ -3307,21 +3351,22 @@
           <div class="project-canvas-bg" id="proj-canvas-2"></div>
           <div class="project-card-content">
             <div class="project-num">02 / 05 · COMPUTER VISION</div>
-            <div class="project-title">ai fall detection<br>for senior care</div>
+            <div class="project-title">ai fall detection &<br>proactive care planning</div>
           </div>
           <div style="position:relative;z-index:1;display:flex;gap:6px;flex-wrap:wrap;">
             <span class="project-tag tag-a">computer vision</span>
-            <span class="project-tag tag-b">yolov8 pose</span>
+            <span class="project-tag tag-b">vlms & llms</span>
             <span class="project-tag tag-c">real-time</span>
           </div>
         </div>
         <div class="project-body">
-          <p class="project-desc">an ai surveillance system designed to detect fall events in elderly care facilities.
-            uses pose estimation + anomaly detection to identify dangerous falls and alert caregivers in real time —
-            reducing response time and improving safety for aging seniors without requiring wearable devices.</p>
+          <p class="project-desc">an end-to-end ai-driven surveillance system utilizing vision-language models (vlms)
+            and llms to detect falls and proactively plan senior care. achieved a 92% f1-score by combining real-time
+            video monitoring (video-llava), audio transcription, and segment anything model (sam) for environment 'safe
+            zone' segmentation — drastically reducing false positives without requiring wearable devices.</p>
           <div class="project-tags">
-            <span class="project-tag tag-a">yolov8 pose</span>
-            <span class="project-tag tag-b">opencv</span>
+            <span class="project-tag tag-a">gpt-4o & video-llava</span>
+            <span class="project-tag tag-b">segment anything (sam)</span>
             <span class="project-tag tag-b">raspberry pi</span>
             <span class="project-tag tag-c">edge inference</span>
             <span class="project-tag tag-d">rtsp stream</span>
@@ -3407,26 +3452,26 @@
         <div class="project-card-header">
           <div class="project-canvas-bg" id="proj-canvas-5"></div>
           <div class="project-card-content">
-            <div class="project-num">05 / 05 · REINFORCEMENT LEARNING</div>
-            <div class="project-title">ai aircraft taxiing,<br>takeoff + landing</div>
+            <div class="project-num">05 / 05 · AUTONOMOUS CONTROL</div>
+            <div class="project-title">autonomous aircraft taxiing<br>in a simulated environment</div>
           </div>
           <div style="position:relative;z-index:1;display:flex;gap:6px;flex-wrap:wrap;">
-            <span class="project-tag tag-d">reinforcement learning</span>
+            <span class="project-tag tag-d">autonomous control</span>
             <span class="project-tag tag-a">x-plane 12</span>
           </div>
         </div>
         <div class="project-body">
-          <p class="project-desc">trained a steady-state neural network to autonomously execute the full ground-to-air
-            cycle — taxiing to runway, takeoff rotation, climb, stabilized cruise, descent, and autoland — inside the
-            x-plane 12 flight simulator using the xplane sdk + custom rl reward shaping.</p>
+          <p class="project-desc">explored autonomous aircraft taxiing in x-plane by developing a closed-loop
+            perception-estimation-control pipeline. trained a 5-layer fully-connected neural network on a 20,000 image
+            dataset to estimate crosstrack and heading errors from nose-mounted camera feeds, which were fed into a pid
+            controller to continuously maintain collinear alignment with the runway centerline.</p>
           <div class="project-tags">
-            <span class="project-tag tag-d">x-plane sdk</span>
-            <span class="project-tag tag-a">pytorch</span>
-            <span class="project-tag tag-b">rl / ppo</span>
-            <span class="project-tag tag-c">steady-state nn</span>
-            <span class="project-tag tag-d">flight dynamics</span>
+            <span class="project-tag tag-d">x-plane 12</span>
+            <span class="project-tag tag-a">neural network</span>
+            <span class="project-tag tag-b">pid control</span>
+            <span class="project-tag tag-c">state estimation</span>
+            <span class="project-tag tag-d">computer vision</span>
           </div>
-          <a href="#robotics" class="project-link">view simulation →</a>
         </div>
       </div>
     </div>
@@ -3551,26 +3596,57 @@
     <p class="section-desc reveal">photography is how i process the world around me — landscapes, street, architecture,
       and the quiet moments in between. shot on sony + iphone.</p>
 
-    <!-- camera mini 3d viewers -->
+    <!-- camera mini viewers (icons) -->
     <div class="camera-viewers reveal">
-      <div class="cam-viewer-card">
-        <canvas class="cam-viewer-canvas" id="camCanvas0"></canvas>
+      <div class="cam-viewer-card" onmouseenter="highlightPhotos('canon5d', this)"
+        onmouseleave="highlightPhotos(null, this)">
+        <div class="cam-viewer-icon-wrap">
+          <svg class="anime-cam-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" style="opacity:1;">
+            <rect x="15" y="30" width="70" height="55" rx="6" />
+            <rect x="30" y="20" width="40" height="10" rx="2" />
+            <circle cx="50" cy="57" r="22" />
+            <circle cx="50" cy="57" r="14" />
+            <path d="M25 30 V45" />
+            <circle cx="75" cy="40" r="4" />
+          </svg>
+        </div>
         <div class="cam-viewer-info">
           <div class="cam-viewer-name">canon 5d mark iv rs</div>
           <div class="cam-viewer-spec">ef 70-200mm f/2.8l is iii · full-frame</div>
         </div>
       </div>
-      <div class="cam-viewer-card">
-        <canvas class="cam-viewer-canvas" id="camCanvas1"></canvas>
+      <div class="cam-viewer-card" onmouseenter="highlightPhotos('rebel', this)"
+        onmouseleave="highlightPhotos(null, this)">
+        <div class="cam-viewer-icon-wrap">
+          <svg class="anime-cam-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" style="opacity:1;">
+            <rect x="20" y="35" width="60" height="45" rx="4" />
+            <rect x="35" y="25" width="30" height="10" rx="2" />
+            <circle cx="50" cy="57" r="18" />
+            <circle cx="50" cy="57" r="10" />
+            <circle cx="70" cy="45" r="3" />
+          </svg>
+        </div>
         <div class="cam-viewer-info">
           <div class="cam-viewer-name">canon eos rebel t7</div>
           <div class="cam-viewer-spec">ef 28-105mm f/4 · aps-c sensor</div>
         </div>
       </div>
-      <div class="cam-viewer-card">
-        <canvas class="cam-viewer-canvas" id="camCanvas2"></canvas>
+      <div class="cam-viewer-card" onmouseenter="highlightPhotos('iphone', this)"
+        onmouseleave="highlightPhotos(null, this)">
+        <div class="cam-viewer-icon-wrap">
+          <svg class="anime-cam-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" style="opacity:1;">
+            <rect x="25" y="10" width="50" height="80" rx="8" />
+            <circle cx="40" cy="25" r="5" />
+            <circle cx="40" cy="40" r="5" />
+            <circle cx="55" cy="32" r="3" />
+            <line x1="45" y1="80" x2="55" y2="80" />
+          </svg>
+        </div>
         <div class="cam-viewer-info">
-          <div class="cam-viewer-name">apple iphone 14</div>
+          <div class="cam-viewer-name">apple iphone 13 pro/14</div>
           <div class="cam-viewer-spec">12mp main · f/1.5 · computational photography</div>
         </div>
       </div>
@@ -3580,10 +3656,9 @@
       <button class="filter-btn active" onclick="filterPhotos('all', this)">all</button>
       <button class="filter-btn" onclick="filterPhotos('landscape', this)">landscape</button>
       <button class="filter-btn" onclick="filterPhotos('street', this)">street</button>
-      <button class="filter-btn" onclick="filterPhotos('architecture', this)">architecture</button>
-      <button class="filter-btn" onclick="filterPhotos('film', this)">film</button>
+      <button class="filter-btn" onclick="filterPhotos('urban', this)">architecture</button>
       <div class="camera-icon-btn">
-        <div class="cam-icon active" id="gridView" onclick="setView('grid')" title="gallery grid">
+        <div class="cam-icon" id="gridView" onclick="setView('grid')" title="gallery grid">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
             <rect x="3" y="3" width="7" height="7" rx="1" />
             <rect x="14" y="3" width="7" height="7" rx="1" />
@@ -3598,7 +3673,7 @@
             <line x1="12" y1="18" x2="12" y2="20" />
           </svg>
         </div>
-        <div class="cam-icon" id="contactView" onclick="setView('contact')" title="contact sheet">
+        <div class="cam-icon active" id="contactView" onclick="setView('contact')" title="contact sheet">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
             <rect x="2" y="2" width="4" height="4" rx="0.5" />
             <rect x="10" y="2" width="4" height="4" rx="0.5" />
@@ -3614,114 +3689,92 @@
       </div>
     </div>
 
-    <div class="photo-grid reveal" id="photoGrid">
-      <div class="photo-item" data-cat="street" onclick="openLightbox(0)">
-        <img src="assets/photos/shanghai.jpg" alt="shanghai" loading="lazy"
+    <div class="photo-grid contact-mode reveal" id="photoGrid">
+      <div class="photo-item" data-cat="urban" data-cam="rebel" onclick="openLightbox(0)">
+        <img src="assets/photos/photo 11.jpg" alt="shibuya crossing" loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">🌆</span>photo 11.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>shibuya crossing</h4>
+            <p>tokyo · japan</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="urban" data-cam="rebel" onclick="openLightbox(1)">
+        <img src="assets/photos/shanghai.jpg" alt="the bund" loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
         <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">🌆</span>shanghai.jpg</div>
         <div class="photo-overlay">
           <div class="photo-meta">
-            <h4>shanghai nights</h4>
-            <p>street · canon 5d</p>
+            <h4>the bund</h4>
+            <p>shanghai · china</p>
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="street" onclick="openLightbox(1)">
-        <img src="assets/photos/shinjuku.jpg" alt="shinjuku" loading="lazy"
+      <div class="photo-item" data-cat="urban" data-cam="rebel" onclick="openLightbox(2)">
+        <img src="assets/photos/shinjuku.jpg" alt="shinjuku neon" loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
         <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">🏙️</span>shinjuku.jpg</div>
         <div class="photo-overlay">
           <div class="photo-meta">
-            <h4>shinjuku crossing</h4>
-            <p>street · iphone 14</p>
+            <h4>shinjuku neon</h4>
+            <p>tokyo · japan</p>
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="landscape" onclick="openLightbox(2)">
-        <img src="assets/photos/photo1.jpg" alt="photo 1" loading="lazy"
+      <div class="photo-item" data-cat="landscape" data-cam="iphone" onclick="openLightbox(3)">
+        <img src="assets/photos/photo1.jpg" alt="boat exiting sea cave" loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">🌄</span>photo1.jpg</div>
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">🌊</span>photo1.jpg</div>
         <div class="photo-overlay">
           <div class="photo-meta">
-            <h4>untitled · 01</h4>
-            <p>landscape</p>
+            <h4>boat exiting sea cave</h4>
+            <p>na pali · hawaii</p>
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="landscape" onclick="openLightbox(3)">
-        <img src="assets/photos/photo2.jpg" alt="photo 2" loading="lazy"
+      <div class="photo-item" data-cat="landscape" data-cam="rebel" onclick="openLightbox(4)">
+        <img src="assets/photos/photo3.jpg" alt="emerald-shrouded sapphire" loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">🏔️</span>photo2.jpg</div>
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">🏞️</span>photo3.jpg</div>
         <div class="photo-overlay">
           <div class="photo-meta">
-            <h4>untitled · 02</h4>
-            <p>landscape</p>
+            <h4>emerald-shrouded sapphire</h4>
+            <p>saratoga · california</p>
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="landscape" onclick="openLightbox(4)">
-        <img src="assets/photos/photo3.jpg" alt="photo 3" loading="lazy"
+      <div class="photo-item" data-cat="landscape" data-cam="iphone" onclick="openLightbox(5)">
+        <img src="assets/photos/photo7.jpg" alt="winter wonderland" loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">🌅</span>photo3.jpg</div>
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">❄️</span>photo7.jpg</div>
         <div class="photo-overlay">
           <div class="photo-meta">
-            <h4>untitled · 03</h4>
-            <p>landscape</p>
+            <h4>winter wonderland</h4>
+            <p>ukkusissat · greenland</p>
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="architecture" onclick="openLightbox(5)">
-        <img src="assets/photos/photo4.jpg" alt="photo 4" loading="lazy"
+      <div class="photo-item" data-cat="street" data-cam="canon5d" onclick="openLightbox(6)">
+        <img src="assets/photos/photo5.jpg" alt="one last time" loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">🏛️</span>photo4.jpg</div>
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">🌇</span>photo5.jpg</div>
         <div class="photo-overlay">
           <div class="photo-meta">
-            <h4>untitled · 04</h4>
-            <p>architecture</p>
+            <h4>one last time</h4>
+            <p>saratoga · california</p>
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="architecture" onclick="openLightbox(6)">
-        <img src="assets/photos/photo5.jpg" alt="photo 5" loading="lazy"
+      <div class="photo-item" data-cat="street" data-cam="canon5d" onclick="openLightbox(7)">
+        <img src="assets/photos/photo8.jpg" alt="mona lisa" loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">🏗️</span>photo5.jpg</div>
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">🖼️</span>photo8.jpg</div>
         <div class="photo-overlay">
           <div class="photo-meta">
-            <h4>untitled · 05</h4>
-            <p>architecture</p>
-          </div>
-        </div>
-      </div>
-      <div class="photo-item" data-cat="film" onclick="openLightbox(7)">
-        <img src="assets/photos/photo6.jpg" alt="photo 6" loading="lazy"
-          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">🎞️</span>photo6.jpg</div>
-        <div class="photo-overlay">
-          <div class="photo-meta">
-            <h4>untitled · 06</h4>
-            <p>film</p>
-          </div>
-        </div>
-      </div>
-      <div class="photo-item" data-cat="film" onclick="openLightbox(8)">
-        <img src="assets/photos/photo7.jpg" alt="photo 7" loading="lazy"
-          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>photo7.jpg</div>
-        <div class="photo-overlay">
-          <div class="photo-meta">
-            <h4>untitled · 07</h4>
-            <p>film</p>
-          </div>
-        </div>
-      </div>
-      <div class="photo-item" data-cat="street" onclick="openLightbox(9)">
-        <img src="assets/photos/photo8.jpg" alt="photo 8" loading="lazy"
-          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">🚶</span>photo8.jpg</div>
-        <div class="photo-overlay">
-          <div class="photo-meta">
-            <h4>untitled · 08</h4>
-            <p>street</p>
+            <h4>mona lisa</h4>
+            <p>paris · france</p>
           </div>
         </div>
       </div>
@@ -3758,7 +3811,7 @@
   <div class="section" id="fun">
     <p class="section-tag reveal" style="color:var(--mus)">✨ &nbsp;beyond the code</p>
     <h2 class="section-title reveal">a little about<br>the human side.</h2>
-    <p class="section-desc reveal">when i'm not debugging robots or writing papers, you'll find me on trails, in record
+    <p class="section-desc reveal">when i'm not debugging robots or writing papers, you'll find me outdoors, in clothing
       stores, or hunting for the perfect bowl of ramen.</p>
 
     <div class="fun-grid">
@@ -3766,7 +3819,7 @@
       <div class="fun-card music-card reveal" onclick="toggleSpotify()" style="cursor:pointer;">
         <span class="fun-icon">🎵</span>
         <div class="fun-card-title">music</div>
-        <div class="fun-card-desc">currently obsessed with electronic, lo-fi, and jazz. always building playlists —
+        <div class="fun-card-desc">currently obsessed with electronic, lo-fi, and jazz. always listening to music when
           running, studying, coding. click to see what i'm listening to right now.</div>
         <div class="fun-card-tags">
           <span class="fun-tag">electronic</span>
@@ -3845,8 +3898,8 @@
           </svg>
           download resume
         </a>
-        <a href="mailto:bryanzhao@usc.edu" onclick="handleEmailClick(event, 'bryanzhao@usc.edu')"
-          class="btn btn-outline" id="email-btn" title="click to email or copy address">send an email →</a>
+        <a href="mailto:zhaobrya@usc.edu" onclick="handleEmailClick(event, 'zhaobrya@usc.edu')" class="btn btn-outline"
+          id="email-btn" title="click to email or copy address">send an email →</a>
       </div>
     </div>
   </div>
@@ -3915,7 +3968,7 @@
         </div>
       </div>
       <div class="outdoors-trail">
-        <div class="outdoors-trail-icon">♦♦</div>
+        <div class="outdoors-trail-icon">♢♢</div>
         <div class="outdoors-trail-info">
           <div class="outdoors-trail-label">first double black</div>
           <div class="outdoors-trail-name">hell's delight via the cirque</div>
@@ -3946,11 +3999,11 @@
       <button class="sp-close" onclick="toggleSpotify()">✕</button>
     </div>
     <div class="sp-track">
-      <div class="sp-art">🎵</div>
+      <div class="sp-art" id="sp-art">🎵</div>
       <div class="sp-info">
-        <div class="sp-song">connect spotify to sync</div>
-        <div class="sp-artist">bryan zhao · public activity</div>
-        <div class="sp-status">
+        <div class="sp-song" id="sp-song-name">connect spotify to sync</div>
+        <div class="sp-artist" id="sp-artist-name">bryan zhao · public activity</div>
+        <div class="sp-status" id="sp-status">
           <div class="eq-bars">
             <div class="eq-bar"></div>
             <div class="eq-bar"></div>
@@ -3962,10 +4015,10 @@
       </div>
     </div>
     <div class="sp-progress">
-      <div class="sp-progress-bar"></div>
+      <div class="sp-progress-bar" id="sp-progress-bar"></div>
     </div>
-    <div class="sp-times"><span>1:24</span><span>3:42</span></div>
-    <div class="sp-footer">🎵 replace with spotify web api · client-side oauth flow</div>
+    <div class="sp-times"><span id="sp-time-current">1:24</span><span id="sp-time-total">3:42</span></div>
+    <div class="sp-footer" id="sp-footer">🎵 live from spotify api</div>
   </div>
   <button class="spotify-trigger" onclick="toggleSpotify()" title="see what bryan's listening to">
     <svg viewBox="0 0 24 24">
@@ -4007,7 +4060,67 @@
       if (beli) beli.classList.remove('open');
       if (outdoors) outdoors.classList.remove('open');
       if (popup) popup.classList.toggle('open');
+
+      if (popup && popup.classList.contains('open')) {
+        fetchSpotifyNowPlaying();
+      }
     }
+
+    // ══════════════════════════════════════════════════
+    //  SPOTIFY API INTEGRATION
+    // ══════════════════════════════════════════════════
+    // Note: The access token is hardcoded for demonstration but will expire in 1 hour.
+    const SPOTIFY_ACCESS_TOKEN = 'BQAcj4Z26gigg1TjBg7eC3z74rwUQ74IIQe1JoK9v8ACuuIcB9PQkQ4h4jYyHaxjl9PG99Z78TPzHruy8r0XrbCzrJrdy55Xf_A-psWn-iU4gcdGADqtLfmzmb6u4k8u2mi0UV5JhvdzwYMlUGL1iouUbKTKp57OShzBiIerfpksUu0pXFVZl-pob8caOAAHtWHp3L_sUFXIUCIUc38zhNFDh6_mlD6j0H96WtCUbPgDUIrKeM665aWkwAwR';
+
+    async function fetchSpotifyNowPlaying() {
+      try {
+        const res = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+          headers: { 'Authorization': 'Bearer ' + SPOTIFY_ACCESS_TOKEN }
+        });
+
+        if (res.status === 204 || res.status > 400) {
+          document.getElementById('sp-song-name').textContent = 'not playing anything';
+          document.getElementById('sp-artist-name').textContent = 'spotify is quiet right now';
+          document.getElementById('sp-art').innerHTML = '🎵';
+          document.getElementById('sp-status').style.opacity = '0.3';
+          document.getElementById('sp-progress-bar').style.width = '0%';
+          document.getElementById('sp-time-current').textContent = '0:00';
+          document.getElementById('sp-time-total').textContent = '0:00';
+          return;
+        }
+
+        const data = await res.json();
+        const isPlaying = data.is_playing;
+        const songName = data.item.name;
+        const artistName = data.item.artists.map(a => a.name).join(', ');
+        const albumArt = data.item.album.images[0]?.url;
+        const duration = data.item.duration_ms;
+        const progress = data.progress_ms;
+
+        document.getElementById('sp-song-name').textContent = songName;
+        document.getElementById('sp-artist-name').textContent = artistName;
+        document.getElementById('sp-art').innerHTML = `<img src="${albumArt}" style="width:100%;height:100%;border-radius:4px;object-fit:cover;">`;
+        document.getElementById('sp-status').style.opacity = isPlaying ? '1' : '0.5';
+
+        // Progress bar and times
+        const formatTime = (ms) => {
+          const totalSeconds = Math.floor(ms / 1000);
+          const m = Math.floor(totalSeconds / 60);
+          const s = (totalSeconds % 60).toString().padStart(2, '0');
+          return `${m}:${s}`;
+        };
+        document.getElementById('sp-time-current').textContent = formatTime(progress);
+        document.getElementById('sp-time-total').textContent = formatTime(duration);
+        document.getElementById('sp-progress-bar').style.width = (progress / duration) * 100 + '%';
+        document.getElementById('sp-footer').textContent = '🎵 live from spotify api';
+
+      } catch (err) {
+        console.error('Spotify fetch error:', err);
+      }
+    }
+
+    // Automatically fetch once on load
+    fetchSpotifyNowPlaying();
 
     // Close popups on Escape key
     window.addEventListener('keydown', e => {
@@ -4022,7 +4135,7 @@
     //  HERO CAROUSEL
     // ══════════════════════════════════════════════════
     let curSlide = 0;
-    const totalSlides = 3;
+    const totalSlides = document.querySelectorAll('.photo-slide').length || 5;
     let autoTimer = null;
 
     function showSlide(idx) {
@@ -4054,7 +4167,7 @@
 
     new p5(function (p) {
       let boids = [], t = 0, lastTime = 0, fps = 0;
-      let curCount = 140;
+      let curCount = 60;
       let curSpeed = 3.0;
       let curMode = 'flock'; // 'flock', 'scatter', 'attract'
 
@@ -4693,57 +4806,48 @@
         document.getElementById('model-name').textContent = name;
       }
 
-      // Model Switcher Function
-      switchRobotModel = function (key) {
-        currentRobotKey = key;
-        document.querySelectorAll('.robot-select-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById('btn-robot-' + key)?.classList.add('active');
+      // ─── Model load queue ────────────────────────────────────────────────────
+      let _loadBusy = false;
+      let _pendingTask = null;  // only keep the latest queued task
+      let _loadToken = 0;
 
-        if (activeModel) scene.remove(activeModel);
+      function _showLoadingOverlay(label) {
+        const o = document.getElementById('viewer-loading-overlay');
+        if (o) { o.style.display = 'flex'; document.getElementById('viewer-loading-label').textContent = label; }
+      }
+      function _hideLoadingOverlay() {
+        const o = document.getElementById('viewer-loading-overlay');
+        if (o) o.style.display = 'none';
+      }
 
-        const glbMap = {
-          '2024': { path: 'assets/models/robot_2024.glb', name: '95071X 2024 (Over Under).glb', builder: build2024Robot },
-          '2025-worlds': { path: 'assets/models/robot_2025_worlds.glb', fallback: 'assets/models/robot_2025.glb', name: '95071X 2025 (Worlds Robot).glb', builder: build2025WorldsRobot },
-          '2025-early': { path: 'assets/models/robot_2025_early.glb', name: '95071X 2025 (Early Tipper).glb', builder: build2025EarlyTipperRobot },
-          '2026': { path: 'assets/models/robot_2026.glb', name: '95071X 2026 (Latest Build).glb', builder: build2026Robot }
-        };
+      function _runTask(task) {
+        _loadBusy = true;
+        const { url, name, fallbackUrl, rotationY, token } = task;
 
-        const target = glbMap[key] || glbMap['2025-worlds'];
+        function finish() {
+          _loadBusy = false;
+          _hideLoadingOverlay();
+          requestRender();
+          if (_pendingTask) { const t = _pendingTask; _pendingTask = null; _runTask(t); }
+        }
 
-        fetch(target.path, { method: 'HEAD' })
-          .then(r => {
-            if (r.ok) {
-              loadGLTF(target.path, target.name);
-            } else if (target.fallback) {
-              return fetch(target.fallback, { method: 'HEAD' }).then(rf => {
-                if (rf.ok) loadGLTF(target.fallback, target.name);
-                else {
-                  activeModel = target.builder();
-                  scene.add(activeModel);
-                }
-              });
-            } else {
-              activeModel = target.builder();
-              scene.add(activeModel);
-            }
-          })
-          .catch(() => {
-            activeModel = target.builder();
-            scene.add(activeModel);
-          });
-      };
-
-      // Start with 2025 Worlds Robot (2nd option as default)
-      activeModel = build2025WorldsRobot();
-      scene.add(activeModel);
-
-      // Load a custom user GLTF
-      function loadGLTF(url, name) {
         function doLoad() {
           const loader = new THREE.GLTFLoader();
+          if (typeof THREE.DRACOLoader !== 'undefined') {
+            const dl = new THREE.DRACOLoader();
+            dl.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+            loader.setDRACOLoader(dl);
+          }
+          const label = name.replace(/\.glb$/i, '');
+          _showLoadingOverlay('loading ' + label + '…');
+          if (activeModel) { scene.remove(activeModel); activeModel = null; requestRender(); }
+
           loader.load(url, gltf => {
-            if (activeModel) scene.remove(activeModel);
+            if (token !== _loadToken) { finish(); return; } // stale — discard
             activeModel = gltf.scene;
+            // Onshape exports Z-up; Three.js is Y-up — correct orientation
+            activeModel.rotation.x = -Math.PI / 2;
+            if (rotationY != null) activeModel.rotation.z = rotationY; // apply per-model tweak on Z after X rotation
             const box = new THREE.Box3().setFromObject(activeModel);
             const size = box.getSize(new THREE.Vector3());
             const center = box.getCenter(new THREE.Vector3());
@@ -4753,44 +4857,83 @@
             activeModel.position.y += (size.y * scale) / 2;
             activeModel.traverse(obj => {
               if (obj.isMesh) {
-                if (!obj.material) obj.material = new THREE.MeshStandardMaterial({ color: 0x3a5a8a, metalness: 0.6, roughness: 0.3 });
-                obj.castShadow = true; obj.receiveShadow = true;
+                obj.castShadow = false; obj.receiveShadow = false;
+                if (obj.material && obj.material.isMeshStandardMaterial) {
+                  const old = obj.material;
+                  obj.material = new THREE.MeshLambertMaterial({ color: old.color, map: old.map, transparent: old.transparent, opacity: old.opacity });
+                } else if (!obj.material) {
+                  obj.material = new THREE.MeshLambertMaterial({ color: 0x3a5a8a });
+                }
               }
             });
             scene.add(activeModel);
             updateStats(activeModel, name);
             spherical.r = 6.5;
             updateCamera();
-          }, xhr => {
-            if (xhr.total) document.getElementById('model-name').textContent = 'loading… ' + Math.round(xhr.loaded / xhr.total * 100) + '%';
-          }, err => { console.warn('GLTF load error:', err); });
+            finish();
+          }, () => { /* progress — no-op, overlay stays visible */ }, err => {
+            console.warn('GLTF load error:', err);
+            if (fallbackUrl) {
+              _runTask({ ...task, url: fallbackUrl, fallbackUrl: null });
+            } else { finish(); }
+          });
         }
-        if (typeof THREE.GLTFLoader === 'undefined') {
-          const s = document.createElement('script');
-          s.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js';
-          s.onload = doLoad; document.head.appendChild(s);
-        } else { doLoad(); }
+
+        function ensureLoaders(cb) {
+          if (typeof THREE.GLTFLoader === 'undefined') {
+            const s = document.createElement('script');
+            s.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js';
+            s.onload = () => ensureLoaders(cb); document.head.appendChild(s);
+          } else if (typeof THREE.DRACOLoader === 'undefined') {
+            const d = document.createElement('script');
+            d.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js';
+            d.onload = cb; document.head.appendChild(d);
+          } else { cb(); }
+        }
+        ensureLoaders(doLoad);
       }
 
-      loadUserModel = function (input) {
-        const file = input.files[0];
-        if (!file) return;
-        const url = URL.createObjectURL(file);
-        loadGLTF(url, file.name);
+      function enqueueLoad(task) {
+        _loadToken++;
+        task.token = _loadToken;
+        if (_loadBusy) { _pendingTask = task; }
+        else { _runTask(task); }
+      }
+
+      // glbMap — per-model config. rotationY here rotates around Z after X correction (to fix sideways)
+      const glbMap = {
+        '2025-worlds': { path: 'assets/models/hs-01-opt.glb', fallbackUrl: 'assets/models/robot_2025.glb', name: '95071X 2025 Worlds Robot' },
+        '2025-early': { path: 'assets/models/hs-02-opt.glb', name: '95071X 2025 Original Tipper', rotationY: Math.PI },
+        '2026': { path: 'assets/models/pb-01-opt.glb', name: '95071X 2026 Push Back', rotationY: -Math.PI / 2 }
       };
 
+      switchRobotModel = function (key) {
+        const placeholder = document.getElementById('viewer-placeholder-overlay');
+        if (placeholder) placeholder.style.display = 'none';
+
+        currentRobotKey = key;
+        document.querySelectorAll('.robot-select-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('btn-robot-' + key)?.classList.add('active');
+        const m = glbMap[key] || glbMap['2025-worlds'];
+        enqueueLoad({ url: m.path, name: m.name, fallbackUrl: m.fallbackUrl || null, rotationY: m.rotationY ?? null });
+      };
+
+      // Models are now loaded only upon click, not on startup
+
       // Orbit controls state
+      let _renderPending = false; // must be before updateCamera() which calls requestRender()
       let isDragging = false, isRightDrag = false;
       let prevMouse = { x: 0, y: 0 };
       let spherical = { theta: 0.7, phi: 0.95, r: 6 };
       let target = new THREE.Vector3(0, 1.2, 0);
-      let autoRotate = false;
+      let autoRotate = true;
 
       function updateCamera() {
         camera.position.x = target.x + spherical.r * Math.sin(spherical.phi) * Math.sin(spherical.theta);
         camera.position.y = target.y + spherical.r * Math.cos(spherical.phi);
         camera.position.z = target.z + spherical.r * Math.sin(spherical.phi) * Math.cos(spherical.theta);
         camera.lookAt(target);
+        requestRender();
       }
       updateCamera();
 
@@ -4811,6 +4954,9 @@
 
       toggleAutoRotate = function () {
         autoRotate = !autoRotate;
+        const btn = document.getElementById('btn-autorotate');
+        if (btn) btn.classList.toggle('active', autoRotate);
+        if (autoRotate) requestRender(); // kick off rotation loop
       };
 
       canvas.addEventListener('mousedown', e => {
@@ -4839,16 +4985,22 @@
         updateCamera();
       }, { passive: false });
 
-      // Animate
-      function animate() {
-        requestAnimationFrame(animate);
-        if (autoRotate && !isDragging) {
-          spherical.theta += 0.008;
-          updateCamera();
-        }
-        renderer.render(scene, camera);
+      // On-demand rendering — only draw when something changes
+      function requestRender() {
+        if (_renderPending) return;
+        _renderPending = true;
+        requestAnimationFrame(() => {
+          _renderPending = false;
+          renderer.render(scene, camera);
+          // keep ticking while auto-rotating
+          if (autoRotate && !isDragging) {
+            spherical.theta += 0.008;
+            updateCamera();
+            requestRender();
+          }
+        });
       }
-      animate();
+      requestRender();
 
       window.addEventListener('resize', () => {
         const wrap = canvas.parentElement;
@@ -4860,163 +5012,7 @@
       });
     })();
 
-    // ══════════════════════════════════════════════════
-    //  CAMERA MINI 3D VIEWERS
-    // ══════════════════════════════════════════════════
-    function makeCamViewer(canvasId, type) {
-      const canvas = document.getElementById(canvasId);
-      if (!canvas) return;
-      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-      renderer.setClearColor(0x0f0f12, 1);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      const w = canvas.offsetWidth || 300, h = canvas.offsetHeight || 225;
-      renderer.setSize(w, h);
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(40, w / h, 0.01, 100);
 
-      // Lighting
-      scene.add(new THREE.AmbientLight(0x334466, 0.8));
-      const dl = new THREE.DirectionalLight(0x6c8eff, 1.0);
-      dl.position.set(3, 5, 3); scene.add(dl);
-      const pl = new THREE.PointLight(0x60a5fa, 0.6, 10);
-      pl.position.set(-2, 2, 1); scene.add(pl);
-
-      const bodyMat = new THREE.MeshStandardMaterial({ color: 0x1a1a1a, metalness: 0.6, roughness: 0.4 });
-      const lensMat = new THREE.MeshStandardMaterial({ color: 0x2a2a2a, metalness: 0.8, roughness: 0.2 });
-      const glassMat = new THREE.MeshStandardMaterial({ color: 0x112244, metalness: 0.1, roughness: 0.05, transparent: true, opacity: 0.85 });
-      const accentMat = new THREE.MeshStandardMaterial({ color: 0xcc2222, metalness: 0.3, roughness: 0.6 });
-      const silverMat = new THREE.MeshStandardMaterial({ color: 0xaaaaaa, metalness: 0.9, roughness: 0.15 });
-
-      const group = new THREE.Group();
-
-      if (type === 'iphone') {
-        // iPhone 14 — slim rectangle
-        camera.position.set(0, 0.2, 3.2);
-        const body = new THREE.Mesh(new THREE.BoxGeometry(1.1, 2.2, 0.12, 1, 1, 1), new THREE.MeshStandardMaterial({ color: 0x1a1a2e, metalness: 0.8, roughness: 0.15 }));
-        group.add(body);
-        // screen
-        const screen = new THREE.Mesh(new THREE.PlaneGeometry(0.95, 2.0), new THREE.MeshStandardMaterial({ color: 0x0a0a0a, emissive: 0x001133, emissiveIntensity: 0.3 }));
-        screen.position.z = 0.062; group.add(screen);
-        // camera bump
-        const bump = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 0.06), lensMat);
-        bump.position.set(-0.25, 0.7, 0.09); group.add(bump);
-        // 3 camera circles
-        [[-0.09, 0.08], [0.09, 0.08], [0, -0.1]].forEach(([x, y]) => {
-          const lens = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.04, 20), glassMat);
-          lens.rotation.x = Math.PI / 2;
-          lens.position.set(-0.25 + x, 0.7 + y, 0.13);
-          group.add(lens);
-        });
-        // side buttons
-        const btn = new THREE.Mesh(new THREE.BoxGeometry(0.03, 0.2, 0.06), silverMat);
-        btn.position.set(0.565, 0.2, 0); group.add(btn);
-
-      } else if (type === 'canon5d') {
-        // Canon 5D RS — large pro body
-        camera.position.set(0, 0.1, 4.5);
-        // Body
-        const body = new THREE.Mesh(new THREE.BoxGeometry(2.2, 1.6, 1.0), bodyMat); group.add(body);
-        // Grip bump
-        const grip = new THREE.Mesh(new THREE.BoxGeometry(0.6, 1.6, 0.4), bodyMat);
-        grip.position.set(-0.9, 0, 0.7); group.add(grip);
-        // Top plate
-        const top = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.1, 1.1), silverMat);
-        top.position.y = 0.85; group.add(top);
-        // Canon red logo
-        const logo = new THREE.Mesh(new THREE.PlaneGeometry(0.35, 0.12), accentMat);
-        logo.position.set(0.3, 0.4, 0.51); group.add(logo);
-        // Long telephoto lens (70-200mm)
-        const lensBody = new THREE.Mesh(new THREE.CylinderGeometry(0.38, 0.35, 2.2, 24), lensMat);
-        lensBody.rotation.z = Math.PI / 2;
-        lensBody.position.set(1.5, 0, 0); group.add(lensBody);
-        const lensFront = new THREE.Mesh(new THREE.CylinderGeometry(0.38, 0.38, 0.08, 24), silverMat);
-        lensFront.rotation.z = Math.PI / 2;
-        lensFront.position.set(2.62, 0, 0); group.add(lensFront);
-        const lensGlass = new THREE.Mesh(new THREE.CylinderGeometry(0.31, 0.31, 0.05, 24), glassMat);
-        lensGlass.rotation.z = Math.PI / 2;
-        lensGlass.position.set(2.68, 0, 0); group.add(lensGlass);
-        // Lens collar ring
-        const ring = new THREE.Mesh(new THREE.TorusGeometry(0.37, 0.04, 8, 24), silverMat);
-        ring.rotation.y = Math.PI / 2;
-        ring.position.set(0.6, 0, 0); group.add(ring);
-        // Viewfinder hump
-        const vf = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.45, 0.4), bodyMat);
-        vf.position.set(0, 1.02, -0.2); group.add(vf);
-
-      } else {
-        // Canon Rebel T7 — smaller APS-C body
-        camera.position.set(0, 0.1, 3.8);
-        const body = new THREE.Mesh(new THREE.BoxGeometry(1.9, 1.35, 0.85), bodyMat); group.add(body);
-        const grip = new THREE.Mesh(new THREE.BoxGeometry(0.5, 1.35, 0.35), bodyMat);
-        grip.position.set(-0.75, 0, 0.6); group.add(grip);
-        const top = new THREE.Mesh(new THREE.BoxGeometry(1.9, 0.08, 0.9), silverMat);
-        top.position.y = 0.72; group.add(top);
-        const logo = new THREE.Mesh(new THREE.PlaneGeometry(0.28, 0.09), accentMat);
-        logo.position.set(0.3, 0.3, 0.43); group.add(logo);
-        // Shorter kit lens (28-105mm)
-        const lensBody = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.28, 1.3, 24), lensMat);
-        lensBody.rotation.z = Math.PI / 2;
-        lensBody.position.set(1.12, 0, 0); group.add(lensBody);
-        const lensFront = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.06, 24), silverMat);
-        lensFront.rotation.z = Math.PI / 2;
-        lensFront.position.set(1.79, 0, 0); group.add(lensFront);
-        const lensGlass = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.04, 24), glassMat);
-        lensGlass.rotation.z = Math.PI / 2;
-        lensGlass.position.set(1.83, 0, 0); group.add(lensGlass);
-        const vf = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.35, 0.3), bodyMat);
-        vf.position.set(0, 0.85, -0.15); group.add(vf);
-      }
-
-      scene.add(group);
-
-      // Mini orbit controls
-      let isDrag = false, prevX = 0, prevY = 0;
-      let rotY = type === 'canon5d' ? -0.4 : type === 'rebel' ? -0.3 : 0;
-      let rotX = 0.15;
-
-      function updateCam() {
-        group.rotation.y = rotY; group.rotation.x = rotX;
-      }
-      updateCam();
-
-      canvas.addEventListener('mousedown', e => { isDrag = true; prevX = e.clientX; prevY = e.clientY; });
-      window.addEventListener('mouseup', () => { isDrag = false; });
-      canvas.addEventListener('mousemove', e => {
-        if (!isDrag) return;
-        rotY += (e.clientX - prevX) * 0.012;
-        rotX += (e.clientY - prevY) * 0.008;
-        rotX = Math.max(-0.6, Math.min(0.6, rotX));
-        prevX = e.clientX; prevY = e.clientY;
-        updateCam();
-      });
-      canvas.addEventListener('touchstart', e => { isDrag = true; prevX = e.touches[0].clientX; prevY = e.touches[0].clientY; });
-      canvas.addEventListener('touchend', () => { isDrag = false; });
-      canvas.addEventListener('touchmove', e => {
-        e.preventDefault();
-        rotY += (e.touches[0].clientX - prevX) * 0.012;
-        rotX += (e.touches[0].clientY - prevY) * 0.008;
-        rotX = Math.max(-0.6, Math.min(0.6, rotX));
-        prevX = e.touches[0].clientX; prevY = e.touches[0].clientY;
-        updateCam();
-      }, { passive: false });
-
-      let autoRot = true;
-      canvas.addEventListener('mouseenter', () => { autoRot = false; });
-      canvas.addEventListener('mouseleave', () => { autoRot = true; });
-
-      function animate() {
-        requestAnimationFrame(animate);
-        if (autoRot) { rotY += 0.006; updateCam(); }
-        renderer.render(scene, camera);
-      }
-      animate();
-    }
-
-    setTimeout(() => {
-      makeCamViewer('camCanvas0', 'canon5d');
-      makeCamViewer('camCanvas1', 'rebel');
-      makeCamViewer('camCanvas2', 'iphone');
-    }, 300);
 
     // ══════════════════════════════════════════════════
     //  TOAST & EMAIL CLIPBOARD
@@ -5063,7 +5059,7 @@
     // ══════════════════════════════════════════════════
     //  PHOTOGRAPHY VIEWS (GRID, THEATER, CONTACT) & FILTERS
     // ══════════════════════════════════════════════════
-    let currentPhotoView = 'grid';
+    let currentPhotoView = 'contact';
     function setView(mode) {
       currentPhotoView = mode;
       const grid = document.getElementById('photoGrid');
@@ -5093,13 +5089,37 @@
       }
     }
 
+    function highlightPhotos(camId, cardEl) {
+      const items = document.querySelectorAll('.photo-item');
+
+      // Clear glows
+      document.querySelectorAll('.cam-viewer-card').forEach(c => {
+        c.classList.remove('glow-canon5d', 'glow-rebel', 'glow-iphone');
+      });
+      items.forEach(i => {
+        i.classList.remove('glow-canon5d', 'glow-rebel', 'glow-iphone');
+      });
+
+      if (camId) {
+        if (cardEl) cardEl.classList.add('glow-' + camId);
+        items.forEach(item => {
+          if (item.getAttribute('data-cam') === camId) {
+            item.classList.add('glow-' + camId);
+          }
+        });
+      }
+    }
+
     function filterPhotos(category, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
+      if (btn) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
       const items = document.querySelectorAll('.photo-item');
       items.forEach(item => {
         const cat = item.getAttribute('data-cat');
-        if (category === 'all' || cat === category) {
+        const cam = item.getAttribute('data-cam');
+        if (category === 'all' || cat === category || cam === category) {
           item.style.display = '';
         } else {
           item.style.display = 'none';
@@ -5112,50 +5132,54 @@
     // ══════════════════════════════════════════════════
     let activeLightboxIdx = 0;
     const photoData = [
-      { title: 'shanghai nights', cat: 'street · canon 5d', desc: 'neon reflections on wet asphalt along the bund.', src: 'assets/photos/shanghai.jpg', placeholder: '🌆 shanghai.jpg' },
-      { title: 'shinjuku crossing', cat: 'street · iphone 14', desc: 'organized chaos in the heart of tokyo at twilight.', src: 'assets/photos/shinjuku.jpg', placeholder: '🏙️ shinjuku.jpg' },
-      { title: 'sanborn redwoods', cat: 'landscape · canon 5d', desc: 'fog rolling through coastal redwood canopy at dawn.', src: 'assets/photos/photo1.jpg', placeholder: '🌄 photo1.jpg' },
-      { title: 'geometric concrete', cat: 'architecture · rebel t7', desc: 'brutalist angles and cast shadows under harsh midday sun.', src: 'assets/photos/photo2.jpg', placeholder: '🏛️ photo2.jpg' },
-      { title: 'alpine ridgeline', cat: 'landscape · canon 5d', desc: 'first light hitting granite peaks of eastern sierra.', src: 'assets/photos/photo3.jpg', placeholder: '🏔️ photo3.jpg' },
-      { title: 'night market glow', cat: 'film / 35mm · rebel t7', desc: 'steam rising from street food stalls in taipei.', src: 'assets/photos/photo4.jpg', placeholder: '🍜 photo4.jpg' },
-      { title: 'ocean horizon', cat: 'landscape · iphone 14', desc: 'pacific swell breaking against big sur cliffs.', src: 'assets/photos/photo5.jpg', placeholder: '🌊 photo5.jpg' },
-      { title: 'metro transit', cat: 'street · canon 5d', desc: 'motion blur of a passing train slicing through the dark.', src: 'assets/photos/photo6.jpg', placeholder: '🚇 photo6.jpg' },
-      { title: 'desert monolith', cat: 'landscape · rebel t7', desc: 'sandstone towers standing tall against vast twilight sky.', src: 'assets/photos/photo7.jpg', placeholder: '🏜️ photo7.jpg' }
+      { title: 'shibuya crossing', cat: 'tokyo · japan', desc: 'organized chaos of umbrellas and neon lights.', src: 'assets/photos/photo 11.jpg', placeholder: '🌆 photo 11.jpg' },
+      { title: 'the bund', cat: 'shanghai · china', desc: 'vibrant neon lights reflecting off dark river waters.', src: 'assets/photos/shanghai.jpg', placeholder: '🌆 shanghai.jpg' },
+      { title: 'shinjuku neon', cat: 'tokyo · japan', desc: 'dazzling cyberpunk streetscape of shinjuku at night.', src: 'assets/photos/shinjuku.jpg', placeholder: '🏙️ shinjuku.jpg' },
+      { title: 'boat exiting sea cave', cat: 'na pali · hawaii', desc: 'natural light filtering through a sea cave.', src: 'assets/photos/photo1.jpg', placeholder: '🌊 photo1.jpg' },
+      { title: 'emerald-shrouded sapphire', cat: 'saratoga · california', desc: 'vibrant blue water against lush greenery.', src: 'assets/photos/photo3.jpg', placeholder: '🏞️ photo3.jpg' },
+      { title: 'winter wonderland', cat: 'ukkusissat · greenland', desc: 'aerial view of a massive ice canyon.', src: 'assets/photos/photo7.jpg', placeholder: '❄️ photo7.jpg' },
+      { title: 'one last time', cat: 'saratoga · california', desc: 'nostalgic local landmark at golden hour.', src: 'assets/photos/photo5.jpg', placeholder: '🌇 photo5.jpg' },
+      { title: 'mona lisa', cat: 'paris · france', desc: 'visitors capturing their own version of the mona lisa.', src: 'assets/photos/photo8.jpg', placeholder: '🖼️ photo8.jpg' }
     ];
 
     function openLightbox(idx) {
       activeLightboxIdx = idx;
       updateLightboxContent();
-      document.getElementById('lightboxModal')?.classList.add('open');
+      document.getElementById('lightbox')?.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
-      document.getElementById('lightboxModal')?.classList.remove('open');
+      document.getElementById('lightbox')?.classList.remove('open');
       document.body.style.overflow = '';
     }
 
-    function nextLightbox() {
-      activeLightboxIdx = (activeLightboxIdx + 1) % photoData.length;
-      updateLightboxContent();
-    }
-
-    function prevLightbox() {
-      activeLightboxIdx = (activeLightboxIdx - 1 + photoData.length) % photoData.length;
+    function lightboxNav(dir) {
+      if (dir === 1) {
+        activeLightboxIdx = (activeLightboxIdx + 1) % photoData.length;
+      } else {
+        activeLightboxIdx = (activeLightboxIdx - 1 + photoData.length) % photoData.length;
+      }
       updateLightboxContent();
     }
 
     function updateLightboxContent() {
       const data = photoData[activeLightboxIdx];
       if (!data) return;
-      const img = document.getElementById('lightboxImg');
-      const ph = document.getElementById('lightboxPlaceholder');
-      const title = document.getElementById('lightboxTitle');
-      const meta = document.getElementById('lightboxMeta');
-      const desc = document.getElementById('lightboxDesc');
+      const img = document.getElementById('lightbox-img');
+      const ph = document.getElementById('lightbox-placeholder');
+      const title = document.getElementById('lightbox-title');
+      const meta = document.getElementById('lightbox-meta');
+      const desc = document.getElementById('lightbox-desc');
+      const counter = document.getElementById('lightbox-counter');
+      const topTitle = document.getElementById('lightbox-title-top');
+
       if (title) title.textContent = data.title;
       if (meta) meta.textContent = data.cat;
       if (desc) desc.textContent = data.desc;
+      if (topTitle) topTitle.textContent = data.placeholder;
+      if (counter) counter.textContent = (activeLightboxIdx + 1) + ' / ' + photoData.length;
+
       if (img) {
         img.src = data.src;
         img.alt = data.title;
@@ -5165,7 +5189,6 @@
           img.style.display = 'none';
           if (ph) {
             ph.style.display = 'flex';
-            ph.textContent = data.placeholder;
           }
         };
       }
@@ -5173,10 +5196,10 @@
 
     // Lightbox keyboard navigation
     window.addEventListener('keydown', e => {
-      const modal = document.getElementById('lightboxModal');
+      const modal = document.getElementById('lightbox');
       if (modal && modal.classList.contains('open')) {
-        if (e.key === 'ArrowRight') nextLightbox();
-        else if (e.key === 'ArrowLeft') prevLightbox();
+        if (e.key === 'ArrowRight') lightboxNav(1);
+        else if (e.key === 'ArrowLeft') lightboxNav(-1);
         else if (e.key === 'Escape') closeLightbox();
       }
     });
@@ -5230,6 +5253,65 @@
       });
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // ══════════════════════════════════════════════════
+    //  ANIME.JS SVG DRAWING & HOVER
+    // ══════════════════════════════════════════════════
+    if (typeof anime !== 'undefined') {
+      const svgs = document.querySelectorAll('.anime-cam-svg');
+
+      const svgObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            anime({
+              targets: e.target.querySelectorAll('path, rect, circle, line'),
+              strokeDashoffset: [anime.setDashoffset, 0],
+              easing: 'easeInOutSine',
+              duration: 1500,
+              delay: function (el, i) { return i * 150; },
+              direction: 'alternate',
+              loop: false
+            });
+            svgObs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      svgs.forEach(svg => {
+        // Set initial dash offset so they are hidden
+        const paths = svg.querySelectorAll('path, rect, circle, line');
+        paths.forEach(p => {
+          p.style.strokeDasharray = anime.setDashoffset(p);
+          p.style.strokeDashoffset = anime.setDashoffset(p);
+        });
+        svgObs.observe(svg);
+
+        // Hover spring effect
+        const wrap = svg.closest('.cam-viewer-card');
+        wrap.addEventListener('mouseenter', () => {
+          anime.remove(paths);
+          anime({
+            targets: paths,
+            strokeWidth: [2, 3],
+            strokeDashoffset: [0, anime.setDashoffset],
+            direction: 'alternate',
+            easing: 'easeOutElastic(1, .6)',
+            duration: 800,
+            delay: anime.stagger(50)
+          });
+        });
+        wrap.addEventListener('mouseleave', () => {
+          anime.remove(paths);
+          anime({
+            targets: paths,
+            strokeWidth: 2,
+            strokeDashoffset: 0,
+            easing: 'easeOutExpo',
+            duration: 600
+          });
+        });
+      });
+    }
   </script>
   <div class="toast" id="toast"><span id="toast-icon">✓</span> <span id="toast-msg">email copied!</span></div>
 </body>
