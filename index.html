@@ -776,6 +776,8 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      position: relative;
+      z-index: 10;
     }
 
     .rob-right {
@@ -819,15 +821,20 @@
     }
 
     .rob-canvas-wrap {
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(74, 222, 128, .18);
-      box-shadow: 0 0 60px rgba(74, 222, 128, .06);
+      border: none;
+      box-shadow: none;
       width: 100%;
       height: 100%;
       min-height: 520px;
-      background: var(--bg1);
-      position: relative;
+      background: transparent;
+      position: absolute;
+      top: -15%;
+      right: -25%;
+      width: 175%;
+      height: 130%;
+      z-index: 1;
+      -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+      mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
     }
 
     .rob-canvas-wrap canvas {
@@ -1154,18 +1161,21 @@
     }
 
     .viewer-wrap {
-      border-radius: 20px;
+      border-radius: 0;
       overflow: hidden;
-      border: 1px solid rgba(52, 211, 153, .15);
-      box-shadow: 0 0 80px rgba(52, 211, 153, .06);
+      border: none;
+      box-shadow: none;
       position: relative;
-      height: 500px;
-      background: var(--bg1);
+      height: 750px;
+      width: 100vw;
+      background: transparent;
     }
 
     #threejs-canvas {
       width: 100%;
       height: 100%;
+      position: relative;
+      z-index: 5;
     }
 
     .viewer-controls {
@@ -3035,7 +3045,7 @@
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-inner" style="max-width:1200px;width:100%;">
-      <div class="hero-left">
+      <div class="hero-left" style="position:relative; z-index:10;">
         <div class="profile-pic-wrap">
           <img src="assets/photos/profile.jpg" alt="bryan zhao" class="profile-pic"
             onerror="this.style.background='var(--surface2)';this.removeAttribute('src')">
@@ -3066,37 +3076,74 @@
             photography & hobbies →</a>
         </div>
       </div>
-      <div class="hero-right">
-        <div class="photo-carousel" id="heroCarousel">
-          <div class="photo-slide active" id="slide-0">
-            <img src="assets/hero-1.jpg" alt="bryan zhao photography" onerror="this.style.display='none'">
-          </div>
-          <div class="photo-slide" id="slide-1">
-            <img src="assets/hero-2.jpg" alt="bryan zhao robotics" onerror="this.style.display='none'">
-          </div>
-          <div class="photo-slide" id="slide-2">
-            <img src="assets/hero-3.jpg" alt="bryan zhao outdoors" onerror="this.style.display='none'">
-          </div>
-          <div class="photo-slide" id="slide-3">
-            <img src="assets/hero-4.jpg" alt="bryan zhao tinkering" onerror="this.style.display='none'">
-          </div>
-          <div class="photo-slide" id="slide-4">
-            <img src="assets/hero-5.jpg" alt="bryan zhao coding" onerror="this.style.display='none'">
-          </div>
-          <button class="carousel-prev" onclick="carouselPrev()">‹</button>
-          <button class="carousel-next" onclick="carouselNext()">›</button>
-          <div class="carousel-dots">
-            <span class="carousel-dot active" onclick="goSlide(0)"></span>
-            <span class="carousel-dot" onclick="goSlide(1)"></span>
-            <span class="carousel-dot" onclick="goSlide(2)"></span>
-            <span class="carousel-dot" onclick="goSlide(3)"></span>
-            <span class="carousel-dot" onclick="goSlide(4)"></span>
+      <div class="hero-right" style="position:relative;">
+        <!-- Futuristic anime.js grid background -->
+        <div id="hero-grid-container"
+          style="position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);width:150%;height:150%;overflow:hidden;z-index:0;pointer-events:none;">
+        </div>
+
+        <div style="position:relative;width:100%;aspect-ratio:4/5;z-index:1;">
+          <!-- Wrap the canvas in a larger absolute box to break out of layout bounds and remove clipping -->
+          <div id="heroCarousel"
+            style="position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);width:180%;height:140%;cursor:default;z-index:1;">
+            <div id="hero-viewer-loading"
+              style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:5;pointer-events:none;transition:opacity 0.5s;">
+              <div
+                style="width:40px;height:40px;border:3px solid rgba(255,255,255,0.1);border-top-color:var(--accent3);border-radius:50%;animation:spin 0.8s linear infinite;">
+              </div>
+              <span
+                style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.05em;">loading
+                model…</span>
+            </div>
+            <canvas id="hero-three-canvas" style="width:100%;height:100%;display:block;"></canvas>
+            <div
+              style="position:absolute;bottom:12%;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.25);letter-spacing:0.05em;pointer-events:none;white-space:nowrap;">
+              drag · scroll to zoom</div>
+            <div
+              style="position:absolute;top:15%;left:15%;font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:0.04em;background:rgba(0,0,0,0.35);padding:3px 8px;border-radius:20px;border:1px solid rgba(255,255,255,0.08);">
+              95071X · worlds robot · 2025</div>
           </div>
         </div>
-        <div class="hero-chip c1">📍 shanghai</div>
-        <div class="hero-chip c2">📍 los angeles</div>
-        <div class="hero-chip c3">📍 saratoga</div>
       </div>
+
+      <script>
+        // Hero dynamic anime.js background utilizing GPU-accelerated transform properties
+        document.addEventListener('DOMContentLoaded', () => {
+          const bg = document.getElementById('hero-grid-container');
+          if (bg && typeof anime !== 'undefined') {
+            const colors = ['#38bdf8', '#34d399', '#a78bfa', '#818cf8', '#c084fc'];
+            for (let i = 0; i < 180; i++) {
+              const p = document.createElement('div');
+              p.className = 'hero-particle';
+              p.style.position = 'absolute';
+              p.style.width = Math.random() * 6 + 2 + 'px';
+              p.style.height = p.style.width;
+              p.style.background = colors[Math.floor(Math.random() * colors.length)];
+              p.style.borderRadius = '50%';
+              p.style.boxShadow = '0 0 ' + (Math.random() * 10 + 5) + 'px ' + p.style.background;
+              p.style.opacity = '0';
+              p.style.left = Math.random() * 100 + '%';
+              p.style.top = Math.random() * 100 + '%';
+              bg.appendChild(p);
+            }
+            anime({
+              targets: '.hero-particle',
+              translateY: () => [anime.random(100, 300), anime.random(-300, -100)],
+              translateX: () => [anime.random(-50, 50), anime.random(-150, 150)],
+              scale: () => [0, anime.random(1, 3)],
+              opacity: [
+                { value: 0, duration: 0 },
+                { value: () => anime.random(0.4, 0.9), duration: 1500 },
+                { value: 0, duration: 1500, delay: () => anime.random(2000, 4000) }
+              ],
+              duration: () => anime.random(6000, 10000),
+              easing: 'linear',
+              loop: true,
+              delay: anime.stagger(100, { start: 100 })
+            });
+          }
+        });
+      </script>
     </div>
   </section>
 
@@ -3186,39 +3233,38 @@
           <span class="skill-tag"><span class="dot" style="background:#e11d48"></span>lasercutting</span>
           <span class="skill-tag"><span class="dot" style="background:#a78bfa"></span>manufacturing</span>
           <span class="skill-tag"><span class="dot" style="background:#764abc"></span>raspberry pi</span>
-          <span class="skill-tag"><span class="dot" style="background:#0076a8"></span>matlab</span>
           <span class="skill-tag"><span class="dot" style="background:#6c8eff"></span>numpy</span>
         </div>
       </div>
-      <div class="rob-right">
-        <div class="rob-canvas-wrap reveal" id="robot-canvas-wrap">
-          <div class="rob-canvas-stats" id="rob-stats">fps: — · agents: 140</div>
-          <div class="swarm-ctrl-overlay">
-            <div class="swarm-ctrl-row">
-              <span class="swarm-ctrl-lbl">agents</span>
-              <div class="swarm-btn-group">
-                <button class="swarm-btn active" id="sbtn-n60" onclick="setBoidCount(60)">60</button>
-                <button class="swarm-btn" id="sbtn-n140" onclick="setBoidCount(140)">140</button>
-                <button class="swarm-btn" id="sbtn-n240" onclick="setBoidCount(240)">240</button>
-              </div>
-            </div>
-            <div class="swarm-ctrl-row">
-              <span class="swarm-ctrl-lbl">speed</span>
-              <div class="swarm-btn-group">
-                <button class="swarm-btn" id="sbtn-spd05" onclick="setBoidSpeed(1.6)">0.5x</button>
-                <button class="swarm-btn active" id="sbtn-spd1" onclick="setBoidSpeed(3.0)">1x</button>
-                <button class="swarm-btn" id="sbtn-spd2" onclick="setBoidSpeed(5.2)">2x</button>
-              </div>
-            </div>
-            <div class="swarm-ctrl-row">
-              <span class="swarm-ctrl-lbl">mode</span>
-              <div class="swarm-btn-group">
-                <button class="swarm-btn active" id="sbtn-flock" onclick="setBoidMode('flock')">flock</button>
-                <button class="swarm-btn" id="sbtn-scatter" onclick="setBoidMode('scatter')">scatter</button>
-                <button class="swarm-btn" id="sbtn-attract" onclick="setBoidMode('attract')">attract</button>
-              </div>
+      <div class="rob-right" style="position:relative; min-height:520px;">
+        <div class="rob-canvas-stats" id="rob-stats">fps: — · agents: 140</div>
+        <div class="swarm-ctrl-overlay">
+          <div class="swarm-ctrl-row">
+            <span class="swarm-ctrl-lbl">agents</span>
+            <div class="swarm-btn-group">
+              <button class="swarm-btn active" id="sbtn-n60" onclick="setBoidCount(60)">60</button>
+              <button class="swarm-btn" id="sbtn-n140" onclick="setBoidCount(140)">140</button>
+              <button class="swarm-btn" id="sbtn-n240" onclick="setBoidCount(240)">240</button>
             </div>
           </div>
+          <div class="swarm-ctrl-row">
+            <span class="swarm-ctrl-lbl">speed</span>
+            <div class="swarm-btn-group">
+              <button class="swarm-btn" id="sbtn-spd05" onclick="setBoidSpeed(1.6)">0.5x</button>
+              <button class="swarm-btn active" id="sbtn-spd1" onclick="setBoidSpeed(3.0)">1x</button>
+              <button class="swarm-btn" id="sbtn-spd2" onclick="setBoidSpeed(5.2)">2x</button>
+            </div>
+          </div>
+          <div class="swarm-ctrl-row">
+            <span class="swarm-ctrl-lbl">mode</span>
+            <div class="swarm-btn-group">
+              <button class="swarm-btn active" id="sbtn-flock" onclick="setBoidMode('flock')">flock</button>
+              <button class="swarm-btn" id="sbtn-scatter" onclick="setBoidMode('scatter')">scatter</button>
+              <button class="swarm-btn" id="sbtn-attract" onclick="setBoidMode('attract')">attract</button>
+            </div>
+          </div>
+        </div>
+        <div class="rob-canvas-wrap reveal" id="robot-canvas-wrap">
         </div>
       </div>
     </div>
@@ -3232,52 +3278,89 @@
     <p class="section-desc reveal">interactive 3d viewer of my robot build. drag to orbit · scroll to zoom · right-click
       to pan.</p>
 
-    <div class="viewer-wrap reveal">
-      <div class="robot-model-switcher">
-        <button class="robot-select-btn" id="btn-robot-2025-worlds" onclick="switchRobotModel('2025-worlds')">
-          <span class="robot-btn-badge" style="background:rgba(52,211,153,0.15);color:#34d399;">2025</span> 95071X
-          (Worlds Robot)
-        </button>
-        <button class="robot-select-btn" id="btn-robot-2025-early" onclick="switchRobotModel('2025-early')">
-          <span class="robot-btn-badge" style="background:rgba(167,139,250,0.15);color:#a78bfa;">2025</span> 95071X
-          (Original Tipper)
-        </button>
-        <button class="robot-select-btn" id="btn-robot-2026" onclick="switchRobotModel('2026')">
-          <span class="robot-btn-badge" style="background:rgba(56,189,248,0.15);color:#38bdf8;">2026</span> 95071X
-          (Latest Build)
-        </button>
+  </div> <!-- Close .section early to allow full bleed -->
+  <div class="viewer-wrap reveal">
+    <div class="robot-model-switcher" style="left: calc(50vw - 600px + 16px);">
+      <button class="robot-select-btn" id="btn-robot-2025-worlds" onclick="switchRobotModel('2025-worlds')">
+        <span class="robot-btn-badge" style="background:rgba(52,211,153,0.15);color:#34d399;">2025</span> 95071X
+        (Worlds Robot)
+      </button>
+      <button class="robot-select-btn" id="btn-robot-2025-early" onclick="switchRobotModel('2025-early')">
+        <span class="robot-btn-badge" style="background:rgba(167,139,250,0.15);color:#a78bfa;">2025</span> 95071X
+        (Original Tipper)
+      </button>
+      <button class="robot-select-btn" id="btn-robot-2026" onclick="switchRobotModel('2026')">
+        <span class="robot-btn-badge" style="background:rgba(56,189,248,0.15);color:#38bdf8;">2026</span> 95071X
+        (Latest Build)
+      </button>
+    </div>
+    <div id="viewer-placeholder-overlay"
+      style="position:absolute;inset:0;background:rgba(10,10,15,0.6);z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:12px;pointer-events:none;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);">
+      <span
+        style="font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,0.8);letter-spacing:0.02em;background:rgba(0,0,0,0.5);padding:8px 16px;border-radius:20px;border:1px solid rgba(255,255,255,0.1);">Select
+        a model above to view</span>
+    </div>
+    <div id="viewer-loading-overlay"
+      style="display:none;position:absolute;inset:0;background:rgba(10,10,15,0.75);z-index:10;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-radius:12px;pointer-events:none;">
+      <div
+        style="width:48px;height:48px;border:3px solid rgba(255,255,255,0.1);border-top-color:var(--accent3);border-radius:50%;animation:spin 0.9s linear infinite;">
       </div>
-      <div id="viewer-placeholder-overlay"
-        style="position:absolute;inset:0;background:rgba(10,10,15,0.6);z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:12px;pointer-events:none;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);">
-        <span
-          style="font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,0.8);letter-spacing:0.02em;background:rgba(0,0,0,0.5);padding:8px 16px;border-radius:20px;border:1px solid rgba(255,255,255,0.1);">Select
-          a model above to view</span>
-      </div>
-      <div id="viewer-loading-overlay"
-        style="display:none;position:absolute;inset:0;background:rgba(10,10,15,0.75);z-index:10;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-radius:12px;pointer-events:none;">
-        <div
-          style="width:48px;height:48px;border:3px solid rgba(255,255,255,0.1);border-top-color:var(--accent3);border-radius:50%;animation:spin 0.9s linear infinite;">
-        </div>
-        <span id="viewer-loading-label"
-          style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.7);letter-spacing:0.05em;">loading…</span>
-      </div>
-      <canvas id="threejs-canvas"></canvas>
-      <div class="viewer-hint">drag to orbit · scroll to zoom · right-click to pan</div>
-      <div class="viewer-model-info">
-        model: <span id="model-name">my_robot.glb</span><br>
-        verts: <span id="model-verts">—</span><br>
-        faces: <span id="model-faces">—</span><br>
-        <button onclick="if(activeModel) activeModel.rotation.y -= Math.PI/2"
-          style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:var(--text);padding:3px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:9px;cursor:pointer;margin-top:6px;transition:0.2s;"
-          onmouseover="this.style.background='rgba(255,255,255,0.2)'"
-          onmouseout="this.style.background='rgba(255,255,255,0.1)'">↻ rotate 90°</button>
-      </div>
+      <span id="viewer-loading-label"
+        style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.7);letter-spacing:0.05em;">loading…</span>
+    </div>
+    <div id="anime-bg" style="position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;"></div>
+    <canvas id="threejs-canvas"></canvas>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const bg = document.getElementById('anime-bg');
+        if (bg && typeof anime !== 'undefined') {
+          const cols = 48, rows = 24;
+          bg.style.display = 'grid';
+          bg.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+          bg.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+          bg.style.gap = '8px';
+          bg.style.opacity = '0.4';
 
-      <div class="viewer-controls">
-        <button class="viewer-btn" onclick="resetCamera()">reset camera</button>
-        <button class="viewer-btn" onclick="toggleWireframe()">wireframe</button>
-        <button class="viewer-btn active" id="btn-autorotate" onclick="toggleAutoRotate()">⟳ auto-rotate</button>
-      </div>
+          for (let i = 0; i < cols * rows; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'anime-dot';
+            dot.style.width = '3px';
+            dot.style.height = '3px';
+            dot.style.background = 'var(--accent3)';
+            dot.style.borderRadius = '50%';
+            dot.style.margin = 'auto';
+            bg.appendChild(dot);
+          }
+
+          anime({
+            targets: '.anime-dot',
+            scale: [
+              { value: 0.1, easing: 'easeOutSine', duration: 500 },
+              { value: 1.5, easing: 'easeInOutQuad', duration: 1200 }
+            ],
+            opacity: [0.1, 0.8],
+            delay: anime.stagger(100, { grid: [cols, rows], from: 'center' }),
+            loop: true,
+            direction: 'alternate'
+          });
+        }
+      });
+    </script>
+    <div class="viewer-hint">drag to orbit · scroll to zoom · right-click to pan</div>
+    <div class="viewer-model-info">
+      model: <span id="model-name">my_robot.glb</span><br>
+      verts: <span id="model-verts">—</span><br>
+      faces: <span id="model-faces">—</span><br>
+      <button onclick="if(activeModel) activeModel.rotation.y -= Math.PI/2"
+        style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:var(--text);padding:3px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:9px;cursor:pointer;margin-top:6px;transition:0.2s;"
+        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
+        onmouseout="this.style.background='rgba(255,255,255,0.1)'">↻ rotate 90°</button>
+    </div>
+
+    <div class="viewer-controls">
+      <button class="viewer-btn" onclick="resetCamera()">reset camera</button>
+      <button class="viewer-btn" onclick="toggleWireframe()">wireframe</button>
+      <button class="viewer-btn active" id="btn-autorotate" onclick="toggleAutoRotate()">⟳ auto-rotate</button>
     </div>
   </div>
 
@@ -4007,6 +4090,9 @@
   <!-- ─── SCRIPTS ───────────────────────────── -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 
   <script>
     // ══════════════════════════════════════════════════
@@ -4501,7 +4587,7 @@
       const canvas = document.getElementById('threejs-canvas');
       if (!canvas) return;
       const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setPixelRatio(1);
       renderer.setSize(canvas.parentElement.offsetWidth, canvas.parentElement.offsetHeight);
       renderer.shadowMap.enabled = true;
       renderer.setClearColor(0x090912, 1);
@@ -4822,13 +4908,57 @@
           loader.load(url, gltf => {
             if (token !== _loadToken) { finish(); return; } // stale — discard
             activeModel = gltf.scene;
+
+            // Remove stray detached parts (like stray motors) using Y-gap clustering
+            activeModel.updateMatrixWorld(true);
+            const meshes = [];
+            activeModel.traverse(child => {
+              if (child.isMesh) {
+                const b = new THREE.Box3().setFromObject(child);
+                if (!b.isEmpty()) {
+                  meshes.push({ mesh: child, center: b.getCenter(new THREE.Vector3()) });
+                }
+              }
+            });
+            if (meshes.length > 2) {
+              meshes.sort((a, b) => a.center.y - b.center.y);
+              let maxGap = 0;
+              let splitIndex = -1;
+              for (let i = 0; i < meshes.length - 1; i++) {
+                const gap = meshes[i + 1].center.y - meshes[i].center.y;
+                if (gap > maxGap) {
+                  maxGap = gap;
+                  splitIndex = i;
+                }
+              }
+              const totalHeight = meshes[meshes.length - 1].center.y - meshes[0].center.y;
+              if (totalHeight > 0 && maxGap > totalHeight * 0.15) {
+                const box1 = new THREE.Box3();
+                const box2 = new THREE.Box3();
+                meshes.forEach((m, i) => {
+                  if (i <= splitIndex) box1.expandByObject(m.mesh);
+                  else box2.expandByObject(m.mesh);
+                });
+                const size1 = box1.getSize(new THREE.Vector3());
+                const size2 = box2.getSize(new THREE.Vector3());
+                const vol1 = size1.x * size1.y * size1.z;
+                const vol2 = size2.x * size2.y * size2.z;
+
+                const keepCluster1 = vol1 > vol2;
+                meshes.forEach((m, i) => {
+                  if (keepCluster1 && i > splitIndex) m.mesh.visible = false;
+                  if (!keepCluster1 && i <= splitIndex) m.mesh.visible = false;
+                });
+              }
+            }
+
             // Onshape exports Z-up; Three.js is Y-up — correct orientation
             activeModel.rotation.x = -Math.PI / 2;
             if (rotationY != null) activeModel.rotation.z = rotationY; // apply per-model tweak on Z after X rotation
             const box = new THREE.Box3().setFromObject(activeModel);
             const size = box.getSize(new THREE.Vector3());
             const center = box.getCenter(new THREE.Vector3());
-            const scale = 3.5 / Math.max(size.x, size.y, size.z);
+            const scale = 4.2 / Math.max(size.x, size.y, size.z);
             activeModel.scale.setScalar(scale);
             activeModel.position.sub(center.multiplyScalar(scale));
             activeModel.position.y += (size.y * scale) / 2;
@@ -4848,6 +4978,7 @@
             spherical.r = 6.5;
             updateCamera();
             finish();
+            setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
           }, () => { /* progress — no-op, overlay stays visible */ }, err => {
             console.warn('GLTF load error:', err);
             if (fallbackUrl) {
@@ -4962,22 +5093,30 @@
         updateCamera();
       }, { passive: false });
 
-      // On-demand rendering — only draw when something changes
-      function requestRender() {
-        if (_renderPending) return;
-        _renderPending = true;
-        requestAnimationFrame(() => {
-          _renderPending = false;
-          renderer.render(scene, camera);
-          // keep ticking while auto-rotating
-          if (autoRotate && !isDragging) {
-            spherical.theta += 0.008;
-            updateCamera();
-            requestRender();
-          }
-        });
+      // Continuous animation loop — runs every frame for smooth, jank-free rotation
+      let _lastFrameTime = 0;
+      function _renderLoop(now) {
+        requestAnimationFrame(_renderLoop);
+        const dt = Math.min((now - _lastFrameTime) / 1000, 0.05); // cap at 50ms to avoid jumps
+        _lastFrameTime = now;
+        if (autoRotate && !isDragging) {
+          spherical.theta += 0.8 * dt; // Slowed down by 3x as requested
+          camera.position.x = target.x + spherical.r * Math.sin(spherical.phi) * Math.sin(spherical.theta);
+          camera.position.y = target.y + spherical.r * Math.cos(spherical.phi);
+          camera.position.z = target.z + spherical.r * Math.sin(spherical.phi) * Math.cos(spherical.theta);
+          camera.lookAt(target);
+        }
+        renderer.render(scene, camera);
       }
-      requestRender();
+      requestAnimationFrame(_renderLoop);
+
+      // Keep requestRender as a no-op shim so existing calls don't break
+      function requestRender() {
+        camera.position.x = target.x + spherical.r * Math.sin(spherical.phi) * Math.sin(spherical.theta);
+        camera.position.y = target.y + spherical.r * Math.cos(spherical.phi);
+        camera.position.z = target.z + spherical.r * Math.sin(spherical.phi) * Math.cos(spherical.theta);
+        camera.lookAt(target);
+      }
 
       window.addEventListener('resize', () => {
         const wrap = canvas.parentElement;
@@ -4989,7 +5128,193 @@
       });
     })();
 
+    // ══════════════════════════════════════════════════
+    //  HERO 3D VIEWER — auto-loads Worlds robot
+    // ══════════════════════════════════════════════════
+    (() => {
+      const canvas = document.getElementById('hero-three-canvas');
+      if (!canvas || typeof THREE === 'undefined') return;
 
+      const wrap = canvas.parentElement;
+      const W = wrap.offsetWidth, H = wrap.offsetHeight;
+      canvas.width = W * devicePixelRatio;
+      canvas.height = H * devicePixelRatio;
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(devicePixelRatio);
+      renderer.setSize(W, H);
+      renderer.outputEncoding = THREE.sRGBEncoding;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.1;
+      renderer.shadowMap.enabled = true;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, W / H, 0.1, 200);
+
+      // Lighting
+      const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+      scene.add(ambient);
+      const key = new THREE.DirectionalLight(0xffffff, 1.2);
+      key.position.set(5, 8, 6);
+      scene.add(key);
+      const fill = new THREE.DirectionalLight(0xa78bfa, 0.4);
+      fill.position.set(-4, 3, -5);
+      scene.add(fill);
+      const rim = new THREE.DirectionalLight(0x38bdf8, 0.3);
+      rim.position.set(0, -4, -6);
+      scene.add(rim);
+
+      // Fixed camera position — model spins, camera stays still
+      camera.position.set(0, 1.2, 5.5);
+      camera.lookAt(0, 0, 0);
+
+      // Pivot group — all model parts parent to this so nothing detaches
+      const pivot = new THREE.Group();
+      pivot.position.set(-0.3, -0.6, 0); // Shift model down and slightly left
+      scene.add(pivot);
+
+      let isDragging = false, prevMouse = { x: 0, y: 0 };
+      let rotY = 0, rotX = -0.3; // slight downward tilt for nice view angle
+
+      function applyPivotRotation() {
+        pivot.rotation.y = rotY;
+        pivot.rotation.x = rotX;
+      }
+      applyPivotRotation();
+
+      // Mouse drag to manually spin
+      canvas.addEventListener('mousedown', e => { isDragging = true; prevMouse = { x: e.clientX, y: e.clientY }; e.preventDefault(); });
+      window.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        const dx = e.clientX - prevMouse.x, dy = e.clientY - prevMouse.y;
+        rotY += dx * 0.008;
+        rotX = Math.max(-1.2, Math.min(1.2, rotX + dy * 0.006));
+        applyPivotRotation();
+        prevMouse = { x: e.clientX, y: e.clientY };
+      });
+      window.addEventListener('mouseup', () => isDragging = false);
+      canvas.addEventListener('contextmenu', e => e.preventDefault());
+      canvas.addEventListener('wheel', e => {
+        e.preventDefault();
+        camera.position.z = Math.max(3, Math.min(14, camera.position.z + e.deltaY * 0.01));
+      }, { passive: false });
+
+      // Smooth render loop — rotate model on its own central axis
+      let lastT = 0;
+      function heroRenderLoop(now) {
+        requestAnimationFrame(heroRenderLoop);
+        const dt = Math.min((now - lastT) / 1000, 0.05);
+        lastT = now;
+        if (!isDragging) {
+          rotY += 0.4 * dt; // spin on Y axis at half the previous speed
+          applyPivotRotation();
+        }
+        renderer.render(scene, camera);
+      }
+      requestAnimationFrame(heroRenderLoop);
+
+      // Resize
+      window.addEventListener('resize', () => {
+        const w = wrap.offsetWidth, h = wrap.offsetHeight;
+        renderer.setSize(w, h);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      });
+
+      // Load model
+      const MODEL_URL = 'assets/models/hs-01-opt.glb';
+
+      const loader = new THREE.GLTFLoader();
+      // Use DRACOLoader for faster decoding of compressed geometry
+      if (typeof THREE.DRACOLoader !== 'undefined') {
+        const draco = new THREE.DRACOLoader();
+        draco.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/draco/');
+        loader.setDRACOLoader(draco);
+      }
+
+      function doLoad(url) {
+        loader.load(url, gltf => {
+          const root = gltf.scene;
+
+          // Remove stray detached parts (like stray motors) using Y-gap clustering
+          root.updateMatrixWorld(true);
+          const meshes = [];
+          root.traverse(child => {
+            if (child.isMesh) {
+              const b = new THREE.Box3().setFromObject(child);
+              if (!b.isEmpty()) {
+                meshes.push({ mesh: child, center: b.getCenter(new THREE.Vector3()) });
+              }
+            }
+          });
+          if (meshes.length > 2) {
+            meshes.sort((a, b) => a.center.y - b.center.y);
+            let maxGap = 0;
+            let splitIndex = -1;
+            for (let i = 0; i < meshes.length - 1; i++) {
+              const gap = meshes[i + 1].center.y - meshes[i].center.y;
+              if (gap > maxGap) {
+                maxGap = gap;
+                splitIndex = i;
+              }
+            }
+            const totalHeight = meshes[meshes.length - 1].center.y - meshes[0].center.y;
+            if (totalHeight > 0 && maxGap > totalHeight * 0.15) {
+              const box1 = new THREE.Box3();
+              const box2 = new THREE.Box3();
+              meshes.forEach((m, i) => {
+                if (i <= splitIndex) box1.expandByObject(m.mesh);
+                else box2.expandByObject(m.mesh);
+              });
+              const size1 = box1.getSize(new THREE.Vector3());
+              const size2 = box2.getSize(new THREE.Vector3());
+              const vol1 = size1.x * size1.y * size1.z;
+              const vol2 = size2.x * size2.y * size2.z;
+
+              const keepCluster1 = vol1 > vol2;
+              meshes.forEach((m, i) => {
+                if (keepCluster1 && i > splitIndex) m.mesh.visible = false;
+                if (!keepCluster1 && i <= splitIndex) m.mesh.visible = false;
+              });
+            }
+          }
+
+          // (Outlier filtering logic removed because it was hiding parts of the robot)
+          // Fusion 360 exports as Z-up — rotate to Y-up so model stands upright
+          root.rotation.x = -Math.PI / 2;
+
+          // Auto-scale and center around the pivot origin
+          root.updateMatrixWorld(true);
+          const box = new THREE.Box3().setFromObject(root);
+          const size = box.getSize(new THREE.Vector3());
+          const center = box.getCenter(new THREE.Vector3());
+          const maxDim = Math.max(size.x, size.y, size.z);
+          const scale = 3.4 / maxDim; // Decreased size slightly as requested
+
+          root.scale.setScalar(scale);
+          // Recalculate center after scale
+          root.updateMatrixWorld(true);
+          const box2 = new THREE.Box3().setFromObject(root);
+          const center2 = box2.getCenter(new THREE.Vector3());
+          root.position.sub(center2); // center on pivot origin
+
+          // Add to pivot — all parts rotate together as one unit
+          pivot.add(root);
+
+          // Hide loading overlay
+          const overlay = document.getElementById('hero-viewer-loading');
+          if (overlay) overlay.style.opacity = '0';
+          setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
+        }, undefined, err => {
+          console.error('Hero viewer: failed to load', url, err);
+          const overlay = document.getElementById('hero-viewer-loading');
+          if (overlay) {
+            overlay.innerHTML = '<span style="font-family:\'JetBrains Mono\',monospace;font-size:10px;color:rgba(255,100,100,0.7);">model unavailable</span>';
+          }
+        });
+      }
+      doLoad(MODEL_URL);
+    })();
 
     // ══════════════════════════════════════════════════
     //  TOAST & EMAIL CLIPBOARD
