@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>bryan zhao — cs + physics @ usc</title>
+  <title>bryan zhao</title>
   <meta name="description"
     content="bryan zhao — freshman at usc studying cs and physics. passionate about robotics, computer vision, and photography.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1161,14 +1161,15 @@
     }
 
     .viewer-wrap {
-      border-radius: 0;
+      border-radius: 24px;
       overflow: hidden;
-      border: none;
-      box-shadow: none;
+      border: 1px solid var(--border);
       position: relative;
-      height: 750px;
-      width: 100vw;
-      background: transparent;
+      height: 600px;
+      width: calc(100% - 96px);
+      max-width: 1104px;
+      margin: 0 auto 60px auto;
+      background: var(--surface2);
     }
 
     #threejs-canvas {
@@ -3055,7 +3056,7 @@
           </div>
         </div>
         <div class="hero-tag"><span class="dot"></span>open to opportunities</div>
-        <h1 class="hero-name">bryan zhao.</h1>
+        <h1 class="hero-name">bryan zhao</h1>
         <p class="hero-school"><span>usc</span> · cs + physics · prev research @ <span>ucsc</span></p>
         <p class="hero-bio">
           freshman at the <strong>university of southern california</strong>,
@@ -3091,9 +3092,13 @@
               <div
                 style="width:40px;height:40px;border:3px solid rgba(255,255,255,0.1);border-top-color:var(--accent3);border-radius:50%;animation:spin 0.8s linear infinite;">
               </div>
-              <span
+              <span id="hero-load-label"
                 style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.05em;">loading
                 model…</span>
+              <div style="width:120px;height:3px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+                <div id="hero-load-progress"
+                  style="width:0%;height:100%;background:var(--accent3);border-radius:2px;transition:width 0.2s;"></div>
+              </div>
             </div>
             <canvas id="hero-three-canvas" style="width:100%;height:100%;display:block;"></canvas>
             <div
@@ -3280,14 +3285,14 @@
 
   </div> <!-- Close .section early to allow full bleed -->
   <div class="viewer-wrap reveal">
-    <div class="robot-model-switcher" style="left: calc(50vw - 600px + 16px);">
+    <div class="robot-model-switcher">
+      <button class="robot-select-btn" id="btn-robot-2024-ou" onclick="switchRobotModel('2024-ou')">
+        <span class="robot-btn-badge" style="background:rgba(251,146,60,0.15);color:#fb923c;">2024</span> 95071X
+        (Over Under)
+      </button>
       <button class="robot-select-btn" id="btn-robot-2025-worlds" onclick="switchRobotModel('2025-worlds')">
         <span class="robot-btn-badge" style="background:rgba(52,211,153,0.15);color:#34d399;">2025</span> 95071X
         (Worlds Robot)
-      </button>
-      <button class="robot-select-btn" id="btn-robot-2025-early" onclick="switchRobotModel('2025-early')">
-        <span class="robot-btn-badge" style="background:rgba(167,139,250,0.15);color:#a78bfa;">2025</span> 95071X
-        (Original Tipper)
       </button>
       <button class="robot-select-btn" id="btn-robot-2026" onclick="switchRobotModel('2026')">
         <span class="robot-btn-badge" style="background:rgba(56,189,248,0.15);color:#38bdf8;">2026</span> 95071X
@@ -4092,6 +4097,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/meshopt_decoder.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/utils/BufferGeometryUtils.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 
   <script>
@@ -4586,10 +4593,13 @@
     (function initThreeJS() {
       const canvas = document.getElementById('threejs-canvas');
       if (!canvas) return;
-      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-      renderer.setPixelRatio(1);
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
       renderer.setSize(canvas.parentElement.offsetWidth, canvas.parentElement.offsetHeight);
-      renderer.shadowMap.enabled = true;
+      renderer.outputEncoding = THREE.sRGBEncoding;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.1;
+      renderer.shadowMap.enabled = false;
       renderer.setClearColor(0x090912, 1);
 
       const scene = new THREE.Scene();
@@ -4597,17 +4607,17 @@
       camera.position.set(3.5, 2.8, 4.5);
 
       // Lighting
-      scene.add(new THREE.AmbientLight(0x334466, 0.7));
-      const dirLight = new THREE.DirectionalLight(0x6c8eff, 1.3);
-      dirLight.position.set(5, 8, 5);
-      dirLight.castShadow = true;
-      scene.add(dirLight);
-      const accent = new THREE.PointLight(0x34d399, 0.9, 30);
-      accent.position.set(-4, 2, -2);
-      scene.add(accent);
-      const rimLight = new THREE.DirectionalLight(0xfb923c, 0.6);
-      rimLight.position.set(-4, 6, -5);
-      scene.add(rimLight);
+      const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+      scene.add(ambient);
+      const key = new THREE.DirectionalLight(0xffffff, 1.2);
+      key.position.set(5, 8, 6);
+      scene.add(key);
+      const fill = new THREE.DirectionalLight(0xa78bfa, 0.4);
+      fill.position.set(-4, 3, -5);
+      scene.add(fill);
+      const rim = new THREE.DirectionalLight(0x38bdf8, 0.3);
+      rim.position.set(0, -4, -6);
+      scene.add(rim);
 
       // Grid
       const grid = new THREE.GridHelper(10, 20, 0x223344, 0x141426);
@@ -4621,9 +4631,9 @@
       // ─── ROBOT 1: 95071X (2024 OVER UNDER - TRANSMISSION WINCH) ───
       function build2024Robot() {
         const g = new THREE.Group();
-        const metalMat = new THREE.MeshStandardMaterial({ color: 0x242436, metalness: 0.85, roughness: 0.2, wireframe: isWireframe });
-        const orangeMat = new THREE.MeshStandardMaterial({ color: 0xfb923c, metalness: 0.6, roughness: 0.3, emissive: 0x431407, wireframe: isWireframe });
-        const purpleMat = new THREE.MeshStandardMaterial({ color: 0xa78bfa, metalness: 0.7, roughness: 0.25, wireframe: isWireframe });
+        const metalMat = new THREE.MeshLambertMaterial({ color: 0x242436, wireframe: isWireframe });
+        const orangeMat = new THREE.MeshLambertMaterial({ color: 0xfb923c, emissive: 0x431407, wireframe: isWireframe });
+        const purpleMat = new THREE.MeshLambertMaterial({ color: 0xa78bfa, wireframe: isWireframe });
 
         // Compact High-Speed Drive Base
         const chassis = new THREE.Mesh(new THREE.BoxGeometry(1.7, 0.22, 1.8), metalMat);
@@ -4674,10 +4684,10 @@
       // ─── ROBOT 2: 95071X (2025 HIGH STAKES - WORLDS TIPPER LATCH) ───
       function build2025WorldsRobot() {
         const g = new THREE.Group();
-        const frameMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.8, roughness: 0.25, wireframe: isWireframe });
-        const cyanMat = new THREE.MeshStandardMaterial({ color: 0x34d399, metalness: 0.6, roughness: 0.3, emissive: 0x052e16, wireframe: isWireframe });
-        const pneuMat = new THREE.MeshStandardMaterial({ color: 0x60a5fa, metalness: 0.7, roughness: 0.2, wireframe: isWireframe });
-        const goldMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, metalness: 0.9, roughness: 0.2, wireframe: isWireframe });
+        const frameMat = new THREE.MeshLambertMaterial({ color: 0x1e293b, wireframe: isWireframe });
+        const cyanMat = new THREE.MeshLambertMaterial({ color: 0x34d399, emissive: 0x052e16, wireframe: isWireframe });
+        const pneuMat = new THREE.MeshLambertMaterial({ color: 0x60a5fa, wireframe: isWireframe });
+        const goldMat = new THREE.MeshLambertMaterial({ color: 0xf59e0b, wireframe: isWireframe });
 
         // Chassis Drivetrain Base (6 omni wheels)
         const base = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.25, 2.0), frameMat);
@@ -4734,10 +4744,10 @@
       // ─── ROBOT 3: 95071X (2025 EARLY ORIGINAL TIPPER ITERATION) ───
       function build2025EarlyTipperRobot() {
         const g = new THREE.Group();
-        const rawAlumMat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, metalness: 0.9, roughness: 0.3, wireframe: isWireframe });
-        const purpleMat = new THREE.MeshStandardMaterial({ color: 0xa78bfa, metalness: 0.65, roughness: 0.25, emissive: 0x2e1065, wireframe: isWireframe });
-        const redMat = new THREE.MeshStandardMaterial({ color: 0xf43f5e, metalness: 0.75, roughness: 0.2, wireframe: isWireframe });
-        const brassMat = new THREE.MeshStandardMaterial({ color: 0xd97706, metalness: 0.85, roughness: 0.3, wireframe: isWireframe });
+        const rawAlumMat = new THREE.MeshLambertMaterial({ color: 0x94a3b8, wireframe: isWireframe });
+        const purpleMat = new THREE.MeshLambertMaterial({ color: 0xa78bfa, emissive: 0x2e1065, wireframe: isWireframe });
+        const redMat = new THREE.MeshLambertMaterial({ color: 0xf43f5e, wireframe: isWireframe });
+        const brassMat = new THREE.MeshLambertMaterial({ color: 0xd97706, wireframe: isWireframe });
 
         // Raw Prototype Channel Chassis
         const frame = new THREE.Mesh(new THREE.BoxGeometry(1.75, 0.2, 1.9), rawAlumMat);
@@ -4797,10 +4807,10 @@
       // ─── ROBOT 4: 95071X (2026 COMPETITION BUILD - LATEST DIRECT DRIVE) ───
       function build2026Robot() {
         const g = new THREE.Group();
-        const onyxMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.9, roughness: 0.15, wireframe: isWireframe });
-        const cyanMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, metalness: 0.7, roughness: 0.25, emissive: 0x082f49, wireframe: isWireframe });
-        const emeraldMat = new THREE.MeshStandardMaterial({ color: 0x10b981, metalness: 0.8, roughness: 0.2, emissive: 0x022c22, wireframe: isWireframe });
-        const goldMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, metalness: 0.95, roughness: 0.15, wireframe: isWireframe });
+        const onyxMat = new THREE.MeshLambertMaterial({ color: 0x0f172a, wireframe: isWireframe });
+        const cyanMat = new THREE.MeshLambertMaterial({ color: 0x38bdf8, emissive: 0x082f49, wireframe: isWireframe });
+        const emeraldMat = new THREE.MeshLambertMaterial({ color: 0x10b981, emissive: 0x022c22, wireframe: isWireframe });
+        const goldMat = new THREE.MeshLambertMaterial({ color: 0xf59e0b, wireframe: isWireframe });
 
         // Ultra-low CG CNC Carbon-Onyx Chassis
         const lowChassis = new THREE.Mesh(new THREE.BoxGeometry(1.85, 0.18, 2.05), onyxMat);
@@ -4901,81 +4911,64 @@
             dl.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
             loader.setDRACOLoader(dl);
           }
+          if (typeof MeshoptDecoder !== 'undefined') {
+            loader.setMeshoptDecoder(MeshoptDecoder);
+          }
           const label = name.replace(/\.glb$/i, '');
           _showLoadingOverlay('loading ' + label + '…');
-          if (activeModel) { scene.remove(activeModel); activeModel = null; requestRender(); }
+          // Dispose old model properly to free GPU memory
+          if (activeModel) {
+            activeModel.traverse(obj => {
+              if (obj.isMesh) {
+                if (obj.geometry) obj.geometry.dispose();
+                if (obj.material) {
+                  if (Array.isArray(obj.material)) obj.material.forEach(m => m.dispose());
+                  else obj.material.dispose();
+                }
+              }
+            });
+            scene.remove(activeModel);
+            activeModel = null;
+            requestRender();
+          }
 
           loader.load(url, gltf => {
             if (token !== _loadToken) { finish(); return; } // stale — discard
             activeModel = gltf.scene;
 
-            // Remove stray detached parts (like stray motors) using Y-gap clustering
-            activeModel.updateMatrixWorld(true);
-            const meshes = [];
-            activeModel.traverse(child => {
-              if (child.isMesh) {
-                const b = new THREE.Box3().setFromObject(child);
-                if (!b.isEmpty()) {
-                  meshes.push({ mesh: child, center: b.getCenter(new THREE.Vector3()) });
-                }
+            // Onshape exports Z-up; Three.js is Y-up
+            activeModel.rotation.x = -Math.PI / 2;
+            if (rotationY != null) activeModel.rotation.z = rotationY;
+
+            // Disable shadows on all meshes
+            activeModel.traverse(obj => {
+              if (obj.isMesh) {
+                obj.castShadow = false;
+                obj.receiveShadow = false;
+                obj.frustumCulled = true;
               }
             });
-            if (meshes.length > 2) {
-              meshes.sort((a, b) => a.center.y - b.center.y);
-              let maxGap = 0;
-              let splitIndex = -1;
-              for (let i = 0; i < meshes.length - 1; i++) {
-                const gap = meshes[i + 1].center.y - meshes[i].center.y;
-                if (gap > maxGap) {
-                  maxGap = gap;
-                  splitIndex = i;
-                }
-              }
-              const totalHeight = meshes[meshes.length - 1].center.y - meshes[0].center.y;
-              if (totalHeight > 0 && maxGap > totalHeight * 0.15) {
-                const box1 = new THREE.Box3();
-                const box2 = new THREE.Box3();
-                meshes.forEach((m, i) => {
-                  if (i <= splitIndex) box1.expandByObject(m.mesh);
-                  else box2.expandByObject(m.mesh);
-                });
-                const size1 = box1.getSize(new THREE.Vector3());
-                const size2 = box2.getSize(new THREE.Vector3());
-                const vol1 = size1.x * size1.y * size1.z;
-                const vol2 = size2.x * size2.y * size2.z;
 
-                const keepCluster1 = vol1 > vol2;
-                meshes.forEach((m, i) => {
-                  if (keepCluster1 && i > splitIndex) m.mesh.visible = false;
-                  if (!keepCluster1 && i <= splitIndex) m.mesh.visible = false;
-                });
-              }
-            }
 
-            // Onshape exports Z-up; Three.js is Y-up — correct orientation
-            activeModel.rotation.x = -Math.PI / 2;
-            if (rotationY != null) activeModel.rotation.z = rotationY; // apply per-model tweak on Z after X rotation
+
+
+            // Scale and center the model
+            activeModel.updateMatrixWorld(true);
             const box = new THREE.Box3().setFromObject(activeModel);
             const size = box.getSize(new THREE.Vector3());
             const center = box.getCenter(new THREE.Vector3());
             const scale = 4.2 / Math.max(size.x, size.y, size.z);
             activeModel.scale.setScalar(scale);
-            activeModel.position.sub(center.multiplyScalar(scale));
-            activeModel.position.y += (size.y * scale) / 2;
-            activeModel.traverse(obj => {
-              if (obj.isMesh) {
-                obj.castShadow = false; obj.receiveShadow = false;
-                if (obj.material && obj.material.isMeshStandardMaterial) {
-                  const old = obj.material;
-                  obj.material = new THREE.MeshLambertMaterial({ color: old.color, map: old.map, transparent: old.transparent, opacity: old.opacity });
-                } else if (!obj.material) {
-                  obj.material = new THREE.MeshLambertMaterial({ color: 0x3a5a8a });
-                }
-              }
-            });
+            // Recompute center after scaling
+            activeModel.updateMatrixWorld(true);
+            const box2 = new THREE.Box3().setFromObject(activeModel);
+            const center2 = box2.getCenter(new THREE.Vector3());
+            activeModel.position.sub(center2);
+            activeModel.position.y += (box2.getSize(new THREE.Vector3()).y) / 2;
+
             scene.add(activeModel);
             updateStats(activeModel, name);
-            spherical.r = 6.5;
+            spherical.r = task.initialZoom || 9;
             updateCamera();
             finish();
             setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
@@ -5010,9 +5003,9 @@
 
       // glbMap — per-model config. rotationY here rotates around Z after X correction (to fix sideways)
       const glbMap = {
-        '2025-worlds': { path: 'assets/models/hs-01-opt.glb', fallbackUrl: 'assets/models/robot_2025.glb', name: '95071X 2025 Worlds Robot' },
-        '2025-early': { path: 'assets/models/hs-02-opt.glb', name: '95071X 2025 Original Tipper', rotationY: Math.PI },
-        '2026': { path: 'assets/models/pb-01-opt.glb', name: '95071X 2026 Push Back', rotationY: -Math.PI / 2 }
+        '2024-ou': { path: 'assets/models/ou-opt.glb', name: '95071X 2024 Over Under', rotationY: 0 },
+        '2025-worlds': { path: 'assets/models/hs-world-fast.glb', fallbackUrl: 'assets/models/hs-world-opt.glb', name: '95071X 2025 Worlds Robot V2' },
+        '2026': { path: 'assets/models/pb-04-fast.glb', fallbackUrl: 'assets/models/pb-04-optold.glb', name: '95071X 2026 Push Back', rotationY: -Math.PI / 2, initialZoom: 8.5 }
       };
 
       switchRobotModel = function (key) {
@@ -5023,7 +5016,7 @@
         document.querySelectorAll('.robot-select-btn').forEach(b => b.classList.remove('active'));
         document.getElementById('btn-robot-' + key)?.classList.add('active');
         const m = glbMap[key] || glbMap['2025-worlds'];
-        enqueueLoad({ url: m.path, name: m.name, fallbackUrl: m.fallbackUrl || null, rotationY: m.rotationY ?? null });
+        enqueueLoad({ url: m.path, name: m.name, fallbackUrl: m.fallbackUrl || null, rotationY: m.rotationY ?? null, initialZoom: m.initialZoom ?? null });
       };
 
       // Models are now loaded only upon click, not on startup
@@ -5032,7 +5025,7 @@
       let _renderPending = false; // must be before updateCamera() which calls requestRender()
       let isDragging = false, isRightDrag = false;
       let prevMouse = { x: 0, y: 0 };
-      let spherical = { theta: 0.7, phi: 0.95, r: 6 };
+      let spherical = { theta: 0.7, phi: 0.95, r: 8 };
       let target = new THREE.Vector3(0, 1.2, 0);
       let autoRotate = true;
 
@@ -5046,7 +5039,7 @@
       updateCamera();
 
       resetCamera = function () {
-        spherical = { theta: 0.7, phi: 0.95, r: 6 };
+        spherical = { theta: 0.7, phi: 0.95, r: 8 };
         target.set(0, 1.2, 0);
         updateCamera();
       };
@@ -5088,19 +5081,24 @@
       window.addEventListener('mouseup', () => { isDragging = false; });
       canvas.addEventListener('contextmenu', e => e.preventDefault());
       canvas.addEventListener('wheel', e => {
+        if (!e.ctrlKey && !e.metaKey) return; // Allow user to scroll past without interacting
         e.preventDefault();
         spherical.r = Math.max(2, Math.min(18, spherical.r + e.deltaY * 0.008));
         updateCamera();
       }, { passive: false });
 
+      let isMainVisible = true;
+      if (window.IntersectionObserver) {
+        const mainObs = new IntersectionObserver(e => { isMainVisible = e[0].isIntersecting; });
+        mainObs.observe(canvas);
+      }
+
       // Continuous animation loop — runs every frame for smooth, jank-free rotation
-      let _lastFrameTime = 0;
-      function _renderLoop(now) {
+      function _renderLoop() {
         requestAnimationFrame(_renderLoop);
-        const dt = Math.min((now - _lastFrameTime) / 1000, 0.05); // cap at 50ms to avoid jumps
-        _lastFrameTime = now;
+        if (!isMainVisible) return;
         if (autoRotate && !isDragging) {
-          spherical.theta += 0.8 * dt; // Slowed down by 3x as requested
+          spherical.theta += 0.004; // Fixed increment to prevent stuttering on frame drops
           camera.position.x = target.x + spherical.r * Math.sin(spherical.phi) * Math.sin(spherical.theta);
           camera.position.y = target.y + spherical.r * Math.cos(spherical.phi);
           camera.position.z = target.z + spherical.r * Math.sin(spherical.phi) * Math.cos(spherical.theta);
@@ -5137,32 +5135,26 @@
 
       const wrap = canvas.parentElement;
       const W = wrap.offsetWidth, H = wrap.offsetHeight;
-      canvas.width = W * devicePixelRatio;
-      canvas.height = H * devicePixelRatio;
 
-      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-      renderer.setPixelRatio(devicePixelRatio);
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
       renderer.setSize(W, H);
       renderer.outputEncoding = THREE.sRGBEncoding;
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.1;
-      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.enabled = false;
 
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(45, W / H, 0.1, 200);
 
-      // Lighting
-      const ambient = new THREE.AmbientLight(0xffffff, 0.6);
-      scene.add(ambient);
+      // Lighting — simpler setup, no shadows
+      scene.add(new THREE.AmbientLight(0xffffff, 0.7));
       const key = new THREE.DirectionalLight(0xffffff, 1.2);
       key.position.set(5, 8, 6);
       scene.add(key);
-      const fill = new THREE.DirectionalLight(0xa78bfa, 0.4);
+      const fill = new THREE.DirectionalLight(0xa78bfa, 0.35);
       fill.position.set(-4, 3, -5);
       scene.add(fill);
-      const rim = new THREE.DirectionalLight(0x38bdf8, 0.3);
-      rim.position.set(0, -4, -6);
-      scene.add(rim);
 
       // Fixed camera position — model spins, camera stays still
       camera.position.set(0, 1.2, 5.5);
@@ -5170,11 +5162,11 @@
 
       // Pivot group — all model parts parent to this so nothing detaches
       const pivot = new THREE.Group();
-      pivot.position.set(-0.3, -0.6, 0); // Shift model down and slightly left
+      pivot.position.set(-0.3, 0.05, 0);
       scene.add(pivot);
 
       let isDragging = false, prevMouse = { x: 0, y: 0 };
-      let rotY = 0, rotX = -0.3; // slight downward tilt for nice view angle
+      let rotY = 0, rotX = -0.3;
 
       function applyPivotRotation() {
         pivot.rotation.y = rotY;
@@ -5199,14 +5191,15 @@
         camera.position.z = Math.max(3, Math.min(14, camera.position.z + e.deltaY * 0.01));
       }, { passive: false });
 
-      // Smooth render loop — rotate model on its own central axis
-      let lastT = 0;
-      function heroRenderLoop(now) {
+      let isHeroVisible = false;
+      let heroModelLoaded = false;
+
+      // Smooth render loop — only runs when visible
+      function heroRenderLoop() {
         requestAnimationFrame(heroRenderLoop);
-        const dt = Math.min((now - lastT) / 1000, 0.05);
-        lastT = now;
+        if (!isHeroVisible) return;
         if (!isDragging) {
-          rotY += 0.4 * dt; // spin on Y axis at half the previous speed
+          rotY += 0.002;
           applyPivotRotation();
         }
         renderer.render(scene, camera);
@@ -5221,91 +5214,75 @@
         camera.updateProjectionMatrix();
       });
 
-      // Load model
-      const MODEL_URL = 'assets/models/hs-01-opt.glb';
-
-      const loader = new THREE.GLTFLoader();
-      // Use DRACOLoader for faster decoding of compressed geometry
-      if (typeof THREE.DRACOLoader !== 'undefined') {
-        const draco = new THREE.DRACOLoader();
-        draco.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/draco/');
-        loader.setDRACOLoader(draco);
-      }
+      // Use smaller model for hero (4MB vs 79MB) — loads 20x faster
+      const MODEL_URL = 'assets/models/hs-world-fast.glb';
 
       function doLoad(url) {
+        const loader = new THREE.GLTFLoader();
+        if (typeof THREE.DRACOLoader !== 'undefined') {
+          const draco = new THREE.DRACOLoader();
+          draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+          loader.setDRACOLoader(draco);
+        }
+        if (typeof MeshoptDecoder !== 'undefined') {
+          loader.setMeshoptDecoder(MeshoptDecoder);
+        }
+
         loader.load(url, gltf => {
+          // Update progress bar to 100% and show "processing…"
+          const _progBar = document.getElementById('hero-load-progress');
+          const _progLabel = document.getElementById('hero-load-label');
+          if (_progBar) _progBar.style.width = '100%';
+          if (_progLabel) _progLabel.textContent = 'processing…';
+
           const root = gltf.scene;
 
-          // Remove stray detached parts (like stray motors) using Y-gap clustering
-          root.updateMatrixWorld(true);
-          const meshes = [];
-          root.traverse(child => {
-            if (child.isMesh) {
-              const b = new THREE.Box3().setFromObject(child);
-              if (!b.isEmpty()) {
-                meshes.push({ mesh: child, center: b.getCenter(new THREE.Vector3()) });
-              }
-            }
-          });
-          if (meshes.length > 2) {
-            meshes.sort((a, b) => a.center.y - b.center.y);
-            let maxGap = 0;
-            let splitIndex = -1;
-            for (let i = 0; i < meshes.length - 1; i++) {
-              const gap = meshes[i + 1].center.y - meshes[i].center.y;
-              if (gap > maxGap) {
-                maxGap = gap;
-                splitIndex = i;
-              }
-            }
-            const totalHeight = meshes[meshes.length - 1].center.y - meshes[0].center.y;
-            if (totalHeight > 0 && maxGap > totalHeight * 0.15) {
-              const box1 = new THREE.Box3();
-              const box2 = new THREE.Box3();
-              meshes.forEach((m, i) => {
-                if (i <= splitIndex) box1.expandByObject(m.mesh);
-                else box2.expandByObject(m.mesh);
-              });
-              const size1 = box1.getSize(new THREE.Vector3());
-              const size2 = box2.getSize(new THREE.Vector3());
-              const vol1 = size1.x * size1.y * size1.z;
-              const vol2 = size2.x * size2.y * size2.z;
-
-              const keepCluster1 = vol1 > vol2;
-              meshes.forEach((m, i) => {
-                if (keepCluster1 && i > splitIndex) m.mesh.visible = false;
-                if (!keepCluster1 && i <= splitIndex) m.mesh.visible = false;
-              });
-            }
-          }
-
-          // (Outlier filtering logic removed because it was hiding parts of the robot)
-          // Fusion 360 exports as Z-up — rotate to Y-up so model stands upright
+          // Onshape exports Z-up; Three.js is Y-up — correct orientation
           root.rotation.x = -Math.PI / 2;
 
+          // Disable shadows for performance
+          root.traverse(obj => {
+            if (obj.isMesh) {
+              obj.castShadow = false;
+              obj.receiveShadow = false;
+              obj.frustumCulled = true;
+            }
+          });
           // Auto-scale and center around the pivot origin
           root.updateMatrixWorld(true);
           const box = new THREE.Box3().setFromObject(root);
-          const size = box.getSize(new THREE.Vector3());
-          const center = box.getCenter(new THREE.Vector3());
-          const maxDim = Math.max(size.x, size.y, size.z);
-          const scale = 3.4 / maxDim; // Decreased size slightly as requested
+          const maxDim = Math.max(...box.getSize(new THREE.Vector3()).toArray());
+          const scale = 2.6 / maxDim; // Zoomed out
 
           root.scale.setScalar(scale);
-          // Recalculate center after scale
           root.updateMatrixWorld(true);
-          const box2 = new THREE.Box3().setFromObject(root);
-          const center2 = box2.getCenter(new THREE.Vector3());
-          root.position.sub(center2); // center on pivot origin
+          const center2 = new THREE.Box3().setFromObject(root).getCenter(new THREE.Vector3());
+          root.position.sub(center2);
+
+
+
 
           // Add to pivot — all parts rotate together as one unit
           pivot.add(root);
+          heroModelLoaded = true;
 
           // Hide loading overlay
           const overlay = document.getElementById('hero-viewer-loading');
           if (overlay) overlay.style.opacity = '0';
           setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
-        }, undefined, err => {
+        }, xhr => {
+          // Real-time download progress
+          const progBar = document.getElementById('hero-load-progress');
+          const progLabel = document.getElementById('hero-load-label');
+          if (xhr.lengthComputable && progBar) {
+            const pct = Math.round((xhr.loaded / xhr.total) * 100);
+            progBar.style.width = pct + '%';
+            if (progLabel) progLabel.textContent = `loading… ${pct}%`;
+          } else if (progLabel) {
+            const mb = (xhr.loaded / 1048576).toFixed(1);
+            progLabel.textContent = `loading… ${mb} MB`;
+          }
+        }, err => {
           console.error('Hero viewer: failed to load', url, err);
           const overlay = document.getElementById('hero-viewer-loading');
           if (overlay) {
@@ -5313,7 +5290,21 @@
           }
         });
       }
-      doLoad(MODEL_URL);
+
+      // Defer loading until the hero section is actually visible (or near-visible)
+      if (window.IntersectionObserver) {
+        const heroObs = new IntersectionObserver(entries => {
+          isHeroVisible = entries[0].isIntersecting;
+          if (isHeroVisible && !heroModelLoaded) {
+            doLoad(MODEL_URL);
+          }
+        }, { rootMargin: '200px' });
+        heroObs.observe(canvas);
+      } else {
+        // Fallback: load immediately if no IntersectionObserver
+        isHeroVisible = true;
+        doLoad(MODEL_URL);
+      }
     })();
 
     // ══════════════════════════════════════════════════
