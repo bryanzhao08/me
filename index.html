@@ -555,11 +555,17 @@
       font-family: 'Inter', sans-serif;
     }
 
-    .filter-btn.active,
     .filter-btn:hover {
       background: var(--surface);
       color: var(--text);
       border-color: var(--border2);
+    }
+
+    .filter-btn.active {
+      background: var(--surface);
+      color: var(--text);
+      border-color: var(--cam);
+      box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--cam);
     }
 
     .camera-icon-btn {
@@ -3659,12 +3665,11 @@
     </p>
     <h2 class="section-title reveal">framing the world,<br>one shot at a time.</h2>
     <p class="section-desc reveal">photography is how i process the world around me — landscapes, street, architecture,
-      and the quiet moments in between. shot on canon + iphone.</p>
+      and the quiet moments in between. shot on canon + iphone. <strong>click on any photo to view larger.</strong></p>
 
     <!-- camera mini viewers (icons) -->
     <div class="camera-viewers reveal">
-      <div class="cam-viewer-card" onmouseenter="highlightPhotos('canon5d', this)"
-        onmouseleave="highlightPhotos(null, this)">
+      <div class="cam-viewer-card" onclick="highlightPhotos('canon5d', this)">
         <div class="cam-viewer-icon-wrap">
           <svg class="anime-cam-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round" style="opacity:1;">
@@ -3681,8 +3686,7 @@
           <div class="cam-viewer-spec">ef 70-200mm f/2.8l is iii · full-frame</div>
         </div>
       </div>
-      <div class="cam-viewer-card" onmouseenter="highlightPhotos('rebel', this)"
-        onmouseleave="highlightPhotos(null, this)">
+      <div class="cam-viewer-card" onclick="highlightPhotos('rebel', this)">
         <div class="cam-viewer-icon-wrap">
           <svg class="anime-cam-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round" style="opacity:1;">
@@ -3698,8 +3702,7 @@
           <div class="cam-viewer-spec">ef 28-105mm f/4 · aps-c sensor</div>
         </div>
       </div>
-      <div class="cam-viewer-card" onmouseenter="highlightPhotos('iphone', this)"
-        onmouseleave="highlightPhotos(null, this)">
+      <div class="cam-viewer-card" onclick="highlightPhotos('iphone', this)">
         <div class="cam-viewer-icon-wrap">
           <svg class="anime-cam-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round" style="opacity:1;">
@@ -3795,7 +3798,7 @@
         <div class="photo-overlay">
           <div class="photo-meta">
             <h4>boat exiting sea cave</h4>
-            <p>na pali · hawaii</p>
+            <p>na pali · hi</p>
           </div>
         </div>
       </div>
@@ -3806,7 +3809,7 @@
         <div class="photo-overlay">
           <div class="photo-meta">
             <h4>emerald-shrouded sapphire</h4>
-            <p>saratoga · california</p>
+            <p>saratoga · ca</p>
           </div>
         </div>
       </div>
@@ -3828,7 +3831,7 @@
         <div class="photo-overlay">
           <div class="photo-meta">
             <h4>one last time</h4>
-            <p>saratoga · california</p>
+            <p>saratoga · ca</p>
           </div>
         </div>
       </div>
@@ -3843,6 +3846,266 @@
           </div>
         </div>
       </div>
+      <div class="photo-item" data-cat="street" data-cam="canon5d" onclick="openLightbox(8)">
+        <img src="assets/photos/newphoto1.jpg" alt="Volleyball player mid-air jump serve in a gymnasium" loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto1.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>the serve</h4>
+            <p>saratoga · ca</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="landscape" data-cam="rebel" onclick="openLightbox(9)">
+        <img src="assets/photos/newphoto2.png" alt="Hong Kong skyline at night from Victoria Peak" loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto2.png</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>victoria peak after dark</h4>
+            <p>hong kong · china</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="landscape" data-cam="canon5d" onclick="openLightbox(10)">
+        <img src="assets/photos/newphoto3.jpg" alt="Two deer among autumn foliage on a trail" loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto3.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>autumn visitors</h4>
+            <p>saratoga · ca</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="landscape" data-cam="canon5d" onclick="openLightbox(11)">
+        <img src="assets/photos/newphoto4.jpg" alt="Wild turkeys marching through dry California hillside"
+          loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto4.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>wild rafter</h4>
+            <p>saratoga · ca</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="landscape" data-cam="canon5d" onclick="openLightbox(12)">
+        <img src="assets/photos/newphoto5.jpg" alt="Steller's jay perched on a mossy branch" loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto5.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>steller's watch</h4>
+            <p>saratoga · ca</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="landscape" data-cam="rebel" onclick="openLightbox(13)">
+        <img src="assets/photos/newphoto6.jpg" alt="Karst limestone peaks over traditional rooftops in Guilin"
+          loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto6.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>karst panorama</h4>
+            <p>guilin · china</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="urban" data-cam="rebel" onclick="openLightbox(14)">
+        <img src="assets/photos/newphoto7.jpg" alt="Hong Kong tram crossing with dense high-rises" loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto7.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>ding ding crossing</h4>
+            <p>hong kong · china</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="street" data-cam="rebel" onclick="openLightbox(15)">
+        <img src="assets/photos/newphoto8.jpg" alt="Women in hanfu crossing a lantern-lit stone bridge in Suzhou"
+          loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto8.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>bridge of lanterns</h4>
+            <p>suzhou · china</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="street" data-cam="rebel" onclick="openLightbox(16)">
+        <img src="assets/photos/newphoto9.jpg" alt="Flag football player breaking through defense" loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto9.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>breakaway run</h4>
+            <p>saratoga · ca</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="street" data-cam="rebel" onclick="openLightbox(17)">
+        <img src="assets/photos/newphoto10.jpg" alt="Neon signs filling a crowded Kabukicho alley at night"
+          loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto10.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>neon maze</h4>
+            <p>tokyo · japan</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="street" data-cam="rebel" onclick="openLightbox(18)">
+        <img src="assets/photos/newphoto11.jpg" alt="Shinto wedding procession at Meiji Shrine under a red parasol"
+          loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto11.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>shrine procession</h4>
+            <p>tokyo · japan</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="urban" data-cam="rebel" onclick="openLightbox(19)">
+        <img src="assets/photos/newphoto12.jpg" alt="Airplane flying between Shanghai skyscrapers against teal sky"
+          loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto12.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>skyward bound</h4>
+            <p>shanghai · china</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="landscape" data-cam="canon5d" onclick="openLightbox(20)">
+        <img src="assets/photos/newphoto13.jpg" alt="Paris skyline with Eiffel Tower at sunset from Arc de Triomphe"
+          loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto13.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>city of light at sunset</h4>
+            <p>paris · france</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="street" data-cam="canon5d" onclick="openLightbox(21)">
+        <img src="assets/photos/newphoto14.jpg" alt="Person posing inside Olympic rings beneath the Eiffel Tower"
+          loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto14.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>olympic spirit</h4>
+            <p>paris · france</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="landscape" data-cam="rebel" onclick="openLightbox(22)">
+        <img src="assets/photos/IMG_3178.jpg" alt="hanging vines and tropical leaves in deep shadow" loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>IMG_3178.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>curtain of green</h4>
+            <p>na pali · hi</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="landscape" data-cam="iphone" onclick="openLightbox(23)">
+        <img src="assets/photos/IMG_7103.jpg" alt="sailboat on calm ocean with pink sunset clouds" loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>IMG_7103.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>dusk anchor</h4>
+            <p>florida keys · fl</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="urban" data-cam="rebel" onclick="openLightbox(24)">
+        <img src="assets/photos/IMG_8784.jpg" alt="red-sailed junk boat crossing hong kong harbor at night"
+          loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>IMG_8784.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>red sails at midnight</h4>
+            <p>hong kong · china</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="urban" data-cam="rebel" onclick="openLightbox(25)">
+        <img src="assets/photos/IMG_8898.jpg" alt="brooklyn bridge with one world trade center and jet skis"
+          loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>IMG_8898.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>bridge & tower</h4>
+            <p>new york · ny</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="landscape" data-cam="rebel" onclick="openLightbox(26)">
+        <img src="assets/photos/IMG_8932.jpg" alt="aerial view of manhattan island and east river from airplane"
+          loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>IMG_8932.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>island in the haze</h4>
+            <p>new york · ny</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="landscape" data-cam="rebel" onclick="openLightbox(27)">
+        <img src="assets/photos/IMG_9882.jpg" alt="li river winding through karst mountains from above" loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>IMG_9882.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>river through the peaks</h4>
+            <p>guilin · china</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="landscape" data-cam="rebel" onclick="openLightbox(28)">
+        <img src="assets/photos/IMG_9943.jpg"
+          alt="lotus pond with pink blossoms and traditional chinese pavilion bridge" loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>IMG_9943.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>lotus garden</h4>
+            <p>hangzhou · china</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-item" data-cat="landscape" data-cam="canon5d" onclick="openLightbox(29)">
+        <img src="assets/photos/IMG_5668.jpg" alt="a motherly seal resting with its young on the shore" loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>183A9034 2.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>tranquil bonds</h4>
+            <p>la jolla · california</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-redirect reveal" style="text-align:center; margin-top: 40px;">
+      <a href="gallery.html" class="btn btn-outline"
+        style="padding: 12px 32px; font-size: 15px; border-color: var(--cam); color: var(--cam);">
+        view full gallery ↗
+      </a>
     </div>
   </div>
 
@@ -5382,10 +5645,23 @@
       }
     }
 
+    let activeCamGlow = null;
     function highlightPhotos(camId, cardEl) {
       const items = document.querySelectorAll('.photo-item');
 
-      // Clear glows
+      // If clicking the currently active camera, toggle it off
+      if (activeCamGlow === camId) {
+        document.querySelectorAll('.cam-viewer-card').forEach(c => {
+          c.classList.remove('glow-canon5d', 'glow-rebel', 'glow-iphone');
+        });
+        items.forEach(i => {
+          i.classList.remove('glow-canon5d', 'glow-rebel', 'glow-iphone');
+        });
+        activeCamGlow = null;
+        return;
+      }
+
+      // Otherwise, set the new active camera glow
       document.querySelectorAll('.cam-viewer-card').forEach(c => {
         c.classList.remove('glow-canon5d', 'glow-rebel', 'glow-iphone');
       });
@@ -5400,13 +5676,27 @@
             item.classList.add('glow-' + camId);
           }
         });
+        activeCamGlow = camId;
       }
     }
 
     function filterPhotos(category, btn) {
       if (btn) {
+        const wasActive = btn.classList.contains('active');
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        if (wasActive) {
+          // clicking active filter again → show all
+          document.querySelectorAll('.filter-btn').forEach(b => {
+            if (b.textContent.trim() === 'all') b.classList.add('active');
+          });
+          category = 'all';
+        } else {
+          btn.classList.add('active');
+          // remove 'all' active when specific filter chosen
+          document.querySelectorAll('.filter-btn').forEach(b => {
+            if (b.textContent.trim() === 'all' && category !== 'all') b.classList.remove('active');
+          });
+        }
       }
       const items = document.querySelectorAll('.photo-item');
       items.forEach(item => {
@@ -5428,11 +5718,33 @@
       { title: 'shibuya crossing', cat: 'tokyo · japan', desc: 'organized chaos of umbrellas and neon lights.', src: 'assets/photos/photo 11.jpg', placeholder: '🌆 photo 11.jpg' },
       { title: 'the bund', cat: 'shanghai · china', desc: 'vibrant neon lights reflecting off dark river waters.', src: 'assets/photos/shanghai.jpg', placeholder: '🌆 shanghai.jpg' },
       { title: 'shinjuku neon', cat: 'tokyo · japan', desc: 'dazzling cyberpunk streetscape of shinjuku at night.', src: 'assets/photos/shinjuku.jpg', placeholder: '🏙️ shinjuku.jpg' },
-      { title: 'boat exiting sea cave', cat: 'na pali · hawaii', desc: 'natural light filtering through a sea cave.', src: 'assets/photos/photo1.jpg', placeholder: '🌊 photo1.jpg' },
-      { title: 'emerald-shrouded sapphire', cat: 'saratoga · california', desc: 'vibrant blue water against lush greenery.', src: 'assets/photos/photo3.jpg', placeholder: '🏞️ photo3.jpg' },
+      { title: 'boat exiting sea cave', cat: 'na pali · hi', desc: 'natural light filtering through a sea cave.', src: 'assets/photos/photo1.jpg', placeholder: '🌊 photo1.jpg' },
+      { title: 'emerald-shrouded sapphire', cat: 'saratoga · ca', desc: 'vibrant blue water against lush greenery.', src: 'assets/photos/photo3.jpg', placeholder: '🏞️ photo3.jpg' },
       { title: 'winter wonderland', cat: 'ukkusissat · greenland', desc: 'aerial view of a massive ice canyon.', src: 'assets/photos/photo7.jpg', placeholder: '❄️ photo7.jpg' },
-      { title: 'one last time', cat: 'saratoga · california', desc: 'nostalgic local landmark at golden hour.', src: 'assets/photos/photo5.jpg', placeholder: '🌇 photo5.jpg' },
-      { title: 'mona lisa', cat: 'paris · france', desc: 'visitors capturing their own version of the mona lisa.', src: 'assets/photos/photo8.jpg', placeholder: '🖼️ photo8.jpg' }
+      { title: 'one last time', cat: 'saratoga · ca', desc: 'nostalgic local landmark at golden hour.', src: 'assets/photos/photo5.jpg', placeholder: '🌇 photo5.jpg' },
+      { title: 'mona lisa', cat: 'paris · france', desc: 'visitors capturing their own version of the mona lisa.', src: 'assets/photos/photo8.jpg', placeholder: '🖼️ photo8.jpg' },
+      { title: 'the serve', cat: 'saratoga · ca', desc: 'a volleyball player leaps into a powerful jump serve, frozen mid-air under the gymnasium lights.', src: 'assets/photos/newphoto1.jpg', placeholder: '📷 newphoto1.jpg' },
+      { title: 'victoria peak after dark', cat: 'hong kong · china', desc: 'the glittering hong kong skyline sprawls beneath a blanket of midnight clouds, viewed from victoria peak.', src: 'assets/photos/newphoto2.png', placeholder: '📷 newphoto2.png' },
+      { title: 'autumn visitors', cat: 'saratoga · ca', desc: 'a pair of deer pause among sun-dappled autumn foliage along a quiet neighborhood trail.', src: 'assets/photos/newphoto3.jpg', placeholder: '📷 newphoto3.jpg' },
+      { title: 'wild rafter', cat: 'saratoga · ca', desc: 'a rafter of wild turkeys marches through the dry california hillside, framed by natural brush.', src: 'assets/photos/newphoto4.jpg', placeholder: '📷 newphoto4.jpg' },
+      { title: "steller's watch", cat: 'saratoga · ca', desc: 'a striking steller\'s jay perches on a mossy branch, its cobalt plumage glowing in the forest canopy.', src: 'assets/photos/newphoto5.jpg', placeholder: '📷 newphoto5.jpg' },
+      { title: 'karst panorama', cat: 'guilin · china', desc: 'dramatic karst limestone peaks tower over traditional rooftops and a winding river at dusk.', src: 'assets/photos/newphoto6.jpg', placeholder: '📷 newphoto6.jpg' },
+      { title: 'ding ding crossing', cat: 'hong kong · china', desc: 'pedestrians flood a tram crossing as the iconic double-decker ding-dings approach through dense high-rises.', src: 'assets/photos/newphoto7.jpg', placeholder: '📷 newphoto7.jpg' },
+      { title: 'bridge of lanterns', cat: 'suzhou · china', desc: 'women in traditional hanfu cross a stone bridge draped with glowing red lanterns at twilight.', src: 'assets/photos/newphoto8.jpg', placeholder: '📷 newphoto8.jpg' },
+      { title: 'breakaway run', cat: 'saratoga · ca', desc: 'a flag football player breaks through the defense, football tucked tight, in golden afternoon light.', src: 'assets/photos/newphoto9.jpg', placeholder: '📷 newphoto9.jpg' },
+      { title: 'neon maze', cat: 'tokyo · japan', desc: 'towering walls of neon signage engulf a crowded kabukichō alley in electric warmth.', src: 'assets/photos/newphoto10.jpg', placeholder: '📷 newphoto10.jpg' },
+      { title: 'shrine procession', cat: 'tokyo · japan', desc: 'a traditional shinto wedding procession moves through meiji shrine under a vermilion parasol.', src: 'assets/photos/newphoto11.jpg', placeholder: '📷 newphoto11.jpg' },
+      { title: 'skyward bound', cat: 'shanghai · china', desc: 'a lone aircraft threads the gap between lujiazui\'s colossal towers in a moody teal sky.', src: 'assets/photos/newphoto12.jpg', placeholder: '📷 newphoto12.jpg' },
+      { title: 'city of light at sunset', cat: 'paris · france', desc: 'the eiffel tower glows against a gradient sunset, boulevards radiating outward from the arc de triomphe.', src: 'assets/photos/newphoto13.jpg', placeholder: '📷 newphoto13.jpg' },
+      { title: 'olympic spirit', cat: 'paris · france', desc: 'a visitor poses inside the olympic rings installation beneath the iconic iron lattice of the eiffel tower.', src: 'assets/photos/newphoto14.jpg', placeholder: '📷 newphoto14.jpg' },
+      { title: 'curtain of green', cat: 'na pali · hi', desc: 'hanging vines cascade through deep tropical shadow, their leaves catching slivers of light.', src: 'assets/photos/IMG_3178.jpg', placeholder: '📷 IMG_3178.jpg' },
+      { title: 'dusk anchor', cat: 'florida keys · fl', desc: 'a lone sailboat rests on still water beneath cotton-candy clouds at twilight.', src: 'assets/photos/IMG_7103.jpg', placeholder: '📷 IMG_7103.jpg' },
+      { title: 'red sails at midnight', cat: 'hong kong · china', desc: 'a crimson-sailed junk boat glides across victoria harbour, the city skyline burning behind it.', src: 'assets/photos/IMG_8784.jpg', placeholder: '📷 IMG_8784.jpg' },
+      { title: 'bridge & tower', cat: 'new york · ny', desc: 'the brooklyn bridge frames one world trade center as jet skis carve wakes across the east river.', src: 'assets/photos/IMG_8898.jpg', placeholder: '📷 IMG_8898.jpg' },
+      { title: 'island in the haze', cat: 'new york · ny', desc: 'manhattan stretches into the distance from above, the east river curving alongside its skyline.', src: 'assets/photos/IMG_8932.jpg', placeholder: '📷 IMG_8932.jpg' },
+      { title: 'river through the peaks', cat: 'guilin · china', desc: 'the li river bends through a valley of jagged karst peaks, villages dotting its banks below.', src: 'assets/photos/IMG_9882.jpg', placeholder: '📷 IMG_9882.jpg' },
+      { title: 'lotus garden', cat: 'hangzhou · china', desc: 'a sea of lotus leaves and pink blossoms stretches toward an ornate chinese pavilion bridge.', src: 'assets/photos/IMG_9943.jpg', placeholder: '📷 IMG_9943.jpg' },
+      { title: 'louvre lounging', cat: 'paris · france', desc: 'parisians and tourists soak up the sun on a manicured lawn framed by perfectly structured trees.', src: 'assets/photos/183A9034 2.jpg', placeholder: '📷 183A9034 2.jpg' }
     ];
 
     function openLightbox(idx) {
