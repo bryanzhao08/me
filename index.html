@@ -3112,7 +3112,7 @@
               drag · scroll to zoom</div>
             <div
               style="position:absolute;top:15%;left:15%;font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:0.04em;background:rgba(0,0,0,0.35);padding:3px 8px;border-radius:20px;border:1px solid rgba(255,255,255,0.08);">
-              95071X · worlds robot · 2025</div>
+              95071X · over under robot · 2024</div>
           </div>
         </div>
       </div>
@@ -3669,7 +3669,7 @@
 
     <!-- camera mini viewers (icons) -->
     <div class="camera-viewers reveal">
-      <div class="cam-viewer-card" onclick="highlightPhotos('canon5d', this)">
+      <div class="cam-viewer-card" onclick="highlightPhotos('canon5d', this)" onmouseenter="hoverHighlight('canon5d', this, true)" onmouseleave="hoverHighlight('canon5d', this, false)">
         <div class="cam-viewer-icon-wrap">
           <svg class="anime-cam-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round" style="opacity:1;">
@@ -3686,7 +3686,7 @@
           <div class="cam-viewer-spec">ef 70-200mm f/2.8l is iii · full-frame</div>
         </div>
       </div>
-      <div class="cam-viewer-card" onclick="highlightPhotos('rebel', this)">
+      <div class="cam-viewer-card" onclick="highlightPhotos('rebel', this)" onmouseenter="hoverHighlight('rebel', this, true)" onmouseleave="hoverHighlight('rebel', this, false)">
         <div class="cam-viewer-icon-wrap">
           <svg class="anime-cam-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round" style="opacity:1;">
@@ -3702,7 +3702,7 @@
           <div class="cam-viewer-spec">ef 28-105mm f/4 · aps-c sensor</div>
         </div>
       </div>
-      <div class="cam-viewer-card" onclick="highlightPhotos('iphone', this)">
+      <div class="cam-viewer-card" onclick="highlightPhotos('iphone', this)" onmouseenter="hoverHighlight('iphone', this, true)" onmouseleave="hoverHighlight('iphone', this, false)">
         <div class="cam-viewer-icon-wrap">
           <svg class="anime-cam-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round" style="opacity:1;">
@@ -3858,67 +3858,7 @@
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="landscape" data-cam="rebel" onclick="openLightbox(9)">
-        <img decoding="async" src="assets/photos/newphoto2.jpg" alt="Hong Kong skyline at night from Victoria Peak"
-          loading="lazy"
-          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto2.jpg</div>
-        <div class="photo-overlay">
-          <div class="photo-meta">
-            <h4>victoria peak after dark</h4>
-            <p>hong kong · china</p>
-          </div>
-        </div>
-      </div>
-      <div class="photo-item" data-cat="landscape" data-cam="canon5d" onclick="openLightbox(10)">
-        <img decoding="async" src="assets/photos/newphoto3.jpg" alt="Two deer among autumn foliage on a trail"
-          loading="lazy"
-          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto3.jpg</div>
-        <div class="photo-overlay">
-          <div class="photo-meta">
-            <h4>autumn visitors</h4>
-            <p>saratoga · ca</p>
-          </div>
-        </div>
-      </div>
-      <div class="photo-item" data-cat="landscape" data-cam="canon5d" onclick="openLightbox(11)">
-        <img decoding="async" src="assets/photos/newphoto4.jpg"
-          alt="Wild turkeys marching through dry California hillside" loading="lazy"
-          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto4.jpg</div>
-        <div class="photo-overlay">
-          <div class="photo-meta">
-            <h4>wild rafter</h4>
-            <p>saratoga · ca</p>
-          </div>
-        </div>
-      </div>
-      <div class="photo-item" data-cat="landscape" data-cam="canon5d" onclick="openLightbox(12)">
-        <img decoding="async" src="assets/photos/newphoto5.jpg" alt="Steller's jay perched on a mossy branch"
-          loading="lazy"
-          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto5.jpg</div>
-        <div class="photo-overlay">
-          <div class="photo-meta">
-            <h4>steller's watch</h4>
-            <p>saratoga · ca</p>
-          </div>
-        </div>
-      </div>
-      <div class="photo-item" data-cat="landscape" data-cam="rebel" onclick="openLightbox(13)">
-        <img decoding="async" src="assets/photos/newphoto6.jpg"
-          alt="Karst limestone peaks over traditional rooftops in Guilin" loading="lazy"
-          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>newphoto6.jpg</div>
-        <div class="photo-overlay">
-          <div class="photo-meta">
-            <h4>karst panorama</h4>
-            <p>guilin · china</p>
-          </div>
-        </div>
-      </div>
-      <div class="photo-item" data-cat="urban" data-cam="rebel" onclick="openLightbox(14)">
+      <div class="photo-item" data-cat="urban" data-cam="rebel" onclick="openLightbox(9)">
         <img decoding="async" src="assets/photos/newphoto7.jpg" alt="Hong Kong tram crossing with dense high-rises"
           loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
@@ -3930,7 +3870,7 @@
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="street" data-cam="rebel" onclick="openLightbox(15)">
+      <div class="photo-item" data-cat="street" data-cam="rebel" onclick="openLightbox(10)">
         <img decoding="async" src="assets/photos/newphoto8.jpg"
           alt="Women in hanfu crossing a lantern-lit stone bridge in Suzhou" loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
@@ -3942,7 +3882,7 @@
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="street" data-cam="rebel" onclick="openLightbox(16)">
+      <div class="photo-item" data-cat="street" data-cam="rebel" onclick="openLightbox(11)">
         <img decoding="async" src="assets/photos/newphoto9.jpg" alt="Flag football player breaking through defense"
           loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
@@ -3954,7 +3894,7 @@
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="street" data-cam="rebel" onclick="openLightbox(17)">
+      <div class="photo-item" data-cat="street" data-cam="rebel" onclick="openLightbox(12)">
         <img decoding="async" src="assets/photos/newphoto10.jpg"
           alt="Neon signs filling a crowded Kabukicho alley at night" loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
@@ -3966,7 +3906,7 @@
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="street" data-cam="rebel" onclick="openLightbox(18)">
+      <div class="photo-item" data-cat="street" data-cam="rebel" onclick="openLightbox(13)">
         <img decoding="async" src="assets/photos/newphoto11.jpg"
           alt="Shinto wedding procession at Meiji Shrine under a red parasol" loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
@@ -3978,7 +3918,7 @@
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="urban" data-cam="rebel" onclick="openLightbox(19)">
+      <div class="photo-item" data-cat="urban" data-cam="rebel" onclick="openLightbox(14)">
         <img decoding="async" src="assets/photos/newphoto12.jpg"
           alt="Airplane flying between Shanghai skyscrapers against teal sky" loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
@@ -3990,7 +3930,7 @@
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="landscape" data-cam="canon5d" onclick="openLightbox(20)">
+      <div class="photo-item" data-cat="landscape" data-cam="canon5d" onclick="openLightbox(15)">
         <img decoding="async" src="assets/photos/newphoto13.jpg"
           alt="Paris skyline with Eiffel Tower at sunset from Arc de Triomphe" loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
@@ -4002,7 +3942,7 @@
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="street" data-cam="canon5d" onclick="openLightbox(21)">
+      <div class="photo-item" data-cat="street" data-cam="canon5d" onclick="openLightbox(16)">
         <img decoding="async" src="assets/photos/newphoto14.jpg"
           alt="Person posing inside Olympic rings beneath the Eiffel Tower" loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
@@ -4014,7 +3954,7 @@
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="landscape" data-cam="rebel" onclick="openLightbox(22)">
+      <div class="photo-item" data-cat="landscape" data-cam="rebel" onclick="openLightbox(17)">
         <img decoding="async" src="assets/photos/IMG_3178.jpg" alt="hanging vines and tropical leaves in deep shadow"
           loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
@@ -4022,83 +3962,11 @@
         <div class="photo-overlay">
           <div class="photo-meta">
             <h4>curtain of green</h4>
-            <p>na pali · hi</p>
+            <p>maui · hi</p>
           </div>
         </div>
       </div>
-      <div class="photo-item" data-cat="landscape" data-cam="iphone" onclick="openLightbox(23)">
-        <img decoding="async" src="assets/photos/IMG_7103.jpg" alt="sailboat on calm ocean with pink sunset clouds"
-          loading="lazy"
-          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>IMG_7103.jpg</div>
-        <div class="photo-overlay">
-          <div class="photo-meta">
-            <h4>dusk anchor</h4>
-            <p>florida keys · fl</p>
-          </div>
-        </div>
-      </div>
-      <div class="photo-item" data-cat="urban" data-cam="rebel" onclick="openLightbox(24)">
-        <img decoding="async" src="assets/photos/IMG_8784.jpg"
-          alt="red-sailed junk boat crossing hong kong harbor at night" loading="lazy"
-          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>IMG_8784.jpg</div>
-        <div class="photo-overlay">
-          <div class="photo-meta">
-            <h4>red sails at midnight</h4>
-            <p>hong kong · china</p>
-          </div>
-        </div>
-      </div>
-      <div class="photo-item" data-cat="urban" data-cam="rebel" onclick="openLightbox(25)">
-        <img decoding="async" src="assets/photos/IMG_8898.jpg"
-          alt="brooklyn bridge with one world trade center and jet skis" loading="lazy"
-          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>IMG_8898.jpg</div>
-        <div class="photo-overlay">
-          <div class="photo-meta">
-            <h4>bridge & tower</h4>
-            <p>new york · ny</p>
-          </div>
-        </div>
-      </div>
-      <div class="photo-item" data-cat="landscape" data-cam="rebel" onclick="openLightbox(26)">
-        <img decoding="async" src="assets/photos/IMG_8932.jpg"
-          alt="aerial view of manhattan island and east river from airplane" loading="lazy"
-          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>IMG_8932.jpg</div>
-        <div class="photo-overlay">
-          <div class="photo-meta">
-            <h4>island in the haze</h4>
-            <p>new york · ny</p>
-          </div>
-        </div>
-      </div>
-      <div class="photo-item" data-cat="landscape" data-cam="rebel" onclick="openLightbox(27)">
-        <img decoding="async" src="assets/photos/IMG_9882.jpg" alt="li river winding through karst mountains from above"
-          loading="lazy"
-          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>IMG_9882.jpg</div>
-        <div class="photo-overlay">
-          <div class="photo-meta">
-            <h4>river through the peaks</h4>
-            <p>guilin · china</p>
-          </div>
-        </div>
-      </div>
-      <div class="photo-item" data-cat="landscape" data-cam="rebel" onclick="openLightbox(28)">
-        <img decoding="async" src="assets/photos/IMG_9943.jpg"
-          alt="lotus pond with pink blossoms and traditional chinese pavilion bridge" loading="lazy"
-          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
-        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>IMG_9943.jpg</div>
-        <div class="photo-overlay">
-          <div class="photo-meta">
-            <h4>lotus garden</h4>
-            <p>hangzhou · china</p>
-          </div>
-        </div>
-      </div>
-      <div class="photo-item" data-cat="landscape" data-cam="canon5d" onclick="openLightbox(29)">
+      <div class="photo-item" data-cat="landscape" data-cam="canon5d" onclick="openLightbox(18)">
         <img decoding="async" src="assets/photos/IMG_5668.jpg" alt="a motherly seal resting with its young on the shore"
           loading="lazy"
           onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
@@ -4110,1825 +3978,1852 @@
           </div>
         </div>
       </div>
+      <div class="photo-item" data-cat="urban" data-cam="rebel" onclick="openLightbox(19)">
+        <img decoding="async" src="assets/photos/IMG_8784.jpg"
+          alt="red-sailed junk boat crossing hong kong harbor at night" loading="lazy"
+          onerror="this.style.display='none';const p=this.parentElement.querySelector('.photo-placeholder-img');if(p)p.style.display='flex';">
+        <div class="photo-placeholder-img" style="display:none"><span class="ph-icon">📷</span>IMG_8784.jpg</div>
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <h4>red sails at midnight</h4>
+            <p>hong kong · china</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="gallery-redirect reveal" style="text-align:center; margin-top: 40px;">
-      <a href="gallery.html" class="btn btn-outline"
+    <div class="gallery-redirect reveal" style="text-align:center; margin-top: 40px; margin-bottom: 20px;">
+      <a href="photography/" class="btn btn-outline"
         style="padding: 12px 32px; font-size: 15px; border-color: var(--cam); color: var(--cam);">
         view full gallery ↗
       </a>
     </div>
-  </div>
 
-  <!-- lightbox -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close-top" onclick="closeLightbox()" title="close">✕</button>
-    <div class="lightbox-inner">
-      <div class="lightbox-arrow" onclick="lightboxNav(-1)" title="previous photo (←)">‹</div>
-      <div class="lightbox-center">
-        <div class="lightbox-img-wrap" id="lightbox-img-wrap">
-          <div class="lightbox-img-placeholder" id="lightbox-placeholder">
-            <div style="font-size:48px;">🖼️</div>
-            <p id="lightbox-title-top"
-              style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);"></p>
+    <!-- lightbox -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close-top" onclick="closeLightbox()" title="close">✕</button>
+      <div class="lightbox-inner">
+        <div class="lightbox-arrow" onclick="lightboxNav(-1)" title="previous photo (←)">‹</div>
+        <div class="lightbox-center">
+          <div class="lightbox-img-wrap" id="lightbox-img-wrap">
+            <div class="lightbox-img-placeholder" id="lightbox-placeholder">
+              <div style="font-size:48px;">🖼️</div>
+              <p id="lightbox-title-top"
+                style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);"></p>
+            </div>
+            <img decoding="async" id="lightbox-img" src="" alt="" style="display:none;">
           </div>
-          <img decoding="async" id="lightbox-img" src="" alt="" style="display:none;">
-        </div>
-        <div class="lightbox-caption-wrap">
-          <div class="lightbox-counter" id="lightbox-counter">1 / 10</div>
-          <div class="lightbox-caption-title" id="lightbox-title"></div>
-          <div class="lightbox-caption-desc" id="lightbox-desc"></div>
-          <div class="lightbox-caption-meta" id="lightbox-meta"></div>
-        </div>
-      </div>
-      <div class="lightbox-arrow" onclick="lightboxNav(1)" title="next photo (→)">›</div>
-    </div>
-  </div>
-
-  <!-- ─── FUN / ABOUT ───────────────────────── -->
-  <div class="divider"></div>
-  <div class="section" id="fun">
-    <p class="section-tag reveal" style="color:var(--mus)">✨ &nbsp;beyond the code</p>
-    <h2 class="section-title reveal">a little about<br>the human side.</h2>
-    <p class="section-desc reveal">when i'm not debugging robots or writing papers, you'll find me outdoors, in clothing
-      stores, or hunting for the perfect bowl of ramen.</p>
-
-    <div class="fun-grid">
-      <!-- Music -->
-      <div class="fun-card music-card reveal" onclick="toggleSpotify()" style="cursor:pointer;">
-        <span class="fun-icon">🎵</span>
-        <div class="fun-card-title">music</div>
-        <div class="fun-card-desc">currently obsessed with electronic, lo-fi, and jazz. always listening to music when
-          running, studying, coding. click to see what i'm listening to right now.</div>
-        <div class="fun-card-tags">
-          <span class="fun-tag">electronic</span>
-          <span class="fun-tag">lo-fi</span>
-          <span class="fun-tag">jazz</span>
-          <span class="fun-tag">indie</span>
-        </div>
-      </div>
-
-      <!-- Food -->
-      <div class="fun-card food-card reveal reveal-delay-1" onclick="toggleBeli()" style="cursor:pointer;">
-        <span class="fun-icon">🍽️</span>
-        <div class="fun-card-title">food</div>
-        <div class="fun-card-desc">restaurant connoisseur. exploring every spot across the world. always down to eat.
-        </div>
-        <div class="fun-card-tags">
-          <span class="fun-tag">ramen</span>
-          <span class="fun-tag">steak</span>
-          <span class="fun-tag">quesidillas</span>
-          <span class="fun-tag">boba</span>
-        </div>
-      </div>
-
-      <!-- Outdoors -->
-      <div class="fun-card outdoor-card reveal reveal-delay-2" onclick="toggleOutdoors()" style="cursor:pointer;">
-        <span class="fun-icon">🏔️</span>
-        <div class="fun-card-title">outdoors</div>
-        <div class="fun-card-desc">weekend hiker and occasional skier. love yosemite, the santa cruz mountains, and lake
-          tahoe.
-          there's something about being above treeline that resets everything.</div>
-        <div class="fun-card-tags">
-          <span class="fun-tag">hiking</span>
-          <span class="fun-tag">skiing</span>
-          <span class="fun-tag">backpacking</span>
-          <span class="fun-tag">trails</span>
-        </div>
-      </div>
-
-      <!-- Fun facts -->
-      <div class="fun-card facts-card reveal">
-        <span class="fun-icon">⚡</span>
-        <div class="fun-card-title">quick facts</div>
-        <div class="fun-card-desc">a few things you might not know about me</div>
-        <div class="facts-grid">
-          <div class="fact-item">
-            <span class="fact-num">6+</span>
-            <div class="fact-label">years robotics</div>
-          </div>
-          <div class="fact-item">
-            <span class="fact-num">∞</span>
-            <div class="fact-label">restaurants left to eat</div>
-          </div>
-          <div class="fact-item">
-            <span class="fact-num">10k+</span>
-            <div class="fact-label">photos taken</div>
-          </div>
-          <div class="fact-item">
-            <span class="fact-num">saratoga, ca</span>
-            <div class="fact-label">home base</div>
+          <div class="lightbox-caption-wrap">
+            <div class="lightbox-counter" id="lightbox-counter">1 / 10</div>
+            <div class="lightbox-caption-title" id="lightbox-title"></div>
+            <div class="lightbox-caption-desc" id="lightbox-desc"></div>
+            <div class="lightbox-caption-meta" id="lightbox-meta"></div>
           </div>
         </div>
+        <div class="lightbox-arrow" onclick="lightboxNav(1)" title="next photo (→)">›</div>
       </div>
     </div>
 
-    <!-- Resume strip -->
-    <div class="resume-strip reveal" style="margin-top:48px;">
-      <div>
-        <h3>want to work together?</h3>
-        <p>i'm open to internships, research opportunities, and cool projects.</p>
+    <!-- ─── FUN / ABOUT ───────────────────────── -->
+    <div class="divider"></div>
+    <div class="section" id="fun">
+      <p class="section-tag reveal" style="color:var(--mus)">✨ &nbsp;beyond the code</p>
+      <h2 class="section-title reveal">a little about<br>the human side.</h2>
+      <p class="section-desc reveal">when i'm not debugging robots or writing papers, you'll find me outdoors, in
+        clothing
+        stores, or hunting for the perfect bowl of ramen.</p>
+
+      <div class="fun-grid">
+        <!-- Music -->
+        <div class="fun-card music-card reveal" onclick="toggleSpotify()" style="cursor:pointer;">
+          <span class="fun-icon">🎵</span>
+          <div class="fun-card-title">music</div>
+          <div class="fun-card-desc">currently obsessed with electronic, lo-fi, and jazz. always listening to music when
+            running, studying, coding. click to see what i'm listening to right now.</div>
+          <div class="fun-card-tags">
+            <span class="fun-tag">electronic</span>
+            <span class="fun-tag">lo-fi</span>
+            <span class="fun-tag">jazz</span>
+            <span class="fun-tag">indie</span>
+          </div>
+        </div>
+
+        <!-- Food -->
+        <div class="fun-card food-card reveal reveal-delay-1" onclick="toggleBeli()" style="cursor:pointer;">
+          <span class="fun-icon">🍽️</span>
+          <div class="fun-card-title">food</div>
+          <div class="fun-card-desc">restaurant connoisseur. exploring every spot across the world. always down to eat.
+          </div>
+          <div class="fun-card-tags">
+            <span class="fun-tag">ramen</span>
+            <span class="fun-tag">steak</span>
+            <span class="fun-tag">quesidillas</span>
+            <span class="fun-tag">boba</span>
+          </div>
+        </div>
+
+        <!-- Outdoors -->
+        <div class="fun-card outdoor-card reveal reveal-delay-2" onclick="toggleOutdoors()" style="cursor:pointer;">
+          <span class="fun-icon">🏔️</span>
+          <div class="fun-card-title">outdoors</div>
+          <div class="fun-card-desc">weekend hiker and occasional skier. love yosemite, the santa cruz mountains, and
+            lake
+            tahoe.
+            there's something about being above treeline that resets everything.</div>
+          <div class="fun-card-tags">
+            <span class="fun-tag">hiking</span>
+            <span class="fun-tag">skiing</span>
+            <span class="fun-tag">backpacking</span>
+            <span class="fun-tag">trails</span>
+          </div>
+        </div>
+
+        <!-- Fun facts -->
+        <div class="fun-card facts-card reveal">
+          <span class="fun-icon">⚡</span>
+          <div class="fun-card-title">quick facts</div>
+          <div class="fun-card-desc">a few things you might not know about me</div>
+          <div class="facts-grid">
+            <div class="fact-item">
+              <span class="fact-num">6+</span>
+              <div class="fact-label">years robotics</div>
+            </div>
+            <div class="fact-item">
+              <span class="fact-num">∞</span>
+              <div class="fact-label">restaurants left to eat</div>
+            </div>
+            <div class="fact-item">
+              <span class="fact-num">10k+</span>
+              <div class="fact-label">photos taken</div>
+            </div>
+            <div class="fact-item">
+              <span class="fact-num">saratoga, ca</span>
+              <div class="fact-label">home base</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <a href="assets/resume.pdf" class="btn btn-primary" target="_blank">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
+
+      <!-- Resume strip -->
+      <div class="resume-strip reveal" style="margin-top:48px;">
+        <div>
+          <h3>want to work together?</h3>
+          <p>i'm open to internships, research opportunities, and cool projects.</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="assets/resume.pdf" class="btn btn-primary" target="_blank">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+            </svg>
+            download resume
+          </a>
+          <a href="mailto:zhaobrya@usc.edu" onclick="handleEmailClick(event, 'zhaobrya@usc.edu')"
+            class="btn btn-outline" id="email-btn" title="click to email or copy address">send an email →</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="foot-name">bryan zhao</div>
+      <p>built with html, css, and js</p>
+    </footer>
+
+    <!-- ─── BELI POPUP ───────────────────────── -->
+    <div class="beli-popup" id="beliPopup">
+      <div class="beli-header">
+        <div class="beli-badge"><span class="beli-badge-icon">🍽️</span>beli · food ratings</div>
+        <button class="beli-close" onclick="toggleBeli()">✕</button>
+      </div>
+      <p class="beli-desc">i rate every restaurant i visit — ramen, dim sum, steak, everything. follow along to see what
+        i've been eating and where i'd send you.</p>
+      <a href="https://beliapp.com/u/bryanzhao" target="_blank" class="beli-link">
+        🔗 &nbsp;view my beli profile →
+      </a>
+      <div class="beli-stats">
+        <div class="beli-stat">
+          <div class="beli-stat-num">150+</div>
+          <div class="beli-stat-label">RESTAURANTS</div>
+        </div>
+        <div class="beli-stat">
+          <div class="beli-stat-num">3</div>
+          <div class="beli-stat-label">CONTINENTS</div>
+        </div>
+        <div class="beli-stat">
+          <div class="beli-stat-num">100+</div>
+          <div class="beli-stat-label">CITIES</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── OUTDOORS POPUP ─────────────────────── -->
+    <div class="outdoors-popup" id="outdoorsPopup">
+      <div class="outdoors-header">
+        <div class="outdoors-badge">🏔️ &nbsp;trail log</div>
+        <button class="outdoors-close" onclick="toggleOutdoors()">✕</button>
+      </div>
+      <div class="outdoors-trail-list">
+        <div class="outdoors-trail">
+          <div class="outdoors-trail-icon">📏</div>
+          <div class="outdoors-trail-info">
+            <div class="outdoors-trail-label">longest trail</div>
+            <div class="outdoors-trail-name">john nicholas trail trail</div>
+            <div class="outdoors-trail-detail">sanborn, ca · 10.2 mi</div>
+          </div>
+        </div>
+        <div class="outdoors-trail">
+          <div class="outdoors-trail-icon">❤️</div>
+          <div class="outdoors-trail-info">
+            <div class="outdoors-trail-label">favorite hike</div>
+            <div class="outdoors-trail-name">kuilau ridge trail</div>
+            <div class="outdoors-trail-detail">kauai, hi · 3.1 mi</div>
+          </div>
+        </div>
+        <div class="outdoors-trail">
+          <div class="outdoors-trail-icon">⛷️</div>
+          <div class="outdoors-trail-info">
+            <div class="outdoors-trail-label">first ski trail</div>
+            <div class="outdoors-trail-name">schoolyard</div>
+            <div class="outdoors-trail-detail">diamond peak · 2012</div>
+          </div>
+        </div>
+        <div class="outdoors-trail">
+          <div class="outdoors-trail-icon">♢♢</div>
+          <div class="outdoors-trail-info">
+            <div class="outdoors-trail-label">first double black</div>
+            <div class="outdoors-trail-name">hell's delight via the cirque</div>
+            <div class="outdoors-trail-detail">kirkwood · 2026</div>
+          </div>
+        </div>
+        <div class="outdoors-trail">
+          <div class="outdoors-trail-icon">🎿</div>
+          <div class="outdoors-trail-info">
+            <div class="outdoors-trail-label">favorite ski trail</div>
+            <div class="outdoors-trail-name">high five via ridge run</div>
+            <div class="outdoors-trail-detail">heavenly · 2023-now</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── SPOTIFY POPUP ───────────────────── -->
+    <div class="spotify-popup" id="spotifyPopup">
+      <div class="sp-header">
+        <div class="sp-badge">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
           </svg>
-          download resume
-        </a>
-        <a href="mailto:zhaobrya@usc.edu" onclick="handleEmailClick(event, 'zhaobrya@usc.edu')" class="btn btn-outline"
-          id="email-btn" title="click to email or copy address">send an email →</a>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="foot-name">bryan zhao</div>
-    <p>built with html, css, and js</p>
-  </footer>
-
-  <!-- ─── BELI POPUP ───────────────────────── -->
-  <div class="beli-popup" id="beliPopup">
-    <div class="beli-header">
-      <div class="beli-badge"><span class="beli-badge-icon">🍽️</span>beli · food ratings</div>
-      <button class="beli-close" onclick="toggleBeli()">✕</button>
-    </div>
-    <p class="beli-desc">i rate every restaurant i visit — ramen, dim sum, steak, everything. follow along to see what
-      i've been eating and where i'd send you.</p>
-    <a href="https://beliapp.com/u/bryanzhao" target="_blank" class="beli-link">
-      🔗 &nbsp;view my beli profile →
-    </a>
-    <div class="beli-stats">
-      <div class="beli-stat">
-        <div class="beli-stat-num">150+</div>
-        <div class="beli-stat-label">RESTAURANTS</div>
-      </div>
-      <div class="beli-stat">
-        <div class="beli-stat-num">3</div>
-        <div class="beli-stat-label">CONTINENTS</div>
-      </div>
-      <div class="beli-stat">
-        <div class="beli-stat-num">∞</div>
-        <div class="beli-stat-label">APPETITE</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── OUTDOORS POPUP ─────────────────────── -->
-  <div class="outdoors-popup" id="outdoorsPopup">
-    <div class="outdoors-header">
-      <div class="outdoors-badge">🏔️ &nbsp;trail log</div>
-      <button class="outdoors-close" onclick="toggleOutdoors()">✕</button>
-    </div>
-    <div class="outdoors-trail-list">
-      <div class="outdoors-trail">
-        <div class="outdoors-trail-icon">📏</div>
-        <div class="outdoors-trail-info">
-          <div class="outdoors-trail-label">longest trail</div>
-          <div class="outdoors-trail-name">john nicholas trail trail</div>
-          <div class="outdoors-trail-detail">sanborn, ca · 10.2 mi</div>
+          spotify
         </div>
+        <button class="sp-close" onclick="toggleSpotify()">✕</button>
       </div>
-      <div class="outdoors-trail">
-        <div class="outdoors-trail-icon">❤️</div>
-        <div class="outdoors-trail-info">
-          <div class="outdoors-trail-label">favorite hike</div>
-          <div class="outdoors-trail-name">kuilau ridge trail</div>
-          <div class="outdoors-trail-detail">kauai, hi · 3.1 mi</div>
-        </div>
-      </div>
-      <div class="outdoors-trail">
-        <div class="outdoors-trail-icon">⛷️</div>
-        <div class="outdoors-trail-info">
-          <div class="outdoors-trail-label">first ski trail</div>
-          <div class="outdoors-trail-name">schoolyard</div>
-          <div class="outdoors-trail-detail">diamond peak · 2012</div>
-        </div>
-      </div>
-      <div class="outdoors-trail">
-        <div class="outdoors-trail-icon">♢♢</div>
-        <div class="outdoors-trail-info">
-          <div class="outdoors-trail-label">first double black</div>
-          <div class="outdoors-trail-name">hell's delight via the cirque</div>
-          <div class="outdoors-trail-detail">kirkwood · 2026</div>
-        </div>
-      </div>
-      <div class="outdoors-trail">
-        <div class="outdoors-trail-icon">🎿</div>
-        <div class="outdoors-trail-info">
-          <div class="outdoors-trail-label">favorite ski trail</div>
-          <div class="outdoors-trail-name">high five via ridge run</div>
-          <div class="outdoors-trail-detail">heavenly · 2023-now</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── SPOTIFY POPUP ───────────────────── -->
-  <div class="spotify-popup" id="spotifyPopup">
-    <div class="sp-header">
-      <div class="sp-badge">
-        <svg viewBox="0 0 24 24">
-          <path
-            d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
-        </svg>
-        spotify
-      </div>
-      <button class="sp-close" onclick="toggleSpotify()">✕</button>
-    </div>
-    <div class="sp-track">
-      <div class="sp-art" id="sp-art">🎵</div>
-      <div class="sp-info">
-        <div class="sp-song" id="sp-song-name">connect spotify to sync</div>
-        <div class="sp-artist" id="sp-artist-name">bryan zhao · public activity</div>
-        <div class="sp-status" id="sp-status">
-          <div class="eq-bars">
-            <div class="eq-bar"></div>
-            <div class="eq-bar"></div>
-            <div class="eq-bar"></div>
-            <div class="eq-bar"></div>
+      <div class="sp-track">
+        <div class="sp-art" id="sp-art">🎵</div>
+        <div class="sp-info">
+          <div class="sp-song" id="sp-song-name">connect spotify to sync</div>
+          <div class="sp-artist" id="sp-artist-name">bryan zhao · public activity</div>
+          <div class="sp-status" id="sp-status">
+            <div class="eq-bars">
+              <div class="eq-bar"></div>
+              <div class="eq-bar"></div>
+              <div class="eq-bar"></div>
+              <div class="eq-bar"></div>
+            </div>
+            now playing
           </div>
-          now playing
         </div>
       </div>
+      <div class="sp-progress">
+        <div class="sp-progress-bar" id="sp-progress-bar"></div>
+      </div>
+      <div class="sp-times"><span id="sp-time-current">1:24</span><span id="sp-time-total">3:42</span></div>
+      <div class="sp-footer" id="sp-footer">🎵 live from spotify api</div>
     </div>
-    <div class="sp-progress">
-      <div class="sp-progress-bar" id="sp-progress-bar"></div>
-    </div>
-    <div class="sp-times"><span id="sp-time-current">1:24</span><span id="sp-time-total">3:42</span></div>
-    <div class="sp-footer" id="sp-footer">🎵 live from spotify api</div>
-  </div>
-  <button class="spotify-trigger" onclick="toggleSpotify()" title="see what bryan's listening to">
-    <svg viewBox="0 0 24 24">
-      <path
-        d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
-    </svg>
-  </button>
+    <button class="spotify-trigger" onclick="toggleSpotify()" title="see what bryan's listening to">
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+      </svg>
+    </button>
 
-  <!-- ─── SCRIPTS ───────────────────────────── -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/meshopt_decoder.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/utils/BufferGeometryUtils.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- ─── SCRIPTS ───────────────────────────── -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/meshopt_decoder.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/utils/BufferGeometryUtils.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 
-  <script>
-    // ══════════════════════════════════════════════════
-    //  GLOBAL POPUP CONTROLLERS (BELI, OUTDOORS, SPOTIFY)
-    // ══════════════════════════════════════════════════
-    function toggleBeli() {
-      const popup = document.getElementById('beliPopup');
-      const spotify = document.getElementById('spotifyPopup');
-      const outdoors = document.getElementById('outdoorsPopup');
-      if (spotify) spotify.classList.remove('open');
-      if (outdoors) outdoors.classList.remove('open');
-      if (popup) popup.classList.toggle('open');
-    }
-
-    function toggleOutdoors() {
-      const popup = document.getElementById('outdoorsPopup');
-      const spotify = document.getElementById('spotifyPopup');
-      const beli = document.getElementById('beliPopup');
-      if (spotify) spotify.classList.remove('open');
-      if (beli) beli.classList.remove('open');
-      if (popup) popup.classList.toggle('open');
-    }
-
-    function toggleSpotify() {
-      const popup = document.getElementById('spotifyPopup');
-      const beli = document.getElementById('beliPopup');
-      const outdoors = document.getElementById('outdoorsPopup');
-      if (beli) beli.classList.remove('open');
-      if (outdoors) outdoors.classList.remove('open');
-      if (popup) popup.classList.toggle('open');
-
-      if (popup && popup.classList.contains('open')) {
-        fetchSpotifyNowPlaying();
+    <script>
+      // ══════════════════════════════════════════════════
+      //  GLOBAL POPUP CONTROLLERS (BELI, OUTDOORS, SPOTIFY)
+      // ══════════════════════════════════════════════════
+      function toggleBeli() {
+        const popup = document.getElementById('beliPopup');
+        const spotify = document.getElementById('spotifyPopup');
+        const outdoors = document.getElementById('outdoorsPopup');
+        if (spotify) spotify.classList.remove('open');
+        if (outdoors) outdoors.classList.remove('open');
+        if (popup) popup.classList.toggle('open');
       }
-    }
 
-    // ══════════════════════════════════════════════════
-    //  SPOTIFY API INTEGRATION
-    // ══════════════════════════════════════════════════
-    // Note: The access token is hardcoded for demonstration but will expire in 1 hour.
-    const SPOTIFY_ACCESS_TOKEN = 'BQAcj4Z26gigg1TjBg7eC3z74rwUQ74IIQe1JoK9v8ACuuIcB9PQkQ4h4jYyHaxjl9PG99Z78TPzHruy8r0XrbCzrJrdy55Xf_A-psWn-iU4gcdGADqtLfmzmb6u4k8u2mi0UV5JhvdzwYMlUGL1iouUbKTKp57OShzBiIerfpksUu0pXFVZl-pob8caOAAHtWHp3L_sUFXIUCIUc38zhNFDh6_mlD6j0H96WtCUbPgDUIrKeM665aWkwAwR';
+      function toggleOutdoors() {
+        const popup = document.getElementById('outdoorsPopup');
+        const spotify = document.getElementById('spotifyPopup');
+        const beli = document.getElementById('beliPopup');
+        if (spotify) spotify.classList.remove('open');
+        if (beli) beli.classList.remove('open');
+        if (popup) popup.classList.toggle('open');
+      }
 
-    async function fetchSpotifyNowPlaying() {
-      try {
-        const res = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
-          headers: { 'Authorization': 'Bearer ' + SPOTIFY_ACCESS_TOKEN }
-        });
+      function toggleSpotify() {
+        const popup = document.getElementById('spotifyPopup');
+        const beli = document.getElementById('beliPopup');
+        const outdoors = document.getElementById('outdoorsPopup');
+        if (beli) beli.classList.remove('open');
+        if (outdoors) outdoors.classList.remove('open');
+        if (popup) popup.classList.toggle('open');
 
-        if (res.status === 204 || res.status > 400) {
-          document.getElementById('sp-song-name').textContent = 'not playing anything';
-          document.getElementById('sp-artist-name').textContent = 'spotify is quiet right now';
-          document.getElementById('sp-art').innerHTML = '🎵';
-          document.getElementById('sp-status').style.opacity = '0.3';
-          document.getElementById('sp-progress-bar').style.width = '0%';
-          document.getElementById('sp-time-current').textContent = '0:00';
-          document.getElementById('sp-time-total').textContent = '0:00';
-          return;
+        if (popup && popup.classList.contains('open')) {
+          fetchSpotifyNowPlaying();
         }
-
-        const data = await res.json();
-        const isPlaying = data.is_playing;
-        const songName = data.item.name;
-        const artistName = data.item.artists.map(a => a.name).join(', ');
-        const albumArt = data.item.album.images[0]?.url;
-        const duration = data.item.duration_ms;
-        const progress = data.progress_ms;
-
-        document.getElementById('sp-song-name').textContent = songName;
-        document.getElementById('sp-artist-name').textContent = artistName;
-        document.getElementById('sp-art').innerHTML = `<img decoding="async" src="${albumArt}" style="width:100%;height:100%;border-radius:4px;object-fit:cover;">`;
-        document.getElementById('sp-status').style.opacity = isPlaying ? '1' : '0.5';
-
-        // Progress bar and times
-        const formatTime = (ms) => {
-          const totalSeconds = Math.floor(ms / 1000);
-          const m = Math.floor(totalSeconds / 60);
-          const s = (totalSeconds % 60).toString().padStart(2, '0');
-          return `${m}:${s}`;
-        };
-        document.getElementById('sp-time-current').textContent = formatTime(progress);
-        document.getElementById('sp-time-total').textContent = formatTime(duration);
-        document.getElementById('sp-progress-bar').style.width = (progress / duration) * 100 + '%';
-        document.getElementById('sp-footer').textContent = '🎵 live from spotify api';
-
-      } catch (err) {
-        console.error('Spotify fetch error:', err);
       }
-    }
 
-    // Automatically fetch once on load
-    fetchSpotifyNowPlaying();
+      // ══════════════════════════════════════════════════
+      //  SPOTIFY API INTEGRATION
+      // ══════════════════════════════════════════════════
+      // Note: The access token is hardcoded for demonstration but will expire in 1 hour.
+      const SPOTIFY_ACCESS_TOKEN = 'BQAcj4Z26gigg1TjBg7eC3z74rwUQ74IIQe1JoK9v8ACuuIcB9PQkQ4h4jYyHaxjl9PG99Z78TPzHruy8r0XrbCzrJrdy55Xf_A-psWn-iU4gcdGADqtLfmzmb6u4k8u2mi0UV5JhvdzwYMlUGL1iouUbKTKp57OShzBiIerfpksUu0pXFVZl-pob8caOAAHtWHp3L_sUFXIUCIUc38zhNFDh6_mlD6j0H96WtCUbPgDUIrKeM665aWkwAwR';
 
-    // Close popups on Escape key
-    window.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        ['beliPopup', 'outdoorsPopup', 'spotifyPopup'].forEach(id => {
-          document.getElementById(id)?.classList.remove('open');
-        });
-      }
-    });
-
-    // ══════════════════════════════════════════════════
-    //  HERO CAROUSEL
-    // ══════════════════════════════════════════════════
-    let curSlide = 0;
-    const totalSlides = document.querySelectorAll('.photo-slide').length || 5;
-    let autoTimer = null;
-
-    function showSlide(idx) {
-      curSlide = (idx + totalSlides) % totalSlides;
-      document.querySelectorAll('.photo-slide').forEach((s, i) => {
-        s.classList.toggle('active', i === curSlide);
-      });
-      document.querySelectorAll('.carousel-dot').forEach((d, i) => {
-        d.classList.toggle('active', i === curSlide);
-      });
-    }
-
-    function carouselNext() { showSlide(curSlide + 1); resetTimer(); }
-    function carouselPrev() { showSlide(curSlide - 1); resetTimer(); }
-    function goSlide(i) { showSlide(i); resetTimer(); }
-
-    function resetTimer() {
-      clearInterval(autoTimer);
-      autoTimer = setInterval(() => { showSlide(curSlide + 1); }, 4500);
-    }
-    resetTimer();
-
-    // ══════════════════════════════════════════════════
-    //  BOIDS SWARM (INTERACTIVE WITH AGENTS, SPEED & MODES)
-    // ══════════════════════════════════════════════════
-    let setBoidCount = null;
-    let setBoidSpeed = null;
-    let setBoidMode = null;
-
-    new p5(function (p) {
-      let boids = [], t = 0, lastTime = 0, fps = 0;
-      let curCount = 60;
-      let curSpeed = 3.0;
-      let curMode = 'flock'; // 'flock', 'scatter', 'attract'
-
-      setBoidCount = function (n) {
-        curCount = n;
-        document.querySelectorAll('[id^="sbtn-n"]').forEach(b => b.classList.remove('active'));
-        document.getElementById('sbtn-n' + n)?.classList.add('active');
-        while (boids.length < curCount) boids.push(new Boid());
-        while (boids.length > curCount) boids.pop();
-      };
-
-      setBoidSpeed = function (spd) {
-        curSpeed = spd;
-        document.querySelectorAll('[id^="sbtn-spd"]').forEach(b => b.classList.remove('active'));
-        if (spd < 2) document.getElementById('sbtn-spd05')?.classList.add('active');
-        else if (spd < 4) document.getElementById('sbtn-spd1')?.classList.add('active');
-        else document.getElementById('sbtn-spd2')?.classList.add('active');
-      };
-
-      setBoidMode = function (m) {
-        curMode = m;
-        ['flock', 'scatter', 'attract'].forEach(id => {
-          document.getElementById('sbtn-' + id)?.classList.toggle('active', id === m);
-        });
-      };
-
-      p.setup = function () {
-        let el = document.getElementById('robot-canvas-wrap');
-        let w = el ? el.offsetWidth : 400;
-        let h = el ? el.offsetHeight : 520;
-        let c = p.createCanvas(w, h);
-        c.parent('robot-canvas-wrap');
-        p.colorMode(p.RGB, 255, 255, 255, 255);
-        for (let i = 0; i < curCount; i++) boids.push(new Boid());
-
-        if (window.ResizeObserver && el) {
-          const ro = new ResizeObserver(() => {
-            if (el.offsetWidth && el.offsetHeight) {
-              p.resizeCanvas(el.offsetWidth, el.offsetHeight);
-            }
+      async function fetchSpotifyNowPlaying() {
+        try {
+          const res = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+            headers: { 'Authorization': 'Bearer ' + SPOTIFY_ACCESS_TOKEN }
           });
-          ro.observe(el);
-        }
-      };
 
-      p.windowResized = function () {
-        let el = document.getElementById('robot-canvas-wrap');
-        if (el) p.resizeCanvas(el.offsetWidth, el.offsetHeight);
-      };
-
-      p.draw = function () {
-        let now = Date.now();
-        fps = Math.round(1000 / (now - lastTime || 16));
-        lastTime = now;
-        const statEl = document.getElementById('rob-stats');
-        if (statEl) statEl.textContent = `fps: ${fps} · agents: ${boids.length}`;
-
-        p.fill(12, 12, 18, 40);
-        p.noStroke();
-        p.rect(0, 0, p.width, p.height);
-
-        // Grid lines
-        p.stroke(74, 222, 128, 8);
-        p.strokeWeight(0.5);
-        let gs = 40;
-        for (let x = 0; x < p.width; x += gs) p.line(x, 0, x, p.height);
-        for (let y = 0; y < p.height; y += gs) p.line(0, y, p.width, y);
-
-        // Mouse hover interaction indicator
-        const mouseIn = (p.mouseX >= 0 && p.mouseX <= p.width && p.mouseY >= 0 && p.mouseY <= p.height);
-        if (mouseIn) {
-          p.noFill();
-          if (curMode === 'scatter') {
-            p.stroke(251, 146, 60, 60);
-            p.ellipse(p.mouseX, p.mouseY, 70, 70);
-          } else if (curMode === 'attract') {
-            p.stroke(52, 211, 153, 70);
-            p.ellipse(p.mouseX, p.mouseY, 50, 50);
+          if (res.status === 204 || res.status > 400) {
+            document.getElementById('sp-song-name').textContent = 'not playing anything';
+            document.getElementById('sp-artist-name').textContent = 'spotify is quiet right now';
+            document.getElementById('sp-art').innerHTML = '🎵';
+            document.getElementById('sp-status').style.opacity = '0.3';
+            document.getElementById('sp-progress-bar').style.width = '0%';
+            document.getElementById('sp-time-current').textContent = '0:00';
+            document.getElementById('sp-time-total').textContent = '0:00';
+            return;
           }
-        }
 
-        boids.forEach(b => {
-          b.maxS = curSpeed;
-          b.flock(boids, mouseIn);
-          b.update();
-          b.show();
-        });
-        t += 0.01;
-      };
+          const data = await res.json();
+          const isPlaying = data.is_playing;
+          const songName = data.item.name;
+          const artistName = data.item.artists.map(a => a.name).join(', ');
+          const albumArt = data.item.album.images[0]?.url;
+          const duration = data.item.duration_ms;
+          const progress = data.progress_ms;
 
-      class Boid {
-        constructor() {
-          this.pos = p.createVector(p.random(p.width), p.random(p.height));
-          this.vel = p5.Vector.random2D().mult(p.random(1.2, 2.5));
-          this.acc = p.createVector();
-          this.maxF = 0.07;
-          this.maxS = curSpeed;
-          this.sz = p.random(3, 5);
-        }
-        flock(others, mouseIn) {
-          let sep = p.createVector(), ali = p.createVector(), coh = p.createVector();
-          let ns = 0, na = 0, nc = 0;
-          for (let o of others) {
-            if (o === this) continue;
-            let d = p5.Vector.dist(this.pos, o.pos);
-            if (d < 24) { let r = p5.Vector.sub(this.pos, o.pos).div(d); sep.add(r); ns++; }
-            if (d < 50) { ali.add(o.vel); na++; }
-            if (d < 60) { coh.add(o.pos); nc++; }
-          }
-          if (ns) { sep.div(ns).setMag(this.maxS).sub(this.vel).limit(this.maxF * 1.6); this.acc.add(sep); }
-          if (na) { ali.div(na).setMag(this.maxS).sub(this.vel).limit(this.maxF); this.acc.add(ali); }
-          if (nc) { coh.div(nc).sub(this.pos).setMag(this.maxS).sub(this.vel).limit(this.maxF * 0.8); this.acc.add(coh); }
+          document.getElementById('sp-song-name').textContent = songName;
+          document.getElementById('sp-artist-name').textContent = artistName;
+          document.getElementById('sp-art').innerHTML = `<img decoding="async" src="${albumArt}" style="width:100%;height:100%;border-radius:4px;object-fit:cover;">`;
+          document.getElementById('sp-status').style.opacity = isPlaying ? '1' : '0.5';
 
-          // Mouse influence
-          if (mouseIn) {
-            let m = p.createVector(p.mouseX, p.mouseY);
-            let d = p5.Vector.dist(this.pos, m);
-            if (curMode === 'scatter' && d < 120) {
-              let repel = p5.Vector.sub(this.pos, m).setMag(this.maxS * 1.5).sub(this.vel).limit(this.maxF * 2.5);
-              this.acc.add(repel);
-            } else if (curMode === 'attract' && d < 220) {
-              let pull = p5.Vector.sub(m, this.pos).setMag(this.maxS).sub(this.vel).limit(this.maxF * 1.8);
-              this.acc.add(pull);
-            }
-          }
-        }
-        update() {
-          this.vel.add(this.acc).limit(this.maxS);
-          this.pos.add(this.vel);
-          this.acc.set(0, 0);
-          if (this.pos.x < 0) this.pos.x = p.width;
-          if (this.pos.x > p.width) this.pos.x = 0;
-          if (this.pos.y < 0) this.pos.y = p.height;
-          if (this.pos.y > p.height) this.pos.y = 0;
-        }
-        show() {
-          p.push();
-          p.translate(this.pos.x, this.pos.y);
-          p.rotate(this.vel.heading());
-          let spd = this.vel.mag(), alpha = p.map(spd, 0, this.maxS, 80, 230);
-          p.fill(74, 222, 128, alpha);
-          p.noStroke();
-          p.triangle(this.sz * 1.6, 0, -this.sz, -this.sz * 0.6, -this.sz, this.sz * 0.6);
-          p.stroke(74, 222, 128, alpha * 0.25);
-          p.strokeWeight(0.6);
-          p.line(0, 0, -this.sz * 3, 0);
-          p.pop();
+          // Progress bar and times
+          const formatTime = (ms) => {
+            const totalSeconds = Math.floor(ms / 1000);
+            const m = Math.floor(totalSeconds / 60);
+            const s = (totalSeconds % 60).toString().padStart(2, '0');
+            return `${m}:${s}`;
+          };
+          document.getElementById('sp-time-current').textContent = formatTime(progress);
+          document.getElementById('sp-time-total').textContent = formatTime(duration);
+          document.getElementById('sp-progress-bar').style.width = (progress / duration) * 100 + '%';
+          document.getElementById('sp-footer').textContent = '🎵 live from spotify api';
+
+        } catch (err) {
+          console.error('Spotify fetch error:', err);
         }
       }
-    });
 
-    // ══════════════════════════════════════════════════
-    //  PROJECT CANVAS BACKGROUNDS
-    // ══════════════════════════════════════════════════
-    function makeProjectBg(parentId, color, style) {
+      // Automatically fetch once on load
+      fetchSpotifyNowPlaying();
+
+      // Close popups on Escape key
+      window.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          ['beliPopup', 'outdoorsPopup', 'spotifyPopup'].forEach(id => {
+            document.getElementById(id)?.classList.remove('open');
+          });
+        }
+      });
+
+      // ══════════════════════════════════════════════════
+      //  HERO CAROUSEL
+      // ══════════════════════════════════════════════════
+      let curSlide = 0;
+      const totalSlides = document.querySelectorAll('.photo-slide').length || 5;
+      let autoTimer = null;
+
+      function showSlide(idx) {
+        curSlide = (idx + totalSlides) % totalSlides;
+        document.querySelectorAll('.photo-slide').forEach((s, i) => {
+          s.classList.toggle('active', i === curSlide);
+        });
+        document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === curSlide);
+        });
+      }
+
+      function carouselNext() { showSlide(curSlide + 1); resetTimer(); }
+      function carouselPrev() { showSlide(curSlide - 1); resetTimer(); }
+      function goSlide(i) { showSlide(i); resetTimer(); }
+
+      function resetTimer() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => { showSlide(curSlide + 1); }, 4500);
+      }
+      resetTimer();
+
+      // ══════════════════════════════════════════════════
+      //  BOIDS SWARM (INTERACTIVE WITH AGENTS, SPEED & MODES)
+      // ══════════════════════════════════════════════════
+      let setBoidCount = null;
+      let setBoidSpeed = null;
+      let setBoidMode = null;
+
       new p5(function (p) {
-        let t = 0;
+        let boids = [], t = 0, lastTime = 0, fps = 0;
+        let curCount = 60;
+        let curSpeed = 3.0;
+        let curMode = 'flock'; // 'flock', 'scatter', 'attract'
+
+        setBoidCount = function (n) {
+          curCount = n;
+          document.querySelectorAll('[id^="sbtn-n"]').forEach(b => b.classList.remove('active'));
+          document.getElementById('sbtn-n' + n)?.classList.add('active');
+          while (boids.length < curCount) boids.push(new Boid());
+          while (boids.length > curCount) boids.pop();
+        };
+
+        setBoidSpeed = function (spd) {
+          curSpeed = spd;
+          document.querySelectorAll('[id^="sbtn-spd"]').forEach(b => b.classList.remove('active'));
+          if (spd < 2) document.getElementById('sbtn-spd05')?.classList.add('active');
+          else if (spd < 4) document.getElementById('sbtn-spd1')?.classList.add('active');
+          else document.getElementById('sbtn-spd2')?.classList.add('active');
+        };
+
+        setBoidMode = function (m) {
+          curMode = m;
+          ['flock', 'scatter', 'attract'].forEach(id => {
+            document.getElementById('sbtn-' + id)?.classList.toggle('active', id === m);
+          });
+        };
+
         p.setup = function () {
-          let el = document.getElementById(parentId);
-          if (!el) return;
-          let c = p.createCanvas(el.offsetWidth || 500, el.offsetHeight || 180);
-          c.parent(parentId);
+          let el = document.getElementById('robot-canvas-wrap');
+          let w = el ? el.offsetWidth : 400;
+          let h = el ? el.offsetHeight : 520;
+          let c = p.createCanvas(w, h);
+          c.parent('robot-canvas-wrap');
           p.colorMode(p.RGB, 255, 255, 255, 255);
-        };
-        p.windowResized = function () {
-          let el = document.getElementById(parentId);
-          if (el) p.resizeCanvas(el.offsetWidth, el.offsetHeight);
-        };
-        p.draw = function () {
-          t += 0.015;
-          p.background(14, 14, 22, 30);
-          let col = p.color(color);
-          let cr = p.red(col), cg = p.green(col), cb = p.blue(col);
+          for (let i = 0; i < curCount; i++) boids.push(new Boid());
 
-          if (style === 'distill') {
-            // Edge <-> Cloud data distillation flow
-            p.stroke(cr, cg, cb, 35);
-            p.strokeWeight(1);
-            for (let i = 0; i < 4; i++) {
-              let y = p.height * (0.25 + i * 0.18);
-              p.line(p.width * 0.1, y, p.width * 0.9, y);
-            }
-            // Switcher router node
-            let sx = p.width * 0.48, sy = p.height * 0.5;
-            p.fill(cr, cg, cb, 180);
-            p.noStroke();
-            p.ellipse(sx, sy, 14, 14);
-            p.stroke(cr, cg, cb, 90);
-            p.noFill();
-            p.ellipse(sx, sy, 24 + p.sin(t * 3) * 6, 24 + p.sin(t * 3) * 6);
-            // Particle pulses
-            for (let k = 0; k < 6; k++) {
-              let px = (t * 120 + k * 80) % (p.width * 0.8) + p.width * 0.1;
-              let py = p.height * 0.5 + p.sin(px * 0.03 + t) * 20;
-              p.fill(cr, cg, cb, 140);
-              p.noStroke();
-              p.ellipse(px, py, 5, 5);
-            }
-            p.fill(cr, cg, cb, 180);
-            p.textSize(9);
-            p.textFont('monospace');
-            p.text('DMD SWITCHER ROUTING', p.width * 0.1, p.height * 0.88);
-
-          } else if (style === 'pose') {
-            // skeleton pose dots
-            p.noStroke();
-            const joints = [[0.3, 0.2], [0.3, 0.35], [0.2, 0.5], [0.4, 0.5], [0.25, 0.7], [0.35, 0.7], [0.3, 0.12]];
-            joints.forEach((j, i) => {
-              let px = j[0] * p.width + p.sin(t + i) * 8;
-              let py = j[1] * p.height + p.cos(t * 0.7 + i) * 6;
-              p.fill(cr, cg, cb, 150);
-              p.ellipse(px, py, 8, 8);
-            });
-            // connections
-            const conns = [[0, 1], [1, 2], [1, 3], [2, 4], [3, 5], [0, 6]];
-            p.stroke(cr, cg, cb, 60);
-            p.strokeWeight(1.5);
-            conns.forEach(([a, b]) => {
-              let ax = joints[a][0] * p.width + p.sin(t + a) * 8, ay = joints[a][1] * p.height + p.cos(t * 0.7 + a) * 6;
-              let bx = joints[b][0] * p.width + p.sin(t + b) * 8, by = joints[b][1] * p.height + p.cos(t * 0.7 + b) * 6;
-              p.line(ax, ay, bx, by);
-            });
-            // detection box
-            p.noFill();
-            p.stroke(cr, cg, cb, 100);
-            p.strokeWeight(1.5);
-            p.rect(0.12 * p.width, 0.08 * p.height, 0.36 * p.width, 0.7 * p.height, 4);
-            let pulse = 0.5 + 0.5 * p.sin(t * 4);
-            p.fill(cr, cg, cb, 180 * pulse);
-            p.noStroke();
-            p.textSize(9);
-            p.textFont('monospace');
-            p.text('FALL DETECTED', 0.12 * p.width + 4, 0.08 * p.height + 14);
-
-          } else if (style === 'tipper') {
-            // Mechanical latch kinematic linkage
-            let ox = p.width * 0.4, oy = p.height * 0.7;
-            let ang = p.sin(t * 2) * 0.4 - 0.4;
-            let armLen = 70;
-            let jx = ox + p.cos(ang) * armLen;
-            let jy = oy + p.sin(ang) * armLen;
-            let hookX = jx + p.cos(ang + 0.8) * 35;
-            let hookY = jy + p.sin(ang + 0.8) * 35;
-
-            p.stroke(cr, cg, cb, 120);
-            p.strokeWeight(3);
-            p.line(ox, oy, jx, jy);
-            p.line(jx, jy, hookX, hookY);
-
-            p.fill(cr, cg, cb, 200);
-            p.noStroke();
-            p.ellipse(ox, oy, 8, 8);
-            p.ellipse(jx, jy, 6, 6);
-            p.ellipse(hookX, hookY, 6, 6);
-
-            // Goal clamp silhouette
-            p.stroke(cr, cg, cb, 45);
-            p.noFill();
-            p.rect(ox - 30, oy - 20, 60, 40, 6);
-            p.fill(cr, cg, cb, 160);
-            p.textSize(9);
-            p.textFont('monospace');
-            p.text('TIPPER LATCH LINKAGE', p.width * 0.1, p.height * 0.88);
-
-          } else if (style === 'winch') {
-            // High-Tier Winch Elevation Spool + Cable
-            let cx = p.width * 0.5, cy = p.height * 0.45;
-            p.stroke(cr, cg, cb, 80);
-            p.noFill();
-            p.ellipse(cx, cy, 36, 36);
-            p.ellipse(cx, cy, 18, 18);
-            // Spool spokes rotating
-            for (let a = 0; a < 4; a++) {
-              let rot = t * 3 + a * (p.PI / 2);
-              p.line(cx, cy, cx + p.cos(rot) * 18, cy + p.sin(rot) * 18);
-            }
-            // Winch cable
-            let cableY = cy + 18 + (p.sin(t * 2) * 15);
-            p.stroke(cr, cg, cb, 140);
-            p.strokeWeight(2);
-            p.line(cx + 18, cy, cx + 18, cableY);
-            p.fill(cr, cg, cb, 180);
-            p.noStroke();
-            p.triangle(cx + 14, cableY, cx + 22, cableY, cx + 18, cableY + 10);
-            p.textSize(9);
-            p.textFont('monospace');
-            p.text('H-TIER WINCH SPOOL', p.width * 0.1, p.height * 0.88);
-
-          } else if (style === 'plane') {
-            // runway lines
-            p.stroke(cr, cg, cb, 40);
-            p.strokeWeight(1);
-            for (let y = 0; y < p.height; y += 20) {
-              let offset = (t * 60) % 40;
-              p.line(p.width * 0.3, y - offset, p.width * 0.3, y - offset + 12);
-              p.line(p.width * 0.7, y - offset, p.width * 0.7, y - offset + 12);
-            }
-            // plane silhouette
-            let planX = p.width * 0.5 + p.sin(t) * 40;
-            let planY = p.height * (0.5 - t * 0.02 % 0.5);
-            p.push();
-            p.translate(planX, planY);
-            p.rotate(-0.3);
-            p.fill(cr, cg, cb, 120);
-            p.noStroke();
-            p.ellipse(0, 0, 40, 10);
-            p.triangle(14, 0, 24, -8, 24, 8);
-            p.rect(-20, -2, 8, 4);
-            p.pop();
-            // neural net nodes
-            let layers = [3, 4, 4, 2];
-            let x0 = p.width * 0.55;
-            layers.forEach((nodes, li) => {
-              let lx = x0 + li * (p.width * 0.11);
-              for (let n = 0; n < nodes; n++) {
-                let ly = p.height * (0.2 + n * (0.6 / (nodes - 1 || 1)));
-                p.fill(cr, cg, cb, 100);
-                p.noStroke();
-                p.ellipse(lx, ly, 7, 7);
-                if (li < layers.length - 1) {
-                  for (let n2 = 0; n2 < layers[li + 1]; n2++) {
-                    let lx2 = x0 + (li + 1) * (p.width * 0.11);
-                    let ly2 = p.height * (0.2 + n2 * (0.6 / (layers[li + 1] - 1 || 1)));
-                    p.stroke(cr, cg, cb, 20);
-                    p.strokeWeight(0.6);
-                    p.line(lx, ly, lx2, ly2);
-                  }
-                }
+          if (window.ResizeObserver && el) {
+            const ro = new ResizeObserver(() => {
+              if (el.offsetWidth && el.offsetHeight) {
+                p.resizeCanvas(el.offsetWidth, el.offsetHeight);
               }
             });
+            ro.observe(el);
           }
         };
-      });
-    }
-    // Init after DOM is ready
-    setTimeout(() => {
-      makeProjectBg('proj-canvas-1', '#a78bfa', 'distill');
-      makeProjectBg('proj-canvas-2', '#60a5fa', 'pose');
-      makeProjectBg('proj-canvas-3', '#34d399', 'tipper');
-      makeProjectBg('proj-canvas-4', '#fb923c', 'winch');
-      makeProjectBg('proj-canvas-5', '#38bdf8', 'plane');
-    }, 200);
 
-    // ══════════════════════════════════════════════════
-    //  THREE.JS CAD VIEWER (WITH 2-ROBOT SWITCHER)
-    // ══════════════════════════════════════════════════
-    let switchRobotModel = null;
-    let resetCamera = null;
-    let toggleWireframe = null;
-    let toggleAutoRotate = null;
-    let loadUserModel = null;
+        p.windowResized = function () {
+          let el = document.getElementById('robot-canvas-wrap');
+          if (el) p.resizeCanvas(el.offsetWidth, el.offsetHeight);
+        };
 
-    (function initThreeJS() {
-      const canvas = document.getElementById('threejs-canvas');
-      if (!canvas) return;
-      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-      renderer.setSize(canvas.parentElement.offsetWidth, canvas.parentElement.offsetHeight);
-      renderer.outputEncoding = THREE.sRGBEncoding;
-      renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.1;
-      renderer.shadowMap.enabled = false;
-      renderer.setClearColor(0x090912, 1);
+        p.draw = function () {
+          let now = Date.now();
+          fps = Math.round(1000 / (now - lastTime || 16));
+          lastTime = now;
+          const statEl = document.getElementById('rob-stats');
+          if (statEl) statEl.textContent = `fps: ${fps} · agents: ${boids.length}`;
 
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(45, canvas.parentElement.offsetWidth / canvas.parentElement.offsetHeight, 0.1, 1000);
-      camera.position.set(3.5, 2.8, 4.5);
+          p.fill(12, 12, 18, 40);
+          p.noStroke();
+          p.rect(0, 0, p.width, p.height);
 
-      // Lighting
-      const ambient = new THREE.AmbientLight(0xffffff, 0.6);
-      scene.add(ambient);
-      const key = new THREE.DirectionalLight(0xffffff, 1.2);
-      key.position.set(5, 8, 6);
-      scene.add(key);
-      const fill = new THREE.DirectionalLight(0xa78bfa, 0.4);
-      fill.position.set(-4, 3, -5);
-      scene.add(fill);
-      const rim = new THREE.DirectionalLight(0x38bdf8, 0.3);
-      rim.position.set(0, -4, -6);
-      scene.add(rim);
+          // Grid lines
+          p.stroke(74, 222, 128, 8);
+          p.strokeWeight(0.5);
+          let gs = 40;
+          for (let x = 0; x < p.width; x += gs) p.line(x, 0, x, p.height);
+          for (let y = 0; y < p.height; y += gs) p.line(0, y, p.width, y);
 
-      // Grid
-      const grid = new THREE.GridHelper(10, 20, 0x223344, 0x141426);
-      grid.position.y = -0.01;
-      scene.add(grid);
-
-      let activeModel = null;
-      let currentRobotKey = '2025-worlds';
-      let isWireframe = false;
-
-      // ─── ROBOT 1: 95071X (2024 OVER UNDER - TRANSMISSION WINCH) ───
-      function build2024Robot() {
-        const g = new THREE.Group();
-        const metalMat = new THREE.MeshLambertMaterial({ color: 0x242436, wireframe: isWireframe });
-        const orangeMat = new THREE.MeshLambertMaterial({ color: 0xfb923c, emissive: 0x431407, wireframe: isWireframe });
-        const purpleMat = new THREE.MeshLambertMaterial({ color: 0xa78bfa, wireframe: isWireframe });
-
-        // Compact High-Speed Drive Base
-        const chassis = new THREE.Mesh(new THREE.BoxGeometry(1.7, 0.22, 1.8), metalMat);
-        chassis.position.y = 0.28; g.add(chassis);
-
-        // Wheels
-        [[-0.9, 0.6], [-0.9, -0.6], [0.9, 0.6], [0.9, -0.6]].forEach(([x, z]) => {
-          const w = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.16, 24), metalMat);
-          w.rotation.z = Math.PI / 2;
-          w.position.set(x, 0.32, z);
-          g.add(w);
-        });
-
-        // Dual Transmission PTO Gearbox Housing
-        const ptoBox = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.6, 0.8), purpleMat);
-        ptoBox.position.set(0, 0.65, 0); g.add(ptoBox);
-
-        // High-Elevation Winch Spool
-        const spool = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.22, 0.5, 20), orangeMat);
-        spool.rotation.z = Math.PI / 2;
-        spool.position.set(0, 0.8, 0); g.add(spool);
-
-        // H-Tier Winch Telescoping Mast
-        const mast = new THREE.Mesh(new THREE.BoxGeometry(0.18, 2.1, 0.18), orangeMat);
-        mast.position.set(0, 1.6, -0.2);
-        g.add(mast);
-
-        // C-Tier Cross-bar Hybrid Climb Arm
-        const climbHook = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.12, 0.5), purpleMat);
-        climbHook.position.set(0, 2.65, -0.1);
-        g.add(climbHook);
-
-        // Polycarbonate Wings (Left & Right)
-        const wingL = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.7, 0.9), orangeMat);
-        wingL.position.set(-0.95, 0.65, -0.2);
-        wingL.rotation.y = 0.3;
-        g.add(wingL);
-
-        const wingR = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.7, 0.9), orangeMat);
-        wingR.position.set(0.95, 0.65, -0.2);
-        wingR.rotation.y = -0.3;
-        g.add(wingR);
-
-        updateStats(g, '95071X · 2024 Over Under (Transmission Winch Robot)');
-        return g;
-      }
-
-      // ─── ROBOT 2: 95071X (2025 HIGH STAKES - WORLDS TIPPER LATCH) ───
-      function build2025WorldsRobot() {
-        const g = new THREE.Group();
-        const frameMat = new THREE.MeshLambertMaterial({ color: 0x1e293b, wireframe: isWireframe });
-        const cyanMat = new THREE.MeshLambertMaterial({ color: 0x34d399, emissive: 0x052e16, wireframe: isWireframe });
-        const pneuMat = new THREE.MeshLambertMaterial({ color: 0x60a5fa, wireframe: isWireframe });
-        const goldMat = new THREE.MeshLambertMaterial({ color: 0xf59e0b, wireframe: isWireframe });
-
-        // Chassis Drivetrain Base (6 omni wheels)
-        const base = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.25, 2.0), frameMat);
-        base.position.y = 0.3; g.add(base);
-
-        // 6 Omni Wheels
-        [[-0.95, 0.7], [-0.95, 0], [-0.95, -0.7], [0.95, 0.7], [0.95, 0], [0.95, -0.7]].forEach(([x, z]) => {
-          const wheel = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.15, 24), frameMat);
-          wheel.rotation.z = Math.PI / 2;
-          wheel.position.set(x, 0.3, z);
-          g.add(wheel);
-        });
-
-        // Mobile Goal Clamp Towers
-        const clampL = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.9, 0.18), frameMat);
-        clampL.position.set(-0.6, 0.8, 0.75); g.add(clampL);
-        const clampR = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.9, 0.18), frameMat);
-        clampR.position.set(0.6, 0.8, 0.75); g.add(clampR);
-
-        // Breakthrough "Tipper Latch" Mechanism
-        const latchArm = new THREE.Mesh(new THREE.BoxGeometry(0.12, 1.4, 0.12), cyanMat);
-        latchArm.position.set(0, 1.1, 0.95);
-        latchArm.rotation.x = -0.45;
-        g.add(latchArm);
-
-        const hook = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.1, 0.4), goldMat);
-        hook.position.set(0, 1.7, 1.25);
-        hook.rotation.x = 0.2;
-        g.add(hook);
-
-        // Pneumatic Double Cylinders
-        const cyl1 = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.6, 16), pneuMat);
-        cyl1.position.set(-0.3, 0.9, 0.85); cyl1.rotation.x = -0.3; g.add(cyl1);
-        const cyl2 = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.6, 16), pneuMat);
-        cyl2.position.set(0.3, 0.9, 0.85); cyl2.rotation.x = -0.3; g.add(cyl2);
-
-        // Ring Intake Hopper & Rollers
-        const intakeRamp = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.08, 1.4), cyanMat);
-        intakeRamp.position.set(0, 0.9, -0.2);
-        intakeRamp.rotation.x = 0.35;
-        g.add(intakeRamp);
-
-        // Anodized Standoffs
-        for (let i = -0.5; i <= 0.5; i += 0.5) {
-          const post = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.2, 8), goldMat);
-          post.position.set(i, 0.9, -0.8);
-          g.add(post);
-        }
-
-        updateStats(g, '95071X · 2025 High Stakes (Worlds Semifinalist Tipper Latch)');
-        return g;
-      }
-
-      // ─── ROBOT 3: 95071X (2025 EARLY ORIGINAL TIPPER ITERATION) ───
-      function build2025EarlyTipperRobot() {
-        const g = new THREE.Group();
-        const rawAlumMat = new THREE.MeshLambertMaterial({ color: 0x94a3b8, wireframe: isWireframe });
-        const purpleMat = new THREE.MeshLambertMaterial({ color: 0xa78bfa, emissive: 0x2e1065, wireframe: isWireframe });
-        const redMat = new THREE.MeshLambertMaterial({ color: 0xf43f5e, wireframe: isWireframe });
-        const brassMat = new THREE.MeshLambertMaterial({ color: 0xd97706, wireframe: isWireframe });
-
-        // Raw Prototype Channel Chassis
-        const frame = new THREE.Mesh(new THREE.BoxGeometry(1.75, 0.2, 1.9), rawAlumMat);
-        frame.position.y = 0.28; g.add(frame);
-
-        // Prototype Wheels
-        [[-0.92, 0.65], [-0.92, -0.65], [0.92, 0.65], [0.92, -0.65]].forEach(([x, z]) => {
-          const w = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.16, 24), rawAlumMat);
-          w.rotation.z = Math.PI / 2;
-          w.position.set(x, 0.3, z);
-          g.add(w);
-        });
-
-        // Early Single Pivot High Tipper Tower
-        const pivotTower = new THREE.Mesh(new THREE.BoxGeometry(0.2, 1.3, 0.2), rawAlumMat);
-        pivotTower.position.set(0, 0.95, 0.6); g.add(pivotTower);
-
-        // First-Gen Long Pivot Tipper Arm
-        const earlyArm = new THREE.Mesh(new THREE.BoxGeometry(0.14, 1.6, 0.14), redMat);
-        earlyArm.position.set(0, 1.25, 0.85);
-        earlyArm.rotation.x = -0.55;
-        g.add(earlyArm);
-
-        // Prototype Tipper Latch Hook
-        const protoHook = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.12, 0.35), brassMat);
-        protoHook.position.set(0, 1.95, 1.3);
-        protoHook.rotation.x = 0.35;
-        g.add(protoHook);
-
-        // Single Long Stroke Cylinder
-        const singleCyl = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.85, 16), purpleMat);
-        singleCyl.position.set(0, 0.85, 0.7);
-        singleCyl.rotation.x = -0.4;
-        g.add(singleCyl);
-
-        // Exposed Prototype Spur Gears
-        const gear1 = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.08, 18), brassMat);
-        gear1.rotation.z = Math.PI / 2;
-        gear1.position.set(-0.4, 0.65, -0.2);
-        g.add(gear1);
-
-        const gear2 = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 0.08, 14), purpleMat);
-        gear2.rotation.z = Math.PI / 2;
-        gear2.position.set(-0.4, 0.95, -0.2);
-        g.add(gear2);
-
-        // Early Top Ring Scoop
-        const topScoop = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.06, 1.1), purpleMat);
-        topScoop.position.set(0, 0.95, -0.35);
-        topScoop.rotation.x = 0.45;
-        g.add(topScoop);
-
-        updateStats(g, '95071X · 2025 High Stakes (Early Original Tipper Iteration)');
-        return g;
-      }
-
-      // ─── ROBOT 4: 95071X (2026 COMPETITION BUILD - LATEST DIRECT DRIVE) ───
-      function build2026Robot() {
-        const g = new THREE.Group();
-        const onyxMat = new THREE.MeshLambertMaterial({ color: 0x0f172a, wireframe: isWireframe });
-        const cyanMat = new THREE.MeshLambertMaterial({ color: 0x38bdf8, emissive: 0x082f49, wireframe: isWireframe });
-        const emeraldMat = new THREE.MeshLambertMaterial({ color: 0x10b981, emissive: 0x022c22, wireframe: isWireframe });
-        const goldMat = new THREE.MeshLambertMaterial({ color: 0xf59e0b, wireframe: isWireframe });
-
-        // Ultra-low CG CNC Carbon-Onyx Chassis
-        const lowChassis = new THREE.Mesh(new THREE.BoxGeometry(1.85, 0.18, 2.05), onyxMat);
-        lowChassis.position.y = 0.24; g.add(lowChassis);
-
-        // 8 Direct Drive High-Traction Wheels
-        [[-0.96, 0.75], [-0.96, 0.25], [-0.96, -0.25], [-0.96, -0.75],
-        [0.96, 0.75], [0.96, 0.25], [0.96, -0.25], [0.96, -0.75]].forEach(([x, z]) => {
-          const w = new THREE.Mesh(new THREE.CylinderGeometry(0.26, 0.26, 0.14, 24), onyxMat);
-          w.rotation.z = Math.PI / 2;
-          w.position.set(x, 0.26, z);
-          g.add(w);
-        });
-
-        // Floating Dual-Roller Polycord Intake System
-        const roller1 = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.09, 1.4, 20), cyanMat);
-        roller1.rotation.z = Math.PI / 2;
-        roller1.position.set(0, 0.5, 0.95);
-        g.add(roller1);
-
-        const roller2 = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.09, 1.4, 20), emeraldMat);
-        roller2.rotation.z = Math.PI / 2;
-        roller2.position.set(0, 0.95, 0.35);
-        g.add(roller2);
-
-        // High-Speed Polycord Belts
-        for (let x = -0.5; x <= 0.5; x += 0.25) {
-          const belt = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.02, 0.75), cyanMat);
-          belt.position.set(x, 0.72, 0.65);
-          belt.rotation.x = -0.65;
-          g.add(belt);
-        }
-
-        // Low-Profile Linear Pneumatic Clamp Assembly
-        const linearClampL = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.55, 0.14), emeraldMat);
-        linearClampL.position.set(-0.55, 0.55, -0.85); g.add(linearClampL);
-        const linearClampR = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.55, 0.14), emeraldMat);
-        linearClampR.position.set(0.55, 0.55, -0.85); g.add(linearClampR);
-
-        // Dual Precision Odometry Tracking Pods
-        const podL = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.08, 16), goldMat);
-        podL.rotation.z = Math.PI / 2;
-        podL.position.set(-0.35, 0.18, 0); g.add(podL);
-        const podR = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.08, 16), goldMat);
-        podR.rotation.z = Math.PI / 2;
-        podR.position.set(0.35, 0.18, 0); g.add(podR);
-
-        // Sensor Mount Mast
-        const mast = new THREE.Mesh(new THREE.BoxGeometry(0.08, 1.2, 0.08), goldMat);
-        mast.position.set(0, 0.85, -0.4); g.add(mast);
-
-        updateStats(g, '95071X · 2026 Competition Robot (Latest Build)');
-        return g;
-      }
-
-      function updateStats(group, name) {
-        let v = 0, f = 0;
-        group.traverse(o => {
-          if (o.isMesh) {
-            v += o.geometry.attributes.position.count;
-            f += (o.geometry.index ? o.geometry.index.count / 3 : o.geometry.attributes.position.count / 3);
+          // Mouse hover interaction indicator
+          const mouseIn = (p.mouseX >= 0 && p.mouseX <= p.width && p.mouseY >= 0 && p.mouseY <= p.height);
+          if (mouseIn) {
+            p.noFill();
+            if (curMode === 'scatter') {
+              p.stroke(251, 146, 60, 60);
+              p.ellipse(p.mouseX, p.mouseY, 70, 70);
+            } else if (curMode === 'attract') {
+              p.stroke(52, 211, 153, 70);
+              p.ellipse(p.mouseX, p.mouseY, 50, 50);
+            }
           }
+
+          boids.forEach(b => {
+            b.maxS = curSpeed;
+            b.flock(boids, mouseIn);
+            b.update();
+            b.show();
+          });
+          t += 0.01;
+        };
+
+        class Boid {
+          constructor() {
+            this.pos = p.createVector(p.random(p.width), p.random(p.height));
+            this.vel = p5.Vector.random2D().mult(p.random(1.2, 2.5));
+            this.acc = p.createVector();
+            this.maxF = 0.07;
+            this.maxS = curSpeed;
+            this.sz = p.random(3, 5);
+          }
+          flock(others, mouseIn) {
+            let sep = p.createVector(), ali = p.createVector(), coh = p.createVector();
+            let ns = 0, na = 0, nc = 0;
+            for (let o of others) {
+              if (o === this) continue;
+              let d = p5.Vector.dist(this.pos, o.pos);
+              if (d < 24) { let r = p5.Vector.sub(this.pos, o.pos).div(d); sep.add(r); ns++; }
+              if (d < 50) { ali.add(o.vel); na++; }
+              if (d < 60) { coh.add(o.pos); nc++; }
+            }
+            if (ns) { sep.div(ns).setMag(this.maxS).sub(this.vel).limit(this.maxF * 1.6); this.acc.add(sep); }
+            if (na) { ali.div(na).setMag(this.maxS).sub(this.vel).limit(this.maxF); this.acc.add(ali); }
+            if (nc) { coh.div(nc).sub(this.pos).setMag(this.maxS).sub(this.vel).limit(this.maxF * 0.8); this.acc.add(coh); }
+
+            // Mouse influence
+            if (mouseIn) {
+              let m = p.createVector(p.mouseX, p.mouseY);
+              let d = p5.Vector.dist(this.pos, m);
+              if (curMode === 'scatter' && d < 120) {
+                let repel = p5.Vector.sub(this.pos, m).setMag(this.maxS * 1.5).sub(this.vel).limit(this.maxF * 2.5);
+                this.acc.add(repel);
+              } else if (curMode === 'attract' && d < 220) {
+                let pull = p5.Vector.sub(m, this.pos).setMag(this.maxS).sub(this.vel).limit(this.maxF * 1.8);
+                this.acc.add(pull);
+              }
+            }
+          }
+          update() {
+            this.vel.add(this.acc).limit(this.maxS);
+            this.pos.add(this.vel);
+            this.acc.set(0, 0);
+            if (this.pos.x < 0) this.pos.x = p.width;
+            if (this.pos.x > p.width) this.pos.x = 0;
+            if (this.pos.y < 0) this.pos.y = p.height;
+            if (this.pos.y > p.height) this.pos.y = 0;
+          }
+          show() {
+            p.push();
+            p.translate(this.pos.x, this.pos.y);
+            p.rotate(this.vel.heading());
+            let spd = this.vel.mag(), alpha = p.map(spd, 0, this.maxS, 80, 230);
+            p.fill(74, 222, 128, alpha);
+            p.noStroke();
+            p.triangle(this.sz * 1.6, 0, -this.sz, -this.sz * 0.6, -this.sz, this.sz * 0.6);
+            p.stroke(74, 222, 128, alpha * 0.25);
+            p.strokeWeight(0.6);
+            p.line(0, 0, -this.sz * 3, 0);
+            p.pop();
+          }
+        }
+      });
+
+      // ══════════════════════════════════════════════════
+      //  PROJECT CANVAS BACKGROUNDS
+      // ══════════════════════════════════════════════════
+      function makeProjectBg(parentId, color, style) {
+        new p5(function (p) {
+          let t = 0;
+          p.setup = function () {
+            let el = document.getElementById(parentId);
+            if (!el) return;
+            let c = p.createCanvas(el.offsetWidth || 500, el.offsetHeight || 180);
+            c.parent(parentId);
+            p.colorMode(p.RGB, 255, 255, 255, 255);
+          };
+          p.windowResized = function () {
+            let el = document.getElementById(parentId);
+            if (el) p.resizeCanvas(el.offsetWidth, el.offsetHeight);
+          };
+          p.draw = function () {
+            t += 0.015;
+            p.background(14, 14, 22, 30);
+            let col = p.color(color);
+            let cr = p.red(col), cg = p.green(col), cb = p.blue(col);
+
+            if (style === 'distill') {
+              // Edge <-> Cloud data distillation flow
+              p.stroke(cr, cg, cb, 35);
+              p.strokeWeight(1);
+              for (let i = 0; i < 4; i++) {
+                let y = p.height * (0.25 + i * 0.18);
+                p.line(p.width * 0.1, y, p.width * 0.9, y);
+              }
+              // Switcher router node
+              let sx = p.width * 0.48, sy = p.height * 0.5;
+              p.fill(cr, cg, cb, 180);
+              p.noStroke();
+              p.ellipse(sx, sy, 14, 14);
+              p.stroke(cr, cg, cb, 90);
+              p.noFill();
+              p.ellipse(sx, sy, 24 + p.sin(t * 3) * 6, 24 + p.sin(t * 3) * 6);
+              // Particle pulses
+              for (let k = 0; k < 6; k++) {
+                let px = (t * 120 + k * 80) % (p.width * 0.8) + p.width * 0.1;
+                let py = p.height * 0.5 + p.sin(px * 0.03 + t) * 20;
+                p.fill(cr, cg, cb, 140);
+                p.noStroke();
+                p.ellipse(px, py, 5, 5);
+              }
+              p.fill(cr, cg, cb, 180);
+              p.textSize(9);
+              p.textFont('monospace');
+              p.text('DMD SWITCHER ROUTING', p.width * 0.1, p.height * 0.88);
+
+            } else if (style === 'pose') {
+              // skeleton pose dots
+              p.noStroke();
+              const joints = [[0.3, 0.2], [0.3, 0.35], [0.2, 0.5], [0.4, 0.5], [0.25, 0.7], [0.35, 0.7], [0.3, 0.12]];
+              joints.forEach((j, i) => {
+                let px = j[0] * p.width + p.sin(t + i) * 8;
+                let py = j[1] * p.height + p.cos(t * 0.7 + i) * 6;
+                p.fill(cr, cg, cb, 150);
+                p.ellipse(px, py, 8, 8);
+              });
+              // connections
+              const conns = [[0, 1], [1, 2], [1, 3], [2, 4], [3, 5], [0, 6]];
+              p.stroke(cr, cg, cb, 60);
+              p.strokeWeight(1.5);
+              conns.forEach(([a, b]) => {
+                let ax = joints[a][0] * p.width + p.sin(t + a) * 8, ay = joints[a][1] * p.height + p.cos(t * 0.7 + a) * 6;
+                let bx = joints[b][0] * p.width + p.sin(t + b) * 8, by = joints[b][1] * p.height + p.cos(t * 0.7 + b) * 6;
+                p.line(ax, ay, bx, by);
+              });
+              // detection box
+              p.noFill();
+              p.stroke(cr, cg, cb, 100);
+              p.strokeWeight(1.5);
+              p.rect(0.12 * p.width, 0.08 * p.height, 0.36 * p.width, 0.7 * p.height, 4);
+              let pulse = 0.5 + 0.5 * p.sin(t * 4);
+              p.fill(cr, cg, cb, 180 * pulse);
+              p.noStroke();
+              p.textSize(9);
+              p.textFont('monospace');
+              p.text('FALL DETECTED', 0.12 * p.width + 4, 0.08 * p.height + 14);
+
+            } else if (style === 'tipper') {
+              // Mechanical latch kinematic linkage
+              let ox = p.width * 0.4, oy = p.height * 0.7;
+              let ang = p.sin(t * 2) * 0.4 - 0.4;
+              let armLen = 70;
+              let jx = ox + p.cos(ang) * armLen;
+              let jy = oy + p.sin(ang) * armLen;
+              let hookX = jx + p.cos(ang + 0.8) * 35;
+              let hookY = jy + p.sin(ang + 0.8) * 35;
+
+              p.stroke(cr, cg, cb, 120);
+              p.strokeWeight(3);
+              p.line(ox, oy, jx, jy);
+              p.line(jx, jy, hookX, hookY);
+
+              p.fill(cr, cg, cb, 200);
+              p.noStroke();
+              p.ellipse(ox, oy, 8, 8);
+              p.ellipse(jx, jy, 6, 6);
+              p.ellipse(hookX, hookY, 6, 6);
+
+              // Goal clamp silhouette
+              p.stroke(cr, cg, cb, 45);
+              p.noFill();
+              p.rect(ox - 30, oy - 20, 60, 40, 6);
+              p.fill(cr, cg, cb, 160);
+              p.textSize(9);
+              p.textFont('monospace');
+              p.text('TIPPER LATCH LINKAGE', p.width * 0.1, p.height * 0.88);
+
+            } else if (style === 'winch') {
+              // High-Tier Winch Elevation Spool + Cable
+              let cx = p.width * 0.5, cy = p.height * 0.45;
+              p.stroke(cr, cg, cb, 80);
+              p.noFill();
+              p.ellipse(cx, cy, 36, 36);
+              p.ellipse(cx, cy, 18, 18);
+              // Spool spokes rotating
+              for (let a = 0; a < 4; a++) {
+                let rot = t * 3 + a * (p.PI / 2);
+                p.line(cx, cy, cx + p.cos(rot) * 18, cy + p.sin(rot) * 18);
+              }
+              // Winch cable
+              let cableY = cy + 18 + (p.sin(t * 2) * 15);
+              p.stroke(cr, cg, cb, 140);
+              p.strokeWeight(2);
+              p.line(cx + 18, cy, cx + 18, cableY);
+              p.fill(cr, cg, cb, 180);
+              p.noStroke();
+              p.triangle(cx + 14, cableY, cx + 22, cableY, cx + 18, cableY + 10);
+              p.textSize(9);
+              p.textFont('monospace');
+              p.text('H-TIER WINCH SPOOL', p.width * 0.1, p.height * 0.88);
+
+            } else if (style === 'plane') {
+              // runway lines
+              p.stroke(cr, cg, cb, 40);
+              p.strokeWeight(1);
+              for (let y = 0; y < p.height; y += 20) {
+                let offset = (t * 60) % 40;
+                p.line(p.width * 0.3, y - offset, p.width * 0.3, y - offset + 12);
+                p.line(p.width * 0.7, y - offset, p.width * 0.7, y - offset + 12);
+              }
+              // plane silhouette
+              let planX = p.width * 0.5 + p.sin(t) * 40;
+              let planY = p.height * (0.5 - t * 0.02 % 0.5);
+              p.push();
+              p.translate(planX, planY);
+              p.rotate(-0.3);
+              p.fill(cr, cg, cb, 120);
+              p.noStroke();
+              p.ellipse(0, 0, 40, 10);
+              p.triangle(14, 0, 24, -8, 24, 8);
+              p.rect(-20, -2, 8, 4);
+              p.pop();
+              // neural net nodes
+              let layers = [3, 4, 4, 2];
+              let x0 = p.width * 0.55;
+              layers.forEach((nodes, li) => {
+                let lx = x0 + li * (p.width * 0.11);
+                for (let n = 0; n < nodes; n++) {
+                  let ly = p.height * (0.2 + n * (0.6 / (nodes - 1 || 1)));
+                  p.fill(cr, cg, cb, 100);
+                  p.noStroke();
+                  p.ellipse(lx, ly, 7, 7);
+                  if (li < layers.length - 1) {
+                    for (let n2 = 0; n2 < layers[li + 1]; n2++) {
+                      let lx2 = x0 + (li + 1) * (p.width * 0.11);
+                      let ly2 = p.height * (0.2 + n2 * (0.6 / (layers[li + 1] - 1 || 1)));
+                      p.stroke(cr, cg, cb, 20);
+                      p.strokeWeight(0.6);
+                      p.line(lx, ly, lx2, ly2);
+                    }
+                  }
+                }
+              });
+            }
+          };
         });
-        document.getElementById('model-verts').textContent = v.toLocaleString();
-        document.getElementById('model-faces').textContent = Math.round(f).toLocaleString();
-        document.getElementById('model-name').textContent = name;
       }
+      // Init after DOM is ready
+      setTimeout(() => {
+        makeProjectBg('proj-canvas-1', '#a78bfa', 'distill');
+        makeProjectBg('proj-canvas-2', '#60a5fa', 'pose');
+        makeProjectBg('proj-canvas-3', '#34d399', 'tipper');
+        makeProjectBg('proj-canvas-4', '#fb923c', 'winch');
+        makeProjectBg('proj-canvas-5', '#38bdf8', 'plane');
+      }, 200);
 
-      // ─── Model load queue ────────────────────────────────────────────────────
-      let _loadBusy = false;
-      let _pendingTask = null;  // only keep the latest queued task
-      let _loadToken = 0;
+      // ══════════════════════════════════════════════════
+      //  THREE.JS CAD VIEWER (WITH 2-ROBOT SWITCHER)
+      // ══════════════════════════════════════════════════
+      let switchRobotModel = null;
+      let resetCamera = null;
+      let toggleWireframe = null;
+      let toggleAutoRotate = null;
+      let loadUserModel = null;
 
-      function _showLoadingOverlay(label) {
-        const o = document.getElementById('viewer-loading-overlay');
-        if (o) { o.style.display = 'flex'; document.getElementById('viewer-loading-label').textContent = label; }
-      }
-      function _hideLoadingOverlay() {
-        const o = document.getElementById('viewer-loading-overlay');
-        if (o) o.style.display = 'none';
-      }
+      (function initThreeJS() {
+        const canvas = document.getElementById('threejs-canvas');
+        if (!canvas) return;
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+        renderer.setSize(canvas.parentElement.offsetWidth, canvas.parentElement.offsetHeight);
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.1;
+        renderer.shadowMap.enabled = false;
+        renderer.setClearColor(0x090912, 1);
 
-      function _runTask(task) {
-        _loadBusy = true;
-        const { url, name, fallbackUrl, rotationY, token } = task;
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, canvas.parentElement.offsetWidth / canvas.parentElement.offsetHeight, 0.1, 1000);
+        camera.position.set(3.5, 2.8, 4.5);
 
-        function finish() {
-          _loadBusy = false;
-          _hideLoadingOverlay();
-          requestRender();
-          if (_pendingTask) { const t = _pendingTask; _pendingTask = null; _runTask(t); }
+        // Lighting
+        const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambient);
+        const key = new THREE.DirectionalLight(0xffffff, 1.2);
+        key.position.set(5, 8, 6);
+        scene.add(key);
+        const fill = new THREE.DirectionalLight(0xa78bfa, 0.4);
+        fill.position.set(-4, 3, -5);
+        scene.add(fill);
+        const rim = new THREE.DirectionalLight(0x38bdf8, 0.3);
+        rim.position.set(0, -4, -6);
+        scene.add(rim);
+
+        // Grid
+        const grid = new THREE.GridHelper(10, 20, 0x223344, 0x141426);
+        grid.position.y = -0.01;
+        scene.add(grid);
+
+        let activeModel = null;
+        let currentRobotKey = '2025-worlds';
+        let isWireframe = false;
+
+        // ─── ROBOT 1: 95071X (2024 OVER UNDER - TRANSMISSION WINCH) ───
+        function build2024Robot() {
+          const g = new THREE.Group();
+          const metalMat = new THREE.MeshLambertMaterial({ color: 0x242436, wireframe: isWireframe });
+          const orangeMat = new THREE.MeshLambertMaterial({ color: 0xfb923c, emissive: 0x431407, wireframe: isWireframe });
+          const purpleMat = new THREE.MeshLambertMaterial({ color: 0xa78bfa, wireframe: isWireframe });
+
+          // Compact High-Speed Drive Base
+          const chassis = new THREE.Mesh(new THREE.BoxGeometry(1.7, 0.22, 1.8), metalMat);
+          chassis.position.y = 0.28; g.add(chassis);
+
+          // Wheels
+          [[-0.9, 0.6], [-0.9, -0.6], [0.9, 0.6], [0.9, -0.6]].forEach(([x, z]) => {
+            const w = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.16, 24), metalMat);
+            w.rotation.z = Math.PI / 2;
+            w.position.set(x, 0.32, z);
+            g.add(w);
+          });
+
+          // Dual Transmission PTO Gearbox Housing
+          const ptoBox = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.6, 0.8), purpleMat);
+          ptoBox.position.set(0, 0.65, 0); g.add(ptoBox);
+
+          // High-Elevation Winch Spool
+          const spool = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.22, 0.5, 20), orangeMat);
+          spool.rotation.z = Math.PI / 2;
+          spool.position.set(0, 0.8, 0); g.add(spool);
+
+          // H-Tier Winch Telescoping Mast
+          const mast = new THREE.Mesh(new THREE.BoxGeometry(0.18, 2.1, 0.18), orangeMat);
+          mast.position.set(0, 1.6, -0.2);
+          g.add(mast);
+
+          // C-Tier Cross-bar Hybrid Climb Arm
+          const climbHook = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.12, 0.5), purpleMat);
+          climbHook.position.set(0, 2.65, -0.1);
+          g.add(climbHook);
+
+          // Polycarbonate Wings (Left & Right)
+          const wingL = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.7, 0.9), orangeMat);
+          wingL.position.set(-0.95, 0.65, -0.2);
+          wingL.rotation.y = 0.3;
+          g.add(wingL);
+
+          const wingR = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.7, 0.9), orangeMat);
+          wingR.position.set(0.95, 0.65, -0.2);
+          wingR.rotation.y = -0.3;
+          g.add(wingR);
+
+          updateStats(g, '95071X · 2024 Over Under (Transmission Winch Robot)');
+          return g;
         }
 
-        function doLoad() {
+        // ─── ROBOT 2: 95071X (2025 HIGH STAKES - WORLDS TIPPER LATCH) ───
+        function build2025WorldsRobot() {
+          const g = new THREE.Group();
+          const frameMat = new THREE.MeshLambertMaterial({ color: 0x1e293b, wireframe: isWireframe });
+          const cyanMat = new THREE.MeshLambertMaterial({ color: 0x34d399, emissive: 0x052e16, wireframe: isWireframe });
+          const pneuMat = new THREE.MeshLambertMaterial({ color: 0x60a5fa, wireframe: isWireframe });
+          const goldMat = new THREE.MeshLambertMaterial({ color: 0xf59e0b, wireframe: isWireframe });
+
+          // Chassis Drivetrain Base (6 omni wheels)
+          const base = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.25, 2.0), frameMat);
+          base.position.y = 0.3; g.add(base);
+
+          // 6 Omni Wheels
+          [[-0.95, 0.7], [-0.95, 0], [-0.95, -0.7], [0.95, 0.7], [0.95, 0], [0.95, -0.7]].forEach(([x, z]) => {
+            const wheel = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.15, 24), frameMat);
+            wheel.rotation.z = Math.PI / 2;
+            wheel.position.set(x, 0.3, z);
+            g.add(wheel);
+          });
+
+          // Mobile Goal Clamp Towers
+          const clampL = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.9, 0.18), frameMat);
+          clampL.position.set(-0.6, 0.8, 0.75); g.add(clampL);
+          const clampR = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.9, 0.18), frameMat);
+          clampR.position.set(0.6, 0.8, 0.75); g.add(clampR);
+
+          // Breakthrough "Tipper Latch" Mechanism
+          const latchArm = new THREE.Mesh(new THREE.BoxGeometry(0.12, 1.4, 0.12), cyanMat);
+          latchArm.position.set(0, 1.1, 0.95);
+          latchArm.rotation.x = -0.45;
+          g.add(latchArm);
+
+          const hook = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.1, 0.4), goldMat);
+          hook.position.set(0, 1.7, 1.25);
+          hook.rotation.x = 0.2;
+          g.add(hook);
+
+          // Pneumatic Double Cylinders
+          const cyl1 = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.6, 16), pneuMat);
+          cyl1.position.set(-0.3, 0.9, 0.85); cyl1.rotation.x = -0.3; g.add(cyl1);
+          const cyl2 = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.6, 16), pneuMat);
+          cyl2.position.set(0.3, 0.9, 0.85); cyl2.rotation.x = -0.3; g.add(cyl2);
+
+          // Ring Intake Hopper & Rollers
+          const intakeRamp = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.08, 1.4), cyanMat);
+          intakeRamp.position.set(0, 0.9, -0.2);
+          intakeRamp.rotation.x = 0.35;
+          g.add(intakeRamp);
+
+          // Anodized Standoffs
+          for (let i = -0.5; i <= 0.5; i += 0.5) {
+            const post = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.2, 8), goldMat);
+            post.position.set(i, 0.9, -0.8);
+            g.add(post);
+          }
+
+          updateStats(g, '95071X · 2025 High Stakes (Worlds Semifinalist Tipper Latch)');
+          return g;
+        }
+
+        // ─── ROBOT 3: 95071X (2025 EARLY ORIGINAL TIPPER ITERATION) ───
+        function build2025EarlyTipperRobot() {
+          const g = new THREE.Group();
+          const rawAlumMat = new THREE.MeshLambertMaterial({ color: 0x94a3b8, wireframe: isWireframe });
+          const purpleMat = new THREE.MeshLambertMaterial({ color: 0xa78bfa, emissive: 0x2e1065, wireframe: isWireframe });
+          const redMat = new THREE.MeshLambertMaterial({ color: 0xf43f5e, wireframe: isWireframe });
+          const brassMat = new THREE.MeshLambertMaterial({ color: 0xd97706, wireframe: isWireframe });
+
+          // Raw Prototype Channel Chassis
+          const frame = new THREE.Mesh(new THREE.BoxGeometry(1.75, 0.2, 1.9), rawAlumMat);
+          frame.position.y = 0.28; g.add(frame);
+
+          // Prototype Wheels
+          [[-0.92, 0.65], [-0.92, -0.65], [0.92, 0.65], [0.92, -0.65]].forEach(([x, z]) => {
+            const w = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.16, 24), rawAlumMat);
+            w.rotation.z = Math.PI / 2;
+            w.position.set(x, 0.3, z);
+            g.add(w);
+          });
+
+          // Early Single Pivot High Tipper Tower
+          const pivotTower = new THREE.Mesh(new THREE.BoxGeometry(0.2, 1.3, 0.2), rawAlumMat);
+          pivotTower.position.set(0, 0.95, 0.6); g.add(pivotTower);
+
+          // First-Gen Long Pivot Tipper Arm
+          const earlyArm = new THREE.Mesh(new THREE.BoxGeometry(0.14, 1.6, 0.14), redMat);
+          earlyArm.position.set(0, 1.25, 0.85);
+          earlyArm.rotation.x = -0.55;
+          g.add(earlyArm);
+
+          // Prototype Tipper Latch Hook
+          const protoHook = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.12, 0.35), brassMat);
+          protoHook.position.set(0, 1.95, 1.3);
+          protoHook.rotation.x = 0.35;
+          g.add(protoHook);
+
+          // Single Long Stroke Cylinder
+          const singleCyl = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.85, 16), purpleMat);
+          singleCyl.position.set(0, 0.85, 0.7);
+          singleCyl.rotation.x = -0.4;
+          g.add(singleCyl);
+
+          // Exposed Prototype Spur Gears
+          const gear1 = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.08, 18), brassMat);
+          gear1.rotation.z = Math.PI / 2;
+          gear1.position.set(-0.4, 0.65, -0.2);
+          g.add(gear1);
+
+          const gear2 = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 0.08, 14), purpleMat);
+          gear2.rotation.z = Math.PI / 2;
+          gear2.position.set(-0.4, 0.95, -0.2);
+          g.add(gear2);
+
+          // Early Top Ring Scoop
+          const topScoop = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.06, 1.1), purpleMat);
+          topScoop.position.set(0, 0.95, -0.35);
+          topScoop.rotation.x = 0.45;
+          g.add(topScoop);
+
+          updateStats(g, '95071X · 2025 High Stakes (Early Original Tipper Iteration)');
+          return g;
+        }
+
+        // ─── ROBOT 4: 95071X (2026 COMPETITION BUILD - LATEST DIRECT DRIVE) ───
+        function build2026Robot() {
+          const g = new THREE.Group();
+          const onyxMat = new THREE.MeshLambertMaterial({ color: 0x0f172a, wireframe: isWireframe });
+          const cyanMat = new THREE.MeshLambertMaterial({ color: 0x38bdf8, emissive: 0x082f49, wireframe: isWireframe });
+          const emeraldMat = new THREE.MeshLambertMaterial({ color: 0x10b981, emissive: 0x022c22, wireframe: isWireframe });
+          const goldMat = new THREE.MeshLambertMaterial({ color: 0xf59e0b, wireframe: isWireframe });
+
+          // Ultra-low CG CNC Carbon-Onyx Chassis
+          const lowChassis = new THREE.Mesh(new THREE.BoxGeometry(1.85, 0.18, 2.05), onyxMat);
+          lowChassis.position.y = 0.24; g.add(lowChassis);
+
+          // 8 Direct Drive High-Traction Wheels
+          [[-0.96, 0.75], [-0.96, 0.25], [-0.96, -0.25], [-0.96, -0.75],
+          [0.96, 0.75], [0.96, 0.25], [0.96, -0.25], [0.96, -0.75]].forEach(([x, z]) => {
+            const w = new THREE.Mesh(new THREE.CylinderGeometry(0.26, 0.26, 0.14, 24), onyxMat);
+            w.rotation.z = Math.PI / 2;
+            w.position.set(x, 0.26, z);
+            g.add(w);
+          });
+
+          // Floating Dual-Roller Polycord Intake System
+          const roller1 = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.09, 1.4, 20), cyanMat);
+          roller1.rotation.z = Math.PI / 2;
+          roller1.position.set(0, 0.5, 0.95);
+          g.add(roller1);
+
+          const roller2 = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.09, 1.4, 20), emeraldMat);
+          roller2.rotation.z = Math.PI / 2;
+          roller2.position.set(0, 0.95, 0.35);
+          g.add(roller2);
+
+          // High-Speed Polycord Belts
+          for (let x = -0.5; x <= 0.5; x += 0.25) {
+            const belt = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.02, 0.75), cyanMat);
+            belt.position.set(x, 0.72, 0.65);
+            belt.rotation.x = -0.65;
+            g.add(belt);
+          }
+
+          // Low-Profile Linear Pneumatic Clamp Assembly
+          const linearClampL = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.55, 0.14), emeraldMat);
+          linearClampL.position.set(-0.55, 0.55, -0.85); g.add(linearClampL);
+          const linearClampR = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.55, 0.14), emeraldMat);
+          linearClampR.position.set(0.55, 0.55, -0.85); g.add(linearClampR);
+
+          // Dual Precision Odometry Tracking Pods
+          const podL = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.08, 16), goldMat);
+          podL.rotation.z = Math.PI / 2;
+          podL.position.set(-0.35, 0.18, 0); g.add(podL);
+          const podR = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.08, 16), goldMat);
+          podR.rotation.z = Math.PI / 2;
+          podR.position.set(0.35, 0.18, 0); g.add(podR);
+
+          // Sensor Mount Mast
+          const mast = new THREE.Mesh(new THREE.BoxGeometry(0.08, 1.2, 0.08), goldMat);
+          mast.position.set(0, 0.85, -0.4); g.add(mast);
+
+          updateStats(g, '95071X · 2026 Competition Robot (Latest Build)');
+          return g;
+        }
+
+        function updateStats(group, name) {
+          let v = 0, f = 0;
+          group.traverse(o => {
+            if (o.isMesh) {
+              v += o.geometry.attributes.position.count;
+              f += (o.geometry.index ? o.geometry.index.count / 3 : o.geometry.attributes.position.count / 3);
+            }
+          });
+          document.getElementById('model-verts').textContent = v.toLocaleString();
+          document.getElementById('model-faces').textContent = Math.round(f).toLocaleString();
+          document.getElementById('model-name').textContent = name;
+        }
+
+        // ─── Model load queue ────────────────────────────────────────────────────
+        let _loadBusy = false;
+        let _pendingTask = null;  // only keep the latest queued task
+        let _loadToken = 0;
+
+        function _showLoadingOverlay(label) {
+          const o = document.getElementById('viewer-loading-overlay');
+          if (o) { o.style.display = 'flex'; document.getElementById('viewer-loading-label').textContent = label; }
+        }
+        function _hideLoadingOverlay() {
+          const o = document.getElementById('viewer-loading-overlay');
+          if (o) o.style.display = 'none';
+        }
+
+        function _runTask(task) {
+          _loadBusy = true;
+          const { url, name, fallbackUrl, rotationY, token } = task;
+
+          function finish() {
+            _loadBusy = false;
+            _hideLoadingOverlay();
+            requestRender();
+            if (_pendingTask) { const t = _pendingTask; _pendingTask = null; _runTask(t); }
+          }
+
+          function doLoad() {
+            const loader = new THREE.GLTFLoader();
+            if (typeof THREE.DRACOLoader !== 'undefined') {
+              const dl = new THREE.DRACOLoader();
+              dl.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+              loader.setDRACOLoader(dl);
+            }
+            if (typeof MeshoptDecoder !== 'undefined') {
+              loader.setMeshoptDecoder(MeshoptDecoder);
+            }
+            const label = name.replace(/\.glb$/i, '');
+            _showLoadingOverlay('loading ' + label + '…');
+            // Dispose old model properly to free GPU memory
+            if (activeModel) {
+              activeModel.traverse(obj => {
+                if (obj.isMesh) {
+                  if (obj.geometry) obj.geometry.dispose();
+                  if (obj.material) {
+                    if (Array.isArray(obj.material)) obj.material.forEach(m => m.dispose());
+                    else obj.material.dispose();
+                  }
+                }
+              });
+              scene.remove(activeModel);
+              activeModel = null;
+              requestRender();
+            }
+
+            loader.load(url, gltf => {
+              if (token !== _loadToken) { finish(); return; } // stale — discard
+              activeModel = gltf.scene;
+
+              // Onshape exports Z-up; Three.js is Y-up
+              activeModel.rotation.x = -Math.PI / 2;
+              if (rotationY != null) activeModel.rotation.z = rotationY;
+
+              // Disable shadows on all meshes
+              activeModel.traverse(obj => {
+                if (obj.isMesh) {
+                  obj.castShadow = false;
+                  obj.receiveShadow = false;
+                  obj.frustumCulled = true;
+                }
+              });
+
+
+
+
+              // Scale and center the model
+              activeModel.updateMatrixWorld(true);
+              const box = new THREE.Box3().setFromObject(activeModel);
+              const size = box.getSize(new THREE.Vector3());
+              const center = box.getCenter(new THREE.Vector3());
+              const scale = 4.2 / Math.max(size.x, size.y, size.z);
+              activeModel.scale.setScalar(scale);
+              // Recompute center after scaling
+              activeModel.updateMatrixWorld(true);
+              const box2 = new THREE.Box3().setFromObject(activeModel);
+              const center2 = box2.getCenter(new THREE.Vector3());
+              activeModel.position.sub(center2);
+              activeModel.position.y += (box2.getSize(new THREE.Vector3()).y) / 2;
+
+              scene.add(activeModel);
+              updateStats(activeModel, name);
+              spherical.r = task.initialZoom || 9;
+              updateCamera();
+              finish();
+              setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
+            }, () => { /* progress — no-op, overlay stays visible */ }, err => {
+              console.warn('GLTF load error:', err);
+              if (fallbackUrl) {
+                _runTask({ ...task, url: fallbackUrl, fallbackUrl: null });
+              } else { finish(); }
+            });
+          }
+
+          function ensureLoaders(cb) {
+            if (typeof THREE.GLTFLoader === 'undefined') {
+              const s = document.createElement('script');
+              s.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js';
+              s.onload = () => ensureLoaders(cb); document.head.appendChild(s);
+            } else if (typeof THREE.DRACOLoader === 'undefined') {
+              const d = document.createElement('script');
+              d.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js';
+              d.onload = cb; document.head.appendChild(d);
+            } else { cb(); }
+          }
+          ensureLoaders(doLoad);
+        }
+
+        function enqueueLoad(task) {
+          _loadToken++;
+          task.token = _loadToken;
+          if (_loadBusy) { _pendingTask = task; }
+          else { _runTask(task); }
+        }
+
+        // glbMap — per-model config. rotationY here rotates around Z after X correction (to fix sideways)
+        const glbMap = {
+          '2024-ou': { path: 'assets/models/ou-opt.glb', name: '95071X 2024 Over Under', rotationY: 0 },
+          '2025-worlds': { path: 'assets/models/hs-world-fast.glb', fallbackUrl: 'assets/models/hs-world-opt.glb', name: '95071X 2025 Worlds Robot V2' },
+          '2026': { path: 'assets/models/pb-04-fast.glb', fallbackUrl: 'assets/models/pb-04-optold.glb', name: '95071X 2026 Push Back', rotationY: -Math.PI / 2, initialZoom: 8.5 }
+        };
+
+        switchRobotModel = function (key) {
+          const placeholder = document.getElementById('viewer-placeholder-overlay');
+          if (placeholder) placeholder.style.display = 'none';
+
+          currentRobotKey = key;
+          document.querySelectorAll('.robot-select-btn').forEach(b => b.classList.remove('active'));
+          document.getElementById('btn-robot-' + key)?.classList.add('active');
+          const m = glbMap[key] || glbMap['2025-worlds'];
+          enqueueLoad({ url: m.path, name: m.name, fallbackUrl: m.fallbackUrl || null, rotationY: m.rotationY ?? null, initialZoom: m.initialZoom ?? null });
+        };
+
+        // Models are now loaded only upon click, not on startup
+
+        // Orbit controls state
+        let _renderPending = false; // must be before updateCamera() which calls requestRender()
+        let isDragging = false, isRightDrag = false;
+        let prevMouse = { x: 0, y: 0 };
+        let spherical = { theta: 0.7, phi: 0.95, r: 8 };
+        let target = new THREE.Vector3(0, 1.2, 0);
+        let autoRotate = true;
+
+        function updateCamera() {
+          camera.position.x = target.x + spherical.r * Math.sin(spherical.phi) * Math.sin(spherical.theta);
+          camera.position.y = target.y + spherical.r * Math.cos(spherical.phi);
+          camera.position.z = target.z + spherical.r * Math.sin(spherical.phi) * Math.cos(spherical.theta);
+          camera.lookAt(target);
+          requestRender();
+        }
+        updateCamera();
+
+        resetCamera = function () {
+          spherical = { theta: 0.7, phi: 0.95, r: 8 };
+          target.set(0, 1.2, 0);
+          updateCamera();
+        };
+
+        toggleWireframe = function () {
+          isWireframe = !isWireframe;
+          if (activeModel) {
+            activeModel.traverse(obj => {
+              if (obj.isMesh && obj.material) obj.material.wireframe = isWireframe;
+            });
+          }
+        };
+
+        toggleAutoRotate = function () {
+          autoRotate = !autoRotate;
+          const btn = document.getElementById('btn-autorotate');
+          if (btn) btn.classList.toggle('active', autoRotate);
+          if (autoRotate) requestRender(); // kick off rotation loop
+        };
+
+        canvas.addEventListener('mousedown', e => {
+          isDragging = true;
+          isRightDrag = e.button === 2;
+          prevMouse = { x: e.clientX, y: e.clientY };
+        });
+        window.addEventListener('mousemove', e => {
+          if (!isDragging) return;
+          const dx = e.clientX - prevMouse.x;
+          const dy = e.clientY - prevMouse.y;
+          if (isRightDrag) {
+            target.x -= dx * 0.006; target.y += dy * 0.006;
+          } else {
+            spherical.theta -= dx * 0.008;
+            spherical.phi = Math.max(0.1, Math.min(Math.PI - 0.1, spherical.phi - dy * 0.008));
+          }
+          updateCamera();
+          prevMouse = { x: e.clientX, y: e.clientY };
+        });
+        window.addEventListener('mouseup', () => { isDragging = false; });
+        canvas.addEventListener('contextmenu', e => e.preventDefault());
+        canvas.addEventListener('wheel', e => {
+          if (!e.ctrlKey && !e.metaKey) return; // Allow user to scroll past without interacting
+          e.preventDefault();
+          spherical.r = Math.max(2, Math.min(18, spherical.r + e.deltaY * 0.008));
+          updateCamera();
+        }, { passive: false });
+
+        let isMainVisible = true;
+        if (window.IntersectionObserver) {
+          const mainObs = new IntersectionObserver(e => { isMainVisible = e[0].isIntersecting; });
+          mainObs.observe(canvas);
+        }
+
+        // Continuous animation loop — runs every frame for smooth, jank-free rotation
+        function _renderLoop() {
+          requestAnimationFrame(_renderLoop);
+          if (!isMainVisible) return;
+          if (autoRotate && !isDragging) {
+            spherical.theta += 0.004; // Fixed increment to prevent stuttering on frame drops
+            camera.position.x = target.x + spherical.r * Math.sin(spherical.phi) * Math.sin(spherical.theta);
+            camera.position.y = target.y + spherical.r * Math.cos(spherical.phi);
+            camera.position.z = target.z + spherical.r * Math.sin(spherical.phi) * Math.cos(spherical.theta);
+            camera.lookAt(target);
+          }
+          renderer.render(scene, camera);
+        }
+        requestAnimationFrame(_renderLoop);
+
+        // Keep requestRender as a no-op shim so existing calls don't break
+        function requestRender() {
+          camera.position.x = target.x + spherical.r * Math.sin(spherical.phi) * Math.sin(spherical.theta);
+          camera.position.y = target.y + spherical.r * Math.cos(spherical.phi);
+          camera.position.z = target.z + spherical.r * Math.sin(spherical.phi) * Math.cos(spherical.theta);
+          camera.lookAt(target);
+        }
+
+        window.addEventListener('resize', () => {
+          const wrap = canvas.parentElement;
+          if (!wrap) return;
+          renderer.setSize(wrap.offsetWidth, wrap.offsetHeight);
+          camera.aspect = wrap.offsetWidth / wrap.offsetHeight;
+          camera.updateProjectionMatrix();
+          updateCamera();
+        });
+      })();
+
+      // ══════════════════════════════════════════════════
+      //  HERO 3D VIEWER — auto-loads Worlds robot
+      // ══════════════════════════════════════════════════
+      (() => {
+        const canvas = document.getElementById('hero-three-canvas');
+        if (!canvas || typeof THREE === 'undefined') return;
+
+        const wrap = canvas.parentElement;
+        const W = wrap.offsetWidth, H = wrap.offsetHeight;
+
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+        renderer.setSize(W, H);
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.1;
+        renderer.shadowMap.enabled = false;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, W / H, 0.1, 200);
+
+        // Lighting — simpler setup, no shadows
+        scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+        const key = new THREE.DirectionalLight(0xffffff, 1.2);
+        key.position.set(5, 8, 6);
+        scene.add(key);
+        const fill = new THREE.DirectionalLight(0xa78bfa, 0.35);
+        fill.position.set(-4, 3, -5);
+        scene.add(fill);
+
+        // Fixed camera position — model spins, camera stays still
+        camera.position.set(0, 1.2, 5.5);
+        camera.lookAt(0, 0, 0);
+
+        // Pivot group — all model parts parent to this so nothing detaches
+        const pivot = new THREE.Group();
+        pivot.position.set(-0.3, 0.05, 0);
+        scene.add(pivot);
+
+        let isDragging = false, prevMouse = { x: 0, y: 0 };
+        let rotY = 0, rotX = -0.3;
+
+        function applyPivotRotation() {
+          pivot.rotation.y = rotY;
+          pivot.rotation.x = rotX;
+        }
+        applyPivotRotation();
+
+        // Mouse drag to manually spin
+        canvas.addEventListener('mousedown', e => { isDragging = true; prevMouse = { x: e.clientX, y: e.clientY }; e.preventDefault(); });
+        window.addEventListener('mousemove', e => {
+          if (!isDragging) return;
+          const dx = e.clientX - prevMouse.x, dy = e.clientY - prevMouse.y;
+          rotY += dx * 0.008;
+          rotX = Math.max(-1.2, Math.min(1.2, rotX + dy * 0.006));
+          applyPivotRotation();
+          prevMouse = { x: e.clientX, y: e.clientY };
+        });
+        window.addEventListener('mouseup', () => isDragging = false);
+        canvas.addEventListener('contextmenu', e => e.preventDefault());
+        canvas.addEventListener('wheel', e => {
+          e.preventDefault();
+          camera.position.z = Math.max(3, Math.min(14, camera.position.z + e.deltaY * 0.01));
+        }, { passive: false });
+
+        let isHeroVisible = false;
+        let heroModelLoaded = false;
+
+        // Smooth render loop — only runs when visible
+        function heroRenderLoop() {
+          requestAnimationFrame(heroRenderLoop);
+          if (!isHeroVisible) return;
+          if (!isDragging) {
+            rotY += 0.002;
+            applyPivotRotation();
+          }
+          renderer.render(scene, camera);
+        }
+        requestAnimationFrame(heroRenderLoop);
+
+        // Resize
+        window.addEventListener('resize', () => {
+          const w = wrap.offsetWidth, h = wrap.offsetHeight;
+          renderer.setSize(w, h);
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+        });
+
+        // Keep the hero payload small. The detailed Worlds model remains
+        // available on demand in the 3D models section below.
+        const MODEL_URL = 'assets/models/ou-opt.glb';
+
+        function doLoad(url) {
           const loader = new THREE.GLTFLoader();
           if (typeof THREE.DRACOLoader !== 'undefined') {
-            const dl = new THREE.DRACOLoader();
-            dl.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
-            loader.setDRACOLoader(dl);
+            const draco = new THREE.DRACOLoader();
+            draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+            loader.setDRACOLoader(draco);
           }
           if (typeof MeshoptDecoder !== 'undefined') {
             loader.setMeshoptDecoder(MeshoptDecoder);
           }
-          const label = name.replace(/\.glb$/i, '');
-          _showLoadingOverlay('loading ' + label + '…');
-          // Dispose old model properly to free GPU memory
-          if (activeModel) {
-            activeModel.traverse(obj => {
-              if (obj.isMesh) {
-                if (obj.geometry) obj.geometry.dispose();
-                if (obj.material) {
-                  if (Array.isArray(obj.material)) obj.material.forEach(m => m.dispose());
-                  else obj.material.dispose();
-                }
-              }
-            });
-            scene.remove(activeModel);
-            activeModel = null;
-            requestRender();
-          }
 
           loader.load(url, gltf => {
-            if (token !== _loadToken) { finish(); return; } // stale — discard
-            activeModel = gltf.scene;
+            // Update progress bar to 100% and show "processing…"
+            const _progBar = document.getElementById('hero-load-progress');
+            const _progLabel = document.getElementById('hero-load-label');
+            if (_progBar) _progBar.style.width = '100%';
+            if (_progLabel) _progLabel.textContent = 'processing…';
 
-            // Onshape exports Z-up; Three.js is Y-up
-            activeModel.rotation.x = -Math.PI / 2;
-            if (rotationY != null) activeModel.rotation.z = rotationY;
+            const root = gltf.scene;
 
-            // Disable shadows on all meshes
-            activeModel.traverse(obj => {
+            // Onshape exports Z-up; Three.js is Y-up — correct orientation
+            root.rotation.x = -Math.PI / 2;
+
+            // Disable shadows for performance
+            root.traverse(obj => {
               if (obj.isMesh) {
                 obj.castShadow = false;
                 obj.receiveShadow = false;
                 obj.frustumCulled = true;
               }
             });
+            // Auto-scale and center around the pivot origin
+            root.updateMatrixWorld(true);
+            const box = new THREE.Box3().setFromObject(root);
+            const maxDim = Math.max(...box.getSize(new THREE.Vector3()).toArray());
+            const scale = 2.6 / maxDim; // Zoomed out
+
+            root.scale.setScalar(scale);
+            root.updateMatrixWorld(true);
+            const center2 = new THREE.Box3().setFromObject(root).getCenter(new THREE.Vector3());
+            root.position.sub(center2);
 
 
 
 
-            // Scale and center the model
-            activeModel.updateMatrixWorld(true);
-            const box = new THREE.Box3().setFromObject(activeModel);
-            const size = box.getSize(new THREE.Vector3());
-            const center = box.getCenter(new THREE.Vector3());
-            const scale = 4.2 / Math.max(size.x, size.y, size.z);
-            activeModel.scale.setScalar(scale);
-            // Recompute center after scaling
-            activeModel.updateMatrixWorld(true);
-            const box2 = new THREE.Box3().setFromObject(activeModel);
-            const center2 = box2.getCenter(new THREE.Vector3());
-            activeModel.position.sub(center2);
-            activeModel.position.y += (box2.getSize(new THREE.Vector3()).y) / 2;
+            // Add to pivot — all parts rotate together as one unit
+            pivot.add(root);
+            heroModelLoaded = true;
 
-            scene.add(activeModel);
-            updateStats(activeModel, name);
-            spherical.r = task.initialZoom || 9;
-            updateCamera();
-            finish();
+            // Hide loading overlay
+            const overlay = document.getElementById('hero-viewer-loading');
+            if (overlay) overlay.style.opacity = '0';
             setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
-          }, () => { /* progress — no-op, overlay stays visible */ }, err => {
-            console.warn('GLTF load error:', err);
-            if (fallbackUrl) {
-              _runTask({ ...task, url: fallbackUrl, fallbackUrl: null });
-            } else { finish(); }
-          });
-        }
-
-        function ensureLoaders(cb) {
-          if (typeof THREE.GLTFLoader === 'undefined') {
-            const s = document.createElement('script');
-            s.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js';
-            s.onload = () => ensureLoaders(cb); document.head.appendChild(s);
-          } else if (typeof THREE.DRACOLoader === 'undefined') {
-            const d = document.createElement('script');
-            d.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js';
-            d.onload = cb; document.head.appendChild(d);
-          } else { cb(); }
-        }
-        ensureLoaders(doLoad);
-      }
-
-      function enqueueLoad(task) {
-        _loadToken++;
-        task.token = _loadToken;
-        if (_loadBusy) { _pendingTask = task; }
-        else { _runTask(task); }
-      }
-
-      // glbMap — per-model config. rotationY here rotates around Z after X correction (to fix sideways)
-      const glbMap = {
-        '2024-ou': { path: 'assets/models/ou-opt.glb', name: '95071X 2024 Over Under', rotationY: 0 },
-        '2025-worlds': { path: 'assets/models/hs-world-fast.glb', fallbackUrl: 'assets/models/hs-world-opt.glb', name: '95071X 2025 Worlds Robot V2' },
-        '2026': { path: 'assets/models/pb-04-fast.glb', fallbackUrl: 'assets/models/pb-04-optold.glb', name: '95071X 2026 Push Back', rotationY: -Math.PI / 2, initialZoom: 8.5 }
-      };
-
-      switchRobotModel = function (key) {
-        const placeholder = document.getElementById('viewer-placeholder-overlay');
-        if (placeholder) placeholder.style.display = 'none';
-
-        currentRobotKey = key;
-        document.querySelectorAll('.robot-select-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById('btn-robot-' + key)?.classList.add('active');
-        const m = glbMap[key] || glbMap['2025-worlds'];
-        enqueueLoad({ url: m.path, name: m.name, fallbackUrl: m.fallbackUrl || null, rotationY: m.rotationY ?? null, initialZoom: m.initialZoom ?? null });
-      };
-
-      // Models are now loaded only upon click, not on startup
-
-      // Orbit controls state
-      let _renderPending = false; // must be before updateCamera() which calls requestRender()
-      let isDragging = false, isRightDrag = false;
-      let prevMouse = { x: 0, y: 0 };
-      let spherical = { theta: 0.7, phi: 0.95, r: 8 };
-      let target = new THREE.Vector3(0, 1.2, 0);
-      let autoRotate = true;
-
-      function updateCamera() {
-        camera.position.x = target.x + spherical.r * Math.sin(spherical.phi) * Math.sin(spherical.theta);
-        camera.position.y = target.y + spherical.r * Math.cos(spherical.phi);
-        camera.position.z = target.z + spherical.r * Math.sin(spherical.phi) * Math.cos(spherical.theta);
-        camera.lookAt(target);
-        requestRender();
-      }
-      updateCamera();
-
-      resetCamera = function () {
-        spherical = { theta: 0.7, phi: 0.95, r: 8 };
-        target.set(0, 1.2, 0);
-        updateCamera();
-      };
-
-      toggleWireframe = function () {
-        isWireframe = !isWireframe;
-        if (activeModel) {
-          activeModel.traverse(obj => {
-            if (obj.isMesh && obj.material) obj.material.wireframe = isWireframe;
-          });
-        }
-      };
-
-      toggleAutoRotate = function () {
-        autoRotate = !autoRotate;
-        const btn = document.getElementById('btn-autorotate');
-        if (btn) btn.classList.toggle('active', autoRotate);
-        if (autoRotate) requestRender(); // kick off rotation loop
-      };
-
-      canvas.addEventListener('mousedown', e => {
-        isDragging = true;
-        isRightDrag = e.button === 2;
-        prevMouse = { x: e.clientX, y: e.clientY };
-      });
-      window.addEventListener('mousemove', e => {
-        if (!isDragging) return;
-        const dx = e.clientX - prevMouse.x;
-        const dy = e.clientY - prevMouse.y;
-        if (isRightDrag) {
-          target.x -= dx * 0.006; target.y += dy * 0.006;
-        } else {
-          spherical.theta -= dx * 0.008;
-          spherical.phi = Math.max(0.1, Math.min(Math.PI - 0.1, spherical.phi - dy * 0.008));
-        }
-        updateCamera();
-        prevMouse = { x: e.clientX, y: e.clientY };
-      });
-      window.addEventListener('mouseup', () => { isDragging = false; });
-      canvas.addEventListener('contextmenu', e => e.preventDefault());
-      canvas.addEventListener('wheel', e => {
-        if (!e.ctrlKey && !e.metaKey) return; // Allow user to scroll past without interacting
-        e.preventDefault();
-        spherical.r = Math.max(2, Math.min(18, spherical.r + e.deltaY * 0.008));
-        updateCamera();
-      }, { passive: false });
-
-      let isMainVisible = true;
-      if (window.IntersectionObserver) {
-        const mainObs = new IntersectionObserver(e => { isMainVisible = e[0].isIntersecting; });
-        mainObs.observe(canvas);
-      }
-
-      // Continuous animation loop — runs every frame for smooth, jank-free rotation
-      function _renderLoop() {
-        requestAnimationFrame(_renderLoop);
-        if (!isMainVisible) return;
-        if (autoRotate && !isDragging) {
-          spherical.theta += 0.004; // Fixed increment to prevent stuttering on frame drops
-          camera.position.x = target.x + spherical.r * Math.sin(spherical.phi) * Math.sin(spherical.theta);
-          camera.position.y = target.y + spherical.r * Math.cos(spherical.phi);
-          camera.position.z = target.z + spherical.r * Math.sin(spherical.phi) * Math.cos(spherical.theta);
-          camera.lookAt(target);
-        }
-        renderer.render(scene, camera);
-      }
-      requestAnimationFrame(_renderLoop);
-
-      // Keep requestRender as a no-op shim so existing calls don't break
-      function requestRender() {
-        camera.position.x = target.x + spherical.r * Math.sin(spherical.phi) * Math.sin(spherical.theta);
-        camera.position.y = target.y + spherical.r * Math.cos(spherical.phi);
-        camera.position.z = target.z + spherical.r * Math.sin(spherical.phi) * Math.cos(spherical.theta);
-        camera.lookAt(target);
-      }
-
-      window.addEventListener('resize', () => {
-        const wrap = canvas.parentElement;
-        if (!wrap) return;
-        renderer.setSize(wrap.offsetWidth, wrap.offsetHeight);
-        camera.aspect = wrap.offsetWidth / wrap.offsetHeight;
-        camera.updateProjectionMatrix();
-        updateCamera();
-      });
-    })();
-
-    // ══════════════════════════════════════════════════
-    //  HERO 3D VIEWER — auto-loads Worlds robot
-    // ══════════════════════════════════════════════════
-    (() => {
-      const canvas = document.getElementById('hero-three-canvas');
-      if (!canvas || typeof THREE === 'undefined') return;
-
-      const wrap = canvas.parentElement;
-      const W = wrap.offsetWidth, H = wrap.offsetHeight;
-
-      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-      renderer.setSize(W, H);
-      renderer.outputEncoding = THREE.sRGBEncoding;
-      renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.1;
-      renderer.shadowMap.enabled = false;
-
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(45, W / H, 0.1, 200);
-
-      // Lighting — simpler setup, no shadows
-      scene.add(new THREE.AmbientLight(0xffffff, 0.7));
-      const key = new THREE.DirectionalLight(0xffffff, 1.2);
-      key.position.set(5, 8, 6);
-      scene.add(key);
-      const fill = new THREE.DirectionalLight(0xa78bfa, 0.35);
-      fill.position.set(-4, 3, -5);
-      scene.add(fill);
-
-      // Fixed camera position — model spins, camera stays still
-      camera.position.set(0, 1.2, 5.5);
-      camera.lookAt(0, 0, 0);
-
-      // Pivot group — all model parts parent to this so nothing detaches
-      const pivot = new THREE.Group();
-      pivot.position.set(-0.3, 0.05, 0);
-      scene.add(pivot);
-
-      let isDragging = false, prevMouse = { x: 0, y: 0 };
-      let rotY = 0, rotX = -0.3;
-
-      function applyPivotRotation() {
-        pivot.rotation.y = rotY;
-        pivot.rotation.x = rotX;
-      }
-      applyPivotRotation();
-
-      // Mouse drag to manually spin
-      canvas.addEventListener('mousedown', e => { isDragging = true; prevMouse = { x: e.clientX, y: e.clientY }; e.preventDefault(); });
-      window.addEventListener('mousemove', e => {
-        if (!isDragging) return;
-        const dx = e.clientX - prevMouse.x, dy = e.clientY - prevMouse.y;
-        rotY += dx * 0.008;
-        rotX = Math.max(-1.2, Math.min(1.2, rotX + dy * 0.006));
-        applyPivotRotation();
-        prevMouse = { x: e.clientX, y: e.clientY };
-      });
-      window.addEventListener('mouseup', () => isDragging = false);
-      canvas.addEventListener('contextmenu', e => e.preventDefault());
-      canvas.addEventListener('wheel', e => {
-        e.preventDefault();
-        camera.position.z = Math.max(3, Math.min(14, camera.position.z + e.deltaY * 0.01));
-      }, { passive: false });
-
-      let isHeroVisible = false;
-      let heroModelLoaded = false;
-
-      // Smooth render loop — only runs when visible
-      function heroRenderLoop() {
-        requestAnimationFrame(heroRenderLoop);
-        if (!isHeroVisible) return;
-        if (!isDragging) {
-          rotY += 0.002;
-          applyPivotRotation();
-        }
-        renderer.render(scene, camera);
-      }
-      requestAnimationFrame(heroRenderLoop);
-
-      // Resize
-      window.addEventListener('resize', () => {
-        const w = wrap.offsetWidth, h = wrap.offsetHeight;
-        renderer.setSize(w, h);
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-      });
-
-      // Use smaller model for hero (4MB vs 79MB) — loads 20x faster
-      const MODEL_URL = 'assets/models/hs-world-fast.glb';
-
-      function doLoad(url) {
-        const loader = new THREE.GLTFLoader();
-        if (typeof THREE.DRACOLoader !== 'undefined') {
-          const draco = new THREE.DRACOLoader();
-          draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
-          loader.setDRACOLoader(draco);
-        }
-        if (typeof MeshoptDecoder !== 'undefined') {
-          loader.setMeshoptDecoder(MeshoptDecoder);
-        }
-
-        loader.load(url, gltf => {
-          // Update progress bar to 100% and show "processing…"
-          const _progBar = document.getElementById('hero-load-progress');
-          const _progLabel = document.getElementById('hero-load-label');
-          if (_progBar) _progBar.style.width = '100%';
-          if (_progLabel) _progLabel.textContent = 'processing…';
-
-          const root = gltf.scene;
-
-          // Onshape exports Z-up; Three.js is Y-up — correct orientation
-          root.rotation.x = -Math.PI / 2;
-
-          // Disable shadows for performance
-          root.traverse(obj => {
-            if (obj.isMesh) {
-              obj.castShadow = false;
-              obj.receiveShadow = false;
-              obj.frustumCulled = true;
+          }, xhr => {
+            // Real-time download progress
+            const progBar = document.getElementById('hero-load-progress');
+            const progLabel = document.getElementById('hero-load-label');
+            if (xhr.lengthComputable && progBar) {
+              const pct = Math.round((xhr.loaded / xhr.total) * 100);
+              progBar.style.width = pct + '%';
+              if (progLabel) progLabel.textContent = `loading… ${pct}%`;
+            } else if (progLabel) {
+              const mb = (xhr.loaded / 1048576).toFixed(1);
+              progLabel.textContent = `loading… ${mb} MB`;
+            }
+          }, err => {
+            console.error('Hero viewer: failed to load', url, err);
+            const overlay = document.getElementById('hero-viewer-loading');
+            if (overlay) {
+              overlay.innerHTML = '<span style="font-family:\'JetBrains Mono\',monospace;font-size:10px;color:rgba(255,100,100,0.7);">model unavailable</span>';
             }
           });
-          // Auto-scale and center around the pivot origin
-          root.updateMatrixWorld(true);
-          const box = new THREE.Box3().setFromObject(root);
-          const maxDim = Math.max(...box.getSize(new THREE.Vector3()).toArray());
-          const scale = 2.6 / maxDim; // Zoomed out
+        }
 
-          root.scale.setScalar(scale);
-          root.updateMatrixWorld(true);
-          const center2 = new THREE.Box3().setFromObject(root).getCenter(new THREE.Vector3());
-          root.position.sub(center2);
+        // Defer loading until the hero section is actually visible (or near-visible)
+        if (window.IntersectionObserver) {
+          const heroObs = new IntersectionObserver(entries => {
+            isHeroVisible = entries[0].isIntersecting;
+            if (isHeroVisible && !heroModelLoaded) {
+              doLoad(MODEL_URL);
+            }
+          }, { rootMargin: '200px' });
+          heroObs.observe(canvas);
+        } else {
+          // Fallback: load immediately if no IntersectionObserver
+          isHeroVisible = true;
+          doLoad(MODEL_URL);
+        }
+      })();
 
+      // ══════════════════════════════════════════════════
+      //  TOAST & EMAIL CLIPBOARD
+      // ══════════════════════════════════════════════════
+      function showToast(msg, icon = '✓') {
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toast-msg');
+        const toastIcon = document.getElementById('toast-icon');
+        if (toastMsg) toastMsg.textContent = msg;
+        if (toastIcon) toastIcon.textContent = icon;
+        if (toast) {
+          toast.classList.add('show');
+          clearTimeout(toast._timer);
+          toast._timer = setTimeout(() => {
+            toast.classList.remove('show');
+          }, 3200);
+        }
+      }
 
-
-
-          // Add to pivot — all parts rotate together as one unit
-          pivot.add(root);
-          heroModelLoaded = true;
-
-          // Hide loading overlay
-          const overlay = document.getElementById('hero-viewer-loading');
-          if (overlay) overlay.style.opacity = '0';
-          setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
-        }, xhr => {
-          // Real-time download progress
-          const progBar = document.getElementById('hero-load-progress');
-          const progLabel = document.getElementById('hero-load-label');
-          if (xhr.lengthComputable && progBar) {
-            const pct = Math.round((xhr.loaded / xhr.total) * 100);
-            progBar.style.width = pct + '%';
-            if (progLabel) progLabel.textContent = `loading… ${pct}%`;
-          } else if (progLabel) {
-            const mb = (xhr.loaded / 1048576).toFixed(1);
-            progLabel.textContent = `loading… ${mb} MB`;
+      function handleEmailClick(e, email) {
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(email).then(() => {
+            showToast(`copied ${email} to clipboard!`);
+          }).catch(() => {
+            showToast(`copied ${email}!`);
+          });
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = email;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand('copy');
+            showToast(`copied ${email} to clipboard!`);
+          } catch (err) {
+            showToast(`email: ${email}`);
           }
-        }, err => {
-          console.error('Hero viewer: failed to load', url, err);
-          const overlay = document.getElementById('hero-viewer-loading');
-          if (overlay) {
-            overlay.innerHTML = '<span style="font-family:\'JetBrains Mono\',monospace;font-size:10px;color:rgba(255,100,100,0.7);">model unavailable</span>';
+          document.body.removeChild(ta);
+        }
+      }
+
+      // ══════════════════════════════════════════════════
+      //  PHOTOGRAPHY VIEWS (GRID, THEATER, CONTACT) & FILTERS
+      // ══════════════════════════════════════════════════
+      let currentPhotoView = 'contact';
+      function setView(mode) {
+        currentPhotoView = mode;
+        const grid = document.getElementById('photoGrid');
+        const bgCanvas = document.getElementById('theaterBgCanvas');
+        document.querySelectorAll('.cam-icon').forEach(el => el.classList.remove('active'));
+
+        if (mode === 'grid') {
+          document.getElementById('gridView')?.classList.add('active');
+          if (grid) {
+            grid.classList.remove('theater-mode', 'contact-mode');
           }
-        });
-      }
-
-      // Defer loading until the hero section is actually visible (or near-visible)
-      if (window.IntersectionObserver) {
-        const heroObs = new IntersectionObserver(entries => {
-          isHeroVisible = entries[0].isIntersecting;
-          if (isHeroVisible && !heroModelLoaded) {
-            doLoad(MODEL_URL);
+          if (bgCanvas) bgCanvas.classList.remove('active');
+        } else if (mode === 'theater') {
+          document.getElementById('theaterView')?.classList.add('active');
+          if (grid) {
+            grid.classList.remove('contact-mode');
+            grid.classList.add('theater-mode');
           }
-        }, { rootMargin: '200px' });
-        heroObs.observe(canvas);
-      } else {
-        // Fallback: load immediately if no IntersectionObserver
-        isHeroVisible = true;
-        doLoad(MODEL_URL);
-      }
-    })();
-
-    // ══════════════════════════════════════════════════
-    //  TOAST & EMAIL CLIPBOARD
-    // ══════════════════════════════════════════════════
-    function showToast(msg, icon = '✓') {
-      const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toast-msg');
-      const toastIcon = document.getElementById('toast-icon');
-      if (toastMsg) toastMsg.textContent = msg;
-      if (toastIcon) toastIcon.textContent = icon;
-      if (toast) {
-        toast.classList.add('show');
-        clearTimeout(toast._timer);
-        toast._timer = setTimeout(() => {
-          toast.classList.remove('show');
-        }, 3200);
-      }
-    }
-
-    function handleEmailClick(e, email) {
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(email).then(() => {
-          showToast(`copied ${email} to clipboard!`);
-        }).catch(() => {
-          showToast(`copied ${email}!`);
-        });
-      } else {
-        const ta = document.createElement('textarea');
-        ta.value = email;
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        try {
-          document.execCommand('copy');
-          showToast(`copied ${email} to clipboard!`);
-        } catch (err) {
-          showToast(`email: ${email}`);
+          if (bgCanvas) bgCanvas.classList.add('active');
+        } else if (mode === 'contact') {
+          document.getElementById('contactView')?.classList.add('active');
+          if (grid) {
+            grid.classList.remove('theater-mode');
+            grid.classList.add('contact-mode');
+          }
+          if (bgCanvas) bgCanvas.classList.remove('active');
         }
-        document.body.removeChild(ta);
       }
-    }
 
-    // ══════════════════════════════════════════════════
-    //  PHOTOGRAPHY VIEWS (GRID, THEATER, CONTACT) & FILTERS
-    // ══════════════════════════════════════════════════
-    let currentPhotoView = 'contact';
-    function setView(mode) {
-      currentPhotoView = mode;
-      const grid = document.getElementById('photoGrid');
-      const bgCanvas = document.getElementById('theaterBgCanvas');
-      document.querySelectorAll('.cam-icon').forEach(el => el.classList.remove('active'));
+      let activeCamGlow = null;
 
-      if (mode === 'grid') {
-        document.getElementById('gridView')?.classList.add('active');
-        if (grid) {
-          grid.classList.remove('theater-mode', 'contact-mode');
+      function hoverHighlight(camId, cardEl, isEnter) {
+        if (activeCamGlow === camId) return; // if it's already locked via click, do nothing
+
+        const items = document.querySelectorAll('.photo-item');
+        if (isEnter) {
+          if (cardEl) cardEl.classList.add('glow-' + camId);
+          items.forEach(item => {
+            if (item.getAttribute('data-cam') === camId) {
+              item.classList.add('glow-' + camId);
+            }
+          });
+        } else {
+          // On mouse leave, we remove the hover glow.
+          // Note: we only remove it if activeCamGlow != camId, which is handled by the guard above.
+          if (cardEl) cardEl.classList.remove('glow-' + camId);
+          items.forEach(item => {
+            if (item.getAttribute('data-cam') === camId) {
+              item.classList.remove('glow-' + camId);
+            }
+          });
         }
-        if (bgCanvas) bgCanvas.classList.remove('active');
-      } else if (mode === 'theater') {
-        document.getElementById('theaterView')?.classList.add('active');
-        if (grid) {
-          grid.classList.remove('contact-mode');
-          grid.classList.add('theater-mode');
-        }
-        if (bgCanvas) bgCanvas.classList.add('active');
-      } else if (mode === 'contact') {
-        document.getElementById('contactView')?.classList.add('active');
-        if (grid) {
-          grid.classList.remove('theater-mode');
-          grid.classList.add('contact-mode');
-        }
-        if (bgCanvas) bgCanvas.classList.remove('active');
       }
-    }
+      function highlightPhotos(camId, cardEl) {
+        const items = document.querySelectorAll('.photo-item');
 
-    let activeCamGlow = null;
-    function highlightPhotos(camId, cardEl) {
-      const items = document.querySelectorAll('.photo-item');
+        // If clicking the currently active camera, toggle it off
+        if (activeCamGlow === camId) {
+          document.querySelectorAll('.cam-viewer-card').forEach(c => {
+            c.classList.remove('glow-canon5d', 'glow-rebel', 'glow-iphone');
+          });
+          items.forEach(i => {
+            i.classList.remove('glow-canon5d', 'glow-rebel', 'glow-iphone');
+          });
+          activeCamGlow = null;
+          return;
+        }
 
-      // If clicking the currently active camera, toggle it off
-      if (activeCamGlow === camId) {
+        // Otherwise, set the new active camera glow
         document.querySelectorAll('.cam-viewer-card').forEach(c => {
           c.classList.remove('glow-canon5d', 'glow-rebel', 'glow-iphone');
         });
         items.forEach(i => {
           i.classList.remove('glow-canon5d', 'glow-rebel', 'glow-iphone');
         });
-        activeCamGlow = null;
-        return;
-      }
 
-      // Otherwise, set the new active camera glow
-      document.querySelectorAll('.cam-viewer-card').forEach(c => {
-        c.classList.remove('glow-canon5d', 'glow-rebel', 'glow-iphone');
-      });
-      items.forEach(i => {
-        i.classList.remove('glow-canon5d', 'glow-rebel', 'glow-iphone');
-      });
-
-      if (camId) {
-        if (cardEl) cardEl.classList.add('glow-' + camId);
-        items.forEach(item => {
-          if (item.getAttribute('data-cam') === camId) {
-            item.classList.add('glow-' + camId);
-          }
-        });
-        activeCamGlow = camId;
-      }
-    }
-
-    function filterPhotos(category, btn) {
-      if (btn) {
-        const wasActive = btn.classList.contains('active');
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        if (wasActive) {
-          // clicking active filter again → show all
-          document.querySelectorAll('.filter-btn').forEach(b => {
-            if (b.textContent.trim() === 'all') b.classList.add('active');
+        if (camId) {
+          if (cardEl) cardEl.classList.add('glow-' + camId);
+          items.forEach(item => {
+            if (item.getAttribute('data-cam') === camId) {
+              item.classList.add('glow-' + camId);
+            }
           });
-          category = 'all';
-        } else {
-          btn.classList.add('active');
-          // remove 'all' active when specific filter chosen
-          document.querySelectorAll('.filter-btn').forEach(b => {
-            if (b.textContent.trim() === 'all' && category !== 'all') b.classList.remove('active');
-          });
+          activeCamGlow = camId;
         }
       }
-      const items = document.querySelectorAll('.photo-item');
-      items.forEach(item => {
-        const cat = item.getAttribute('data-cat');
-        const cam = item.getAttribute('data-cam');
-        if (category === 'all' || cat === category || cam === category) {
-          item.style.display = '';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    }
 
-    // ══════════════════════════════════════════════════
-    //  LIGHTBOX MODAL
-    // ══════════════════════════════════════════════════
-    let activeLightboxIdx = 0;
-    const photoData = [
-      { title: 'shibuya crossing', cat: 'tokyo · japan', desc: 'organized chaos of umbrellas and neon lights.', src: 'assets/photos/photo 11.jpg', placeholder: '🌆 photo 11.jpg' },
-      { title: 'the bund', cat: 'shanghai · china', desc: 'vibrant neon lights reflecting off dark river waters.', src: 'assets/photos/shanghai.jpg', placeholder: '🌆 shanghai.jpg' },
-      { title: 'shinjuku neon', cat: 'tokyo · japan', desc: 'dazzling cyberpunk streetscape of shinjuku at night.', src: 'assets/photos/shinjuku.jpg', placeholder: '🏙️ shinjuku.jpg' },
-      { title: 'boat exiting sea cave', cat: 'na pali · hi', desc: 'natural light filtering through a sea cave.', src: 'assets/photos/photo1.jpg', placeholder: '🌊 photo1.jpg' },
-      { title: 'emerald-shrouded sapphire', cat: 'saratoga · ca', desc: 'vibrant blue water against lush greenery.', src: 'assets/photos/photo3.jpg', placeholder: '🏞️ photo3.jpg' },
-      { title: 'winter wonderland', cat: 'ukkusissat · greenland', desc: 'aerial view of a massive ice canyon.', src: 'assets/photos/photo7.jpg', placeholder: '❄️ photo7.jpg' },
-      { title: 'one last time', cat: 'saratoga · ca', desc: 'nostalgic local tradition under the bright summer.', src: 'assets/photos/photo5.jpg', placeholder: '🌇 photo5.jpg' },
-      { title: 'mona lisa', cat: 'paris · france', desc: 'visitors capturing their own version of the mona lisa.', src: 'assets/photos/photo8.jpg', placeholder: '🖼️ photo8.jpg' },
-      { title: 'the serve', cat: 'saratoga · ca', desc: 'a volleyball player leaps into a powerful jump serve, frozen mid-air under the gymnasium lights.', src: 'assets/photos/newphoto1.jpg', placeholder: '📷 newphoto1.jpg' },
-      { title: 'victoria peak after dark', cat: 'hong kong · china', desc: 'the glittering hong kong skyline sprawls beneath a blanket of midnight clouds, viewed from victoria peak.', src: 'assets/photos/newphoto2.jpg', placeholder: '📷 newphoto2.jpg' },
-      { title: 'autumn visitors', cat: 'saratoga · ca', desc: 'a pair of deer pause among sun-dappled autumn foliage along a quiet neighborhood trail.', src: 'assets/photos/newphoto3.jpg', placeholder: '📷 newphoto3.jpg' },
-      { title: 'wild rafter', cat: 'saratoga · ca', desc: 'a rafter of wild turkeys marches through the dry california hillside, framed by natural brush.', src: 'assets/photos/newphoto4.jpg', placeholder: '📷 newphoto4.jpg' },
-      { title: "steller's watch", cat: 'saratoga · ca', desc: 'a striking steller\'s jay perches on a mossy branch, its cobalt plumage glowing in the forest canopy.', src: 'assets/photos/newphoto5.jpg', placeholder: '📷 newphoto5.jpg' },
-      { title: 'karst panorama', cat: 'guilin · china', desc: 'dramatic karst limestone peaks tower over traditional rooftops and a winding river at dusk.', src: 'assets/photos/newphoto6.jpg', placeholder: '📷 newphoto6.jpg' },
-      { title: 'ding ding crossing', cat: 'hong kong · china', desc: 'pedestrians flood a tram crossing as the iconic double-decker ding-dings approach through dense high-rises.', src: 'assets/photos/newphoto7.jpg', placeholder: '📷 newphoto7.jpg' },
-      { title: 'bridge of lanterns', cat: 'suzhou · china', desc: 'women in traditional hanfu cross a stone bridge draped with glowing red lanterns at twilight.', src: 'assets/photos/newphoto8.jpg', placeholder: '📷 newphoto8.jpg' },
-      { title: 'breakaway run', cat: 'saratoga · ca', desc: 'a flag football player breaks through the defense, football tucked tight, in golden afternoon light.', src: 'assets/photos/newphoto9.jpg', placeholder: '📷 newphoto9.jpg' },
-      { title: 'neon maze', cat: 'tokyo · japan', desc: 'towering walls of neon signage engulf a crowded kabukichō alley in electric warmth.', src: 'assets/photos/newphoto10.jpg', placeholder: '📷 newphoto10.jpg' },
-      { title: 'shrine procession', cat: 'tokyo · japan', desc: 'a traditional shinto wedding procession moves through meiji shrine under a vermilion parasol.', src: 'assets/photos/newphoto11.jpg', placeholder: '📷 newphoto11.jpg' },
-      { title: 'skyward bound', cat: 'shanghai · china', desc: 'a lone aircraft threads the gap between lujiazui\'s colossal towers in a moody teal sky.', src: 'assets/photos/newphoto12.jpg', placeholder: '📷 newphoto12.jpg' },
-      { title: 'city of light at sunset', cat: 'paris · france', desc: 'the eiffel tower glows against a gradient sunset, boulevards radiating outward from the arc de triomphe.', src: 'assets/photos/newphoto13.jpg', placeholder: '📷 newphoto13.jpg' },
-      { title: 'olympic spirit', cat: 'paris · france', desc: 'a visitor poses inside the olympic rings installation beneath the iconic iron lattice of the eiffel tower.', src: 'assets/photos/newphoto14.jpg', placeholder: '📷 newphoto14.jpg' },
-      { title: 'curtain of green', cat: 'na pali · hi', desc: 'hanging vines cascade through deep tropical shadow, their leaves catching slivers of light.', src: 'assets/photos/IMG_3178.jpg', placeholder: '📷 IMG_3178.jpg' },
-      { title: 'dusk anchor', cat: 'florida keys · fl', desc: 'a lone sailboat rests on still water beneath cotton-candy clouds at twilight.', src: 'assets/photos/IMG_7103.jpg', placeholder: '📷 IMG_7103.jpg' },
-      { title: 'red sails at midnight', cat: 'hong kong · china', desc: 'a crimson-sailed junk boat glides across victoria harbour, the city skyline burning behind it.', src: 'assets/photos/IMG_8784.jpg', placeholder: '📷 IMG_8784.jpg' },
-      { title: 'bridge & tower', cat: 'new york · ny', desc: 'the brooklyn bridge frames one world trade center as jet skis carve wakes across the east river.', src: 'assets/photos/IMG_8898.jpg', placeholder: '📷 IMG_8898.jpg' },
-      { title: 'island in the haze', cat: 'new york · ny', desc: 'manhattan stretches into the distance from above, the east river curving alongside its skyline.', src: 'assets/photos/IMG_8932.jpg', placeholder: '📷 IMG_8932.jpg' },
-      { title: 'river through the peaks', cat: 'guilin · china', desc: 'the li river bends through a valley of jagged karst peaks, villages dotting its banks below.', src: 'assets/photos/IMG_9882.jpg', placeholder: '📷 IMG_9882.jpg' },
-      { title: 'lotus garden', cat: 'hangzhou · china', desc: 'a sea of lotus leaves and pink blossoms stretches toward an ornate chinese pavilion bridge.', src: 'assets/photos/IMG_9943.jpg', placeholder: '📷 IMG_9943.jpg' },
-      { title: 'tranquil bonds', cat: 'paris · france', desc: 'a depiction of a sleeping mother seal and alert child seal.', src: 'assets/photos/IMG_5668.jpg', placeholder: '📷 183A9034 2.jpg' }
-    ];
-
-    function openLightbox(idx) {
-      activeLightboxIdx = idx;
-      updateLightboxContent();
-      document.getElementById('lightbox')?.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox')?.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    function lightboxNav(dir) {
-      if (dir === 1) {
-        activeLightboxIdx = (activeLightboxIdx + 1) % photoData.length;
-      } else {
-        activeLightboxIdx = (activeLightboxIdx - 1 + photoData.length) % photoData.length;
-      }
-      updateLightboxContent();
-    }
-
-    function updateLightboxContent() {
-      const data = photoData[activeLightboxIdx];
-      if (!data) return;
-      const img = document.getElementById('lightbox-img');
-      const ph = document.getElementById('lightbox-placeholder');
-      const title = document.getElementById('lightbox-title');
-      const meta = document.getElementById('lightbox-meta');
-      const desc = document.getElementById('lightbox-desc');
-      const counter = document.getElementById('lightbox-counter');
-      const topTitle = document.getElementById('lightbox-title-top');
-
-      if (title) title.textContent = data.title;
-      if (meta) meta.textContent = data.cat;
-      if (desc) desc.textContent = data.desc;
-      if (topTitle) topTitle.textContent = data.placeholder;
-      if (counter) counter.textContent = (activeLightboxIdx + 1) + ' / ' + photoData.length;
-
-      if (img) {
-        img.src = data.src;
-        img.alt = data.title;
-        img.style.display = 'block';
-        if (ph) ph.style.display = 'none';
-        img.onerror = () => {
-          img.style.display = 'none';
-          if (ph) {
-            ph.style.display = 'flex';
-          }
-        };
-      }
-    }
-
-    // Lightbox keyboard navigation
-    window.addEventListener('keydown', e => {
-      const modal = document.getElementById('lightbox');
-      if (modal && modal.classList.contains('open')) {
-        if (e.key === 'ArrowRight') lightboxNav(1);
-        else if (e.key === 'ArrowLeft') lightboxNav(-1);
-        else if (e.key === 'Escape') closeLightbox();
-      }
-    });
-
-    // ══════════════════════════════════════════════════
-    //  THEATER MODE SQUIGGLE BACKGROUND FX
-    // ══════════════════════════════════════════════════
-    (function initTheaterBg() {
-      const canvas = document.getElementById('theaterBgCanvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let w, h, t = 0;
-      function resize() {
-        w = canvas.width = canvas.parentElement.offsetWidth;
-        h = canvas.height = canvas.parentElement.offsetHeight;
-      }
-      resize();
-      window.addEventListener('resize', resize);
-
-      function draw() {
-        if (!canvas.classList.contains('active')) {
-          requestAnimationFrame(draw);
-          return;
-        }
-        ctx.clearRect(0, 0, w, h);
-        t += 0.015;
-        // Subtle ambient glowing ribbons & squiggles behind cards
-        for (let i = 0; i < 4; i++) {
-          ctx.beginPath();
-          ctx.strokeStyle = i % 2 === 0 ? 'rgba(167, 139, 250, 0.12)' : 'rgba(52, 211, 153, 0.1)';
-          ctx.lineWidth = 2.5;
-          let yBase = h * (0.3 + i * 0.18);
-          for (let x = 0; x < w; x += 15) {
-            let y = yBase + Math.sin(x * 0.006 + t + i) * 35 + Math.cos(x * 0.012 - t) * 20;
-            if (x === 0) ctx.moveTo(x, y);
-            else ctx.lineTo(x, y);
-          }
-          ctx.stroke();
-        }
-        requestAnimationFrame(draw);
-      }
-      draw();
-    })();
-
-    // ══════════════════════════════════════════════════
-    //  SCROLL REVEAL
-    // ══════════════════════════════════════════════════
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-    // ══════════════════════════════════════════════════
-    //  ANIME.JS SVG DRAWING & HOVER
-    // ══════════════════════════════════════════════════
-    if (typeof anime !== 'undefined') {
-      const svgs = document.querySelectorAll('.anime-cam-svg');
-
-      const svgObs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            anime({
-              targets: e.target.querySelectorAll('path, rect, circle, line'),
-              strokeDashoffset: [anime.setDashoffset, 0],
-              easing: 'easeInOutSine',
-              duration: 1500,
-              delay: function (el, i) { return i * 150; },
-              direction: 'alternate',
-              loop: false
+      function filterPhotos(category, btn) {
+        if (btn) {
+          const wasActive = btn.classList.contains('active');
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          if (wasActive) {
+            // clicking active filter again → show all
+            document.querySelectorAll('.filter-btn').forEach(b => {
+              if (b.textContent.trim() === 'all') b.classList.add('active');
             });
-            svgObs.unobserve(e.target);
+            category = 'all';
+          } else {
+            btn.classList.add('active');
+            // remove 'all' active when specific filter chosen
+            document.querySelectorAll('.filter-btn').forEach(b => {
+              if (b.textContent.trim() === 'all' && category !== 'all') b.classList.remove('active');
+            });
+          }
+        }
+        const items = document.querySelectorAll('.photo-item');
+        items.forEach(item => {
+          const cat = item.getAttribute('data-cat');
+          const cam = item.getAttribute('data-cam');
+          if (category === 'all' || cat === category || cam === category) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
           }
         });
-      }, { threshold: 0.5 });
+      }
 
-      svgs.forEach(svg => {
-        // Set initial dash offset so they are hidden
-        const paths = svg.querySelectorAll('path, rect, circle, line');
-        paths.forEach(p => {
-          p.style.strokeDasharray = anime.setDashoffset(p);
-          p.style.strokeDashoffset = anime.setDashoffset(p);
-        });
-        svgObs.observe(svg);
+      // ══════════════════════════════════════════════════
+      //  LIGHTBOX MODAL
+      // ══════════════════════════════════════════════════
+      let activeLightboxIdx = 0;
+      const photoData = [
+        { title: 'shibuya crossing', cat: 'tokyo · japan', desc: 'organized chaos of umbrellas and neon lights.', src: 'assets/photos/photo 11.jpg', placeholder: '🌆 photo 11.jpg' },
+        { title: 'the bund', cat: 'shanghai · china', desc: 'vibrant neon lights reflecting off dark river waters.', src: 'assets/photos/shanghai.jpg', placeholder: '🌆 shanghai.jpg' },
+        { title: 'shinjuku neon', cat: 'tokyo · japan', desc: 'dazzling cyberpunk streetscape of shinjuku at night.', src: 'assets/photos/shinjuku.jpg', placeholder: '🏙️ shinjuku.jpg' },
+        { title: 'boat exiting sea cave', cat: 'na pali · hi', desc: 'natural light filtering through a sea cave.', src: 'assets/photos/photo1.jpg', placeholder: '🌊 photo1.jpg' },
+        { title: 'emerald-shrouded sapphire', cat: 'saratoga · ca', desc: 'vibrant blue water against lush greenery.', src: 'assets/photos/photo3.jpg', placeholder: '🏞️ photo3.jpg' },
+        { title: 'winter wonderland', cat: 'ukkusissat · greenland', desc: 'aerial view of a massive ice canyon.', src: 'assets/photos/photo7.jpg', placeholder: '❄️ photo7.jpg' },
+        { title: 'one last time', cat: 'saratoga · ca', desc: 'nostalgic local tradition under the bright summer.', src: 'assets/photos/photo5.jpg', placeholder: '🌇 photo5.jpg' },
+        { title: 'mona lisa', cat: 'paris · france', desc: 'visitors capturing their own version of the mona lisa.', src: 'assets/photos/photo8.jpg', placeholder: '🖼️ photo8.jpg' },
+        { title: 'the serve', cat: 'saratoga · ca', desc: 'a volleyball player leaps into a powerful jump serve, frozen mid-air under the gymnasium lights.', src: 'assets/photos/newphoto1.jpg', placeholder: '📷 newphoto1.jpg' },
+        { title: 'ding ding crossing', cat: 'hong kong · china', desc: 'pedestrians flood a tram crossing as the iconic double-decker ding-dings approach through dense high-rises.', src: 'assets/photos/newphoto7.jpg', placeholder: '📷 newphoto7.jpg' },
+        { title: 'bridge of lanterns', cat: 'suzhou · china', desc: 'women in traditional hanfu cross a stone bridge draped with glowing red lanterns at twilight.', src: 'assets/photos/newphoto8.jpg', placeholder: '📷 newphoto8.jpg' },
+        { title: 'breakaway run', cat: 'saratoga · ca', desc: 'a flag football player breaks through the defense, football tucked tight, in golden afternoon light.', src: 'assets/photos/newphoto9.jpg', placeholder: '📷 newphoto9.jpg' },
+        { title: 'neon maze', cat: 'tokyo · japan', desc: 'towering walls of neon signage engulf a crowded kabukichō alley in electric warmth.', src: 'assets/photos/newphoto10.jpg', placeholder: '📷 newphoto10.jpg' },
+        { title: 'shrine procession', cat: 'tokyo · japan', desc: 'a traditional shinto wedding procession moves through meiji shrine under a vermilion parasol.', src: 'assets/photos/newphoto11.jpg', placeholder: '📷 newphoto11.jpg' },
+        { title: 'skyward bound', cat: 'shanghai · china', desc: 'a lone aircraft threads the gap between lujiazui\'s colossal towers in a moody teal sky.', src: 'assets/photos/newphoto12.jpg', placeholder: '📷 newphoto12.jpg' },
+        { title: 'city of light at sunset', cat: 'paris · france', desc: 'the eiffel tower glows against a gradient sunset, boulevards radiating outward from the arc de triomphe.', src: 'assets/photos/newphoto13.jpg', placeholder: '📷 newphoto13.jpg' },
+        { title: 'olympic spirit', cat: 'paris · france', desc: 'a visitor poses inside the olympic rings installation beneath the iconic iron lattice of the eiffel tower.', src: 'assets/photos/newphoto14.jpg', placeholder: '📷 newphoto14.jpg' },
+        { title: 'curtain of green', cat: 'maui · hi', desc: 'hanging vines cascade through deep tropical shadow, their leaves catching slivers of light.', src: 'assets/photos/IMG_3178.jpg', placeholder: '📷 IMG_3178.jpg' },
+        { title: 'tranquil bonds', cat: 'paris · france', desc: 'a depiction of a sleeping mother seal and alert child seal.', src: 'assets/photos/IMG_5668.jpg', placeholder: '📷 183A9034 2.jpg' },
+        { title: 'red sails at midnight', cat: 'hong kong · china', desc: 'a crimson-sailed junk boat glides across victoria harbour, the city skyline burning behind it.', src: 'assets/photos/IMG_8784.jpg', placeholder: '📷 IMG_8784.jpg' }
+      ];
 
-        // Hover spring effect
-        const wrap = svg.closest('.cam-viewer-card');
-        wrap.addEventListener('mouseenter', () => {
-          anime.remove(paths);
-          anime({
-            targets: paths,
-            strokeWidth: [2, 3],
-            strokeDashoffset: [0, anime.setDashoffset],
-            direction: 'alternate',
-            easing: 'easeOutElastic(1, .6)',
-            duration: 800,
-            delay: anime.stagger(50)
-          });
-        });
-        wrap.addEventListener('mouseleave', () => {
-          anime.remove(paths);
-          anime({
-            targets: paths,
-            strokeWidth: 2,
-            strokeDashoffset: 0,
-            easing: 'easeOutExpo',
-            duration: 600
-          });
-        });
+      function openLightbox(idx) {
+        activeLightboxIdx = idx;
+        updateLightboxContent();
+        document.getElementById('lightbox')?.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        document.getElementById('lightbox')?.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      function lightboxNav(dir) {
+        if (dir === 1) {
+          activeLightboxIdx = (activeLightboxIdx + 1) % photoData.length;
+        } else {
+          activeLightboxIdx = (activeLightboxIdx - 1 + photoData.length) % photoData.length;
+        }
+        updateLightboxContent();
+      }
+
+      function updateLightboxContent() {
+        const data = photoData[activeLightboxIdx];
+        if (!data) return;
+        const img = document.getElementById('lightbox-img');
+        const ph = document.getElementById('lightbox-placeholder');
+        const title = document.getElementById('lightbox-title');
+        const meta = document.getElementById('lightbox-meta');
+        const desc = document.getElementById('lightbox-desc');
+        const counter = document.getElementById('lightbox-counter');
+        const topTitle = document.getElementById('lightbox-title-top');
+
+        if (title) title.textContent = data.title;
+        if (meta) meta.textContent = data.cat;
+        if (desc) desc.textContent = data.desc;
+        if (topTitle) topTitle.textContent = data.placeholder;
+        if (counter) counter.textContent = (activeLightboxIdx + 1) + ' / ' + photoData.length;
+
+        if (img) {
+          img.src = data.src;
+          img.alt = data.title;
+          img.style.display = 'block';
+          if (ph) ph.style.display = 'none';
+          img.onerror = () => {
+            img.style.display = 'none';
+            if (ph) {
+              ph.style.display = 'flex';
+            }
+          };
+        }
+      }
+
+      // Lightbox keyboard navigation
+      window.addEventListener('keydown', e => {
+        const modal = document.getElementById('lightbox');
+        if (modal && modal.classList.contains('open')) {
+          if (e.key === 'ArrowRight') lightboxNav(1);
+          else if (e.key === 'ArrowLeft') lightboxNav(-1);
+          else if (e.key === 'Escape') closeLightbox();
+        }
       });
-    }
-  </script>
-  <div class="toast" id="toast"><span id="toast-icon">✓</span> <span id="toast-msg">email copied!</span></div>
+
+      // ══════════════════════════════════════════════════
+      //  THEATER MODE SQUIGGLE BACKGROUND FX
+      // ══════════════════════════════════════════════════
+      (function initTheaterBg() {
+        const canvas = document.getElementById('theaterBgCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let w, h, t = 0;
+        function resize() {
+          w = canvas.width = canvas.parentElement.offsetWidth;
+          h = canvas.height = canvas.parentElement.offsetHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        function draw() {
+          if (!canvas.classList.contains('active')) {
+            requestAnimationFrame(draw);
+            return;
+          }
+          ctx.clearRect(0, 0, w, h);
+          t += 0.015;
+          // Subtle ambient glowing ribbons & squiggles behind cards
+          for (let i = 0; i < 4; i++) {
+            ctx.beginPath();
+            ctx.strokeStyle = i % 2 === 0 ? 'rgba(167, 139, 250, 0.12)' : 'rgba(52, 211, 153, 0.1)';
+            ctx.lineWidth = 2.5;
+            let yBase = h * (0.3 + i * 0.18);
+            for (let x = 0; x < w; x += 15) {
+              let y = yBase + Math.sin(x * 0.006 + t + i) * 35 + Math.cos(x * 0.012 - t) * 20;
+              if (x === 0) ctx.moveTo(x, y);
+              else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+          }
+          requestAnimationFrame(draw);
+        }
+        draw();
+      })();
+
+      // ══════════════════════════════════════════════════
+      //  SCROLL REVEAL
+      // ══════════════════════════════════════════════════
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+      // ══════════════════════════════════════════════════
+      //  ANIME.JS SVG DRAWING & HOVER
+      // ══════════════════════════════════════════════════
+      if (typeof anime !== 'undefined') {
+        const svgs = document.querySelectorAll('.anime-cam-svg');
+
+        const svgObs = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              anime({
+                targets: e.target.querySelectorAll('path, rect, circle, line'),
+                strokeDashoffset: [anime.setDashoffset, 0],
+                easing: 'easeInOutSine',
+                duration: 1500,
+                delay: function (el, i) { return i * 150; },
+                direction: 'alternate',
+                loop: false
+              });
+              svgObs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.5 });
+
+        svgs.forEach(svg => {
+          // Set initial dash offset so they are hidden
+          const paths = svg.querySelectorAll('path, rect, circle, line');
+          paths.forEach(p => {
+            p.style.strokeDasharray = anime.setDashoffset(p);
+            p.style.strokeDashoffset = anime.setDashoffset(p);
+          });
+          svgObs.observe(svg);
+
+          // Hover spring effect
+          const wrap = svg.closest('.cam-viewer-card');
+          wrap.addEventListener('mouseenter', () => {
+            anime.remove(paths);
+            anime({
+              targets: paths,
+              strokeWidth: [2, 3],
+              strokeDashoffset: [0, anime.setDashoffset],
+              direction: 'alternate',
+              easing: 'easeOutElastic(1, .6)',
+              duration: 800,
+              delay: anime.stagger(50)
+            });
+          });
+          wrap.addEventListener('mouseleave', () => {
+            anime.remove(paths);
+            anime({
+              targets: paths,
+              strokeWidth: 2,
+              strokeDashoffset: 0,
+              easing: 'easeOutExpo',
+              duration: 600
+            });
+          });
+        });
+      }
+    </script>
+    <div class="toast" id="toast"><span id="toast-icon">✓</span> <span id="toast-msg">email copied!</span></div>
 </body>
 
 </html>
