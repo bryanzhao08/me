@@ -3531,8 +3531,7 @@
   </div>
 
   <!-- ─── SCRIPTS ───────────────────────────── -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
-  <!-- The gallery intentionally does not load Three.js or any robot models. -->
+  <!-- The gallery intentionally does not load the main site's p5/Three.js sketches or robot models. -->
 
   <script>
     // ══════════════════════════════════════════════════
@@ -3622,8 +3621,8 @@
       }
     }
 
-    // Automatically fetch once on load
-    fetchSpotifyNowPlaying();
+    // The standalone gallery has no Spotify widget.
+    if (document.getElementById('spotifyPopup')) fetchSpotifyNowPlaying();
 
     // Close popups on Escape key
     window.addEventListener('keydown', e => {
@@ -3668,7 +3667,8 @@
     let setBoidSpeed = null;
     let setBoidMode = null;
 
-    new p5(function (p) {
+    if (document.getElementById('robot-canvas-wrap') && typeof p5 !== 'undefined') {
+      new p5(function (p) {
       let boids = [], t = 0, lastTime = 0, fps = 0;
       let curCount = 60;
       let curSpeed = 3.0;
@@ -3820,12 +3820,14 @@
           p.pop();
         }
       }
-    });
+      });
+    }
 
     // ══════════════════════════════════════════════════
     //  PROJECT CANVAS BACKGROUNDS
     // ══════════════════════════════════════════════════
     function makeProjectBg(parentId, color, style) {
+      if (!document.getElementById(parentId) || typeof p5 === 'undefined') return;
       new p5(function (p) {
         let t = 0;
         p.setup = function () {
