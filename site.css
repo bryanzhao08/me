@@ -4,7 +4,6 @@
   --text: #e8e6e3;
   --muted: #9a9894;
   --line: rgba(255, 255, 255, 0.14);
-  --star: 168, 140, 190;
 }
 
 * { box-sizing: border-box; }
@@ -46,16 +45,13 @@ a { color: inherit; }
   gap: 12px;
   font-size: 20px;
   text-decoration: none;
-  text-transform: none;
 }
 
 .name::before {
   content: '';
   width: 22px;
   height: 22px;
-  border-radius: 50%;
-  border: 1.5px solid var(--muted);
-  border-left-color: transparent;
+  background: url(mark.svg) center / contain no-repeat;
 }
 
 .top nav {
@@ -68,7 +64,6 @@ a { color: inherit; }
 
 .top nav a {
   text-decoration: none;
-  text-transform: none;
 }
 
 .top nav a[aria-current] { color: var(--text); }
@@ -216,8 +211,3 @@ main.intro { max-width: 1100px; padding-bottom: 12px; }
   .photos { padding: 0 16px 60px; column-gap: 10px; }
   .photos button { margin-bottom: 10px; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  #sky { display: none; }
-}
-.keep { text-transform: none; }
