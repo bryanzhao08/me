@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../site.css?v=4">
+  <link rel="stylesheet" href="../site.css?v=5">
 </head>
 <body>
   <canvas id="sky" aria-hidden="true"></canvas>
@@ -30,10 +30,10 @@
   <main class="intro">
     <p>photos i've taken — street, landscapes, and the moments in between.</p>
     <nav class="albums" aria-label="albums">
-      <button type="button" data-filter="all" aria-pressed="true">all <span>34</span></button>
+      <button type="button" data-filter="all" aria-pressed="true">all <span>33</span></button>
       <button type="button" data-filter="nature" aria-pressed="false">nature <span>11</span></button>
       <button type="button" data-filter="architecture" aria-pressed="false">architecture <span>9</span></button>
-      <button type="button" data-filter="street" aria-pressed="false">street <span>14</span></button>
+      <button type="button" data-filter="street" aria-pressed="false">street <span>13</span></button>
     </nav>
   </main>
 
@@ -71,7 +71,6 @@
     <button type="button" data-album="nature" data-title="river through the karsts · yangshuo · china"><img width="1200" height="800" src="../assets/photos/IMG_9882.jpg" alt="river through the karsts" loading="lazy" decoding="async"></button>
     <button type="button" data-album="street" data-title="ramen corner · ginza · tokyo · japan"><img width="1800" height="1200" src="../assets/photos/web/IMG_0366.jpg" alt="ramen corner" loading="lazy" decoding="async"></button>
     <button type="button" data-album="street" data-title="world of color · anaheim · ca"><img width="1800" height="1200" src="../assets/photos/web/IMG_7446.jpg" alt="world of color" loading="lazy" decoding="async"></button>
-    <button type="button" data-album="street" data-title="city at dusk · chicago · il"><img width="2048" height="1906" src="../assets/photos/addl/IMG_9796.jpg" alt="city at dusk" loading="lazy" decoding="async"></button>
   </section>
 
   <dialog id="lightbox">
@@ -87,11 +86,29 @@
     const shots = [...document.querySelectorAll('.photos button')];
     const tabs = [...document.querySelectorAll('.albums button')];
     let at = 0;
+    const grid = document.getElementById('photos');
     const visible = () => shots.filter(b => !b.hidden);
+    // Place each photo, in order, into the currently shortest column so the
+    // grid reads left to right instead of down one column at a time.
+    const columnsThatFit = () => Math.max(1, Math.min(3, Math.floor((grid.clientWidth + 14) / 274)));
+    function layout() {
+      const count = columnsThatFit();
+      const cols = Array.from({ length: count }, () => Object.assign(document.createElement('div'), { className: 'col' }));
+      const heights = cols.map(() => 0);
+      for (const b of visible()) {
+        const img = b.querySelector('img');
+        const i = heights.indexOf(Math.min(...heights));
+        cols[i].append(b);
+        heights[i] += img.height / img.width + 0.05;
+      }
+      shots.filter(b => b.hidden).forEach(b => cols[0].append(b));
+      grid.replaceChildren(...cols);
+    }
     function filter(name) {
       if (!tabs.some(t => t.dataset.filter === name)) name = 'all';
       tabs.forEach(t => t.setAttribute('aria-pressed', String(t.dataset.filter === name)));
       shots.forEach(b => { b.hidden = name !== 'all' && b.dataset.album !== name; });
+      layout();
     }
     function show(i) {
       const list = visible();
@@ -115,6 +132,9 @@
     // Albums can be linked directly, e.g. photography/#nature.
     filter(location.hash.slice(1));
     window.addEventListener('hashchange', () => filter(location.hash.slice(1)));
+    window.addEventListener('resize', () => {
+      if (columnsThatFit() !== grid.querySelectorAll('.col').length) layout();
+    });
   </script>
 </body>
 </html>
