@@ -7,11 +7,12 @@
 
   const caption = document.getElementById('robot-caption');
   const buttons = [...document.querySelectorAll('[data-robot]')];
-  // rotationZ fixes CAD exports that come out facing sideways.
+  // rotationZ fixes CAD exports that come out facing sideways; size overrides
+  // how large the model is drawn for taller robots.
   const MODELS = {
     '2024': { url: 'assets/models/ou-new-detail.glb', caption: '2024 · over under' },
     '2025': { url: 'assets/models/worlds-compact.glb', caption: '2025 · high stakes · worlds' },
-    '2026': { url: 'assets/models/pb-compact.glb', caption: '2026 · push back', rotationZ: -Math.PI / 2 }
+    '2026': { url: 'assets/models/pb-compact.glb', caption: '2026 · push back', rotationZ: -Math.PI / 2, size: 3.1 }
   };
   const roots = {};
   let current = '2025';
@@ -153,7 +154,7 @@
         }
       });
       const size = accurateBounds(root).getSize(new THREE.Vector3());
-      root.scale.setScalar(3.8 / Math.max(size.x, size.y, size.z));
+      root.scale.setScalar((model.size || 3.8) / Math.max(size.x, size.y, size.z));
       root.position.sub(accurateBounds(root).getCenter(new THREE.Vector3()));
       roots[name] = root;
       if (current === name) show(name);
