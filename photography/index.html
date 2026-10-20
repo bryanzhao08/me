@@ -29,29 +29,54 @@
 
   <main class="intro">
     <p>photos i've taken — street, landscapes, and the moments in between.</p>
+    <nav class="albums" aria-label="albums">
+      <button type="button" data-filter="all" aria-pressed="true">all <span>39</span></button>
+      <button type="button" data-filter="nature" aria-pressed="false">nature <span>14</span></button>
+      <button type="button" data-filter="architecture" aria-pressed="false">architecture <span>10</span></button>
+      <button type="button" data-filter="street" aria-pressed="false">street <span>15</span></button>
+    </nav>
   </main>
 
   <section class="photos" id="photos">
-    <button type="button" data-title="shibuya crossing · tokyo · japan"><img src="../assets/photos/photo%2011.jpg" alt="shibuya crossing" loading="eager" decoding="async"></button>
-    <button type="button" data-title="the bund · shanghai · china"><img src="../assets/photos/shanghai.jpg" alt="the bund" loading="eager" decoding="async"></button>
-    <button type="button" data-title="shinjuku neon · tokyo · japan"><img src="../assets/photos/shinjuku.jpg" alt="shinjuku neon" loading="eager" decoding="async"></button>
-    <button type="button" data-title="boat exiting sea cave · na pali · hi"><img src="../assets/photos/photo1.jpg" alt="boat exiting sea cave" loading="eager" decoding="async"></button>
-    <button type="button" data-title="emerald-shrouded sapphire · saratoga · ca"><img src="../assets/photos/photo3.jpg" alt="emerald-shrouded sapphire" loading="eager" decoding="async"></button>
-    <button type="button" data-title="winter wonderland · ukkusissat · greenland"><img src="../assets/photos/photo7.jpg" alt="winter wonderland" loading="eager" decoding="async"></button>
-    <button type="button" data-title="one last time · saratoga · ca"><img src="../assets/photos/photo5.jpg" alt="one last time" loading="lazy" decoding="async"></button>
-    <button type="button" data-title="mona lisa · paris · france"><img src="../assets/photos/photo8.jpg" alt="mona lisa" loading="lazy" decoding="async"></button>
-    <button type="button" data-title="the serve · saratoga · ca"><img src="../assets/photos/newphoto1.jpg" alt="Volleyball player mid-air jump serve in a gymnasium" loading="lazy" decoding="async"></button>
-    <button type="button" data-title="ding ding crossing · hong kong · china"><img src="../assets/photos/newphoto7.jpg" alt="Hong Kong tram crossing with dense high-rises" loading="lazy" decoding="async"></button>
-    <button type="button" data-title="bridge of lanterns · suzhou · china"><img src="../assets/photos/newphoto8.jpg" alt="Women in hanfu crossing a lantern-lit stone bridge in Suzhou" loading="lazy" decoding="async"></button>
-    <button type="button" data-title="breakaway run · saratoga · ca"><img src="../assets/photos/newphoto9.jpg" alt="Flag football player breaking through defense" loading="lazy" decoding="async"></button>
-    <button type="button" data-title="neon maze · tokyo · japan"><img src="../assets/photos/newphoto10.jpg" alt="Neon signs filling a crowded Kabukicho alley at night" loading="lazy" decoding="async"></button>
-    <button type="button" data-title="shrine procession · tokyo · japan"><img src="../assets/photos/newphoto11.jpg" alt="Shinto wedding procession at Meiji Shrine under a red parasol" loading="lazy" decoding="async"></button>
-    <button type="button" data-title="skyward bound · shanghai · china"><img src="../assets/photos/newphoto12.jpg" alt="Airplane flying between Shanghai skyscrapers against teal sky" loading="lazy" decoding="async"></button>
-    <button type="button" data-title="city of light at sunset · paris · france"><img src="../assets/photos/newphoto13.jpg" alt="Paris skyline with Eiffel Tower at sunset from Arc de Triomphe" loading="lazy" decoding="async"></button>
-    <button type="button" data-title="olympic spirit · paris · france"><img src="../assets/photos/newphoto14.jpg" alt="Person posing inside Olympic rings beneath the Eiffel Tower" loading="lazy" decoding="async"></button>
-    <button type="button" data-title="curtain of green · maui · hi"><img src="../assets/photos/IMG_3178.jpg" alt="hanging vines and tropical leaves in deep shadow" loading="lazy" decoding="async"></button>
-    <button type="button" data-title="tranquil bonds · la jolla · california"><img src="../assets/photos/IMG_5668.jpg" alt="a motherly seal resting with its young on the shore" loading="lazy" decoding="async"></button>
-    <button type="button" data-title="red sails at midnight · hong kong · china"><img src="../assets/photos/IMG_8784.jpg" alt="red-sailed junk boat crossing hong kong harbor at night" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="architecture" data-title="shibuya crossing · tokyo · japan"><img width="799" height="1200" src="../assets/photos/photo%2011.jpg" alt="shibuya crossing" loading="eager" decoding="async"></button>
+    <button type="button" data-album="architecture" data-title="the bund · shanghai · china"><img width="1200" height="799" src="../assets/photos/shanghai.jpg" alt="the bund" loading="eager" decoding="async"></button>
+    <button type="button" data-album="street" data-title="shinjuku neon · tokyo · japan"><img width="1200" height="799" src="../assets/photos/shinjuku.jpg" alt="shinjuku neon" loading="eager" decoding="async"></button>
+    <button type="button" data-album="nature" data-title="boat exiting sea cave · na pali · hi"><img width="1200" height="900" src="../assets/photos/photo1.jpg" alt="boat exiting sea cave" loading="eager" decoding="async"></button>
+    <button type="button" data-album="nature" data-title="emerald-shrouded sapphire · saratoga · ca"><img width="1200" height="800" src="../assets/photos/photo3.jpg" alt="emerald-shrouded sapphire" loading="eager" decoding="async"></button>
+    <button type="button" data-album="nature" data-title="winter wonderland · ukkusissat · greenland"><img width="900" height="1200" src="../assets/photos/photo7.jpg" alt="winter wonderland" loading="eager" decoding="async"></button>
+    <button type="button" data-album="street" data-title="one last time · saratoga · ca"><img width="1200" height="800" src="../assets/photos/photo5.jpg" alt="one last time" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="street" data-title="mona lisa · paris · france"><img width="799" height="1200" src="../assets/photos/photo8.jpg" alt="mona lisa" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="street" data-title="the serve · saratoga · ca"><img width="1200" height="800" src="../assets/photos/newphoto1.jpg" alt="Volleyball player mid-air jump serve in a gymnasium" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="street" data-title="ding ding crossing · hong kong · china"><img width="739" height="1200" src="../assets/photos/newphoto7.jpg" alt="Hong Kong tram crossing with dense high-rises" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="street" data-title="bridge of lanterns · suzhou · china"><img width="1200" height="800" src="../assets/photos/newphoto8.jpg" alt="Women in hanfu crossing a lantern-lit stone bridge in Suzhou" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="street" data-title="breakaway run · saratoga · ca"><img width="1200" height="800" src="../assets/photos/newphoto9.jpg" alt="Flag football player breaking through defense" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="street" data-title="neon maze · tokyo · japan"><img width="1200" height="800" src="../assets/photos/newphoto10.jpg" alt="Neon signs filling a crowded Kabukicho alley at night" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="street" data-title="shrine procession · tokyo · japan"><img width="1200" height="800" src="../assets/photos/newphoto11.jpg" alt="Shinto wedding procession at Meiji Shrine under a red parasol" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="architecture" data-title="skyward bound · shanghai · china"><img width="800" height="1200" src="../assets/photos/newphoto12.jpg" alt="Airplane flying between Shanghai skyscrapers against teal sky" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="architecture" data-title="city of light at sunset · paris · france"><img width="1200" height="800" src="../assets/photos/newphoto13.jpg" alt="Paris skyline with Eiffel Tower at sunset from Arc de Triomphe" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="street" data-title="olympic spirit · paris · france"><img width="1200" height="844" src="../assets/photos/newphoto14.jpg" alt="Person posing inside Olympic rings beneath the Eiffel Tower" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="nature" data-title="curtain of green · maui · hi"><img width="800" height="1200" src="../assets/photos/IMG_3178.jpg" alt="hanging vines and tropical leaves in deep shadow" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="nature" data-title="tranquil bonds · la jolla · california"><img width="1200" height="800" src="../assets/photos/IMG_5668.jpg" alt="a motherly seal resting with its young on the shore" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="architecture" data-title="red sails at midnight · hong kong · china"><img width="1200" height="800" src="../assets/photos/IMG_8784.jpg" alt="red-sailed junk boat crossing hong kong harbor at night" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="nature" data-title="angels landing · zion · utah"><img width="1200" height="1800" src="../assets/photos/web/IMG_0196-2.jpg" alt="angels landing" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="street" data-title="ginza after dark · tokyo · japan"><img width="1200" height="1800" src="../assets/photos/web/IMG_0406.jpg" alt="ginza after dark" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="architecture" data-title="under the brooklyn bridge · new york · ny"><img width="800" height="1200" src="../assets/photos/IMG_8898.jpg" alt="under the brooklyn bridge" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="architecture" data-title="manhattan from above · new york · ny"><img width="1200" height="800" src="../assets/photos/IMG_8932.jpg" alt="manhattan from above" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="architecture" data-title="lotus pavilion · china"><img width="1200" height="800" src="../assets/photos/IMG_9943.jpg" alt="lotus pavilion" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="architecture" data-title="victoria peak · hong kong · china"><img width="1200" height="1179" src="../assets/photos/newphoto2.jpg" alt="victoria peak" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="nature" data-title="autumn deer"><img width="1200" height="879" src="../assets/photos/newphoto3.jpg" alt="autumn deer" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="nature" data-title="turkey march · california"><img width="1200" height="800" src="../assets/photos/newphoto4.jpg" alt="turkey march" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="nature" data-title="karst rooftops · guilin · china"><img width="1200" height="800" src="../assets/photos/newphoto6.jpg" alt="karst rooftops" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="nature" data-title="tree frog"><img width="1200" height="800" src="../assets/photos/photo6.jpg" alt="tree frog" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="nature" data-title="sail at dusk"><img width="1200" height="983" src="../assets/photos/IMG_7103.jpg" alt="sail at dusk" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="nature" data-title="river through the karsts · china"><img width="1200" height="800" src="../assets/photos/IMG_9882.jpg" alt="river through the karsts" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="nature" data-title="red leaves"><img width="1800" height="1617" src="../assets/photos/web/183A7167.jpg" alt="red leaves" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="street" data-title="ramen corner"><img width="1800" height="1200" src="../assets/photos/web/IMG_0366.jpg" alt="ramen corner" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="nature" data-title="above the clouds"><img width="1800" height="1350" src="../assets/photos/web/IMG_5690.jpg" alt="above the clouds" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="street" data-title="hollywood land · anaheim · ca"><img width="1800" height="1200" src="../assets/photos/web/IMG_7136.jpg" alt="hollywood land" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="street" data-title="world of color · anaheim · ca"><img width="1800" height="1200" src="../assets/photos/web/IMG_7446.jpg" alt="world of color" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="architecture" data-title="lounge"><img width="1800" height="1200" src="../assets/photos/web/IMG_9787.jpg" alt="lounge" loading="lazy" decoding="async"></button>
+    <button type="button" data-album="street" data-title="city at dusk"><img width="2048" height="1906" src="../assets/photos/addl/IMG_9796.jpg" alt="city at dusk" loading="lazy" decoding="async"></button>
   </section>
 
   <dialog id="lightbox">
@@ -65,21 +90,36 @@
   <script>
     const box = document.getElementById('lightbox');
     const shots = [...document.querySelectorAll('.photos button')];
+    const tabs = [...document.querySelectorAll('.albums button')];
     let at = 0;
+    const visible = () => shots.filter(b => !b.hidden);
+    function filter(name) {
+      if (!tabs.some(t => t.dataset.filter === name)) name = 'all';
+      tabs.forEach(t => t.setAttribute('aria-pressed', String(t.dataset.filter === name)));
+      shots.forEach(b => { b.hidden = name !== 'all' && b.dataset.album !== name; });
+    }
     function show(i) {
-      at = (i + shots.length) % shots.length;
-      const img = shots[at].querySelector('img');
+      const list = visible();
+      at = (i + list.length) % list.length;
+      const img = list[at].querySelector('img');
       document.getElementById('lightbox-img').src = img.src;
       document.getElementById('lightbox-img').alt = img.alt;
-      document.getElementById('lightbox-cap').textContent = shots[at].dataset.title;
+      document.getElementById('lightbox-cap').textContent = list[at].dataset.title;
     }
-    shots.forEach((b, i) => b.addEventListener('click', () => { show(i); box.showModal(); }));
+    tabs.forEach(t => t.addEventListener('click', () => {
+      filter(t.dataset.filter);
+      history.replaceState(null, '', t.dataset.filter === 'all' ? location.pathname : '#' + t.dataset.filter);
+    }));
+    shots.forEach(b => b.addEventListener('click', () => { show(visible().indexOf(b)); box.showModal(); }));
     box.addEventListener('click', () => box.close());
     document.addEventListener('keydown', e => {
       if (!box.open) return;
       if (e.key === 'ArrowRight') show(at + 1);
       if (e.key === 'ArrowLeft') show(at - 1);
     });
+    // Albums can be linked directly, e.g. photography/#nature.
+    filter(location.hash.slice(1));
+    window.addEventListener('hashchange', () => filter(location.hash.slice(1)));
   </script>
 </body>
 </html>
