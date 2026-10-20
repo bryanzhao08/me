@@ -1,5 +1,5 @@
 # Bryan Zhao portfolio
 
-The active website is `index.html`, with the full photography gallery at `photography/index.html`. It is served directly from the repository root, including `design.css`, `interactivity.js`, `vendor/`, and `assets/`.
+The active website is `index.html`, with photography at `photography/index.html`. Both are minimal pages styled by `site.css`, with the drifting background in `sky.js` and the black-and-white robot viewer in `robot.js` (which loads `vendor/` and `assets/models/worlds-compact.glb`).
 
-The previous homepage is preserved as `index.previous.html`, and the previous photography redirect as `photography/index.previous.html`. Older scripts, styles, and `gallery.html` remain in the repository but are not loaded by the active pages.
+The previous homepage and photography gallery are preserved as `index.previous.html` and `photography/index.previous.html` (the latter still uses `photography/gallery.css` and `gallery.js`). Older scripts, styles, and `gallery.html` remain in the repository but are not loaded by the active pages.

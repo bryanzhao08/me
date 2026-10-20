@@ -1,14 +1,96 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="0; url=../gallery.html">
-    <link rel="canonical" href="../gallery.html">
-    <title>Photography — Bryan Zhao</title>
-    <script>location.replace('../gallery.html' + location.hash);</script>
-  </head>
-  <body>
-    <p><a href="../gallery.html">Open the photography gallery</a></p>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071017">
+  <meta name="description" content="Bryan Zhao's photography gallery: street scenes, landscapes, architecture, and moments from around the world.">
+  <title>Photography — Bryan Zhao</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../" aria-label="Bryan Zhao, home">bryan<span>.</span>zhao</a>
+    <nav aria-label="Gallery navigation"><a href="../#photography">portfolio</a><a href="../#cad-viewer">robotics</a><a class="current" href="./" aria-current="page">photography</a></nav>
+    <span class="header-index">20 frames / 03 cameras</span>
+  </header>
+  <main>
+    <section class="gallery-hero">
+      <div class="hero-copy"><span class="eyebrow"><span class="signal"></span> THE PHOTO ARCHIVE / 2021—2025</span><h1>Seen through<br><em>my lens.</em></h1><p>Landscapes, street scenes, architecture, and the moments in between. A growing collection from home and around the world.</p><a href="#gallery" class="hero-link">Explore the collection <span aria-hidden="true">↘</span></a></div>
+      <div class="hero-photo"><img src="../assets/photos/IMG_8784.jpg" alt="Red sailed boat crossing Hong Kong harbour at night" fetchpriority="high"><div class="hero-photo-caption"><span>FEATURED FRAME / HONG KONG</span><span>01 / 20</span></div></div>
+      <span class="hero-side-label">BRYAN ZHAO / PHOTOGRAPHY</span>
+    </section>
+    <section id="gallery" class="gallery-section" aria-labelledby="gallery-title">
+      <div class="section-heading"><div><p class="eyebrow">THE COLLECTION</p><h2 id="gallery-title">Frames worth keeping<span>.</span></h2></div><p class="section-count"><span id="visible-count">20</span> photographs</p></div>
+      <div class="toolbar"><div class="filters" role="group" aria-label="Filter by subject"><button class="filter active" type="button" data-filter="all" aria-pressed="true">All <span>20</span></button><button class="filter" type="button" data-filter="landscape" aria-pressed="false">Landscape</button><button class="filter" type="button" data-filter="street" aria-pressed="false">Street</button><button class="filter" type="button" data-filter="urban" aria-pressed="false">Architecture</button></div><label class="camera-filter">Shot on <select id="camera-filter" aria-label="Filter by camera"><option value="all">All cameras</option><option value="canon5d">Canon 5DRS</option><option value="rebel">Canon Rebel T7</option><option value="iphone">iPhone 13 Pro / 14</option></select></label></div>
+      <div class="gallery-grid" id="gallery-grid"><button class="photo-card" type="button" data-category="urban" data-camera="rebel" data-index="0" aria-label="View shibuya crossing">
+      <img src="../assets/photos/photo%2011.jpg" alt="shibuya crossing" loading="eager" decoding="async" fetchpriority="high">
+      <span class="photo-caption"><strong>shibuya crossing</strong><small>tokyo · japan</small></span>
+    </button><button class="photo-card" type="button" data-category="urban" data-camera="rebel" data-index="1" aria-label="View the bund">
+      <img src="../assets/photos/shanghai.jpg" alt="the bund" loading="eager" decoding="async" >
+      <span class="photo-caption"><strong>the bund</strong><small>shanghai · china</small></span>
+    </button><button class="photo-card" type="button" data-category="urban" data-camera="rebel" data-index="2" aria-label="View shinjuku neon">
+      <img src="../assets/photos/shinjuku.jpg" alt="shinjuku neon" loading="eager" decoding="async" >
+      <span class="photo-caption"><strong>shinjuku neon</strong><small>tokyo · japan</small></span>
+    </button><button class="photo-card" type="button" data-category="landscape" data-camera="iphone" data-index="3" aria-label="View boat exiting sea cave">
+      <img src="../assets/photos/photo1.jpg" alt="boat exiting sea cave" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>boat exiting sea cave</strong><small>na pali · hi</small></span>
+    </button><button class="photo-card" type="button" data-category="landscape" data-camera="rebel" data-index="4" aria-label="View emerald-shrouded sapphire">
+      <img src="../assets/photos/photo3.jpg" alt="emerald-shrouded sapphire" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>emerald-shrouded sapphire</strong><small>saratoga · ca</small></span>
+    </button><button class="photo-card" type="button" data-category="landscape" data-camera="iphone" data-index="5" aria-label="View winter wonderland">
+      <img src="../assets/photos/photo7.jpg" alt="winter wonderland" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>winter wonderland</strong><small>ukkusissat · greenland</small></span>
+    </button><button class="photo-card" type="button" data-category="street" data-camera="canon5d" data-index="6" aria-label="View one last time">
+      <img src="../assets/photos/photo5.jpg" alt="one last time" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>one last time</strong><small>saratoga · ca</small></span>
+    </button><button class="photo-card" type="button" data-category="street" data-camera="canon5d" data-index="7" aria-label="View mona lisa">
+      <img src="../assets/photos/photo8.jpg" alt="mona lisa" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>mona lisa</strong><small>paris · france</small></span>
+    </button><button class="photo-card" type="button" data-category="street" data-camera="canon5d" data-index="8" aria-label="View the serve">
+      <img src="../assets/photos/newphoto1.jpg" alt="Volleyball player mid-air jump serve in a gymnasium" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>the serve</strong><small>saratoga · ca</small></span>
+    </button><button class="photo-card" type="button" data-category="urban" data-camera="rebel" data-index="9" aria-label="View ding ding crossing">
+      <img src="../assets/photos/newphoto7.jpg" alt="Hong Kong tram crossing with dense high-rises" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>ding ding crossing</strong><small>hong kong · china</small></span>
+    </button><button class="photo-card" type="button" data-category="street" data-camera="rebel" data-index="10" aria-label="View bridge of lanterns">
+      <img src="../assets/photos/newphoto8.jpg" alt="Women in hanfu crossing a lantern-lit stone bridge in Suzhou" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>bridge of lanterns</strong><small>suzhou · china</small></span>
+    </button><button class="photo-card" type="button" data-category="street" data-camera="rebel" data-index="11" aria-label="View breakaway run">
+      <img src="../assets/photos/newphoto9.jpg" alt="Flag football player breaking through defense" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>breakaway run</strong><small>saratoga · ca</small></span>
+    </button><button class="photo-card" type="button" data-category="street" data-camera="rebel" data-index="12" aria-label="View neon maze">
+      <img src="../assets/photos/newphoto10.jpg" alt="Neon signs filling a crowded Kabukicho alley at night" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>neon maze</strong><small>tokyo · japan</small></span>
+    </button><button class="photo-card" type="button" data-category="street" data-camera="rebel" data-index="13" aria-label="View shrine procession">
+      <img src="../assets/photos/newphoto11.jpg" alt="Shinto wedding procession at Meiji Shrine under a red parasol" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>shrine procession</strong><small>tokyo · japan</small></span>
+    </button><button class="photo-card" type="button" data-category="urban" data-camera="rebel" data-index="14" aria-label="View skyward bound">
+      <img src="../assets/photos/newphoto12.jpg" alt="Airplane flying between Shanghai skyscrapers against teal sky" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>skyward bound</strong><small>shanghai · china</small></span>
+    </button><button class="photo-card" type="button" data-category="landscape" data-camera="canon5d" data-index="15" aria-label="View city of light at sunset">
+      <img src="../assets/photos/newphoto13.jpg" alt="Paris skyline with Eiffel Tower at sunset from Arc de Triomphe" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>city of light at sunset</strong><small>paris · france</small></span>
+    </button><button class="photo-card" type="button" data-category="street" data-camera="canon5d" data-index="16" aria-label="View olympic spirit">
+      <img src="../assets/photos/newphoto14.jpg" alt="Person posing inside Olympic rings beneath the Eiffel Tower" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>olympic spirit</strong><small>paris · france</small></span>
+    </button><button class="photo-card" type="button" data-category="landscape" data-camera="rebel" data-index="17" aria-label="View curtain of green">
+      <img src="../assets/photos/IMG_3178.jpg" alt="hanging vines and tropical leaves in deep shadow" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>curtain of green</strong><small>maui · hi</small></span>
+    </button><button class="photo-card" type="button" data-category="landscape" data-camera="canon5d" data-index="18" aria-label="View tranquil bonds">
+      <img src="../assets/photos/IMG_5668.jpg" alt="a motherly seal resting with its young on the shore" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>tranquil bonds</strong><small>la jolla · california</small></span>
+    </button><button class="photo-card" type="button" data-category="urban" data-camera="rebel" data-index="19" aria-label="View red sails at midnight">
+      <img src="../assets/photos/IMG_8784.jpg" alt="red-sailed junk boat crossing hong kong harbor at night" loading="lazy" decoding="async" >
+      <span class="photo-caption"><strong>red sails at midnight</strong><small>hong kong · china</small></span>
+    </button></div>
+      <p class="gallery-end">END OF COLLECTION <span>✳</span> MORE FRAMES TO COME</p>
+    </section>
+  </main>
+  <footer><a class="brand" href="../">bryan<span>.</span>zhao</a><span>Images and moments by Bryan Zhao.</span><a href="../">Back to portfolio ↑</a></footer>
+  <dialog id="lightbox" aria-label="Photograph detail"><button id="lightbox-close" class="lightbox-close" type="button" aria-label="Close photo">×</button><button id="lightbox-prev" class="lightbox-arrow prev" type="button" aria-label="Previous photo">←</button><figure><img id="lightbox-image" alt=""><figcaption><div><strong id="lightbox-title"></strong><span id="lightbox-place"></span></div><span id="lightbox-counter"></span></figcaption></figure><button id="lightbox-next" class="lightbox-arrow next" type="button" aria-label="Next photo">→</button></dialog>
+  <script id="gallery-data" type="application/json">[{"category": "urban", "camera": "rebel", "src": "../assets/photos/photo%2011.jpg", "alt": "shibuya crossing", "title": "shibuya crossing", "place": "tokyo \u00b7 japan"}, {"category": "urban", "camera": "rebel", "src": "../assets/photos/shanghai.jpg", "alt": "the bund", "title": "the bund", "place": "shanghai \u00b7 china"}, {"category": "urban", "camera": "rebel", "src": "../assets/photos/shinjuku.jpg", "alt": "shinjuku neon", "title": "shinjuku neon", "place": "tokyo \u00b7 japan"}, {"category": "landscape", "camera": "iphone", "src": "../assets/photos/photo1.jpg", "alt": "boat exiting sea cave", "title": "boat exiting sea cave", "place": "na pali \u00b7 hi"}, {"category": "landscape", "camera": "rebel", "src": "../assets/photos/photo3.jpg", "alt": "emerald-shrouded sapphire", "title": "emerald-shrouded sapphire", "place": "saratoga \u00b7 ca"}, {"category": "landscape", "camera": "iphone", "src": "../assets/photos/photo7.jpg", "alt": "winter wonderland", "title": "winter wonderland", "place": "ukkusissat \u00b7 greenland"}, {"category": "street", "camera": "canon5d", "src": "../assets/photos/photo5.jpg", "alt": "one last time", "title": "one last time", "place": "saratoga \u00b7 ca"}, {"category": "street", "camera": "canon5d", "src": "../assets/photos/photo8.jpg", "alt": "mona lisa", "title": "mona lisa", "place": "paris \u00b7 france"}, {"category": "street", "camera": "canon5d", "src": "../assets/photos/newphoto1.jpg", "alt": "Volleyball player mid-air jump serve in a gymnasium", "title": "the serve", "place": "saratoga \u00b7 ca"}, {"category": "urban", "camera": "rebel", "src": "../assets/photos/newphoto7.jpg", "alt": "Hong Kong tram crossing with dense high-rises", "title": "ding ding crossing", "place": "hong kong \u00b7 china"}, {"category": "street", "camera": "rebel", "src": "../assets/photos/newphoto8.jpg", "alt": "Women in hanfu crossing a lantern-lit stone bridge in Suzhou", "title": "bridge of lanterns", "place": "suzhou \u00b7 china"}, {"category": "street", "camera": "rebel", "src": "../assets/photos/newphoto9.jpg", "alt": "Flag football player breaking through defense", "title": "breakaway run", "place": "saratoga \u00b7 ca"}, {"category": "street", "camera": "rebel", "src": "../assets/photos/newphoto10.jpg", "alt": "Neon signs filling a crowded Kabukicho alley at night", "title": "neon maze", "place": "tokyo \u00b7 japan"}, {"category": "street", "camera": "rebel", "src": "../assets/photos/newphoto11.jpg", "alt": "Shinto wedding procession at Meiji Shrine under a red parasol", "title": "shrine procession", "place": "tokyo \u00b7 japan"}, {"category": "urban", "camera": "rebel", "src": "../assets/photos/newphoto12.jpg", "alt": "Airplane flying between Shanghai skyscrapers against teal sky", "title": "skyward bound", "place": "shanghai \u00b7 china"}, {"category": "landscape", "camera": "canon5d", "src": "../assets/photos/newphoto13.jpg", "alt": "Paris skyline with Eiffel Tower at sunset from Arc de Triomphe", "title": "city of light at sunset", "place": "paris \u00b7 france"}, {"category": "street", "camera": "canon5d", "src": "../assets/photos/newphoto14.jpg", "alt": "Person posing inside Olympic rings beneath the Eiffel Tower", "title": "olympic spirit", "place": "paris \u00b7 france"}, {"category": "landscape", "camera": "rebel", "src": "../assets/photos/IMG_3178.jpg", "alt": "hanging vines and tropical leaves in deep shadow", "title": "curtain of green", "place": "maui \u00b7 hi"}, {"category": "landscape", "camera": "canon5d", "src": "../assets/photos/IMG_5668.jpg", "alt": "a motherly seal resting with its young on the shore", "title": "tranquil bonds", "place": "la jolla \u00b7 california"}, {"category": "urban", "camera": "rebel", "src": "../assets/photos/IMG_8784.jpg", "alt": "red-sailed junk boat crossing hong kong harbor at night", "title": "red sails at midnight", "place": "hong kong \u00b7 china"}]</script>
+  <script src="gallery.js" defer></script>
+</body>
 </html>
