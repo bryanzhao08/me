@@ -34,7 +34,11 @@
 
     <p>right now i'm developing fluid systems at <a href="https://www.pandosurgical.com/" target="_blank" rel="noopener">pando</a>, a surgical startup. on the side i'm building new tools, including a haptic migraine relief system.</p>
 
-    <p>previously i was a research intern at ucsc in ai + hci, building vision-language pipelines that detect falls in real time for senior care. before that i was at <a href="https://hai.stanford.edu" target="_blank" rel="noopener">stanford hai</a> through ai4all, where i taught a plane to taxi itself in x-plane: a small neural net reads the nose camera and a pid controller keeps it on the centerline.</p>
+    <p>previously i was a research intern at ucsc in ai + hci, working on fall detection for senior care. we built a camera system that watches for falls without anyone wearing a device: a video-language model reads the live feed, audio is transcribed alongside it, and segment anything marks out safe zones like beds and couches so lying down isn't flagged as a fall. it reached a 92% f1 score and runs on a raspberry pi (<a href="assets/paper1.pdf" target="_blank" rel="noopener">paper</a>).</p>
+
+    <p>that work led to <a href="https://arxiv.org/abs/2410.12165" target="_blank" rel="noopener">dual-model distillation (dmd)</a>, presented at a neurips 2024 workshop. big video-language models are too heavy for edge devices, so dmd trains a small switcher that predicts when the on-device model is likely wrong and only then sends the clip to a larger cloud model, which cuts latency and compute while improving accuracy.</p>
+
+    <p>before that i was at <a href="https://hai.stanford.edu" target="_blank" rel="noopener">stanford hai</a> through ai4all, where i taught a plane to taxi itself in x-plane: a small neural net reads the nose camera and a pid controller keeps it on the centerline.</p>
 
     <p>in high school i co-founded and captained vex robotics team 95071x — national champions in 2024 and world semifinalists in 2022 &amp; 2025. i worked across the whole robot: path planning and odometry for our autonomous routines, vision-based alignment, power-takeoff transmissions, and custom aluminum, steel, and polyoxymethylene (delrin) parts made on the cnc, lathe, and laser cutter.</p>
 
