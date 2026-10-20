@@ -250,3 +250,5 @@ main.intro { max-width: 1100px; padding-bottom: 12px; }
 }
 .robots button:hover { color: var(--text); border-color: var(--muted); }
 .robots button[aria-pressed="true"] { color: var(--text); border-color: var(--text); }
+
+.copied { color: var(--muted); font-style: italic; font-size: 16px; }
