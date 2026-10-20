@@ -1,6 +1,7 @@
 // Subtle low-poly background: a jittered triangle mesh whose vertices bob
 // slowly in z, shaded in near-black greys by each facet's angle to a light.
 // Moving the pointer crinkles the mesh like paper; it springs back flat.
+// A few white sparks wander along the mesh edges, vertex to vertex.
 (() => {
   const canvas = document.getElementById('sky');
   if (!canvas) return;
@@ -11,6 +12,8 @@
   const light = normalize([-0.4, -0.6, 0.7]);
   let w, h, cols, rows, pts = [];
   let pointer = null;
+  let sparks = [];
+  let last = 0;
 
   function normalize(v) {
     const l = Math.hypot(v[0], v[1], v[2]);
@@ -41,6 +44,62 @@
           x: 0, y: 0, z: 0
         });
       }
+    }
+    sparks = Array.from({ length: Math.max(3, Math.round((w * h) / 260000)) }, spawn);
+  }
+
+  // Vertices sharing an edge with (r, c), matching the diagonals drawn below.
+  function neighbors(i) {
+    const r = Math.floor(i / cols), c = i % cols, out = [];
+    const add = (rr, cc) => { if (rr >= 0 && rr < rows && cc >= 0 && cc < cols) out.push(rr * cols + cc); };
+    add(r, c - 1); add(r, c + 1); add(r - 1, c); add(r + 1, c);
+    if ((r + c) % 2) { add(r + 1, c + 1); add(r - 1, c - 1); }
+    else { add(r + 1, c - 1); add(r - 1, c + 1); }
+    return out;
+  }
+
+  function spawn() {
+    const from = Math.floor(Math.random() * pts.length);
+    const next = neighbors(from);
+    return { from, to: next[Math.floor(Math.random() * next.length)], t: Math.random(), trail: [] };
+  }
+
+  function moveSpark(sp, dt) {
+    const a = pts[sp.from], b = pts[sp.to];
+    sp.t += (dt * 70) / (Math.hypot(b.x - a.x, b.y - a.y) || 1);
+    while (sp.t >= 1) {
+      // Pick any onward edge except the one just travelled.
+      const options = neighbors(sp.to).filter(n => n !== sp.from);
+      sp.from = sp.to;
+      sp.to = options[Math.floor(Math.random() * options.length)];
+      sp.t -= 1;
+    }
+    const p = pts[sp.from], q = pts[sp.to];
+    sp.trail.push({ x: p.x + (q.x - p.x) * sp.t, y: p.y + (q.y - p.y) * sp.t });
+    if (sp.trail.length > 45) sp.trail.shift();
+  }
+
+  function drawSparks() {
+    ctx.lineCap = 'round';
+    for (const sp of sparks) {
+      const tr = sp.trail;
+      for (let i = 1; i < tr.length; i++) {
+        ctx.strokeStyle = `rgba(255,255,255,${0.35 * (i / tr.length) ** 2})`;
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.moveTo(tr[i - 1].x, tr[i - 1].y);
+        ctx.lineTo(tr[i].x, tr[i].y);
+        ctx.stroke();
+      }
+      const head = tr[tr.length - 1];
+      if (!head) continue;
+      const glow = ctx.createRadialGradient(head.x, head.y, 0, head.x, head.y, 7);
+      glow.addColorStop(0, 'rgba(255,255,255,0.7)');
+      glow.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = glow;
+      ctx.beginPath();
+      ctx.arc(head.x, head.y, 7, 0, Math.PI * 2);
+      ctx.fill();
     }
   }
 
@@ -99,6 +158,8 @@
   }
 
   function draw(t) {
+    const dt = Math.min(0.05, (t - last) / 1000 || 0);
+    last = t;
     step(t / 1000);
     ctx.lineWidth = 1;
     for (let r = 0; r < rows - 1; r++) {
@@ -123,7 +184,11 @@
       }
     }
     ctx.stroke();
-    if (!still) requestAnimationFrame(draw);
+    if (!still) {
+      for (const sp of sparks) moveSpark(sp, dt);
+      drawSparks();
+      requestAnimationFrame(draw);
+    }
   }
 
   resize();
