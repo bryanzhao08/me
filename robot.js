@@ -1,10 +1,20 @@
-// Black-and-white spinning viewer for the 95071X worlds robot.
+// Black-and-white spinning viewer for the 95071X robots; buttons with
+// data-robot swap which model is shown.
 (() => {
   const canvas = document.getElementById('robot');
   const status = document.getElementById('robot-status');
   if (!canvas || typeof THREE === 'undefined') return;
 
-  const MODEL_URL = 'assets/models/worlds-compact.glb';
+  const caption = document.getElementById('robot-caption');
+  const buttons = [...document.querySelectorAll('[data-robot]')];
+  // rotationZ fixes CAD exports that come out facing sideways.
+  const MODELS = {
+    '2024': { url: 'assets/models/ou-new-detail.glb', caption: '2024 · over under' },
+    '2025': { url: 'assets/models/worlds-compact.glb', caption: '2025 · high stakes · worlds' },
+    '2026': { url: 'assets/models/pb-compact.glb', caption: '2026 · push back', rotationZ: -Math.PI / 2 }
+  };
+  const roots = {};
+  let current = '2025';
 
   // Models are split into parts to stay under the host's file size limit.
   async function loadChunkedGLB(loader, url, onLoad, onProgress, onError) {
@@ -75,7 +85,7 @@
   const pivot = new THREE.Group();
   scene.add(pivot);
 
-  let rotY = 0.6, rotX = -0.25, dragging = false, last = null, visible = false, requested = false;
+  let rotY = 0.6, rotX = -0.25, dragging = false, last = null, visible = false, started = false;
 
   function resize() {
     const w = canvas.clientWidth, h = canvas.clientHeight;
@@ -102,17 +112,35 @@
   window.addEventListener('pointerup', () => { dragging = false; });
   window.addEventListener('resize', resize);
 
-  function load() {
+  function show(name) {
+    current = name;
+    buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.robot === name)));
+    caption.textContent = `95071x · ${MODELS[name].caption} · drag to spin`;
+    pivot.clear();
+    if (roots[name] instanceof THREE.Object3D) {
+      pivot.add(roots[name]);
+      status.style.opacity = '0';
+      return;
+    }
+    status.textContent = 'loading…';
+    status.style.opacity = '1';
+    if (!roots[name]) load(name);
+  }
+
+  function load(name) {
+    roots[name] = 'loading';
+    const model = MODELS[name];
     const loader = new THREE.GLTFLoader();
     const draco = new THREE.DRACOLoader();
     draco.setDecoderPath('vendor/draco/');
     loader.setDRACOLoader(draco);
     if (typeof MeshoptDecoder !== 'undefined') loader.setMeshoptDecoder(MeshoptDecoder);
 
-    loadChunkedGLB(loader, MODEL_URL, gltf => {
+    loadChunkedGLB(loader, model.url, gltf => {
       const root = gltf.scene;
       // Onshape exports Z-up; Three.js is Y-up.
       root.rotation.x = -Math.PI / 2;
+      root.rotation.z = model.rotationZ || 0;
       // Black and white: flatten every material to its luminance.
       root.traverse(obj => {
         if (!obj.isMesh) return;
@@ -127,21 +155,27 @@
       const size = accurateBounds(root).getSize(new THREE.Vector3());
       root.scale.setScalar(3.8 / Math.max(size.x, size.y, size.z));
       root.position.sub(accurateBounds(root).getCenter(new THREE.Vector3()));
-      pivot.add(root);
-      status.style.opacity = '0';
+      roots[name] = root;
+      if (current === name) show(name);
     }, fraction => {
-      status.textContent = `loading… ${Math.round(fraction * 100)}%`;
+      if (current === name) status.textContent = `loading… ${Math.round(fraction * 100)}%`;
     }, error => {
       console.error('robot viewer:', error);
-      status.textContent = 'model unavailable';
+      delete roots[name];
+      if (current === name) status.textContent = 'model unavailable';
     });
   }
+
+  buttons.forEach(b => b.addEventListener('click', () => {
+    started = true;
+    show(b.dataset.robot);
+  }));
 
   resize();
   new IntersectionObserver(([entry]) => {
     const wasVisible = visible;
     visible = entry.isIntersecting;
-    if (visible && !requested) { requested = true; load(); }
+    if (visible && !started) { started = true; show(current); }
     if (visible && !wasVisible) requestAnimationFrame(frame);
   }, { rootMargin: '200px' }).observe(canvas);
 })();

@@ -211,3 +211,19 @@ main.intro { max-width: 1100px; padding-bottom: 12px; }
   .photos { padding: 0 16px 60px; column-gap: 10px; }
   .photos button { margin-bottom: 10px; }
 }
+
+/* robot list: each name switches the viewer */
+.robots { list-style: none; padding: 0; }
+.robots li { margin-bottom: 16px; }
+.robots button {
+  font: inherit;
+  text-transform: inherit;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 0;
+  cursor: pointer;
+}
+.robots button:hover { color: var(--text); border-color: var(--muted); }
+.robots button[aria-pressed="true"] { color: var(--text); border-color: var(--text); }
