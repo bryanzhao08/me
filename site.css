@@ -144,8 +144,9 @@ li::marker { color: var(--muted); }
 /* photography */
 .photos {
   max-width: 1100px;
-  columns: 3 260px;
-  column-gap: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
   margin: 0 auto;
   padding: 0 20px 80px;
 }
@@ -158,8 +159,10 @@ li::marker { color: var(--muted); }
   border: 0;
   background: none;
   cursor: zoom-in;
-  break-inside: avoid;
 }
+
+/* columns are built by the page script, filling whichever is shortest */
+.photos .col { flex: 1; min-width: 0; }
 
 .photos img {
   display: block;
@@ -231,7 +234,7 @@ main.intro { max-width: 1100px; padding-bottom: 12px; }
   .top nav { grid-column: 1 / -1; grid-row: 2; justify-self: center; transform: none; gap: 36px; padding-bottom: 12px; }
   main { padding: 24px 16px 60px; }
   .cols { grid-template-columns: 1fr; }
-  .photos { padding: 0 16px 60px; column-gap: 10px; }
+  .photos { padding: 0 16px 60px; gap: 10px; }
   .photos button { margin-bottom: 10px; }
 }
 
