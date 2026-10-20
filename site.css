@@ -171,6 +171,29 @@ li::marker { color: var(--muted); }
 
 .photos button:hover img { opacity: 1; }
 
+.albums {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 6px;
+}
+
+.albums button {
+  font: inherit;
+  text-transform: inherit;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  padding: 0 0 2px;
+  cursor: pointer;
+}
+
+.albums button span { font-size: 14px; opacity: .6; }
+.albums button:hover { color: var(--text); }
+.albums button[aria-pressed="true"] { color: var(--text); border-color: var(--text); }
+.photos button[hidden] { display: none; }
+
 dialog {
   max-width: none;
   max-height: none;
