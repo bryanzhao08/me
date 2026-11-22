@@ -260,7 +260,7 @@ main.intro { max-width: 1100px; padding-bottom: 12px; }
 .album-grid {
   max-width: 1500px;
   margin: 0 auto;
-  padding: 8px 20px 80px;
+  padding: 40px 20px 80px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
@@ -298,7 +298,7 @@ main.intro { max-width: 1100px; padding-bottom: 12px; }
 .album span small { display: block; font-size: 14px; opacity: .7; }
 .album:hover span { opacity: 0; }
 
-.album-view { max-width: 1300px; margin: 0 auto; padding: 0 20px 80px; }
+.album-view { max-width: 1300px; margin: 0 auto; padding: 40px 20px 80px; }
 .album-bar { display: flex; align-items: baseline; gap: 28px; margin: 4px 0 22px; }
 .album-bar h1 { margin: 0; font-weight: 400; font-size: 34px; }
 .album-bar .back { color: var(--muted); text-decoration: none; }
@@ -334,7 +334,7 @@ main.intro { max-width: 1100px; padding-bottom: 12px; }
   .squares { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 760px) {
-  .album-grid, .album-view { padding: 0 16px 60px; }
+  .album-grid, .album-view { padding: 24px 16px 60px; }
   .album-grid, .squares { gap: 10px; }
   .album span { font-size: 22px; }
   .album span small { font-size: 12px; }
