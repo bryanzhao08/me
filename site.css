@@ -258,18 +258,18 @@ main.intro { max-width: 1100px; padding-bottom: 12px; }
 
 /* photography: four album tiles, then a square grid per album */
 .album-grid {
-  max-width: 1300px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 8px 20px 80px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 14px;
 }
 .album-grid[hidden], .album-view[hidden] { display: none; }
 .album {
   position: relative;
   display: block;
-  aspect-ratio: 3 / 4.4;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   background: #000;
   text-decoration: none;
@@ -290,7 +290,7 @@ main.intro { max-width: 1100px; padding-bottom: 12px; }
   place-content: center;
   text-align: center;
   color: #fff;
-  font-size: 28px;
+  font-size: 36px;
   letter-spacing: .02em;
   text-shadow: 0 2px 18px rgba(0, 0, 0, .6);
   transition: opacity .35s;
@@ -329,7 +329,8 @@ main.intro { max-width: 1100px; padding-bottom: 12px; }
 .squares button:hover img { opacity: 1; }
 
 @media (max-width: 900px) {
-  .album-grid { grid-template-columns: repeat(2, 1fr); }
+  .album-grid { grid-template-columns: 1fr; }
+  .album { aspect-ratio: 16 / 10; }
   .squares { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 760px) {
@@ -342,4 +343,4 @@ main.intro { max-width: 1100px; padding-bottom: 12px; }
   .album img { filter: brightness(.6); }
   .album:hover span { opacity: 1; }
 }
-main.intro { max-width: 1300px; }
+main.intro { max-width: 1500px; }
