@@ -51,7 +51,7 @@ a { color: inherit; }
   content: '';
   width: 22px;
   height: 22px;
-  background: url(mark.svg) center / contain no-repeat;
+  background: url(mark.svg?v=2) center / contain no-repeat;
 }
 
 .top nav {
